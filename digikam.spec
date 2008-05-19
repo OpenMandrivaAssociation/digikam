@@ -1,5 +1,5 @@
 %define version 0.10.0
-%define release %mkrel 0.%revision.2
+%define release %mkrel 0.%revision.3
 %define revision 809821
 %define oname   digikam
 %define realname   digikam
@@ -29,6 +29,7 @@ BuildRequires:  libgphoto-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  kdepimlibs4-devel
 BuildRequires:  lcms-devel
+BuildRequires:  kdeedu4-devel
 
 Requires:       kdebase4-runtime
 
