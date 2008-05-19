@@ -1,12 +1,13 @@
 %define version 0.10.0
-%define release %mkrel 0.%revision.1
-%define revision 753592
+%define release %mkrel 0.%revision.2
+%define revision 809821
 %define oname   digikam
 %define realname   digikam
 
 %define major      1
 %define libname    %mklibname %{realname} %major
 %define libnamedev %mklibname %{realname} -d
+%define oldlibnamedev %mklibname %{realname} %major -d
 
 
 Name:		digikam
@@ -129,6 +130,7 @@ Group: System/Libraries
 Summary:        Static libraries and headers for %{name}
 Group:          Development/C
 Provides:       %{name}-devel = %{version}-%{release}
+Obsoletes:      %{oldlibnamedev} <  0.10.0-0.753592.2
 Requires:       %libdigikam = %version-%release
 Requires:       %libdigikamdatabase = %version-%release
 
