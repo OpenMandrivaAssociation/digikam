@@ -65,26 +65,13 @@ its functionalities.
 %_kde_bindir/digitaglinktree
 %_kde_bindir/showfoto
 %_kde_libdir/kde4/*.so
-%dir %_kde_appsdir/digikam
-%dir %_kde_appsdir/digikam/about
-%_kde_appsdir/digikam/about/*
-%_kde_appsdir/digikam/cameraui.rc
-%dir %_kde_appsdir/digikam/data
-%_kde_appsdir/digikam/data/*
-%_kde_appsdir/digikam/*.rc
+%_kde_appsdir/digikam
 %_kde_datadir/kde4/services/*
 %_kde_datadir/kde4/servicetypes/digikamimageplugin.desktop
-%_kde_mandir/digitaglinktree.1
+%_kde_mandir/*
 %_kde_datadir/applications/kde4/digikam.desktop
 %_kde_datadir/applications/kde4/showfoto.desktop
-%_kde_appsdir/digikam/digikam-splash.png
-%_kde_appsdir/digikam/icons
-%dir %_kde_appsdir/digikam/themes
-%_kde_appsdir/digikam/themes/*
-%_kde_appsdir/digikam/tips
-%dir %_kde_appsdir/showfoto
-%_kde_appsdir/showfoto/*.png
-%_kde_appsdir/showfoto/showfotoui.rc
+%_kde_appsdir/showfoto
 %_kde_datadir/kde4/services/ServiceMenus/*.desktop
 %_kde_iconsdir/*/*/*/*
 
