@@ -6,10 +6,10 @@
 
 %define major      1
 %define libname    %mklibname %{realname} %major
-%define libnamedev %mklibname %{realname} %major -d
+%define libnamedev %mklibname %{realname} -d
 
 
-Name:		kde4-digikam
+Name:		digikam
 Version:	%{version}
 Release:	%{release}
 License:	GPLv2+
