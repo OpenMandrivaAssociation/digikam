@@ -1,5 +1,5 @@
 %define version 0.10.0
-%define release %mkrel 0.%revision.3
+%define release %mkrel 0.%revision.4
 %define revision 809821
 %define oname   digikam
 %define realname   digikam
@@ -75,6 +75,8 @@ its functionalities.
 %_kde_appsdir/showfoto
 %_kde_datadir/kde4/services/ServiceMenus/*.desktop
 %_kde_iconsdir/*/*/*/*
+# Conflicts with oxygen-icon-theme which already contains those files 
+%exclude %_kde_iconsdir/oxygen/*/*/digikam.*
 
 #---------------------------------------------
 
@@ -85,7 +87,7 @@ Summary: KDE 4 library
 Group: System/Libraries
 
 %description -n %libdigikamdatabase
-%oname library
+Librairie File needed by %name
 
 %post -n %libdigikamdatabase -p /sbin/ldconfig
 %postun -n %libdigikamdatabase -p /sbin/ldconfig
@@ -103,7 +105,7 @@ Summary: KDE 4 library
 Group: System/Libraries
 
 %description -n %libdigikam
-%oname library
+Librairie File needed by %name
 
 %post -n %libdigikam -p /sbin/ldconfig
 %postun -n %libdigikam -p /sbin/ldconfig
