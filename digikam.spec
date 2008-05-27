@@ -1,5 +1,5 @@
 %define version 0.10.0
-%define release %mkrel 0.%revision.4
+i%define release %mkrel 0.%revision.5
 %define revision 809821
 %define oname   digikam
 %define realname   digikam
@@ -32,6 +32,8 @@ BuildRequires:  lcms-devel
 BuildRequires:  kdeedu4-devel
 
 Requires:       kdebase4-runtime
+Requires:       marble
+Requires:       qt4-database-plugin-sqlite-lib
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
