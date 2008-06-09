@@ -91,8 +91,12 @@ Group: System/Libraries
 %description -n %libdigikamdatabase
 Librairie File needed by %name
 
+%if %mdkversion < 200900
 %post -n %libdigikamdatabase -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libdigikamdatabase -p /sbin/ldconfig
+%endif
 
 %files -n %libdigikamdatabase
 %defattr(-,root,root)
@@ -109,8 +113,12 @@ Group: System/Libraries
 %description -n %libdigikam
 Librairie File needed by %name
 
+%if %mdkversion < 200900
 %post -n %libdigikam -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libdigikam -p /sbin/ldconfig
+%endif
 
 %files -n %libdigikam
 %defattr(-,root,root)
