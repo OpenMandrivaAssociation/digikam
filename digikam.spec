@@ -1,6 +1,6 @@
 %define version 0.10.0
-i%define release %mkrel 0.%revision.5
-%define revision 809821
+%define release %mkrel 0.%revision.1
+%define revision 820865
 %define oname   digikam
 %define realname   digikam
 
@@ -20,9 +20,7 @@ Source0:	%{oname}-%version.%revision.tar.bz2
 Summary:        A KDE photo management utility
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
-BuildRequires:  libkdcraw-devel >= 0.2.0
-BuildRequires:  libkipi-devel >= 0.2.0
-BuildRequires:  libkexiv2-devel >= 0.2.0
+BuildRequires:  kdegraphics4-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  libjasper-devel
 BuildRequires:  libgphoto-devel 
@@ -33,7 +31,7 @@ BuildRequires:  kdeedu4-devel
 
 Requires:       kdebase4-runtime
 Requires:       marble
-Requires:       qt4-database-plugin-sqlite-lib
+Requires:       qt4-database-plugin-sqlite-%{_lib}
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
@@ -52,6 +50,8 @@ as Showfoto.
 Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
+
+%if %mdkversion < 200900
 %post
 %{update_desktop_database}
 %update_icon_cache hicolor
@@ -59,6 +59,7 @@ its functionalities.
 %postun
 %{clean_desktop_database}
 %clean_icon_cache hicolor
+%endif
 
 %files
 %defattr(-,root,root)
@@ -93,8 +94,7 @@ Librairie File needed by %name
 
 %if %mdkversion < 200900
 %post -n %libdigikamdatabase -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
+
 %postun -n %libdigikamdatabase -p /sbin/ldconfig
 %endif
 
@@ -115,8 +115,7 @@ Librairie File needed by %name
 
 %if %mdkversion < 200900
 %post -n %libdigikam -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
+
 %postun -n %libdigikam -p /sbin/ldconfig
 %endif
 
@@ -153,6 +152,10 @@ The library documentation is available on header files.
 %setup -q -n %oname-%version
 
 %build
+# (cg) Work around GCC 4.3.1 bug:
+# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=36439
+# Can be removed once this is fixed.
+export CXXFLAGS="%optflags -fno-tree-pre"
 %if "%{_lib}" != "lib"
  PKG_CONFIG_PATH=/opt/kde4/lib64/pkgconfig \
 %else
