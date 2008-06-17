@@ -1,6 +1,6 @@
 %define version 0.10.0
 %define release %mkrel 0.%revision.1
-%define revision 820865
+%define revision 821527
 %define oname   digikam
 %define realname   digikam
 
