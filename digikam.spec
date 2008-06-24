@@ -1,37 +1,32 @@
-%define version 0.10.0
-%define release %mkrel 0.%revision.1
-%define revision 821527
-%define oname   digikam
-%define realname   digikam
+%define revision 824037
 
 %define major      1
-%define libname    %mklibname %{realname} %major
-%define libnamedev %mklibname %{realname} -d
-%define oldlibnamedev %mklibname %{realname} %major -d
+%define libname    %mklibname digikam %major
+%define libnamedev %mklibname digikam -d
+%define oldlibnamedev %mklibname digikam %major -d
 
-
-Name:		digikam
-Version:	%{version}
-Release:	%{release}
-License:	GPLv2+
-Url:	        http://www.digikam.org
-Group:		Graphics
-Source0:	%{oname}-%version.%revision.tar.bz2
-Summary:        A KDE photo management utility
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-
-BuildRequires:  kdegraphics4-devel
-BuildRequires:  sqlite3-devel
-BuildRequires:  libjasper-devel
-BuildRequires:  libgphoto-devel 
-BuildRequires:  libtiff-devel
-BuildRequires:  kdepimlibs4-devel
-BuildRequires:  lcms-devel
-BuildRequires:  kdeedu4-devel
-
-Requires:       kdebase4-runtime
-Requires:       marble
-Requires:       qt4-database-plugin-sqlite-%{_lib}
+Name: digikam
+Version: 0.10.0
+Release: %mkrel 0.%revision.2
+License: GPLv2+
+Url: http://www.digikam.org
+Group: Graphics
+Source0: %{name}-%{version}.%revision.tar.bz2
+Summary: A KDE photo management utility
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires: kdelibs4-devel
+BuildRequires: kdepimlibs4-devel
+BuildRequires: kdegraphics4-devel
+BuildRequires: kdeedu4-devel
+BuildRequires: sqlite3-devel
+BuildRequires: libjasper-devel
+BuildRequires: libgphoto-devel 
+BuildRequires: libtiff-devel
+BuildRequires: lcms-devel
+BuildRequires: lensfun-devel
+Requires: kdebase4-runtime
+Requires: marble
+Requires: qt4-database-plugin-sqlite
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
@@ -149,18 +144,13 @@ The library documentation is available on header files.
 #------------------------------------------------
 
 %prep
-%setup -q -n %oname-%version
+%setup -q 
 
 %build
 # (cg) Work around GCC 4.3.1 bug:
 # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=36439
 # Can be removed once this is fixed.
 export CXXFLAGS="%optflags -fno-tree-pre"
-%if "%{_lib}" != "lib"
- PKG_CONFIG_PATH=/opt/kde4/lib64/pkgconfig \
-%else
- PKG_CONFIG_PATH=/opt/kde4/lib/pkgconfig \
-%endif
 %cmake_kde4 
 %make
 
