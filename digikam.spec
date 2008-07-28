@@ -1,19 +1,19 @@
-%define revision 824037
+%define revision 838532
 
 %define major      1
 %define libname    %mklibname digikam %major
 %define libnamedev %mklibname digikam -d
 %define oldlibnamedev %mklibname digikam %major -d
 
-Name: digikam
-Version: 0.10.0
-Release: %mkrel 0.%revision.2
-License: GPLv2+
-Url: http://www.digikam.org
-Group: Graphics
-Source0: %{name}-%{version}.%revision.tar.bz2
-Summary: A KDE photo management utility
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Name:          digikam
+Version:       0.10.0
+Release:       %mkrel 0.%revision.1
+License:       GPLv2+
+Url:           http://www.digikam.org
+Group:         Graphics
+Source0:       %{name}-%{version}.%revision.tar.bz2
+Summary:       A KDE photo management utility
+BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: kdegraphics4-devel
@@ -24,9 +24,9 @@ BuildRequires: libgphoto-devel
 BuildRequires: libtiff-devel
 BuildRequires: lcms-devel
 BuildRequires: lensfun-devel
-Requires: kdebase4-runtime
-Requires: marble
-Requires: qt4-database-plugin-sqlite
+Requires:      kdebase4-runtime
+Requires:      marble
+Requires:      qt4-database-plugin-sqlite
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
