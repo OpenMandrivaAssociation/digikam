@@ -1,4 +1,4 @@
-%define revision beta2
+%define revision beta3
 
 %define major      1
 %define libname    %mklibname digikam %major
