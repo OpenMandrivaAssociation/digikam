@@ -7,11 +7,13 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 1.%revision.1
+Release: %mkrel 1.%revision.2
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
 Source0: %{name}-%{version}-%revision.tar.bz2
+Source1: digikam.desktop
+Source2: showfoto.desktop
 Summary: A KDE photo management utility
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -160,6 +162,9 @@ rm -rf %buildroot
 %{makeinstall_std}
 
 %find_lang %{name}
+
+# Translation tem modified desktop file
+cp -f %SOURCE1 %SOURCE2  %buildroot/%_kde_datadir/applications/kde4/
 
 %clean
 rm -rf %buildroot
