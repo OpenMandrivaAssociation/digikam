@@ -1,4 +1,4 @@
-%define revision beta3
+%define revision beta4
 
 %define major      1
 %define libname    %mklibname digikam %major
@@ -7,7 +7,7 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 1.%revision.2
+Release: %mkrel 1.%revision.1
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
@@ -163,7 +163,7 @@ rm -rf %buildroot
 
 %find_lang %{name}
 
-# Translation tem modified desktop file
+# Translation them modified desktop file
 cp -f %SOURCE1 %SOURCE2  %buildroot/%_kde_datadir/applications/kde4/
 
 %clean
