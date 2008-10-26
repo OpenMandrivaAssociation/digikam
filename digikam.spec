@@ -163,7 +163,7 @@ rm -rf %buildroot
 
 %find_lang %{name}
 
-# Translation them modified desktop file
+# Translation the modified desktop file
 cp -f %SOURCE1 %SOURCE2  %buildroot/%_kde_datadir/applications/kde4/
 
 %clean
