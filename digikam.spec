@@ -7,7 +7,7 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 1.%revision.1
+Release: %mkrel 1.%revision.2
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
@@ -77,6 +77,24 @@ its functionalities.
 %_kde_iconsdir/*/*/*/*
 # Conflicts with oxygen-icon-theme which already contains those files 
 %exclude %_kde_iconsdir/oxygen/*/*/digikam.*
+%exclude %_kde_iconsdir/oxygen/16x16/actions/transform-crop-and-resize.png
+%exclude %_kde_iconsdir/oxygen/16x16/actions/view-object-histogram-logarithmic.png
+%exclude %_kde_iconsdir/oxygen/22x22/actions/transform-crop-and-resize.png
+%exclude %_kde_iconsdir/oxygen/22x22/actions/view-object-histogram-linear.png
+%exclude %_kde_iconsdir/oxygen/22x22/actions/view-object-histogram-logarithmic.png
+%exclude %_kde_iconsdir/oxygen/32x32/actions/transform-crop-and-resize.png
+%exclude %_kde_iconsdir/oxygen/32x32/actions/view-object-histogram-linear.png
+%exclude %_kde_iconsdir/oxygen/32x32/actions/view-object-histogram-logarithmic.png
+%exclude %_kde_iconsdir/oxygen/48x48/actions/transform-crop-and-resize.png
+%exclude %_kde_iconsdir/oxygen/scalable/actions/transform-crop-and-resize.svgz
+%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-linear.svgz
+%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
+%exclude %_kde_iconsdir/oxygen/22x22/actions/view-object-histogram-linear.png
+%exclude %_kde_iconsdir/oxygen/32x32/actions/view-object-histogram-linear.png
+%exclude %_kde_iconsdir/oxygen/scalable/actions/transform-crop-and-resize.svgz
+%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-linear.svgz
+%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
+
 
 #---------------------------------------------
 
