@@ -1,4 +1,4 @@
-%define revision beta5
+%define revision beta6
 
 %define major      1
 %define libname    %mklibname digikam %major
@@ -119,24 +119,25 @@ Librairie File needed by %name
 
 #---------------------------------------------
 
-%define libdigikam %mklibname digikam 1
+%define libdigikamcore %mklibname digikamcore 1
 
-%package -n %libdigikam
+%package -n %libdigikamcore
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}digikam1 < 0.10.0-1.beta6.3
 
-%description -n %libdigikam
+%description -n %libdigikamcore
 Librairie File needed by %name
 
 %if %mdkversion < 200900
-%post -n %libdigikam -p /sbin/ldconfig
+%post -n %libdigikamcore -p /sbin/ldconfig
 
-%postun -n %libdigikam -p /sbin/ldconfig
+%postun -n %libdigikamcore -p /sbin/ldconfig
 %endif
 
-%files -n %libdigikam
+%files -n %libdigikamcore
 %defattr(-,root,root)
-%_kde_libdir/libdigikam.so.*
+%_kde_libdir/libdigikamcore.so.*
 
 #---------------------------------------------
 
@@ -145,7 +146,7 @@ Summary:        Static libraries and headers for %{name}
 Group:          Development/C
 Provides:       %{name}-devel = %{version}-%{release}
 Obsoletes:      %{oldlibnamedev} <  0.10.0-0.753592.2
-Requires:       %libdigikam = %version-%release
+Requires:       %libdigikamcore = %version-%release
 Requires:       %libdigikamdatabase = %version-%release
 
 %description  -n     %{libnamedev}
@@ -158,7 +159,7 @@ The library documentation is available on header files.
 %dir %_kde_includedir/digikam
 %_kde_includedir/digikam/*.h
 %_kde_includedir/digikam_export.h
-%_kde_libdir/libdigikam.so
+%_kde_libdir/libdigikamcore.so
 %_kde_libdir/libdigikamdatabase.so
 
 #------------------------------------------------
