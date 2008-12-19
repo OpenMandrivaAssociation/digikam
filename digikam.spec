@@ -1,4 +1,4 @@
-%define revision beta6
+%define revision beta7
 
 %define major      1
 %define libname    %mklibname digikam %major
@@ -7,14 +7,13 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 1.%revision.4
+Release: %mkrel 1.%revision.1
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
 Source0: %{name}-%{version}-%revision.tar.bz2
 Source1: digikam.desktop
 Source2: showfoto.desktop
-Patch0:        digikam-0.10.0-beta6-update-trunk.patch
 Summary:       A KDE photo management utility
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -167,7 +166,6 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}-%{revision}
-%patch0 -p1
 
 %build
 # (cg) Work around GCC 4.3.1 bug:
