@@ -74,6 +74,7 @@ its functionalities.
 %_kde_datadir/applications/kde4/digikam.desktop
 %_kde_datadir/applications/kde4/showfoto.desktop
 %_kde_appsdir/showfoto
+%_kde_appsdir/solid/actions/digikam-opencamera.desktop
 #%_kde_datadir/kde4/services/ServiceMenus/*.desktop
 %_kde_iconsdir/*/*/*/*
 # Conflicts with oxygen-icon-theme which already contains those files 
