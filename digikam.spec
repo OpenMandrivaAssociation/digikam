@@ -14,6 +14,7 @@ Group: Graphics
 Source0: %{name}-%{version}-%revision.tar.bz2
 Source1: digikam.desktop
 Source2: showfoto.desktop
+Patch0: digikam-0.10.0-beta8-fix-linkage.patch
 Summary:       A KDE photo management utility
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -58,10 +59,10 @@ its functionalities.
 %clean_icon_cache hicolor
 %endif
 
-%files -f build/%name.lang
+%files -f %name.lang
 %defattr(-,root,root)
 %_kde_bindir/digikam
-%_kde_bindir/digikam-camera
+#%_kde_bindir/digikam-camera
 %_kde_bindir/digikamthemedesigner
 %_kde_bindir/digitaglinktree
 %_kde_bindir/showfoto
@@ -73,7 +74,7 @@ its functionalities.
 %_kde_datadir/applications/kde4/digikam.desktop
 %_kde_datadir/applications/kde4/showfoto.desktop
 %_kde_appsdir/showfoto
-%_kde_datadir/kde4/services/ServiceMenus/*.desktop
+#%_kde_datadir/kde4/services/ServiceMenus/*.desktop
 %_kde_iconsdir/*/*/*/*
 # Conflicts with oxygen-icon-theme which already contains those files 
 %exclude %_kde_iconsdir/oxygen/*/*/digikam.*
@@ -166,6 +167,7 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}-%{revision}
+%patch0 -p0
 
 %build
 # (cg) Work around GCC 4.3.1 bug:
@@ -176,9 +178,8 @@ export CXXFLAGS="%optflags -fno-tree-pre"
 %make
 
 %install
-cd build
 rm -rf %buildroot
-%{makeinstall_std}
+%{makeinstall_std} -C build
 
 %find_lang %{name}
 
