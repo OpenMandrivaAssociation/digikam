@@ -29,7 +29,6 @@ BuildRequires: lensfun-devel
 Requires: kdebase4-runtime
 Requires: marble
 Requires: qt4-database-plugin-sqlite
-Requires: oxygen-icon-theme
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
