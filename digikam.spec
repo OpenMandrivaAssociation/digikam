@@ -1,4 +1,4 @@
-%define revision beta8
+%define revision rc1
 
 %define major      1
 %define libname    %mklibname digikam %major
@@ -13,7 +13,6 @@ Url: http://www.digikam.org
 Group: Graphics
 Source0: %{name}-%{version}-%revision.tar.bz2
 Source2: showfoto.desktop
-Patch0: digikam-0.10.0-beta8-fix-linkage.patch
 Summary:       A KDE photo management utility
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -167,7 +166,6 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}-%{revision}
-%patch0 -p0
 
 %build
 # (cg) Work around GCC 4.3.1 bug:
