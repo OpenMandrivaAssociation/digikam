@@ -1,4 +1,4 @@
-%define revision rc2
+%define revision %nil
 
 %define major      1
 %define libname    %mklibname digikam %major
@@ -7,11 +7,11 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 1.%revision.3
+Release: %mkrel 1
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
-Source0: %{name}-%{version}-%revision.tar.bz2
+Source0: %{name}-%{version}.tar.bz2
 Source2: showfoto.desktop
 Summary:       A KDE photo management utility
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -60,7 +60,6 @@ its functionalities.
 %files -f %name.lang
 %defattr(-,root,root)
 %_kde_bindir/digikam
-#%_kde_bindir/digikam-camera
 %_kde_bindir/digikamthemedesigner
 %_kde_bindir/digitaglinktree
 %_kde_bindir/showfoto
@@ -73,28 +72,6 @@ its functionalities.
 %_kde_datadir/applications/kde4/showfoto.desktop
 %_kde_appsdir/showfoto
 %_kde_appsdir/solid/actions/digikam-opencamera.desktop
-#%_kde_datadir/kde4/services/ServiceMenus/*.desktop
-%_kde_iconsdir/*/*/*/*
-# Conflicts with oxygen-icon-theme which already contains those files 
-%exclude %_kde_iconsdir/oxygen/*/*/digikam.*
-%exclude %_kde_iconsdir/oxygen/16x16/actions/transform-crop-and-resize.png
-%exclude %_kde_iconsdir/oxygen/16x16/actions/view-object-histogram-logarithmic.png
-%exclude %_kde_iconsdir/oxygen/22x22/actions/transform-crop-and-resize.png
-%exclude %_kde_iconsdir/oxygen/22x22/actions/view-object-histogram-linear.png
-%exclude %_kde_iconsdir/oxygen/22x22/actions/view-object-histogram-logarithmic.png
-%exclude %_kde_iconsdir/oxygen/32x32/actions/transform-crop-and-resize.png
-%exclude %_kde_iconsdir/oxygen/32x32/actions/view-object-histogram-linear.png
-%exclude %_kde_iconsdir/oxygen/32x32/actions/view-object-histogram-logarithmic.png
-%exclude %_kde_iconsdir/oxygen/48x48/actions/transform-crop-and-resize.png
-%exclude %_kde_iconsdir/oxygen/scalable/actions/transform-crop-and-resize.svgz
-%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-linear.svgz
-%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
-%exclude %_kde_iconsdir/oxygen/22x22/actions/view-object-histogram-linear.png
-%exclude %_kde_iconsdir/oxygen/32x32/actions/view-object-histogram-linear.png
-%exclude %_kde_iconsdir/oxygen/scalable/actions/transform-crop-and-resize.svgz
-%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-linear.svgz
-%exclude %_kde_iconsdir/oxygen/scalable/actions/view-object-histogram-logarithmic.svgz
-
 
 #---------------------------------------------
 
@@ -165,7 +142,7 @@ The library documentation is available on header files.
 #------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}-%{revision}
+%setup -q -n %{name}-%{version}
 
 %build
 # (cg) Work around GCC 4.3.1 bug:
