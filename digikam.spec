@@ -7,7 +7,7 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
@@ -26,7 +26,6 @@ BuildRequires: libtiff-devel
 BuildRequires: lcms-devel
 BuildRequires: lensfun-devel
 Requires: kdebase4-runtime
-Requires: marble
 Requires: qt4-database-plugin-sqlite
 Requires: kipi-plugins
 
