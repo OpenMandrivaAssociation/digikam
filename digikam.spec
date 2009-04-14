@@ -47,16 +47,6 @@ Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
 
-%if %mdkversion < 200900
-%post
-%{update_desktop_database}
-%update_icon_cache hicolor
-
-%postun
-%{clean_desktop_database}
-%clean_icon_cache hicolor
-%endif
-
 %files -f %name.lang
 %defattr(-,root,root)
 %_kde_bindir/digikam
@@ -84,12 +74,6 @@ Group: System/Libraries
 %description -n %libdigikamdatabase
 Librairie File needed by %name
 
-%if %mdkversion < 200900
-%post -n %libdigikamdatabase -p /sbin/ldconfig
-
-%postun -n %libdigikamdatabase -p /sbin/ldconfig
-%endif
-
 %files -n %libdigikamdatabase
 %defattr(-,root,root)
 %_kde_libdir/libdigikamdatabase.so.*
@@ -105,12 +89,6 @@ Obsoletes: %{_lib}digikam1 < 0.10.0-1.beta6.3
 
 %description -n %libdigikamcore
 Librairie File needed by %name
-
-%if %mdkversion < 200900
-%post -n %libdigikamcore -p /sbin/ldconfig
-
-%postun -n %libdigikamcore -p /sbin/ldconfig
-%endif
 
 %files -n %libdigikamcore
 %defattr(-,root,root)
