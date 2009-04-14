@@ -7,7 +7,7 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 4
+Release: %mkrel 5
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
@@ -52,16 +52,29 @@ its functionalities.
 %_kde_bindir/digikam
 %_kde_bindir/digikamthemedesigner
 %_kde_bindir/digitaglinktree
-%_kde_bindir/showfoto
 %_kde_libdir/kde4/*.so
 %_kde_appsdir/digikam
 %_kde_datadir/kde4/services/*
 %_kde_datadir/kde4/servicetypes/digikamimageplugin.desktop
 %_kde_mandir/*
 %_kde_datadir/applications/kde4/digikam.desktop
+%_kde_appsdir/solid/actions/digikam-opencamera.desktop
+%exclude %_kde_appsdir/digikam/icons/oxygen/*/apps/showfoto*
+#---------------------------------------------
+
+%package -n     showfoto
+Summary:        A KDE photo management utility
+Group:          Graphics
+Conflicts:      %name < 0.10.0-5
+%description -n showfoto
+A KDE photo management utility
+
+%files -n showfoto
+%defattr(-,root,root)
+%_kde_bindir/showfoto
 %_kde_datadir/applications/kde4/showfoto.desktop
 %_kde_appsdir/showfoto
-%_kde_appsdir/solid/actions/digikam-opencamera.desktop
+%_kde_appsdir/digikam/icons/oxygen/*/apps/showfoto*
 
 #---------------------------------------------
 
