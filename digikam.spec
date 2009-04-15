@@ -7,7 +7,7 @@
 
 Name: digikam
 Version: 0.10.0
-Release: %mkrel 5
+Release: %mkrel 6
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
@@ -28,6 +28,7 @@ BuildRequires: lensfun-devel
 Requires: kdebase4-runtime
 Requires: qt4-database-plugin-sqlite
 Requires: kipi-plugins
+Requires: marble-common
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
