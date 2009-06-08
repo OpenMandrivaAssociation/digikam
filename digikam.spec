@@ -1,18 +1,18 @@
-%define revision %nil
+%define revision beta1
 
 %define major      1
 %define libname    %mklibname digikam %major
 %define libnamedev %mklibname digikam -d
 %define oldlibnamedev %mklibname digikam %major -d
 
-Name: digikam
-Version: 0.10.0
-Release: %mkrel 6
-License: GPLv2+
-Url: http://www.digikam.org
-Group: Graphics
-Source0: %{name}-%{version}.tar.bz2
-Source2: showfoto.desktop
+Name:          digikam
+Version:       1.0.0
+Release:       %mkrel 0.%{revision}.1
+License:       GPLv2+
+Url:           http://www.digikam.org
+Group:         Graphics
+Source0:       %{name}-%{version}-%{revision}.tar.bz2
+Source2:       showfoto.desktop
 Summary:       A KDE photo management utility
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -25,10 +25,10 @@ BuildRequires: libgphoto-devel
 BuildRequires: libtiff-devel
 BuildRequires: lcms-devel
 BuildRequires: lensfun-devel
-Requires: kdebase4-runtime
-Requires: qt4-database-plugin-sqlite
-Requires: kipi-plugins
-Requires: marble-common
+Requires:      kdebase4-runtime
+Requires:      qt4-database-plugin-sqlite
+Requires:      kipi-plugins
+Requires:      marble-common
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
@@ -51,8 +51,8 @@ its functionalities.
 %files -f %name.lang
 %defattr(-,root,root)
 %_kde_bindir/digikam
-%_kde_bindir/digikamthemedesigner
 %_kde_bindir/digitaglinktree
+%_kde_bindir/cleanup_digikamdb
 %_kde_libdir/kde4/*.so
 %_kde_appsdir/digikam
 %_kde_datadir/kde4/services/*
@@ -60,7 +60,8 @@ its functionalities.
 %_kde_mandir/*
 %_kde_datadir/applications/kde4/digikam.desktop
 %_kde_appsdir/solid/actions/digikam-opencamera.desktop
-%exclude %_kde_appsdir/digikam/icons/oxygen/*/apps/showfoto*
+%_kde_iconsdir/hicolor/*/apps/digikam.*
+
 #---------------------------------------------
 
 %package -n     showfoto
@@ -75,7 +76,7 @@ A KDE photo management utility
 %_kde_bindir/showfoto
 %_kde_datadir/applications/kde4/showfoto.desktop
 %_kde_appsdir/showfoto
-%_kde_appsdir/digikam/icons/oxygen/*/apps/showfoto*
+%_kde_iconsdir/hicolor/*/apps/showfoto.*
 
 #---------------------------------------------
 
@@ -134,7 +135,7 @@ The library documentation is available on header files.
 #------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}-%{revision}
 
 %build
 # (cg) Work around GCC 4.3.1 bug:
