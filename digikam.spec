@@ -7,13 +7,13 @@
 
 Name:          digikam
 Version:       1.0.0
-Release:       %mkrel 0.%{revision}.1
+Release:       %mkrel 0.%{revision}.2
 License:       GPLv2+
 Url:           http://www.digikam.org
 Group:         Graphics
 Source0:       %{name}-%{version}-%{revision}.tar.bz2
 Source2:       showfoto.desktop
-Patch0:        digikam-1.0.0-beta2-fix-cmake.patch 
+Patch0:        digikam-1.0.0-beta2-fix-cmake.patch
 Summary:       A KDE photo management utility
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -26,6 +26,7 @@ BuildRequires: libgphoto-devel
 BuildRequires: libtiff-devel
 BuildRequires: lcms-devel
 BuildRequires: lensfun-devel
+BuildRequires: liblqr-devel >= 0.4.0
 Requires:      kdebase4-runtime
 Requires:      qt4-database-plugin-sqlite
 Requires:      kipi-plugins
@@ -137,13 +138,9 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}-%{revision}
-%patch0 -p0
+%patch0 -p0 
 
 %build
-# (cg) Work around GCC 4.3.1 bug:
-# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=36439
-# Can be removed once this is fixed.
-export CXXFLAGS="%optflags -fno-tree-pre"
 %cmake_kde4 
 %make
 
