@@ -13,8 +13,6 @@ Url:           http://www.digikam.org
 Group:         Graphics
 Source0:       %{name}-%{version}-%{revision}.tar.bz2
 Source2:       showfoto.desktop
-Patch0:        digikam-1.0.0-beta2-fix-cmake.patch
-Patch1:        digikam-1.0.0-beta2-t993646.patch
 Summary:       A KDE photo management utility
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -139,8 +137,6 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}-%{revision}
-%patch0 -p0 
-%patch1 -p0
 
 %build
 %cmake_kde4 
