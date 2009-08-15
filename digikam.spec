@@ -7,7 +7,7 @@
 
 Name:          digikam
 Version:       1.0.0
-Release:       %mkrel 0.%{revision}.1
+Release:       %mkrel 0.%{revision}.2
 License:       GPLv2+
 Url:           http://www.digikam.org
 Group:         Graphics
