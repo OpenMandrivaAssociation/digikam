@@ -1,20 +1,22 @@
-%define revision beta4
+%define beta beta4
+%define betarev 4
 
 %define major      1
 %define libname    %mklibname digikam %major
 %define libnamedev %mklibname digikam -d
 %define oldlibnamedev %mklibname digikam %major -d
 
-Name:          digikam
-Version:       1.0.0
-Release:       %mkrel 0.%{revision}.1
-License:       GPLv2+
-Url:           http://www.digikam.org
-Group:         Graphics
-Source0:       %{name}-%{version}-%{revision}.tar.bz2
-Source2:       showfoto.desktop
-Summary:       A KDE photo management utility
-BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Name: digikam
+Version: 1.0.0
+Release: %mkrel 0.%{betarev}.1
+License: GPLv2+
+Url: http://www.digikam.org
+Group: Graphics
+Source0: %{name}-%{version}-%{beta}.tar.bz2
+Source2: showfoto.desktop
+Patch0: digikam-1.0.0-beta4-comment.patch
+Summary: A KDE photo management utility
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: kdegraphics4-devel
@@ -136,7 +138,8 @@ The library documentation is available on header files.
 #------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}-%{revision}
+%setup -q -n %{name}-%{version}-%{beta}
+%patch0 -p0 -b .orig
 
 %build
 %cmake_kde4 
