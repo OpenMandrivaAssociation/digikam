@@ -1,5 +1,5 @@
-%define beta beta4
-%define betarev 4
+%define beta beta5
+%define betarev 5
 
 %define major      1
 %define libname    %mklibname digikam %major
