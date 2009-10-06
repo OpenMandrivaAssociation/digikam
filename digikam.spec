@@ -14,7 +14,6 @@ Url: http://www.digikam.org
 Group: Graphics
 Source0: %{name}-%{version}-%{beta}.tar.bz2
 Source2: showfoto.desktop
-Patch0: digikam-1.0.0-beta4-comment.patch
 Summary: A KDE photo management utility
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -57,6 +56,7 @@ its functionalities.
 %_kde_bindir/digitaglinktree
 %_kde_bindir/cleanup_digikamdb
 %_kde_libdir/kde4/*.so
+%_kde_libdir/kde4/plugins/marble/ExternalDraw.so
 %_kde_appsdir/digikam
 %_kde_datadir/kde4/services/*
 %_kde_datadir/kde4/servicetypes/digikamimageplugin.desktop
@@ -139,7 +139,6 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}-%{beta}
-%patch0 -p0 -b .orig
 
 %build
 %cmake_kde4 
