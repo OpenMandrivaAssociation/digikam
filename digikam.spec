@@ -8,7 +8,7 @@
 
 Name: digikam
 Version: 1.0.0
-Release: %mkrel 0.%{betarev}.1
+Release: %mkrel 0.%{betarev}.2
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
@@ -70,7 +70,9 @@ its functionalities.
 %package -n     showfoto
 Summary:        A KDE photo management utility
 Group:          Graphics
+Requires:       marble-common
 Conflicts:      %name < 0.10.0-5
+
 %description -n showfoto
 A KDE photo management utility
 
