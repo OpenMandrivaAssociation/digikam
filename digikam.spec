@@ -1,5 +1,5 @@
-%define beta beta5
-%define betarev 5
+%define beta beta6
+%define betarev 6
 
 %define major      1
 %define libname    %mklibname digikam %major
@@ -8,7 +8,7 @@
 
 Name: digikam
 Version: 1.0.0
-Release: %mkrel 0.%{betarev}.3
+Release: %mkrel 0.%{betarev}.1
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
