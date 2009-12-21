@@ -13,7 +13,6 @@ License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
 Source0: %{name}-%{version}.tar.bz2
-Source2: showfoto.desktop
 Summary: A KDE photo management utility
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -151,9 +150,6 @@ rm -rf %buildroot
 %{makeinstall_std} -C build
 
 %find_lang %{name}
-
-# Translation the modified desktop file
-cp -f %SOURCE2  %buildroot/%_kde_datadir/applications/kde4/
 
 %clean
 rm -rf %buildroot
