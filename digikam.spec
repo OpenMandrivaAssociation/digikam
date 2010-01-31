@@ -7,8 +7,8 @@
 %define oldlibnamedev %mklibname digikam %major -d
 
 Name: digikam
-Version: 1.0.0
-Release: %mkrel 2
+Version: 1.1.0
+Release: %mkrel 1
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
@@ -21,7 +21,7 @@ BuildRequires: kdegraphics4-devel
 BuildRequires: kdeedu4-devel
 BuildRequires: sqlite3-devel
 BuildRequires: libjasper-devel
-BuildRequires: libgphoto-devel 
+BuildRequires: libgphoto-devel
 BuildRequires: libtiff-devel
 BuildRequires: lcms-devel
 BuildRequires: lensfun-devel
