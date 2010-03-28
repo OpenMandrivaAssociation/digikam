@@ -7,7 +7,7 @@
 %define oldlibnamedev %mklibname digikam %major -d
 
 Name: digikam
-Version: 1.1.0
+Version: 1.2.0
 Release: %mkrel 1
 License: GPLv2+
 Url: http://www.digikam.org
