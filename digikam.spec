@@ -13,6 +13,7 @@ License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
 Source0: %{name}-%{version}.tar.bz2
+Patch0:  digikam-1.2.0-t1109177-fix-crash.patch
 Summary: A KDE photo management utility
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -140,6 +141,7 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 %cmake_kde4 
