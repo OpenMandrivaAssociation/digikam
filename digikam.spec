@@ -26,6 +26,7 @@ BuildRequires: libtiff-devel
 BuildRequires: lcms-devel
 BuildRequires: lensfun-devel
 BuildRequires: liblqr-devel >= 0.4.0
+BuildRequires: mysql-common
 Requires:      kdebase4-runtime
 Requires:      qt4-database-plugin-sqlite
 Requires:      kipi-plugins
