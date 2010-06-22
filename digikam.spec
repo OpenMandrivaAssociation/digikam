@@ -7,15 +7,12 @@
 %define oldlibnamedev %mklibname digikam %major -d
 
 Name: digikam
-Version: 1.2.0
-Release: %mkrel 4
+Version: 1.3.0
+Release: %mkrel 1
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
 Source0: %{name}-%{version}.tar.bz2
-Patch0:  digikam-1.2.0-t1109177-fix-crash.patch
-Patch1:  digikam-1.2.0-t1109975-fix-cmake.patch
-Patch2:  digikam-1.2.0-update-french-translation.patch
 Summary: A KDE photo management utility
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -57,6 +54,7 @@ its functionalities.
 %_kde_bindir/digikam
 %_kde_bindir/digitaglinktree
 %_kde_bindir/cleanup_digikamdb
+%_kde_libdir/kde4/libexec/digikamdatabaseserver
 %_kde_libdir/kde4/*.so
 %_kde_libdir/kde4/plugins/marble/ExternalDraw.so
 %_kde_appsdir/digikam
@@ -143,9 +141,6 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p0
 
 %build
 %cmake_kde4 
