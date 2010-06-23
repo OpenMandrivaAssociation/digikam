@@ -27,7 +27,8 @@ BuildRequires: lcms-devel
 BuildRequires: lensfun-devel
 BuildRequires: liblqr-devel >= 0.4.0
 BuildRequires: doxygen
-Requires:      mysql-common
+BuildRequires: mysql-core
+Requires:      mysql-core
 Requires:      kdebase4-runtime
 Requires:      qt4-database-plugin-sqlite
 Requires:      kipi-plugins
