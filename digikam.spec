@@ -144,7 +144,7 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch1 -p1 -b .canonlenstype
+%patch1 -p4 -b .canonlenstype
 
 %build
 %cmake_kde4 
