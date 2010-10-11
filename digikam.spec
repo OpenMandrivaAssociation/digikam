@@ -4,12 +4,12 @@
 %define oldlibnamedev %mklibname digikam %major -d
 
 Name: digikam
-Version: 1.4.0
-Release: %mkrel 4
+Version: 1.5.0
+Release: %mkrel 1
 License: GPLv2+
 Url: http://www.digikam.org
 Group: Graphics
-Source0: %{name}-%{version}.tar.bz2
+Source0: http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 Summary: A KDE photo management utility
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: kdelibs4-devel
@@ -32,7 +32,6 @@ Requires:      kdebase4-runtime
 Requires:      qt4-database-plugin-sqlite
 Requires:      kipi-plugins
 Requires:      marble-common
-Patch1:         digikam-1.4.0-canon-use-lenstype-tag.patch
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
@@ -144,7 +143,6 @@ The library documentation is available on header files.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch1 -p4 -b .canonlenstype
 
 %build
 %cmake_kde4 
