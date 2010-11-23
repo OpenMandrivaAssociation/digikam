@@ -6,7 +6,7 @@
 %define libdigikamcore %mklibname digikamcore 1
 
 Name: digikam
-Version: 1.5.0
+Version: 1.6.0
 Release: %mkrel 1
 License: GPLv2+
 Url: http://www.digikam.org
