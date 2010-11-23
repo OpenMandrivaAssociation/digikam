@@ -2,6 +2,8 @@
 %define libname    %mklibname digikam %major
 %define libnamedev %mklibname digikam -d
 %define oldlibnamedev %mklibname digikam %major -d
+%define libdigikamdatabase %mklibname digikamdatabase 1
+%define libdigikamcore %mklibname digikamcore 1
 
 Name: digikam
 Version: 1.5.0
@@ -32,6 +34,7 @@ Requires:      kdebase4-runtime
 Requires:      qt4-database-plugin-sqlite
 Requires:      kipi-plugins
 Requires:      marble-common
+Requires:      %libdigikamdatabase >= %{version}
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
@@ -73,6 +76,7 @@ its functionalities.
 Summary:        A KDE photo management utility
 Group:          Graphics
 Requires:       marble-common
+Requires:       %libdigikamcore >= %{version}
 Conflicts:      %name < 0.10.0-5
 
 %description -n showfoto
@@ -87,11 +91,10 @@ A KDE photo management utility
 
 #---------------------------------------------
 
-%define libdigikamdatabase %mklibname digikamdatabase 1
-
 %package -n %libdigikamdatabase
 Summary: KDE 4 library
 Group: System/Libraries
+Requires:       %libdigikamcore >= %{version}
 
 %description -n %libdigikamdatabase
 Librairie File needed by %name
@@ -101,8 +104,6 @@ Librairie File needed by %name
 %_kde_libdir/libdigikamdatabase.so.*
 
 #---------------------------------------------
-
-%define libdigikamcore %mklibname digikamcore 1
 
 %package -n %libdigikamcore
 Summary: KDE 4 library
