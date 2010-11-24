@@ -2,8 +2,6 @@
 %define libname    %mklibname digikam %major
 %define libnamedev %mklibname digikam -d
 %define oldlibnamedev %mklibname digikam %major -d
-%define libdigikamdatabase %mklibname digikamdatabase 1
-%define libdigikamcore %mklibname digikamcore 1
 
 Name: digikam
 Version: 1.6.0
@@ -91,6 +89,8 @@ A KDE photo management utility
 
 #---------------------------------------------
 
+%define libdigikamdatabase %mklibname digikamdatabase 1
+
 %package -n %libdigikamdatabase
 Summary: KDE 4 library
 Group: System/Libraries
@@ -104,6 +104,8 @@ Librairie File needed by %name
 %_kde_libdir/libdigikamdatabase.so.*
 
 #---------------------------------------------
+
+%define libdigikamcore %mklibname digikamcore 1
 
 %package -n %libdigikamcore
 Summary: KDE 4 library
