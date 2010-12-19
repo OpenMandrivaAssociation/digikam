@@ -4,6 +4,10 @@
 %define libnamedev %mklibname digikam -d
 %define oldlibnamedev %mklibname digikam 1 -d
 
+#
+# WARNING: Do not update to digikam 2.0 before asking to kde team
+#
+ 
 Name: digikam
 Version: 1.7.0
 Release: %mkrel 1
