@@ -9,7 +9,7 @@
 #
  
 Name: digikam
-Version: 1.7.0
+Version: 1.8.0
 Release: %mkrel 1
 License: GPLv2+
 Url: http://www.digikam.org
