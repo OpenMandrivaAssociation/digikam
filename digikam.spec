@@ -1,3 +1,5 @@
+%define _with_external_kvkontakte 0
+
 Name: digikam
 Version: 2.3.0
 Epoch: 1
@@ -7,7 +9,9 @@ Url: http://www.digikam.org
 Group: Graphics
 Source0: http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 Source1: digikam-correct-pngfilesfor-apps.xz
+%if %_with_external_kvkontakte
 Patch0:  digikam-2.3.0-use-external-libvkontake.patch 
+%endif
 Patch1:  digikam-2.3.0-fix-regression-fix-kde-286034.patch
 Summary:       A KDE photo management utility
 BuildRequires: kdepimlibs4-devel
@@ -23,8 +27,10 @@ BuildRequires: pkgconfig(lensfun)
 BuildRequires: pkgconfig(lqr-1) >= 0.4.0
 BuildRequires: pkgconfig(QJson)
 BuildRequires: pkgconfig(libgpod-1.0)
-BuildRequires: pkgconfig(libpgf)
-BuildRequires: libkvkontakte-devel 
+#BuildRequires: pkgconfig(libpgf)
+%if %_with_external_kvkontakte
+BuildRequires: libkvkontakte-devel
+%endif 
 BuildRequires: libtiff-devel
 BuildRequires: libjasper-devel
 BuildRequires: marble-devel
@@ -883,6 +889,7 @@ A tool to create panorama.
 
 #-----------------------------------------------------------------------
 
+%if %_with_external_kvkontakte
 %package -n kipi-plugins-vkontakte
 Summary:    VKontakte.ru Exporter
 Group:      System/Libraries
@@ -895,6 +902,7 @@ A tool to export on VKontakte.ru Web service
 %files -n kipi-plugins-vkontakte -f libkvkontakte.lang
 %_kde_libdir/kde4/kipiplugin_vkontakte.so
 %_kde_services/kipiplugin_vkontakte.desktop
+%endif
 
 #-----------------------------------------------------------------------
 
@@ -1051,5 +1059,7 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 %find_lang kipiplugin_advancedslideshow
 %find_lang kipiplugin_batchprocessimages
 %find_lang libkgeomap
+%if %_with_external_kvkontakte
 %find_lang libkvkontakte
+%endif
 
