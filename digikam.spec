@@ -130,7 +130,6 @@ Showfoto is a fast Image Editor with powerful image editing tools.
 You can use it to view your photographs and improve them.
 
 %files -n showfoto -f showfoto.lang
-
 %_kde_bindir/showfoto
 %_kde_datadir/applications/kde4/showfoto.desktop
 %_kde_appsdir/showfoto
@@ -149,7 +148,6 @@ Group: System/Libraries
 Librairie File needed by %name
 
 %files -n %libdigikamdatabase
-
 %_kde_libdir/libdigikamdatabase.so.%{libdigikamdatabase_major}*
 
 #-----------------------------------------------------------------------
@@ -165,7 +163,6 @@ Group: System/Libraries
 Librairie File needed by %name
 
 %files -n %libdigikamcore
-
 %_kde_libdir/libdigikamcore.so.%{libdigikamcore_major}*
 
 #-----------------------------------------------------------------------
@@ -184,7 +181,6 @@ Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
 and detection over pictures.
 
 %files -n %libkface
-
 %_kde_libdir/libkface.so.%{libkface_major}*
 
 #-----------------------------------------------------------------------
@@ -206,7 +202,6 @@ Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap and
 GoogleMap,for browsing and arranging photos on a map.
 
 %files -n %libkgeomap
-
 %_kde_libdir/libkgeomap.so.%{libkgeomap_major}*
 
 #-----------------------------------------------------------------------
@@ -225,7 +220,6 @@ Librairie File needed by %name
 libmediawiki is a KDE C++ interface for MediaWiki based web service as wikipedia.org.
 
 %files -n %libmediawiki
-
 %_kde_libdir/libmediawiki.so.%{libmediawiki_major}*
 
 #-----------------------------------------------------------------------
@@ -241,7 +235,6 @@ Group:      System/Libraries
 Librairie File needed by %name
 
 %files -n %libkipiplugins
-
 %_kde_libdir/libkipiplugins.so.%{libkipiplugins_major}*
 
 #-----------------------------------------------------------------------
@@ -311,7 +304,6 @@ Requires:   kipi-common
 A Tool to adjust time and date.
 
 %files -n kipi-plugins-timeadjust -f kipiplugin_timeadjust.lang
-
 %_kde_libdir/kde4/kipiplugin_timeadjust.so
 %_kde_iconsdir/hicolor/*/actions/timeadjust.png
 %_kde_services/kipiplugin_timeadjust.desktop
@@ -329,7 +321,6 @@ Requires:   kipi-common
 A tool to import/export images to/from SmugMug web service.
 
 %files -n kipi-plugins-smug 
-
 %_kde_libdir/kde4/kipiplugin_smug.so
 %_kde_iconsdir/hicolor/*/actions/smugmug.png
 %_kde_iconsdir/hicolor/scalable/actions/smugmug.svgz
@@ -348,7 +339,6 @@ Requires:   kipi-common
 A tool to export images to a remote Shwup web service.
 
 %files -n kipi-plugins-shwup -f kipiplugin_shwup.lang
-
 %_kde_libdir/kde4/kipiplugin_shwup.so
 %_kde_iconsdir/hicolor/*/actions/shwup.png
 %_kde_services/kipiplugin_shwup.desktop
@@ -366,7 +356,6 @@ Requires:   kipi-common
 A tool to export images to a remote Piwigo.
 
 %files -n kipi-plugins-piwigoexport -f kipiplugin_piwigoexport.lang
-
 %_kde_libdir/kde4/kipiplugin_piwigoexport.so
 %_kde_appsdir/kipiplugin_piwigoexport
 %_kde_services/kipiplugin_piwigoexport.desktop
@@ -386,7 +375,6 @@ Requires:   kipi-common
 A tool to export images to a remote Picase Web Service
 
 %files -n kipi-plugins-picasa -f kipiplugin_picasawebexport.lang
-
 %_kde_libdir/kde4/kipiplugin_picasawebexport.so
 %_kde_services/kipiplugin_picasawebexport.desktop
 %_kde_iconsdir/hicolor/scalable/actions/picasa.svgz
@@ -405,7 +393,6 @@ Requires:   kipi-common
 A tool to edit EXIF,IPTC and XMP metadata.
 
 %files -n kipi-plugins-metadataedit -f kipiplugin_metadataedit.lang
-
 %_kde_libdir/kde4/kipiplugin_metadataedit.so
 %_kde_services/kipiplugin_metadataedit.desktop
 %_kde_iconsdir/hicolor/*/actions/metadataedit.png
@@ -422,7 +409,6 @@ Requires:   kipi-common
 A tool to export images to an instant messaging contact.
 
 %files -n kipi-plugins-kopete 
-
 %{_kde_libdir}/kde4/kipiplugin_kopete.so
 %_kde_services/kipiplugin_kopete.desktop
 
@@ -439,7 +425,6 @@ A tool to export pictures to or import from a remote directory that is
 accessible via KIO.
 
 %files -n kipi-plugins-kioexportimport -f kipiplugin_kioexportimport.lang
-
 %_kde_libdir/kde4/kipiplugin_kioexportimport.so
 %_kde_services/kipiplugin_kioexportimport.desktop
 
@@ -456,7 +441,6 @@ Requires:   kipi-common
 A tool to rotate/flip images without losing quality.
 
 %files -n kipi-plugins-jpeglossless -f kipiplugin_jpeglossless.lang
-
 %_kde_libdir/kde4/kipiplugin_jpeglossless.so
 %_kde_services/kipiplugin_jpeglossless.desktop
 %_kde_iconsdir/hicolor/*/actions/flip-horizontal.png
@@ -474,7 +458,6 @@ Requires:   kipi-common
 A tool to export pictures to an Ipod device.
 
 %files -n kipi-plugins-ipodexport -f kipiplugin_ipodexport.lang
-
 %_kde_libdir/kde4/kipiplugin_ipodexport.so
 %_kde_services/kipiplugin_ipodexport.desktop
 
@@ -491,7 +474,6 @@ Requires:   kipi-common
 A tool to preview images using OpenGl.
 
 %files -n kipi-plugins-imageviewer -f kipiplugin_imageviewer.lang
-
 %_kde_libdir/kde4/kipiplugin_imageviewer.so
 %_kde_appsdir/kipiplugin_imageviewer
 %_kde_services/kipiplugin_imageviewer.desktop
@@ -510,7 +492,6 @@ Requires:   kipi-common
 A tool to export images collections into a static XHTML page.
 
 %files -n kipi-plugins-htmlexport -f kipiplugin_htmlexport.lang
-
 %_kde_libdir/kde4/kipiplugin_htmlexport.so
 %_kde_services/kipiplugin_htmlexport.desktop
 %_kde_appsdir/kipiplugin_htmlexport
@@ -528,7 +509,6 @@ Requires:   kipi-common
 A tool to export images to the Debian Screenshots site.
 
 %files -n kipi-plugins-debianscreenshot 
- 
 %_kde_libdir/kde4/kipiplugin_debianscreenshots.so 
 %_kde_services/kipiplugin_debianscreenshots.desktop
 %_kde_iconsdir/hicolor/*/actions/debianscreenshots.png 
@@ -546,7 +526,6 @@ Requires:   kipi-common
 A tool to geolocalize pictures.
 
 %files -n kipi-plugins-gpssync -f kipiplugin_gpssync.lang
-
 %_kde_appsdir/gpssync
 %_kde_libdir/kde4/kipiplugin_gpssync.so
 %_kde_services/kipiplugin_gpssync.desktop
@@ -565,7 +544,6 @@ Requires:   kipi-common
 A tool to export images to a remote Flickr, 23 and Zoomr web services.
 
 %files -n kipi-plugins-flickr -f kipiplugin_flickrexport.lang
-
 %_kde_libdir/kde4/kipiplugin_flickrexport.so
 %_kde_services/kipiplugin_flickrexport.desktop
 %_kde_iconsdir/hicolor/*/actions/flickr.png
@@ -591,7 +569,6 @@ Conflicts:  kipi-plugins < 1:1.8.0-1
 A tool to blend bracketed images.
 
 %files -n kipi-plugins-expoblending -f kipiplugin_expoblending.lang
-
 %_kde_bindir/expoblending
 %_kde_applicationsdir/expoblending.desktop
 %_kde_libdir/kde4/kipiplugin_expoblending.so
@@ -612,7 +589,6 @@ Requires:   kipi-common
 A tool to create calendars.
 
 %files -n kipi-plugins-calendar -f kipiplugin_calendar.lang
-
 %_kde_libdir/kde4/kipiplugin_calendar.so
 %_kde_services/kipiplugin_calendar.desktop
 
@@ -655,7 +631,6 @@ Requires:   kipi-common
 A tool to slide images with 2D and 3D effects using OpenGL.
 
 %files -n kipi-plugins-advancedslideshow -f kipiplugin_advancedslideshow.lang
-
 %_kde_libdir/kde4/kipiplugin_advancedslideshow.so
 %_kde_iconsdir/hicolor/*/actions/slideshow.png
 %_kde_services/kipiplugin_advancedslideshow.desktop
@@ -673,7 +648,6 @@ Requires:   kipi-common
 A tool to print images in various formats.
 
 %files -n kipi-plugins-printimages -f kipiplugin_printimages.lang
-
 %_kde_libdir/kde4/kipiplugin_printimages.so
 %_kde_services/kipiplugin_printimages.desktop
 %_kde_appsdir/kipiplugin_printimages/
@@ -691,7 +665,6 @@ Requires:   kipi-common
 A tool to convert Raw Image to Digital NeGative.
 
 %files -n kipi-plugins-dngconverter -f kipiplugin_dngconverter.lang
-
 %_kde_bindir/dngconverter
 %_kde_bindir/dnginfo
 %_kde_applicationsdir/dngconverter.desktop
@@ -713,7 +686,6 @@ Requires:   kipi-common
 A tool to export images to a remote Gallery.
 
 %files -n kipi-plugins-galleryexport -f kipiplugin_galleryexport.lang
-
 %_kde_libdir/kde4/kipiplugin_galleryexport.so
 %_kde_appsdir/kipiplugin_galleryexport
 %_kde_services/kipiplugin_galleryexport.desktop
@@ -733,7 +705,6 @@ Requires:   kipi-common
 A tool to export images to Flash.
 
 %files -n kipi-plugins-flashexport -f kipiplugin_flashexport.lang
-
 %_kde_libdir/kde4/kipiplugin_flashexport.so
 %_kde_appsdir/kipiplugin_flashexport
 %_kde_services/kipiplugin_flashexport.desktop
@@ -753,7 +724,6 @@ Requires:   kipi-common
 A tool to import/export images to/from a remote Facebook web service.
 
 %files -n kipi-plugins-facebook -f kipiplugin_facebook.lang
-
 %_kde_libdir/kde4/kipiplugin_facebook.so
 %_kde_services/kipiplugin_facebook.desktop
 %_kde_iconsdir/hicolor/*/actions/facebook.png
@@ -771,7 +741,6 @@ Conflicts:  kipi-plugins < 1:1.8.0-1
 A tool to acquire images using flat scanner.
 
 %files -n kipi-plugins-acquireimages -f kipiplugin_acquireimages.lang
-
 %_kde_bindir/scangui
 %_kde_libdir/kde4/kipiplugin_acquireimages.so
 %_kde_services/kipiplugin_acquireimages.desktop 
@@ -790,7 +759,6 @@ Requires:   kipi-common
 A tool to convert Raw Image to JPEG/PNG/TIFF.
 
 %files -n kipi-plugins-rawconverter -f kipiplugin_rawconverter.lang
-
 %_kde_libdir/kde4/kipiplugin_rawconverter.so
 %_kde_iconsdir/oxygen/*/apps/rawconverter.png
 %_kde_services/kipiplugin_rawconverter.desktop
@@ -808,7 +776,6 @@ Requires:   kipi-common
 A tool to remove red eyes automatically from images.
 
 %files -n kipi-plugins-removeredeyes -f kipiplugin_removeredeyes.lang
-
 %_kde_libdir/kde4/kipiplugin_removeredeyes.so
 %_kde_datadir/apps/kipiplugin_removeredeyes
 %_kde_services/kipiplugin_removeredeyes.desktop 
@@ -826,7 +793,6 @@ Requires:   kipi-common
 A tool to send images by e-mail.
 
 %files -n kipi-plugins-sendimages -f kipiplugin_sendimages.lang
-
 %_kde_libdir/kde4/kipiplugin_sendimages.so 
 %_kde_services/kipiplugin_sendimages.desktop
 
@@ -841,7 +807,6 @@ Requires:   kipi-common
 A plugin to create KML files to present images with coordinates.
 
 %files -n kipi-plugins-kmlexport 
-
 %_kde_libdir/kde4/kipiplugin_kmlexport.so
 %_kde_services/kipiplugin_kmlexport.desktop
 
@@ -857,7 +822,6 @@ Requires:   kipi-common
 A tool to export images to a remote Yandex.Fotki web service.
 
 %files -n kipi-plugins-yandexfotki 
-
 %_kde_libdir/kde4/kipiplugin_yandexfotki.so
 %_kde_services/kipiplugin_yandexfotki.desktop
 
@@ -873,7 +837,6 @@ Requires:   kipi-common
 A tool to export images to a remote rajce.net service.
 
 %files -n kipi-plugins-rajceexport 
-
 %_kde_libdir/kde4/kipiplugin_rajceexport.so
 %_kde_services/kipiplugin_rajceexport.desktop
 %_kde_iconsdir/hicolor/*/actions/rajce.png
@@ -886,8 +849,8 @@ Group:  System/Libraries
 Requires: kipi-common
 %description -n kipiplugin-photolayouts-editor
 Photo Layouts Editor.
-%files -n kipiplugin-photolayouts-editor
 
+%files -n kipiplugin-photolayouts-editor
 %_kde_bindir/photolayoutseditor
 %_kde_iconsdir/hicolor/*/apps/photolayoutseditor.png
 %_kde_services/kipiplugin_photolayoutseditor.desktop
@@ -912,7 +875,6 @@ Requires:   hugin
 A tool to create panorama.
 
 %files -n kipi-plugins-panorama 
-
 %_kde_bindir/panoramagui
 %_kde_libdir/kde4/kipiplugin_panorama.so
 %_kde_appsdir/kipiplugin_panorama/
@@ -931,14 +893,12 @@ Requires:   kipi-common
 A tool to export on VKontakte.ru Web service
 
 %files -n kipi-plugins-vkontakte -f libkvkontakte.lang
-
 %_kde_libdir/kde4/kipiplugin_vkontakte.so
 %_kde_services/kipiplugin_vkontakte.desktop
 
-
 #-----------------------------------------------------------------------
-%define libnamedev %mklibname digikam -d
 
+%define libnamedev %mklibname digikam -d
 
 %define libmediawiki_devel %mklibname -d mediawiki
 %package -n %libmediawiki_devel
@@ -957,7 +917,6 @@ wikipedia.org.
 
 
 %files -n %libmediawiki_devel
-
 %_includedir/libmediawiki
 %_kde_libdir/libmediawiki.so
 %_kde_libdir/pkgconfig/libmediawiki.pc
@@ -983,7 +942,6 @@ Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
 and detection over pictures.
 
 %files -n %libkface_devel
-
 %_includedir/libkface
 %_kde_libdir/libkface.so
 %_kde_libdir/pkgconfig/libkface.pc
@@ -1009,7 +967,6 @@ Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap and
 GoogleMap,for browsing and arranging photos on a map.
 
 %files -n %libkgeomap_devel
-
 %_includedir/libkgeomap
 %_kde_libdir/libkgeomap.so
 %_kde_libdir/pkgconfig/libkgeomap.pc
@@ -1037,7 +994,6 @@ develop programs which make use of %name.
 The library documentation is available on header files.
 
 %files -n     %libnamedev
-
 %_kde_libdir/libdigikamcore.so
 %_kde_libdir/libdigikamdatabase.so
 %_kde_libdir/libkipiplugins.so
@@ -1061,7 +1017,6 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 %make
 
 %install
-rm -rf %buildroot
 %makeinstall_std -C build
 
 %find_lang %name --with-html
@@ -1097,5 +1052,4 @@ rm -rf %buildroot
 %find_lang kipiplugin_batchprocessimages
 %find_lang libkgeomap
 %find_lang libkvkontakte
-
 
