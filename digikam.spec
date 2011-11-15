@@ -889,7 +889,6 @@ A tool to create panorama.
 
 #-----------------------------------------------------------------------
 
-%if %_with_external_kvkontakte
 %package -n kipi-plugins-vkontakte
 Summary:    VKontakte.ru Exporter
 Group:      System/Libraries
@@ -902,7 +901,6 @@ A tool to export on VKontakte.ru Web service
 %files -n kipi-plugins-vkontakte -f libkvkontakte.lang
 %_kde_libdir/kde4/kipiplugin_vkontakte.so
 %_kde_services/kipiplugin_vkontakte.desktop
-%endif
 
 #-----------------------------------------------------------------------
 
@@ -1059,7 +1057,5 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 %find_lang kipiplugin_advancedslideshow
 %find_lang kipiplugin_batchprocessimages
 %find_lang libkgeomap
-%if %_with_external_kvkontakte
 %find_lang libkvkontakte
-%endif
 
