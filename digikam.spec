@@ -1,19 +1,19 @@
-%define _with_external_kvkontakte 1
+%bcond_without external_kvkontakte
 
-Name: digikam
-Version: 2.3.0
-Epoch: 1
-Release: 1
-License: GPLv2+ 
-Url: http://www.digikam.org
-Group: Graphics
-Source0: http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
-Source1: digikam-correct-pngfilesfor-apps.xz
-%if %_with_external_kvkontakte
-Patch0:  digikam-2.3.0-use-external-libvkontake.patch 
-%endif
-Patch1:  digikam-2.3.0-fix-regression-fix-kde-286034.patch
+Name:          digikam
 Summary:       A KDE photo management utility
+Group:         Graphics
+Version:       2.4.1
+Release:       1
+Epoch:         1
+License:       GPLv2+ 
+URL:           http://www.digikam.org
+Source0:       http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
+Source1:       digikam-correct-pngfilesfor-apps.xz
+%if %{with external_kvkontakte}
+Patch0:        digikam-2.4.1-use-external-libvkontake.patch 
+%endif
+
 BuildRequires: kdepimlibs4-devel
 BuildRequires: pkgconfig(libkexiv2)
 BuildRequires: pkgconfig(libksane)
@@ -28,7 +28,7 @@ BuildRequires: pkgconfig(lqr-1) >= 0.4.0
 BuildRequires: pkgconfig(QJson)
 BuildRequires: pkgconfig(libgpod-1.0)
 #BuildRequires: pkgconfig(libpgf)
-%if %_with_external_kvkontakte
+%if %{with external_kvkontakte}
 BuildRequires: libkvkontakte-devel
 %endif 
 BuildRequires: libtiff-devel
@@ -867,7 +867,6 @@ Photo Layouts Editor.
 %_kde_appsdir/photolayoutseditor/photolayoutseditorui.rc
 %_kde_datadir/config.kcfg/PLEConfigSkeleton.kcfgc
 
-
 #-----------------------------------------------------------------------
 
 %package -n kipi-plugins-panorama
@@ -980,10 +979,9 @@ GoogleMap,for browsing and arranging photos on a map.
 
 #-----------------------------------------------------------------------
 
-%package        -n     %libnamedev
+%package -n %libnamedev
 Summary:        Static libraries and headers for %name
 Group:          Development/C
-Provides:       %name-devel = %epoch:%version-%release
 Provides:       lib%name-devel = %epoch:%version-%release
 Provides:       kipi-plugins-devel = %epoch:%version-%release
 Obsoletes:      kipi-plugins-devel < 1:2.0.0
@@ -994,12 +992,12 @@ Requires:       %libmediawiki_devel = %epoch:%version-%release
 Requires:       %libkface_devel = %epoch:%version-%release
 Requires:       %libkipiplugins = %epoch:%version-%release
 
-%description  -n     %libnamedev
+%description -n %libnamedev
 %libnamedev contains the libraries and header files needed to
 develop programs which make use of %name.
 The library documentation is available on header files.
 
-%files -n     %libnamedev
+%files -n %libnamedev
 %_kde_libdir/libdigikamcore.so
 %_kde_libdir/libdigikamdatabase.so
 %_kde_libdir/libkipiplugins.so
@@ -1058,4 +1056,3 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 %find_lang kipiplugin_batchprocessimages
 %find_lang libkgeomap
 %find_lang libkvkontakte
-
