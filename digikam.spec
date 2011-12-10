@@ -1,4 +1,4 @@
-%define _with_external_kvkontakte 0
+%define _with_external_kvkontakte 1
 
 Name: digikam
 Version: 2.3.0
