@@ -75,6 +75,7 @@ its functionalities.
 %_kde_bindir/digitaglinktree
 %_kde_bindir/cleanup_digikamdb
 %_kde_bindir/libkgeomap_demo
+%_kde_bindir/multithread
 %_kde_libdir/kde4/digikam*.so
 %_kde_libdir/kde4/kio_digikam*.so
 %_kde_appsdir/digikam
