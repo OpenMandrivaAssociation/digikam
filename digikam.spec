@@ -3,8 +3,8 @@
 Name:          digikam
 Summary:       A KDE photo management utility
 Group:         Graphics
-Version:       2.4.1
-Release:       2
+Version:       2.5.0
+Release:       1
 Epoch:         1
 License:       GPLv2+ 
 URL:           http://www.digikam.org
@@ -13,6 +13,8 @@ Source1:       digikam-correct-pngfilesfor-apps.xz
 %if %{with external_kvkontakte}
 Patch0:        digikam-2.4.1-use-external-libvkontake.patch 
 %endif
+Patch1:	       digikam-2.5.0-boost-1.48.patch
+Patch2:	       digikam-2.5.0-kipi-4.7.patch
 
 BuildRequires: kdepimlibs4-devel
 BuildRequires: pkgconfig(libkexiv2)
