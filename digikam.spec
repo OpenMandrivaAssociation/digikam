@@ -14,7 +14,7 @@ Source1:       digikam-correct-pngfilesfor-apps.xz
 Patch0:        digikam-2.4.1-use-external-libvkontake.patch 
 %endif
 Patch1:	       digikam-2.5.0-boost-1.48.patch
-Patch2:	       digikam-2.5.0-kipi-4.7.patch
+Patch2:	       digikam-2.5.0-libkipi1.4.patch
 
 BuildRequires: kdepimlibs4-devel
 BuildRequires: pkgconfig(libkexiv2)
