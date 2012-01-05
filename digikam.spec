@@ -899,7 +899,7 @@ Requires:   kipi-common
 %description -n kipi-plugins-vkontakte
 A tool to export on VKontakte.ru Web service
 
-%files -n kipi-plugins-vkontakte -f libkvkontakte.lang
+%files -n kipi-plugins-vkontakte 
 %_kde_libdir/kde4/kipiplugin_vkontakte.so
 %_kde_services/kipiplugin_vkontakte.desktop
 
@@ -1057,4 +1057,3 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 %find_lang kipiplugin_advancedslideshow
 %find_lang kipiplugin_batchprocessimages
 %find_lang libkgeomap
-%find_lang libkvkontakte
