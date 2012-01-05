@@ -328,7 +328,7 @@ Requires:   kipi-common
 %description -n kipi-plugins-smug
 A tool to import/export images to/from SmugMug web service.
 
-%files -n kipi-plugins-smug 
+%files -n kipi-plugins-smug -f kipiplugin_smug.lang
 %_kde_libdir/kde4/kipiplugin_smug.so
 %_kde_iconsdir/hicolor/*/actions/smugmug.png
 %_kde_iconsdir/hicolor/scalable/actions/smugmug.svgz
@@ -1027,7 +1027,7 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 
 %find_lang %name --with-html
 %find_lang showfoto --with-html
-%find_lang kipi-plugins --with-html
+%find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html
 
 %find_lang kipiplugin_rawconverter
 %find_lang kipiplugin_sendimages
@@ -1056,4 +1056,5 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 %find_lang kipiplugin_acquireimages
 %find_lang kipiplugin_advancedslideshow
 %find_lang kipiplugin_batchprocessimages
+%find_lang kipiplugin_smug
 %find_lang libkgeomap
