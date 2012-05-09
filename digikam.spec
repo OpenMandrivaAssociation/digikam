@@ -1,20 +1,26 @@
 %bcond_without external_kvkontakte
 %define _unpackaged_subdirs_terminate_build 0
+%define beta beta3
 Name:          digikam
 Summary:       A KDE photo management utility
 Group:         Graphics
-Version:       2.5.0
+Version:       2.6.0
+%if "%beta" != ""
+Release:       0.%beta.1
+Source0:       http://downloads.sourceforge.net/digikam/%{name}-%{version}-%beta.tar.bz2
+%else
 Release:       2
+Source0:       http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
+%endif
 Epoch:         1
 License:       GPLv2+ 
 URL:           http://www.digikam.org
-Source0:       http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 Source1:       digikam-correct-pngfilesfor-apps.xz
 %if %{with external_kvkontakte}
 Patch0:        digikam-2.4.1-use-external-libvkontake.patch 
 %endif
-Patch1:	       digikam-2.5.0-boost-1.48.patch
-Patch2:	       digikam-2.5.0-libkipi1.4.patch
+#Patch1:	       digikam-2.5.0-boost-1.48.patch
+#Patch2:	       digikam-2.5.0-libkipi1.4.patch
 
 BuildRequires: kdepimlibs4-devel
 BuildRequires: pkgconfig(libkexiv2)
@@ -70,12 +76,10 @@ its functionalities.
 
 
 %files -f %name.lang
-%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/COPYING.DOC core/NEWS core/README core/TODO  core/README.FACE core/TODO.FACE core/TODO.MYSQLPORT
+%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO  core/README.FACE core/TODO.FACE core/TODO.MYSQLPORT
 %_kde_bindir/digikam
 %_kde_bindir/digitaglinktree
 %_kde_bindir/cleanup_digikamdb
-%_kde_bindir/libkgeomap_demo
-%_kde_bindir/multithread
 %_kde_libdir/kde4/digikam*.so
 %_kde_libdir/kde4/kio_digikam*.so
 %_kde_appsdir/digikam
@@ -105,7 +109,7 @@ and detection over pictures.
 
 
 %files -n libkface-common
-%doc extra/libkface/README extra/libkface/NEWS extra/libkface/AUTHORS extra/libkface/COPYING
+%doc extra/libkface/README extra/libkface/AUTHORS extra/libkface/COPYING
 %_kde_appsdir/libkface
 
 #-----------------------------------------------------------------------
@@ -226,7 +230,8 @@ URL:        https://projects.kde.org/projects/extragear/libs/libmediawiki
 %description -n %libmediawiki
 Librairie File needed by %name
 
-libmediawiki is a KDE C++ interface for MediaWiki based web service as wikipedia.org.
+libmediawiki is a KDE C++ interface for MediaWiki based
+web service as wikipedia.org.
 
 %files -n %libmediawiki
 %_kde_libdir/libmediawiki.so.%{libmediawiki_major}*
@@ -679,8 +684,7 @@ A tool to convert Raw Image to Digital NeGative.
 %_kde_applicationsdir/dngconverter.desktop
 %_kde_libdir/kde4/kipiplugin_dngconverter.so
 %_kde_services/kipiplugin_dngconverter.desktop
-%_kde_iconsdir/oxygen/*/apps/dngconverter.png
-%_kde_iconsdir/oxygen/scalable/apps/dngconverter.svgz
+%_kde_iconsdir/*/*/*/dngconverter.*
 
 #-----------------------------------------------------------------------
 
@@ -700,6 +704,38 @@ A tool to export images to a remote Gallery.
 %_kde_services/kipiplugin_galleryexport.desktop
 %_kde_iconsdir/hicolor/*/actions/gallery.png
 %_kde_iconsdir/hicolor/scalable/actions/gallery.svgz
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-wikimedia
+Summary:    Wikimedia Export Kipi Plugin
+Group:      System/Libraries
+Conflicts:  kipi-plugins < 1:1.8.0-1
+Requires:   kipi-common
+
+%description -n kipi-plugins-wikimedia
+A tool to export images to a remote MediaWiki site
+
+%files -n kipi-plugins-wikimedia
+%_kde_libdir/kde4/kipiplugin_wikimedia.so
+%_kde_services/kipiplugin_wikimedia.desktop
+%_kde_iconsdir/*/*/*/wikimedia.*
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-imageshack
+Summary:    Imageshack Export Kipi Plugin
+Group:      System/Libraries
+Conflicts:  kipi-plugins < 1:1.8.0-1
+Requires:   kipi-common
+
+%description -n kipi-plugins-imageshack
+A tool to export images to ImageShack
+
+%files -n kipi-plugins-imageshack
+%_kde_libdir/kde4/kipiplugin_imageshackexport.so
+%_kde_services/kipiplugin_imageshackexport.desktop
+%_kde_iconsdir/*/*/*/imageshack.*
 
 #-----------------------------------------------------------------------
 
@@ -865,9 +901,10 @@ Photo Layouts Editor.
 %_kde_services/kipiplugin_photolayoutseditor.desktop
 %_kde_datadir/kde4/servicetypes/photolayoutseditorborderplugin.desktop
 %_kde_datadir/kde4/servicetypes/photolayoutseditoreffectplugin.desktop
+%_kde_datadir/templates/kipiplugins_photolayoutseditor
 %_kde_libdir/kde4/kipiplugin_photolayoutseditor.so
 %_kde_applicationsdir/photolayoutseditor.desktop
-%_kde_appsdir/photolayoutseditor/photolayoutseditorui.rc
+%_kde_appsdir/photolayoutseditor
 %_kde_datadir/config.kcfg/PLEConfigSkeleton.kcfgc
 
 #-----------------------------------------------------------------------
@@ -1009,7 +1046,11 @@ The library documentation is available on header files.
 
 %prep
 # Unpack correct files & reemove wrong png/svgz  (kde #286034) this part should be removed for next digikam version
+%if "%beta" == ""
 %setup -q -a 1
+%else
+%setup -q -n %name-%version-%beta -a 1
+%endif
 find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
 find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 
@@ -1026,36 +1067,36 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 %install
 %makeinstall_std -C build
 
-%find_lang %name --with-html
-%find_lang showfoto --with-html
-%find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html
+%find_lang %name --with-html || touch %name.lang
+%find_lang showfoto --with-html || touch showfoto.lang
+%find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html || touch kipi-plugins.lang
 
-%find_lang kipiplugin_rawconverter
-%find_lang kipiplugin_sendimages
-%find_lang kipiplugin_calendar
-%find_lang kipiplugin_dngconverter
-%find_lang kipiplugin_expoblending
-%find_lang kipiplugin_facebook
-%find_lang kipiplugin_flashexport
-%find_lang kipiplugin_flickrexport
-%find_lang kipiplugin_galleryexport
-%find_lang kipiplugin_gpssync
-%find_lang kipiplugin_htmlexport
-%find_lang kipiplugin_imageviewer
-%find_lang kipiplugin_ipodexport
-%find_lang kipiplugin_jpeglossless
-%find_lang kipiplugin_kioexportimport
-%find_lang kipiplugin_metadataedit
-%find_lang kipiplugin_picasawebexport
-%find_lang kipiplugin_piwigoexport
-%find_lang kipiplugin_printimages
-%find_lang kipiplugin_rawconverter
-%find_lang kipiplugin_removeredeyes
-%find_lang kipiplugin_sendimages
-%find_lang kipiplugin_shwup
-%find_lang kipiplugin_timeadjust
-%find_lang kipiplugin_acquireimages
-%find_lang kipiplugin_advancedslideshow
-%find_lang kipiplugin_batchprocessimages
-%find_lang kipiplugin_smug
-%find_lang libkgeomap
+%find_lang kipiplugin_rawconverter || touch kipiplugin_rawconverter.lang
+%find_lang kipiplugin_sendimages || touch kipiplugin_sendimages.lang
+%find_lang kipiplugin_calendar || touch kipiplugin_calendar.lang
+%find_lang kipiplugin_dngconverter || touch kipiplugin_dngconverter.lang
+%find_lang kipiplugin_expoblending || touch kipiplugin_expoblending.lang
+%find_lang kipiplugin_facebook || touch kipiplugin_facebook.lang
+%find_lang kipiplugin_flashexport || touch kipiplugin_flashexport.lang
+%find_lang kipiplugin_flickrexport || touch kipiplugin_flickrexport.lang
+%find_lang kipiplugin_galleryexport || touch kipiplugin_galleryexport.lang
+%find_lang kipiplugin_gpssync || touch kipiplugin_gpssync.lang
+%find_lang kipiplugin_htmlexport || touch kipiplugin_htmlexport.lang
+%find_lang kipiplugin_imageviewer || touch kipiplugin_imageviewer.lang
+%find_lang kipiplugin_ipodexport || touch kipiplugin_ipodexport.lang
+%find_lang kipiplugin_jpeglossless || touch kipiplugin_jpeglossless.lang
+%find_lang kipiplugin_kioexportimport || touch kipiplugin_kioexportimport.lang
+%find_lang kipiplugin_metadataedit || touch kipiplugin_metadataedit.lang
+%find_lang kipiplugin_picasawebexport || touch kipiplugin_picasawebexport.lang
+%find_lang kipiplugin_piwigoexport || touch kipiplugin_piwigoexport.lang
+%find_lang kipiplugin_printimages || touch kipiplugin_printimages.lang
+%find_lang kipiplugin_rawconverter || touch kipiplugin_rawconverter.lang
+%find_lang kipiplugin_removeredeyes || touch kipiplugin_removeredeyes.lang
+%find_lang kipiplugin_sendimages || touch kipiplugin_sendimages.lang
+%find_lang kipiplugin_shwup || touch kipiplugin_shwup.lang
+%find_lang kipiplugin_timeadjust || touch kipiplugin_timeadjust.lang
+%find_lang kipiplugin_acquireimages || touch kipiplugin_acquireimages.lang
+%find_lang kipiplugin_advancedslideshow || touch kipiplugin_advancedslideshow.lang
+%find_lang kipiplugin_batchprocessimages || touch kipiplugin_batchprocessimages.lang
+%find_lang kipiplugin_smug || touch kipiplugin_smug.lang
+%find_lang libkgeomap || touch libkgeomap.lang
