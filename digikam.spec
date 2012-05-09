@@ -1,16 +1,16 @@
 %bcond_without external_kvkontakte
 %define _unpackaged_subdirs_terminate_build 0
-%define beta beta3
+%define beta rc
 Name:          digikam
 Summary:       A KDE photo management utility
 Group:         Graphics
 Version:       2.6.0
 %if "%beta" != ""
 Release:       0.%beta.1
-Source0:       http://downloads.sourceforge.net/digikam/%{name}-%{version}-%beta.tar.bz2
+Source0:       http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%beta.tar.bz2
 %else
 Release:       2
-Source0:       http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
+Source0:       http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}.tar.bz2
 %endif
 Epoch:         1
 License:       GPLv2+ 
@@ -474,6 +474,22 @@ A tool to export pictures to an Ipod device.
 %files -n kipi-plugins-ipodexport -f kipiplugin_ipodexport.lang
 %_kde_libdir/kde4/kipiplugin_ipodexport.so
 %_kde_services/kipiplugin_ipodexport.desktop
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-imgurexport
+Summary:    Imgur Kipi Plugin
+Group:      System/Libraries
+Conflicts:  kipi-plugins < 1:1.8.0-1
+Requires:   kipi-common
+
+%description -n kipi-plugins-imgurexport
+A tool to export pictures to Imgur.
+
+%files -n kipi-plugins-imgurexport -f kipiplugin_imgurexport.lang
+%_kde_libdir/kde4/kipiplugin_imgurexport.so
+%_kde_iconsdir/hicolor/*/actions/imgur.*
+%_kde_services/kipiplugin_imgurexport.desktop
 
 #-----------------------------------------------------------------------
 
@@ -1047,9 +1063,9 @@ The library documentation is available on header files.
 %prep
 # Unpack correct files & reemove wrong png/svgz  (kde #286034) this part should be removed for next digikam version
 %if "%beta" == ""
-%setup -q -a 1
+%setup -q -n %name-software-compilation-%version -a 1
 %else
-%setup -q -n %name-%version-%beta -a 1
+%setup -q -n %name-software-compilation-%version-%beta -a 1
 %endif
 find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
 find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
