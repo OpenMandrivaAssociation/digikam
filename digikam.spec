@@ -7,10 +7,10 @@ Summary:	A KDE photo management utility
 Group:		Graphics
 Version:	2.6.0
 %if "%{beta}" != ""
-Release:	0.%{beta}.2
+Release:	0.%{beta}.3
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%beta.tar.bz2
 %else
-Release:	2
+Release:	3
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}.tar.bz2
 %endif
 Epoch:		1
@@ -20,6 +20,7 @@ Source1:	digikam-correct-pngfilesfor-apps.xz
 %if %{with external_kvkontakte}
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch 
 %endif
+Patch1:		digikam-2.6.0rc-metadata_fix.patch
 
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	pkgconfig(libkexiv2)
