@@ -1,17 +1,17 @@
 %bcond_without external_kvkontakte
-%define _unpackaged_subdirs_terminate_build 0
-%define beta rc
+#define _unpackaged_subdirs_terminate_build 0
+%define beta %nil
 
 Name:		digikam
 Summary:	A KDE photo management utility
 Group:		Graphics
 Version:	2.6.0
 %if "%{beta}" != ""
-Release:	0.%{beta}.3
+Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%beta.tar.bz2
 %else
-Release:	3
-Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}.tar.bz2
+Release:	1
+Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Epoch:		1
 License:	GPLv2+
@@ -20,7 +20,6 @@ Source1:	digikam-correct-pngfilesfor-apps.xz
 %if %{with external_kvkontakte}
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch 
 %endif
-Patch1:		digikam-2.6.0rc-metadata_fix.patch
 
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	pkgconfig(libkexiv2)
@@ -82,6 +81,7 @@ its functionalities.
 %{_kde_libdir}/kde4/digikam*.so
 %{_kde_libdir}/kde4/kio_digikam*.so
 %{_kde_appsdir}/digikam
+%{_kde_appsdir}/kconf_update/adjustlevelstool.upd
 %{_kde_appsdir}/solid/actions/digikam*.desktop
 %{_kde_applicationsdir}/digikam.desktop
 %{_kde_services}/digikam*.desktop
@@ -123,8 +123,9 @@ Conflicts:	%{name} < 1:2.0.0-0.rc1.2
 %description -n libkgeomap-common
 Common files for libkgeomap library
 
-Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap and
-GoogleMap,for browsing and arranging photos on a map.
+Libkgeomap is a wrapper around world map components as Marble,
+OpenstreetMap and Google Maps, for browsing and arranging
+photos on a map.
 
 %files -n libkgeomap-common -f libkgeomap.lang
 %doc extra/libkgeomap/README extra/libkgeomap/AUTHORS
@@ -211,8 +212,8 @@ Obsoletes:	%{libkmap} < 1:2.0.0-0.rc1.2
 %description -n %{libkgeomap}
 Librairie File needed by %{name}
 
-Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap and
-GoogleMap,for browsing and arranging photos on a map.
+Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
+and Google Maps,for browsing and arranging photos on a map.
 
 %files -n %{libkgeomap}
 %{_kde_libdir}/libkgeomap.so.%{libkgeomap_major}*
@@ -1025,8 +1026,8 @@ Provides:	libkgeomap-devel = %{version}-%{release}
 This package contains the libraries and headers files needed to develop progams
 which make use of libkgeomap (old libkmap) library.
 
-Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap and
-GoogleMap,for browsing and arranging photos on a map.
+Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
+and Google Maps,for browsing and arranging photos on a map.
 
 %files -n %{libkgeomap_devel}
 %{_includedir}/libkgeomap
@@ -1064,7 +1065,7 @@ The library documentation is available on header files.
 %prep
 # Unpack correct files & reemove wrong png/svgz  (kde #286034) this part should be removed for next digikam version
 %if "%{beta}" == ""
-%setup -q -n %{name}-software-compilation-%{version} -a 1
+%setup -q -a 1
 %else
 %setup -q -n %{name}-software-compilation-%{version}-%{beta} -a 1
 %endif
