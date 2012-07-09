@@ -5,12 +5,12 @@
 Name:		digikam
 Summary:	A KDE photo management utility
 Group:		Graphics
-Version:	2.6.0
+Version:	2.7.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%beta.tar.bz2
 %else
-Release:	2
+Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Epoch:		2
@@ -302,7 +302,7 @@ for additional functionality such as: RawConverter, SlideShow,
 ImagesGallery, HTMLExport, PrintAssistant...
 
 %files -n kipi-plugins -f kipi-plugins.lang
-
+%{_datadir}/apps/kipi/tips
 %doc extra/kipi-plugins/AUTHORS extra/kipi-plugins/COPYING extra/kipi-plugins/COPYING-ADOBE extra/kipi-plugins/ChangeLog extra/kipi-plugins/README extra/kipi-plugins/TODO extra/kipi-plugins/NEWS
 %{_kde_applicationsdir}/kipiplugins.desktop
 
