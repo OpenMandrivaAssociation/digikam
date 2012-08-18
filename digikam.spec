@@ -5,12 +5,12 @@
 Name:		digikam
 Summary:	A KDE photo management utility
 Group:		Graphics
-Version:	2.7.0
+Version:	2.8.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%beta.tar.bz2
 %else
-Release:	2
+Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Epoch:		2
