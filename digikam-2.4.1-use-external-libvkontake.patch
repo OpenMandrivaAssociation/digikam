@@ -1,0 +1,33 @@
+Index: CMakeLists.txt
+===================================================================
+--- digikam-2.4.1/CMakeLists.txt.0000~	2011-12-04 21:41:31.000000000 +0000
++++ digikam-2.4.1/CMakeLists.txt	2011-12-08 00:44:38.580370165 +0000
+@@ -70,7 +70,6 @@ SET(CMAKE_MODULE_PATH
+         ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
+         ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
+         ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
+-        ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
+         ${CMAKE_SOURCE_DIR}/cmake/modules
+         ${CMAKE_MODULE_PATH}
+     )
+@@ -85,7 +84,6 @@ ENDIF()
+ SET(KFACE_LOCAL_DIR extra/libkface)
+ SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
+ SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
+-SET(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
+ 
+ ADD_SUBDIRECTORY(extra)
+ ADD_SUBDIRECTORY(core)
+
+Index: extra/CMakeLists.txt
+===================================================================
+--- digikam-2.4.1/extra/CMakeLists.txt.0000~	2011-12-08 00:45:07.272369284 +0000
++++ digikam-2.4.1/extra/CMakeLists.txt	2011-12-08 00:46:58.223366038 +0000
+@@ -33,7 +33,6 @@ IF (${DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS}
+ ENDIF()
+ 
+ MACRO_OPTIONAL_ADD_SUBDIRECTORY(libmediawiki)
+-MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
+ 
+ ADD_SUBDIRECTORY(libkgeomap)
+ ADD_SUBDIRECTORY(libkface)
