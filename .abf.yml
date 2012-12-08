@@ -1,3 +1,4 @@
+---
 sources:
-  "digikam-2.9.0.tar.bz2:"	df4b879a95f4ccac4480c5161d66fb05d6fbefcd
-  "digikam-correct-pngfilesfor-apps.xz:"	4a574a50a24e6f16aab78118454e098f17f13733
+  digikam-2.9.0.tar.bz2: df4b879a95f4ccac4480c5161d66fb05d6fbefcd
+  digikam-correct-pngfilesfor-apps.xz: 4a574a50a24e6f16aab78118454e098f17f13733
