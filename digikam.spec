@@ -20,7 +20,8 @@ URL:		http://www.digikam.org
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch 
 %endif
 
-BuildRequires:	kdepimlibs4-devel >= 5:4.10.0
+BuildRequires:	kdelibs4-devel >= 5:4.10.0
+BuildRequires:	kdepimlibs4-devel
 BuildRequires:	pkgconfig(libkexiv2)
 BuildRequires:	pkgconfig(libksane)
 BuildRequires:	pkgconfig(libkdcraw)
