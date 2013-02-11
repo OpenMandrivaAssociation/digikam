@@ -1015,7 +1015,6 @@ Requires:   kipi-common
 A tool to support DLNA
 
 %files -n kipi-plugins-dlna
-%{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
 %{_kde_bindir}/avtest
 %{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_dlnaexport.so
