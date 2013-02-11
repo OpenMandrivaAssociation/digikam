@@ -22,27 +22,32 @@ Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 
 BuildRequires:	kdelibs4-devel >= 5:4.10.0
 BuildRequires:	kdepimlibs4-devel
+BuildRequires:	pkgconfig(ImageMagick)
+BuildRequires:	pkgconfig(jasper)
+BuildRequires:	pkgconfig(lcms)
+BuildRequires:	pkgconfig(lensfun)
+BuildRequires:	pkgconfig(libgphoto2)
+BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libkexiv2)
 BuildRequires:	pkgconfig(libksane)
 BuildRequires:	pkgconfig(libkdcraw)
 BuildRequires:	pkgconfig(libkipi)
-BuildRequires:	pkgconfig(sqlite3)
-BuildRequires:	pkgconfig(libgphoto2)
-BuildRequires:	pkgconfig(opencv)
-BuildRequires:	pkgconfig(lcms)
-BuildRequires:	pkgconfig(lensfun)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
+BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(QJson)
-BuildRequires:	pkgconfig(libgpod-1.0)
+BuildRequires:	pkgconfig(QtGStreamer-0.10)
+BuildRequires:	pkgconfig(sqlite3)
 #BuildRequires: pkgconfig(libpgf)
 %if %{with external_kvkontakte}
 BuildRequires:	libkvkontakte-devel
-%endif 
-BuildRequires:	libtiff-devel
-BuildRequires:	libjasper-devel
+%endif
+BuildRequires:	gomp-devel
+BuildRequires:	hupnp-devel
 BuildRequires:	marble-devel
-BuildRequires:	libgomp-devel
+BuildRequires:	tiff-devel
+BuildRequires:	bison
 BuildRequires:	doxygen
+BuildRequires:	flex
 BuildRequires:	mysql-core
 BuildRequires:	mysql-common
 
