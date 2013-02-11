@@ -301,6 +301,7 @@ Suggests:	kipi-plugins-yandexfotki
 Suggests:	kipi-plugins-rajceexport
 Suggests:	kipi-plugins-panorama
 Suggests:	kipi-plugins-vkontakte
+Suggests:	kipi-plugins-dlna
 
 %description -n kipi-plugins
 The library of the KDE Image Plugin Interface.
@@ -327,6 +328,7 @@ Requires:	kipi-common
 A Tool to adjust time and date.
 
 %files -n kipi-plugins-timeadjust -f kipiplugin_timeadjust.lang
+%{_kde_appsdir}/kipi/kipiplugin_timeadjustui.rc
 %{_kde_libdir}/kde4/kipiplugin_timeadjust.so
 %{_kde_iconsdir}/hicolor/*/actions/timeadjust.png
 %{_kde_services}/kipiplugin_timeadjust.desktop
@@ -344,6 +346,7 @@ Requires:	kipi-common
 A tool to import/export images to/from SmugMug web service.
 
 %files -n kipi-plugins-smug -f kipiplugin_smug.lang
+%{_kde_appsdir}/kipi/kipiplugin_smugui.rc
 %{_kde_libdir}/kde4/kipiplugin_smug.so
 %{_kde_iconsdir}/hicolor/*/actions/smugmug.png
 %{_kde_iconsdir}/hicolor/scalable/actions/smugmug.svgz
@@ -362,6 +365,7 @@ Requires:	kipi-common
 A tool to export images to a remote Shwup web service.
 
 %files -n kipi-plugins-shwup -f kipiplugin_shwup.lang
+%{_kde_appsdir}/kipi/kipiplugin_shwupui.rc
 %{_kde_libdir}/kde4/kipiplugin_shwup.so
 %{_kde_iconsdir}/hicolor/*/actions/shwup.png
 %{_kde_services}/kipiplugin_shwup.desktop
@@ -379,6 +383,7 @@ Requires:	kipi-common
 A tool to export images to a remote Piwigo.
 
 %files -n kipi-plugins-piwigoexport -f kipiplugin_piwigoexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_piwigoexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_piwigoexport.so
 %{_kde_appsdir}/kipiplugin_piwigoexport
 %{_kde_services}/kipiplugin_piwigoexport.desktop
@@ -398,6 +403,7 @@ Requires:	kipi-common
 A tool to export images to a remote Picase Web Service
 
 %files -n kipi-plugins-picasa -f kipiplugin_picasawebexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_picasawebexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_picasawebexport.so
 %{_kde_services}/kipiplugin_picasawebexport.desktop
 %{_kde_iconsdir}/hicolor/scalable/actions/picasa.svgz
@@ -416,6 +422,7 @@ Requires:	kipi-common
 A tool to edit EXIF,IPTC and XMP metadata.
 
 %files -n kipi-plugins-metadataedit -f kipiplugin_metadataedit.lang
+%{_kde_appsdir}/kipi/kipiplugin_metadataeditui.rc
 %{_kde_libdir}/kde4/kipiplugin_metadataedit.so
 %{_kde_services}/kipiplugin_metadataedit.desktop
 %{_kde_iconsdir}/hicolor/*/actions/metadataedit.png
@@ -431,7 +438,8 @@ Requires:	kipi-common
 %description -n kipi-plugins-kopete
 A tool to export images to an instant messaging contact.
 
-%files -n kipi-plugins-kopete 
+%files -n kipi-plugins-kopete
+%{_kde_appsdir}/kipi/kipiplugin_kopeteui.rc
 %{_kde_libdir}/kde4/kipiplugin_kopete.so
 %{_kde_services}/kipiplugin_kopete.desktop
 
@@ -464,6 +472,7 @@ Requires:	kipi-common
 A tool to rotate/flip images without losing quality.
 
 %files -n kipi-plugins-jpeglossless -f kipiplugin_jpeglossless.lang
+%{_kde_appsdir}/kipi/kipiplugin_jpeglosslessui.rc
 %{_kde_libdir}/kde4/kipiplugin_jpeglossless.so
 %{_kde_services}/kipiplugin_jpeglossless.desktop
 %{_kde_iconsdir}/hicolor/*/actions/flip-horizontal.png
@@ -481,6 +490,7 @@ Requires:	kipi-common
 A tool to export pictures to an Ipod device.
 
 %files -n kipi-plugins-ipodexport -f kipiplugin_ipodexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_ipodexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_ipodexport.so
 %{_kde_services}/kipiplugin_ipodexport.desktop
 
@@ -496,6 +506,7 @@ Requires:	kipi-common
 A tool to export pictures to Imgur.
 
 %files -n kipi-plugins-imgurexport 
+%{_kde_appsdir}/kipi/kipiplugin_imgureexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imgurexport.so
 %{_kde_iconsdir}/hicolor/*/actions/imgur.*
 %{_kde_services}/kipiplugin_imgurexport.desktop
@@ -513,6 +524,7 @@ Requires:	kipi-common
 A tool to preview images using OpenGl.
 
 %files -n kipi-plugins-imageviewer -f kipiplugin_imageviewer.lang
+%{_kde_appsdir}/kipi/kipiplugin_imageviewerui.rc
 %{_kde_libdir}/kde4/kipiplugin_imageviewer.so
 %{_kde_appsdir}/kipiplugin_imageviewer
 %{_kde_services}/kipiplugin_imageviewer.desktop
@@ -531,6 +543,7 @@ Requires:	kipi-common
 A tool to export images collections into a static XHTML page.
 
 %files -n kipi-plugins-htmlexport -f kipiplugin_htmlexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_htmlexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_htmlexport.so
 %{_kde_services}/kipiplugin_htmlexport.desktop
 %{_kde_appsdir}/kipiplugin_htmlexport
@@ -548,6 +561,7 @@ Requires:	kipi-common
 A tool to export images to the Debian Screenshots site.
 
 %files -n kipi-plugins-debianscreenshot 
+%{_kde_appsdir}/kipi/kipiplugin_debianscreenshotsui.rc
 %{_kde_libdir}/kde4/kipiplugin_debianscreenshots.so 
 %{_kde_services}/kipiplugin_debianscreenshots.desktop
 %{_kde_iconsdir}/hicolor/*/actions/debianscreenshots.png 
@@ -565,6 +579,7 @@ Requires:	kipi-common
 A tool to geolocalize pictures.
 
 %files -n kipi-plugins-gpssync -f kipiplugin_gpssync.lang
+%{_kde_appsdir}/kipi/kipiplugin_gpssyncui.rc
 %{_kde_appsdir}/gpssync
 %{_kde_libdir}/kde4/kipiplugin_gpssync.so
 %{_kde_services}/kipiplugin_gpssync.desktop
@@ -583,6 +598,7 @@ Requires:	kipi-common
 A tool to export images to a remote Flickr, 23 and Zoomr web services.
 
 %files -n kipi-plugins-flickr -f kipiplugin_flickrexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_flickrexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_flickrexport.so
 %{_kde_services}/kipiplugin_flickrexport.desktop
 %{_kde_iconsdir}/hicolor/*/actions/flickr.png
@@ -608,6 +624,7 @@ Conflicts:	kipi-plugins < 1:1.8.0-1
 A tool to blend bracketed images.
 
 %files -n kipi-plugins-expoblending -f kipiplugin_expoblending.lang
+%{_kde_appsdir}/kipi/kipiplugin_expoblendingui.rc
 %{_kde_bindir}/expoblending
 %{_kde_applicationsdir}/expoblending.desktop
 %{_kde_libdir}/kde4/kipiplugin_expoblending.so
@@ -628,6 +645,7 @@ Requires:	kipi-common
 A tool to create calendars.
 
 %files -n kipi-plugins-calendar -f kipiplugin_calendar.lang
+%{_kde_appsdir}/kipi/kipiplugin_calendarui.rc
 %{_kde_libdir}/kde4/kipiplugin_calendar.so
 %{_kde_services}/kipiplugin_calendar.desktop
 
@@ -645,7 +663,7 @@ Requires:	kipi-common
 KIPI Batch Processing Images Plugin.
 
 %files -n kipi-plugins-batchprocess -f kipiplugin_batchprocessimages.lang
-
+%{_kde_appsdir}/kipi/kipiplugin_batchprocessimagesui.rc
 %{_kde_libdir}/kde4/kipiplugin_batchprocessimages.so
 %{_kde_services}/kipiplugin_batchprocessimages.desktop
 %{_kde_iconsdir}/hicolor/*/actions/recompressimages.png
@@ -670,6 +688,7 @@ Requires:	kipi-common
 A tool to slide images with 2D and 3D effects using OpenGL.
 
 %files -n kipi-plugins-advancedslideshow -f kipiplugin_advancedslideshow.lang
+%{_kde_appsdir}/kipi/kipiplugin_advancedslideshowui.rc
 %{_kde_libdir}/kde4/kipiplugin_advancedslideshow.so
 %{_kde_iconsdir}/hicolor/*/actions/slideshow.png
 %{_kde_services}/kipiplugin_advancedslideshow.desktop
@@ -687,6 +706,7 @@ Requires:	kipi-common
 A tool to print images in various formats.
 
 %files -n kipi-plugins-printimages -f kipiplugin_printimages.lang
+%{_kde_appsdir}/kipi/kipiplugin_printimagesui.rc
 %{_kde_libdir}/kde4/kipiplugin_printimages.so
 %{_kde_services}/kipiplugin_printimages.desktop
 %{_kde_appsdir}/kipiplugin_printimages/
@@ -704,6 +724,7 @@ Requires:	kipi-common
 A tool to convert Raw Image to Digital NeGative.
 
 %files -n kipi-plugins-dngconverter -f kipiplugin_dngconverter.lang
+%{_kde_appsdir}/kipi/kipiplugin_dngconverterui.rc
 %{_kde_bindir}/dngconverter
 %{_kde_bindir}/dnginfo
 %{_kde_applicationsdir}/dngconverter.desktop
@@ -724,6 +745,7 @@ Requires:	kipi-common
 A tool to export images to a remote Gallery.
 
 %files -n kipi-plugins-galleryexport -f kipiplugin_galleryexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_galleryexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_galleryexport.so
 %{_kde_appsdir}/kipiplugin_galleryexport
 %{_kde_services}/kipiplugin_galleryexport.desktop
@@ -742,6 +764,7 @@ Requires:	kipi-common
 A tool to export images to a remote MediaWiki site
 
 %files -n kipi-plugins-wikimedia
+%{_kde_appsdir}/kipi/kipiplugin_wikimediaui.rc
 %{_kde_libdir}/kde4/kipiplugin_wikimedia.so
 %{_kde_services}/kipiplugin_wikimedia.desktop
 %{_kde_iconsdir}/*/*/*/wikimedia.*
@@ -758,6 +781,7 @@ Requires:	kipi-common
 A tool to export images to ImageShack
 
 %files -n kipi-plugins-imageshack
+%{_kde_appsdir}/kipi/kipiplugin_imageshackexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imageshackexport.so
 %{_kde_services}/kipiplugin_imageshackexport.desktop
 %{_kde_iconsdir}/*/*/*/imageshack.*
@@ -775,6 +799,7 @@ Requires:	kipi-common
 A tool to export images to Flash.
 
 %files -n kipi-plugins-flashexport -f kipiplugin_flashexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_flashexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_flashexport.so
 %{_kde_appsdir}/kipiplugin_flashexport
 %{_kde_services}/kipiplugin_flashexport.desktop
@@ -794,6 +819,7 @@ Requires:	kipi-common
 A tool to import/export images to/from a remote Facebook web service.
 
 %files -n kipi-plugins-facebook -f kipiplugin_facebook.lang
+%{_kde_appsdir}/kipi/kipiplugin_facebookui.rc
 %{_kde_libdir}/kde4/kipiplugin_facebook.so
 %{_kde_services}/kipiplugin_facebook.desktop
 %{_kde_iconsdir}/hicolor/*/actions/facebook.png
@@ -811,6 +837,7 @@ Conflicts:	kipi-plugins < 1:1.8.0-1
 A tool to acquire images using flat scanner.
 
 %files -n kipi-plugins-acquireimages -f kipiplugin_acquireimages.lang
+%{_kde_appsdir}/kipi/kipiplugin_acquireimagesui.rc
 %{_kde_bindir}/scangui
 %{_kde_libdir}/kde4/kipiplugin_acquireimages.so
 %{_kde_services}/kipiplugin_acquireimages.desktop 
@@ -829,6 +856,7 @@ Requires:	kipi-common
 A tool to convert Raw Image to JPEG/PNG/TIFF.
 
 %files -n kipi-plugins-rawconverter -f kipiplugin_rawconverter.lang
+%{_kde_appsdir}/kipi/kipiplugin_rawconverterui.rc
 %{_kde_libdir}/kde4/kipiplugin_rawconverter.so
 %{_kde_iconsdir}/oxygen/*/apps/rawconverter.png
 %{_kde_services}/kipiplugin_rawconverter.desktop
@@ -846,6 +874,7 @@ Requires:	kipi-common
 A tool to remove red eyes automatically from images.
 
 %files -n kipi-plugins-removeredeyes -f kipiplugin_removeredeyes.lang
+%{_kde_appsdir}/kipi/kipiplugin_removeredeyesui.rc
 %{_kde_libdir}/kde4/kipiplugin_removeredeyes.so
 %{_kde_datadir}/apps/kipiplugin_removeredeyes
 %{_kde_services}/kipiplugin_removeredeyes.desktop 
@@ -863,6 +892,7 @@ Requires:	kipi-common
 A tool to send images by e-mail.
 
 %files -n kipi-plugins-sendimages -f kipiplugin_sendimages.lang
+%{_kde_appsdir}/kipi/kipiplugin_sendimagesui.rc
 %{_kde_libdir}/kde4/kipiplugin_sendimages.so 
 %{_kde_services}/kipiplugin_sendimages.desktop
 
@@ -877,6 +907,7 @@ Requires:	kipi-common
 A plugin to create KML files to present images with coordinates.
 
 %files -n kipi-plugins-kmlexport 
+%{_kde_appsdir}/kipi/kipiplugin_kmlexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_kmlexport.so
 %{_kde_services}/kipiplugin_kmlexport.desktop
 
@@ -892,6 +923,7 @@ Requires:	kipi-common
 A tool to export images to a remote Yandex.Fotki web service.
 
 %files -n kipi-plugins-yandexfotki 
+%{_kde_appsdir}/kipi/kipiplugin_yandexfotkiui.rc
 %{_kde_libdir}/kde4/kipiplugin_yandexfotki.so
 %{_kde_services}/kipiplugin_yandexfotki.desktop
 
@@ -907,6 +939,7 @@ Requires:	kipi-common
 A tool to export images to a remote rajce.net service.
 
 %files -n kipi-plugins-rajceexport 
+%{_kde_appsdir}/kipi/kipiplugin_rajceexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_rajceexport.so
 %{_kde_services}/kipiplugin_rajceexport.desktop
 %{_kde_iconsdir}/hicolor/*/actions/rajce.png
@@ -922,6 +955,7 @@ Requires:	kipi-common
 Photo Layouts Editor.
 
 %files -n kipiplugin-photolayouts-editor
+%{_kde_appsdir}/kipi/kipiplugin_photolayoutseditorui.rc
 %{_kde_bindir}/photolayoutseditor
 %{_kde_iconsdir}/hicolor/*/apps/photolayoutseditor.png
 %{_kde_services}/kipiplugin_photolayoutseditor.desktop
@@ -945,12 +979,14 @@ Requires:	hugin
 %description -n kipi-plugins-panorama
 A tool to create panorama.
 
-%files -n kipi-plugins-panorama 
+%files -n kipi-plugins-panorama
+%{_kde_appsdir}/kipi/kipiplugin_panoramaui.rc
 %{_kde_bindir}/panoramagui
 %{_kde_libdir}/kde4/kipiplugin_panorama.so
 %{_kde_appsdir}/kipiplugin_panorama/
 %{_kde_services}/kipiplugin_panorama.desktop 
 %{_kde_applicationsdir}/panoramagui.desktop
+%{_kde_iconsdir}/hicolor/*/actions/panorama.*
 
 #-----------------------------------------------------------------------
 
@@ -963,8 +999,29 @@ Requires:	kipi-common
 A tool to export on VKontakte.ru Web service
 
 %files -n kipi-plugins-vkontakte 
+%{_kde_appsdir}/kipi/kipiplugin_vkontakteui.rc
 %{_kde_libdir}/kde4/kipiplugin_vkontakte.so
 %{_kde_services}/kipiplugin_vkontakte.desktop
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-dlna
+Summary:    DLNA support
+Group:      System/Libraries
+Requires:   kipi-common
+
+
+%description -n kipi-plugins-dlna
+A tool to support DLNA
+
+%files -n kipi-plugins-dlna
+%{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
+%{_kde_bindir}/avtest
+%{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
+%{_kde_libdir}/kde4/kipiplugin_dlnaexport.so
+%{_kde_services}/kipiplugin_dlnaexport.desktop
+%{_kde_iconsdir}/hicolor/*/actions/dlna.*
+%{_kde_appsdir}/kipiplugin_dlnaexport
 
 #-----------------------------------------------------------------------
 
@@ -1091,6 +1148,8 @@ find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 
 %install
 %makeinstall_std -C build
+
+rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 
 %find_lang %{name} --with-html || touch %{name}.lang
 %find_lang showfoto --with-html || touch showfoto.lang
