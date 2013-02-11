@@ -149,12 +149,13 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 2
+%define libdigikamdatabase_major 3
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
+Obsoletes:	%{_lib}digikamdatabase2 < 2:3.0.0
 
 %description -n %{libdigikamdatabase}
 Librairie File needed by %{name}
@@ -164,12 +165,13 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 2
+%define libdigikamcore_major 3
 %define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
 
 %package -n %{libdigikamcore}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
+Obsoletes:	%{_lib}digikamcore2 < 2:3.0.0
 
 %description -n %{libdigikamcore}
 Librairie File needed by %{name}
@@ -238,12 +240,13 @@ web service as wikipedia.org.
 
 #-----------------------------------------------------------------------
 
-%define libkipiplugins_major 2
+%define libkipiplugins_major 3
 %define libkipiplugins %mklibname kipiplugins %{libkipiplugins_major}
 
 %package -n %{libkipiplugins}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
+Obsoletes:	%{_lib}kipiplugins2 < 2:3.0.0
 
 %description -n %{libkipiplugins}
 Librairie File needed by %{name}
