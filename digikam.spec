@@ -458,6 +458,7 @@ accessible via KIO.
 %files -n kipi-plugins-kioexportimport -f kipiplugin_kioexportimport.lang
 %{_kde_libdir}/kde4/kipiplugin_kioexportimport.so
 %{_kde_services}/kipiplugin_kioexportimport.desktop
+{_kde_appsdir}/kipi/kipiplugin_kioexportimportui.rc
 
 #-----------------------------------------------------------------------
 
