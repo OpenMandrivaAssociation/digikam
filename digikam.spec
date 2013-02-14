@@ -1,5 +1,5 @@
 %bcond_without external_kvkontakte
-#define _unpackaged_subdirs_terminate_build 0
+%define _unpackaged_subdirs_terminate_build 0
 %define beta %nil
 
 Name:		digikam
