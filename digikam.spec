@@ -509,8 +509,9 @@ A tool to export pictures to Imgur.
 %files -n kipi-plugins-imgurexport 
 %{_kde_appsdir}/kipi/kipiplugin_imgurexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imgurexport.so
-%{_kde_iconsdir}/hicolor/*/actions/imgur.*
 %{_kde_services}/kipiplugin_imgurexport.desktop
+%{_kde_iconsdir}/hicolor/*/actions/imgur.png
+%{_kde_iconsdir}/hicolor/scalable/actions/imgur.svgz
 
 #-----------------------------------------------------------------------
 
