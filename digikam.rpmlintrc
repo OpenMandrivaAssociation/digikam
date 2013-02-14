@@ -1,0 +1,5 @@
+# Thinks libkdcraw-common is bad
+addFilter("E: explicit-lib-dependency")
+# Not an actual problem, the packager tag is added by the build system anyway
+addFilter("E: no-packager-tag")
+

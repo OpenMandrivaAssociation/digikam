@@ -13,6 +13,7 @@ Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%
 Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
+Source100:      %{name}.rpmlintrc
 Epoch:		2
 License:	GPLv2+
 URL:		http://www.digikam.org
