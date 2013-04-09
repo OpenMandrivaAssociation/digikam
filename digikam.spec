@@ -2,9 +2,9 @@
 %define _unpackaged_subdirs_terminate_build 0
 %define beta %nil
 
-Name:		digikam
 Summary:	A KDE photo management utility
-Group:		Graphics
+Name:		digikam
+Epoch:		2
 Version:	3.0.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
@@ -14,15 +14,24 @@ Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Source100:      %{name}.rpmlintrc
-Epoch:		2
 License:	GPLv2+
-URL:		http://www.digikam.org
+Group:		Graphics
+Url:		http://www.digikam.org
 %if %{with external_kvkontakte}
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch 
 %endif
 
+BuildRequires:	bison
+BuildRequires:	doxygen
+BuildRequires:	flex
+BuildRequires:	mysql-core
+BuildRequires:	mysql-common
+BuildRequires:	gomp-devel
+BuildRequires:	hupnp-devel
 BuildRequires:	kdelibs4-devel >= 5:4.10.0
 BuildRequires:	kdepimlibs4-devel
+BuildRequires:	marble-devel
+BuildRequires:	tiff-devel
 BuildRequires:	pkgconfig(ImageMagick)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms)
@@ -40,27 +49,17 @@ BuildRequires:	pkgconfig(QtGStreamer-0.10)
 BuildRequires:	pkgconfig(sqlite3)
 #BuildRequires: pkgconfig(libpgf)
 %if %{with external_kvkontakte}
-BuildRequires:	libkvkontakte-devel
+BuildRequires:	kvkontakte-devel
 %endif
-BuildRequires:	gomp-devel
-BuildRequires:	hupnp-devel
-BuildRequires:	marble-devel
-BuildRequires:	tiff-devel
-BuildRequires:	bison
-BuildRequires:	doxygen
-BuildRequires:	flex
-BuildRequires:	mysql-core
-BuildRequires:	mysql-common
-
 Requires:	mysql-core
 Requires:	mysql-common
 Requires:	kdebase4-runtime
-Requires:	qt4-database-plugin-sqlite
+Requires:	kipi-common
 Requires:	kipi-plugins
 Requires:	libkface-common
 Requires:	libkgeomap-common
 Requires:	libkdcraw-common
-Requires:	kipi-common
+Requires:	qt4-database-plugin-sqlite
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
@@ -103,7 +102,7 @@ its functionalities.
 %package -n libkface-common
 Summary:	Common files for libkface library
 Group:		Graphics
-URL:		https://projects.kde.org/projects/extragear/libs/libkface
+Url:		https://projects.kde.org/projects/extragear/libs/libkface
 BuildArch:	noarch
 Conflicts:	%{name} < 1:2.0.0-0.rc1.2
 
@@ -122,7 +121,7 @@ and detection over pictures.
 %package -n libkgeomap-common
 Summary:	Common files for libkgeomap library
 Group:		Graphics
-URL:		https://projects.kde.org/projects/extragear/libs/libkgeomap
+Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
 BuildArch:	noarch
 Conflicts:	%{name} < 1:2.0.0-0.rc1.2
 
@@ -194,7 +193,7 @@ Librairie File needed by %{name}
 %package -n %{libkface}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
-URL:		https://projects.kde.org/projects/extragear/libs/libkface
+Url:		https://projects.kde.org/projects/extragear/libs/libkface
 
 %description -n %{libkface}
 Librairie File needed by %{name}
@@ -214,7 +213,7 @@ and detection over pictures.
 %package -n %{libkgeomap}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
-URL:		https://projects.kde.org/projects/extragear/libs/libkgeomap
+Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
 Obsoletes:	%{libkmap} < 1:2.0.0-0.rc1.2
 
 %description -n %{libkgeomap}
@@ -234,7 +233,7 @@ and Google Maps,for browsing and arranging photos on a map.
 %package -n %{libmediawiki}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
-URL:		https://projects.kde.org/projects/extragear/libs/libmediawiki
+Url:		https://projects.kde.org/projects/extragear/libs/libmediawiki
 
 %description -n %{libmediawiki}
 Librairie File needed by %{name}
@@ -266,7 +265,7 @@ Librairie File needed by %{name}
 %package -n kipi-plugins
 Summary:	KDE image Interface Plugins
 Group:		System/Libraries
-URL:		https://projects.kde.org/projects/extragear/graphics/kipi-plugins
+Url:		https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 BuildArch:	noarch
 Suggests:	kipi-plugins-timeadjust
 Suggests:	kipi-plugins-smug
