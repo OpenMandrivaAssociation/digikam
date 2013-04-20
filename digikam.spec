@@ -10,7 +10,7 @@ Version:	3.1.0
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	2
+Release:	3
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Source100:	%{name}.rpmlintrc
@@ -301,8 +301,8 @@ Suggests:	kipi-plugins-rajceexport
 Suggests:	kipi-plugins-panorama
 Suggests:	kipi-plugins-vkontakte
 Suggests:	kipi-plugins-dlna
-Obsoletes:	kipi-plugins-htmlexport < 1:3.1.0
-Conflicts:	kipi-plugins-htmlexport < 1:3.1.0
+Obsoletes:	kipi-plugins-htmlexport < 2:3.1.0
+Conflicts:	kipi-plugins-htmlexport < 2:3.1.0
 
 %description -n kipi-plugins
 The library of the KDE Image Plugin Interface.
