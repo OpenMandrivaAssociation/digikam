@@ -4,7 +4,7 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Epoch:		1
+Epoch:		2
 Version:	3.1.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
