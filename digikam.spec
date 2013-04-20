@@ -4,8 +4,8 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Epoch:		2
-Version:	3.0.0
+Epoch:		1
+Version:	3.1.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
@@ -13,7 +13,7 @@ Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%
 Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
-Source100:      %{name}.rpmlintrc
+Source100:	%{name}.rpmlintrc
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -278,7 +278,6 @@ Suggests:	kipi-plugins-kioexportimport
 Suggests:	kipi-plugins-jpeglossless
 Suggests:	kipi-plugins-ipodexport
 Suggests:	kipi-plugins-imageviewer
-Suggests:	kipi-plugins-htmlexport
 Suggests:	kipi-plugins-debianscreenshot
 Suggests:	kipi-plugins-gpssync
 Suggests:	kipi-plugins-flickr
@@ -302,6 +301,8 @@ Suggests:	kipi-plugins-rajceexport
 Suggests:	kipi-plugins-panorama
 Suggests:	kipi-plugins-vkontakte
 Suggests:	kipi-plugins-dlna
+Obsoletes:	kipi-plugins-htmlexport < 1:3.1.0
+Conflicts:	kipi-plugins-htmlexport < 1:3.1.0
 
 %description -n kipi-plugins
 The library of the KDE Image Plugin Interface.
@@ -531,24 +532,6 @@ A tool to preview images using OpenGl.
 %{_kde_appsdir}/kipiplugin_imageviewer
 %{_kde_services}/kipiplugin_imageviewer.desktop
 %{_kde_iconsdir}/hicolor/*/actions/ogl.png 
-
-#-----------------------------------------------------------------------
-
-%package -n kipi-plugins-htmlexport
-Summary:	Html Export Kipi Plugin
-Group:		System/Libraries
-Conflicts:	kipi-plugins < 1:1.8.0-1
-Requires:	libkdcraw-common
-Requires:	kipi-common
-
-%description -n kipi-plugins-htmlexport
-A tool to export images collections into a static XHTML page.
-
-%files -n kipi-plugins-htmlexport -f kipiplugin_htmlexport.lang
-%{_kde_appsdir}/kipi/kipiplugin_htmlexportui.rc
-%{_kde_libdir}/kde4/kipiplugin_htmlexport.so
-%{_kde_services}/kipiplugin_htmlexport.desktop
-%{_kde_appsdir}/kipiplugin_htmlexport
 
 #-----------------------------------------------------------------------
 
@@ -1186,4 +1169,6 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang kipiplugin_smug || touch kipiplugin_smug.lang
 %find_lang libkgeomap || touch libkgeomap.lang
 
+# Merge some translations that don't have own subpackages
+cat kipiplugin_htmlexport.lang >> kipi-plugins.lang
 
