@@ -109,7 +109,7 @@ Conflicts:	%{name} < 1:2.0.0-0.rc1.2
 %description -n libkface-common
 Common files for libkface library.
 
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition 
+Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
 and detection over pictures.
 
 %files -n libkface-common
@@ -198,7 +198,7 @@ Url:		https://projects.kde.org/projects/extragear/libs/libkface
 %description -n %{libkface}
 Librairie File needed by %{name}
 
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition 
+Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
 and detection over pictures.
 
 %files -n %{libkface}
@@ -1049,7 +1049,7 @@ Provides:	libkface-devel = %{version}-%{release}
 This package contains the libraries and headers files needed to develop progams
 which make use of libkface library.
 
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition 
+Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
 and detection over pictures.
 
 %files -n %{libkface_devel}
