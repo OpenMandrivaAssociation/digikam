@@ -24,6 +24,7 @@ Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	flex
+BuildRequires:	imagemagick
 BuildRequires:	mysql-core
 BuildRequires:	mysql-common
 BuildRequires:	gomp-devel
@@ -47,7 +48,6 @@ BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(QJson)
 BuildRequires:	pkgconfig(QtGStreamer-0.10)
 BuildRequires:	pkgconfig(sqlite3)
-#BuildRequires: pkgconfig(libpgf)
 %if %{with external_kvkontakte}
 BuildRequires:	kvkontakte-devel
 %endif
@@ -1047,6 +1047,7 @@ A tool to support DLNA.
 Summary:	Video Slide Show export kipi plugin
 Group:		System/Libraries
 Requires:	kipi-common
+Requires:	imagemagick
 
 %description -n kipi-plugins-videoslideshow
 A tool to export images as Video Slide Show.
