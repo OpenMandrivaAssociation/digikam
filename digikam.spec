@@ -5,18 +5,18 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	3.1.0
+Version:	3.2.0
+License:	GPLv2+
+Group:		Graphics
+Url:		http://www.digikam.org
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	3
+Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Source100:	%{name}.rpmlintrc
-License:	GPLv2+
-Group:		Graphics
-Url:		http://www.digikam.org
 %if %{with external_kvkontakte}
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch 
 %endif
@@ -278,6 +278,8 @@ Suggests:	kipi-plugins-kioexportimport
 Suggests:	kipi-plugins-jpeglossless
 Suggests:	kipi-plugins-ipodexport
 Suggests:	kipi-plugins-imageviewer
+Suggests:	kipi-plugins-htmlexport
+Suggests:	kipi-plugins-jalbumexport
 Suggests:	kipi-plugins-debianscreenshot
 Suggests:	kipi-plugins-gpssync
 Suggests:	kipi-plugins-flickr
@@ -301,8 +303,7 @@ Suggests:	kipi-plugins-rajceexport
 Suggests:	kipi-plugins-panorama
 Suggests:	kipi-plugins-vkontakte
 Suggests:	kipi-plugins-dlna
-Obsoletes:	kipi-plugins-htmlexport < 2:3.1.0
-Conflicts:	kipi-plugins-htmlexport < 2:3.1.0
+Suggests:	kipi-plugins-videoslideshow
 
 %description -n kipi-plugins
 The library of the KDE Image Plugin Interface.
@@ -523,7 +524,7 @@ Conflicts:	kipi-plugins < 1:1.8.0-1
 Requires:	libkdcraw-common
 Requires:	kipi-common
 
-%description -n kipi-plugins-imageviewer 
+%description -n kipi-plugins-imageviewer
 A tool to preview images using OpenGl.
 
 %files -n kipi-plugins-imageviewer -f kipiplugin_imageviewer.lang
@@ -531,7 +532,43 @@ A tool to preview images using OpenGl.
 %{_kde_libdir}/kde4/kipiplugin_imageviewer.so
 %{_kde_appsdir}/kipiplugin_imageviewer
 %{_kde_services}/kipiplugin_imageviewer.desktop
-%{_kde_iconsdir}/hicolor/*/actions/ogl.png 
+%{_kde_iconsdir}/hicolor/*/actions/ogl.png
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-htmlexport
+Summary:	Html Export Kipi Plugin
+Group:		System/Libraries
+Conflicts:	kipi-plugins < 1:1.8.0-1
+Requires:	libkdcraw-common
+Requires:	kipi-common
+
+%description -n kipi-plugins-htmlexport
+A tool to export images collections into a static XHTML page.
+
+%files -n kipi-plugins-htmlexport -f kipiplugin_htmlexport.lang
+%{_kde_appsdir}/kipi/kipiplugin_htmlexportui.rc
+%{_kde_appsdir}/kipiplugin_htmlexport
+%{_kde_libdir}/kde4/kipiplugin_htmlexport.so
+%{_kde_services}/kipiplugin_htmlexport.desktop
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-jalbumexport
+Summary:	JAlbum Export Kipi Plugin
+Group:		System/Libraries
+Conflicts:	kipi-plugins < 1:1.8.0-1
+Requires:	libkdcraw-common
+Requires:	kipi-common
+
+%description -n kipi-plugins-jalbumexport
+A tool to export images to a remote JAlbum.
+
+%files -n kipi-plugins-jalbumexport
+%{_kde_appsdir}/kipi/kipiplugin_jalbumexportui.rc
+%{_kde_libdir}/kde4/kipiplugin_jalbumexport.so
+%{_kde_services}/kipiplugin_jalbumexport.desktop
+%{_kde_iconsdir}/hicolor/*/actions/jalbum.png
 
 #-----------------------------------------------------------------------
 
@@ -545,7 +582,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-debianscreenshot
 A tool to export images to the Debian Screenshots site.
 
-%files -n kipi-plugins-debianscreenshot 
+%files -n kipi-plugins-debianscreenshot
 %{_kde_appsdir}/kipi/kipiplugin_debianscreenshotsui.rc
 %{_kde_libdir}/kde4/kipiplugin_debianscreenshots.so 
 %{_kde_services}/kipiplugin_debianscreenshots.desktop
@@ -929,7 +966,6 @@ A tool to export images to a remote rajce.net service.
 %{_kde_services}/kipiplugin_rajceexport.desktop
 %{_kde_iconsdir}/hicolor/*/actions/rajce.png
 
-
 #-----------------------------------------------------------------------
 %package -n kipiplugin-photolayouts-editor
 Summary:	Photo Layouts Editor
@@ -983,7 +1019,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-vkontakte
 A tool to export on VKontakte.ru Web service
 
-%files -n kipi-plugins-vkontakte 
+%files -n kipi-plugins-vkontakte
 %{_kde_appsdir}/kipi/kipiplugin_vkontakteui.rc
 %{_kde_libdir}/kde4/kipiplugin_vkontakte.so
 %{_kde_services}/kipiplugin_vkontakte.desktop
@@ -991,16 +1027,14 @@ A tool to export on VKontakte.ru Web service
 #-----------------------------------------------------------------------
 
 %package -n kipi-plugins-dlna
-Summary:    DLNA support
-Group:      System/Libraries
-Requires:   kipi-common
-
+Summary:	DLNA support
+Group:		System/Libraries
+Requires:	kipi-common
 
 %description -n kipi-plugins-dlna
-A tool to support DLNA
+A tool to support DLNA.
 
 %files -n kipi-plugins-dlna
-%{_kde_bindir}/avtest
 %{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_dlnaexport.so
 %{_kde_services}/kipiplugin_dlnaexport.desktop
@@ -1008,6 +1042,22 @@ A tool to support DLNA
 %{_kde_appsdir}/kipiplugin_dlnaexport
 
 #-----------------------------------------------------------------------
+
+%package -n kipi-plugins-videoslideshow
+Summary:	Video Slide Show export kipi plugin
+Group:		System/Libraries
+Requires:	kipi-common
+
+%description -n kipi-plugins-videoslideshow
+A tool to export images as Video Slide Show.
+
+%files -n kipi-plugins-videoslideshow
+%{_kde_appsdir}/kipi/kipiplugin_videoslideshowui.rc
+%{_kde_libdir}/kde4/kipiplugin_videoslideshow.so
+%{_kde_services}/kipiplugin_videoslideshow.desktop
+
+#-----------------------------------------------------------------------
+
 
 %define libnamedev %mklibname digikam -d
 %define libmediawiki_devel %mklibname -d mediawiki
@@ -1168,7 +1218,4 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang kipiplugin_batchprocessimages || touch kipiplugin_batchprocessimages.lang
 %find_lang kipiplugin_smug || touch kipiplugin_smug.lang
 %find_lang libkgeomap || touch libkgeomap.lang
-
-# Merge some translations that don't have own subpackages
-cat kipiplugin_htmlexport.lang >> kipi-plugins.lang
 
