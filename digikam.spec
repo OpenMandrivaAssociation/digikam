@@ -24,8 +24,6 @@ Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	flex
-BuildRequires:	mysql-core
-BuildRequires:	mysql-common
 BuildRequires:	gomp-devel
 BuildRequires:	hupnp-devel
 BuildRequires:	kdelibs4-devel >= 5:4.10.0
