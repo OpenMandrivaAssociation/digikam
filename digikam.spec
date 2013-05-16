@@ -49,8 +49,6 @@ BuildRequires:	pkgconfig(sqlite3)
 %if %{with external_kvkontakte}
 BuildRequires:	kvkontakte-devel
 %endif
-Requires:	mysql-core
-Requires:	mysql-common
 Requires:	kdebase4-runtime
 Requires:	kipi-common
 Requires:	kipi-plugins
