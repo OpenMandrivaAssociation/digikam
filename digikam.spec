@@ -24,6 +24,8 @@ Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	flex
+BuildRequires:	mysql-core
+BuildRequires:	mysql-common
 BuildRequires:	gomp-devel
 BuildRequires:	hupnp-devel
 BuildRequires:	kdelibs4-devel >= 5:4.10.0
@@ -49,6 +51,8 @@ BuildRequires:	pkgconfig(sqlite3)
 %if %{with external_kvkontakte}
 BuildRequires:	kvkontakte-devel
 %endif
+Requires:	mysql-core
+Requires:	mysql-common
 Requires:	kdebase4-runtime
 Requires:	kipi-common
 Requires:	kipi-plugins
