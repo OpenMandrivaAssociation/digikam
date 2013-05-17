@@ -18,7 +18,7 @@ Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Source100:	%{name}.rpmlintrc
 %if %{with external_kvkontakte}
-Patch0:		digikam-2.4.1-use-external-libvkontake.patch 
+Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 %endif
 
 BuildRequires:	bison
@@ -33,6 +33,8 @@ BuildRequires:	kdelibs4-devel >= 5:4.10.0
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
+BuildRequires:	pkgconfig(gl)
+BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms)
