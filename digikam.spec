@@ -13,7 +13,7 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	1
+Release:	2
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Source100:	%{name}.rpmlintrc
@@ -541,7 +541,7 @@ A tool to preview images using OpenGl.
 %package -n kipi-plugins-htmlexport
 Summary:	Html Export Kipi Plugin
 Group:		System/Libraries
-Conflicts:	kipi-plugins < 1:1.8.0-1
+Conflicts:	kipi-plugins < 2:3.2.0
 Requires:	libkdcraw-common
 Requires:	kipi-common
 
