@@ -5,7 +5,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	3.2.0
+Version:	3.3.0
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -13,7 +13,7 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	3
+Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Source100:	%{name}.rpmlintrc
@@ -191,13 +191,14 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkface_major 1
+%define libkface_major 2
 %define libkface %mklibname kface %{libkface_major}
 
 %package -n %{libkface}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
 Url:		https://projects.kde.org/projects/extragear/libs/libkface
+Obsoletes:	%{_lib}kface1 < 2:3.3.0
 
 %description -n %{libkface}
 Librairie File needed by %{name}
@@ -336,8 +337,8 @@ A Tool to adjust time and date.
 %files -n kipi-plugins-timeadjust -f kipiplugin_timeadjust.lang
 %{_kde_appsdir}/kipi/kipiplugin_timeadjustui.rc
 %{_kde_libdir}/kde4/kipiplugin_timeadjust.so
-%{_kde_iconsdir}/hicolor/*/actions/timeadjust.png
 %{_kde_services}/kipiplugin_timeadjust.desktop
+%{_kde_iconsdir}/hicolor/*/apps/kipi-timeadjust.*
 
 #-----------------------------------------------------------------------
 
@@ -354,9 +355,8 @@ A tool to import/export images to/from SmugMug web service.
 %files -n kipi-plugins-smug -f kipiplugin_smug.lang
 %{_kde_appsdir}/kipi/kipiplugin_smugui.rc
 %{_kde_libdir}/kde4/kipiplugin_smug.so
-%{_kde_iconsdir}/hicolor/*/actions/smugmug.png
-%{_kde_iconsdir}/hicolor/scalable/actions/smugmug.svgz
 %{_kde_services}/kipiplugin_smug.desktop
+%{_kde_iconsdir}/hicolor/*/apps/kipi-smugmug.*
 
 #-----------------------------------------------------------------------
 
@@ -373,8 +373,8 @@ A tool to export images to a remote Shwup web service.
 %files -n kipi-plugins-shwup -f kipiplugin_shwup.lang
 %{_kde_appsdir}/kipi/kipiplugin_shwupui.rc
 %{_kde_libdir}/kde4/kipiplugin_shwup.so
-%{_kde_iconsdir}/hicolor/*/actions/shwup.png
 %{_kde_services}/kipiplugin_shwup.desktop
+%{_kde_iconsdir}/hicolor/*/apps/kipi-shwup.*
 
 #-----------------------------------------------------------------------
 
@@ -393,8 +393,7 @@ A tool to export images to a remote Piwigo.
 %{_kde_libdir}/kde4/kipiplugin_piwigoexport.so
 %{_kde_appsdir}/kipiplugin_piwigoexport
 %{_kde_services}/kipiplugin_piwigoexport.desktop
-%{_kde_iconsdir}/hicolor/scalable/actions/piwigo.svgz
-%{_kde_iconsdir}/hicolor/*/actions/piwigo.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-piwigo.*
 
 #-----------------------------------------------------------------------
 
@@ -412,8 +411,7 @@ A tool to export images to a remote Picase Web Service
 %{_kde_appsdir}/kipi/kipiplugin_picasawebexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_picasawebexport.so
 %{_kde_services}/kipiplugin_picasawebexport.desktop
-%{_kde_iconsdir}/hicolor/scalable/actions/picasa.svgz
-%{_kde_iconsdir}/hicolor/*/actions/picasa.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-picasa.*
 
 #-----------------------------------------------------------------------
 
@@ -431,7 +429,7 @@ A tool to edit EXIF,IPTC and XMP metadata.
 %{_kde_appsdir}/kipi/kipiplugin_metadataeditui.rc
 %{_kde_libdir}/kde4/kipiplugin_metadataedit.so
 %{_kde_services}/kipiplugin_metadataedit.desktop
-%{_kde_iconsdir}/hicolor/*/actions/metadataedit.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-metadataedit.*
 
 #-----------------------------------------------------------------------
 
@@ -512,12 +510,11 @@ Requires:	kipi-common
 %description -n kipi-plugins-imgurexport
 A tool to export pictures to Imgur.
 
-%files -n kipi-plugins-imgurexport 
+%files -n kipi-plugins-imgurexport
 %{_kde_appsdir}/kipi/kipiplugin_imgurexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imgurexport.so
 %{_kde_services}/kipiplugin_imgurexport.desktop
-%{_kde_iconsdir}/hicolor/*/actions/imgur.png
-%{_kde_iconsdir}/hicolor/scalable/actions/imgur.svgz
+%{_kde_iconsdir}/hicolor/*/apps/kipi-imgur.*
 
 #-----------------------------------------------------------------------
 
@@ -536,7 +533,7 @@ A tool to preview images using OpenGl.
 %{_kde_libdir}/kde4/kipiplugin_imageviewer.so
 %{_kde_appsdir}/kipiplugin_imageviewer
 %{_kde_services}/kipiplugin_imageviewer.desktop
-%{_kde_iconsdir}/hicolor/*/actions/ogl.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-ogl.*
 
 #-----------------------------------------------------------------------
 
@@ -572,7 +569,7 @@ A tool to export images to a remote JAlbum.
 %{_kde_appsdir}/kipi/kipiplugin_jalbumexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_jalbumexport.so
 %{_kde_services}/kipiplugin_jalbumexport.desktop
-%{_kde_iconsdir}/hicolor/*/actions/jalbum.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-jalbum.*
 
 #-----------------------------------------------------------------------
 
@@ -588,10 +585,9 @@ A tool to export images to the Debian Screenshots site.
 
 %files -n kipi-plugins-debianscreenshot
 %{_kde_appsdir}/kipi/kipiplugin_debianscreenshotsui.rc
-%{_kde_libdir}/kde4/kipiplugin_debianscreenshots.so 
+%{_kde_libdir}/kde4/kipiplugin_debianscreenshots.so
 %{_kde_services}/kipiplugin_debianscreenshots.desktop
-%{_kde_iconsdir}/hicolor/*/actions/debianscreenshots.png 
-%{_kde_iconsdir}/hicolor/scalable/actions/debianscreenshots.svgz
+%{_kde_iconsdir}/hicolor/*/apps/kipi-debianscreenshots.*
 
 #-----------------------------------------------------------------------
 
@@ -609,7 +605,7 @@ A tool to geolocalize pictures.
 %{_kde_appsdir}/gpssync
 %{_kde_libdir}/kde4/kipiplugin_gpssync.so
 %{_kde_services}/kipiplugin_gpssync.desktop
-%{_kde_iconsdir}/hicolor/*/actions/gpsimagetag.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-gpsimagetag.*
 
 #-----------------------------------------------------------------------
 
@@ -627,12 +623,9 @@ A tool to export images to a remote Flickr, 23 and Zoomr web services.
 %{_kde_appsdir}/kipi/kipiplugin_flickrexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_flickrexport.so
 %{_kde_services}/kipiplugin_flickrexport.desktop
-%{_kde_iconsdir}/hicolor/*/actions/flickr.png
-%{_kde_iconsdir}/hicolor/*/actions/hq.png 
-%{_kde_iconsdir}/hicolor/*/actions/zooomr.png
-%{_kde_iconsdir}/hicolor/scalable/actions/flickr.svgz
-%{_kde_iconsdir}/hicolor/scalable/actions/hq.svgz 
-%{_kde_iconsdir}/hicolor/scalable/actions/zooomr.svgz 
+%{_kde_iconsdir}/hicolor/*/apps/kipi-flickr.*
+%{_kde_iconsdir}/hicolor/*/apps/kipi-hq.*
+%{_kde_iconsdir}/hicolor/*/apps/kipi-zooomr.*
 
 #-----------------------------------------------------------------------
 
@@ -651,12 +644,12 @@ A tool to blend bracketed images.
 
 %files -n kipi-plugins-expoblending -f kipiplugin_expoblending.lang
 %{_kde_appsdir}/kipi/kipiplugin_expoblendingui.rc
+%{_kde_appsdir}/kipiplugin_expoblending
 %{_kde_bindir}/expoblending
 %{_kde_applicationsdir}/expoblending.desktop
 %{_kde_libdir}/kde4/kipiplugin_expoblending.so
-%{_kde_appsdir}/kipiplugin_expoblending 
 %{_kde_services}/kipiplugin_expoblending.desktop
-%{_kde_iconsdir}/hicolor/*/actions/expoblending.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-expoblending.*
 
 #-----------------------------------------------------------------------
 
@@ -716,8 +709,8 @@ A tool to slide images with 2D and 3D effects using OpenGL.
 %files -n kipi-plugins-advancedslideshow -f kipiplugin_advancedslideshow.lang
 %{_kde_appsdir}/kipi/kipiplugin_advancedslideshowui.rc
 %{_kde_libdir}/kde4/kipiplugin_advancedslideshow.so
-%{_kde_iconsdir}/hicolor/*/actions/slideshow.png
 %{_kde_services}/kipiplugin_advancedslideshow.desktop
+%{_kde_iconsdir}/hicolor/*/apps/kipi-slideshow.*
 
 #-----------------------------------------------------------------------
 
@@ -756,7 +749,7 @@ A tool to convert Raw Image to Digital NeGative.
 %{_kde_applicationsdir}/dngconverter.desktop
 %{_kde_libdir}/kde4/kipiplugin_dngconverter.so
 %{_kde_services}/kipiplugin_dngconverter.desktop
-%{_kde_iconsdir}/*/*/*/dngconverter.*
+%{_kde_iconsdir}/hicolor/*/apps/kipi-dngconverter.*
 
 #-----------------------------------------------------------------------
 
@@ -775,8 +768,7 @@ A tool to export images to a remote Gallery.
 %{_kde_libdir}/kde4/kipiplugin_galleryexport.so
 %{_kde_appsdir}/kipiplugin_galleryexport
 %{_kde_services}/kipiplugin_galleryexport.desktop
-%{_kde_iconsdir}/hicolor/*/actions/gallery.png
-%{_kde_iconsdir}/hicolor/scalable/actions/gallery.svgz
+%{_kde_iconsdir}/hicolor/*/apps/kipi-gallery.*
 
 #-----------------------------------------------------------------------
 
@@ -793,7 +785,7 @@ A tool to export images to a remote MediaWiki site
 %{_kde_appsdir}/kipi/kipiplugin_wikimediaui.rc
 %{_kde_libdir}/kde4/kipiplugin_wikimedia.so
 %{_kde_services}/kipiplugin_wikimedia.desktop
-%{_kde_iconsdir}/*/*/*/wikimedia.*
+%{_kde_iconsdir}/hicolor/*/apps/kipi-wikimedia.*
 
 #-----------------------------------------------------------------------
 
@@ -810,7 +802,7 @@ A tool to export images to ImageShack
 %{_kde_appsdir}/kipi/kipiplugin_imageshackexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imageshackexport.so
 %{_kde_services}/kipiplugin_imageshackexport.desktop
-%{_kde_iconsdir}/*/*/*/imageshack.*
+%{_kde_iconsdir}/hicolor/*/apps/kipi-imageshack.*
 
 #-----------------------------------------------------------------------
 
@@ -829,8 +821,7 @@ A tool to export images to Flash.
 %{_kde_libdir}/kde4/kipiplugin_flashexport.so
 %{_kde_appsdir}/kipiplugin_flashexport
 %{_kde_services}/kipiplugin_flashexport.desktop
-%{_kde_iconsdir}/hicolor/*/actions/flash.png
-%{_kde_iconsdir}/hicolor/scalable/actions/flash.svgz
+%{_kde_iconsdir}/hicolor/*/apps/kipi-flash.*
 
 #-----------------------------------------------------------------------
 
@@ -848,8 +839,7 @@ A tool to import/export images to/from a remote Facebook web service.
 %{_kde_appsdir}/kipi/kipiplugin_facebookui.rc
 %{_kde_libdir}/kde4/kipiplugin_facebook.so
 %{_kde_services}/kipiplugin_facebook.desktop
-%{_kde_iconsdir}/hicolor/*/actions/facebook.png
-%{_kde_iconsdir}/hicolor/scalable/actions/facebook.svgz
+%{_kde_iconsdir}/hicolor/*/apps/kipi-facebook.*
 
 #-----------------------------------------------------------------------
 
@@ -929,10 +919,10 @@ Summary:	Create KML files to present images with coordinates
 Group:		System/Libraries
 Requires:	kipi-common
 
-%description -n kipi-plugins-kmlexport 
+%description -n kipi-plugins-kmlexport
 A plugin to create KML files to present images with coordinates.
 
-%files -n kipi-plugins-kmlexport 
+%files -n kipi-plugins-kmlexport
 %{_kde_appsdir}/kipi/kipiplugin_kmlexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_kmlexport.so
 %{_kde_services}/kipiplugin_kmlexport.desktop
@@ -948,7 +938,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-yandexfotki
 A tool to export images to a remote Yandex.Fotki web service.
 
-%files -n kipi-plugins-yandexfotki 
+%files -n kipi-plugins-yandexfotki
 %{_kde_appsdir}/kipi/kipiplugin_yandexfotkiui.rc
 %{_kde_libdir}/kde4/kipiplugin_yandexfotki.so
 %{_kde_services}/kipiplugin_yandexfotki.desktop
@@ -964,11 +954,11 @@ Requires:	kipi-common
 %description -n kipi-plugins-rajceexport
 A tool to export images to a remote rajce.net service.
 
-%files -n kipi-plugins-rajceexport 
+%files -n kipi-plugins-rajceexport
 %{_kde_appsdir}/kipi/kipiplugin_rajceexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_rajceexport.so
 %{_kde_services}/kipiplugin_rajceexport.desktop
-%{_kde_iconsdir}/hicolor/*/actions/rajce.png
+%{_kde_iconsdir}/hicolor/*/apps/kipi-rajce.*
 
 #-----------------------------------------------------------------------
 %package -n kipiplugin-photolayouts-editor
@@ -981,16 +971,16 @@ Photo Layouts Editor.
 
 %files -n kipiplugin-photolayouts-editor
 %{_kde_appsdir}/kipi/kipiplugin_photolayoutseditorui.rc
-%{_kde_bindir}/photolayoutseditor
-%{_kde_iconsdir}/hicolor/*/apps/photolayoutseditor.png
-%{_kde_services}/kipiplugin_photolayoutseditor.desktop
-%{_kde_datadir}/kde4/servicetypes/photolayoutseditorborderplugin.desktop
-%{_kde_datadir}/kde4/servicetypes/photolayoutseditoreffectplugin.desktop
-%{_kde_datadir}/templates/kipiplugins_photolayoutseditor
-%{_kde_libdir}/kde4/kipiplugin_photolayoutseditor.so
-%{_kde_applicationsdir}/photolayoutseditor.desktop
 %{_kde_appsdir}/photolayoutseditor
-%{_kde_datadir}/config.kcfg/PLEConfigSkeleton.kcfgc
+%{_kde_applicationsdir}/photolayoutseditor.desktop
+%{_kde_bindir}/photolayoutseditor
+%{_kde_libdir}/kde4/kipiplugin_photolayoutseditor.so
+%{_kde_services}/kipiplugin_photolayoutseditor.desktop
+%{_kde_servicetypes}/photolayoutseditorborderplugin.desktop
+%{_kde_servicetypes}/photolayoutseditoreffectplugin.desktop
+%{_kde_datadir}/templates/kipiplugins_photolayoutseditor
+%{_kde_datadir}/config.kcfg/photolayoutseditor.kcfg
+%{_kde_iconsdir}/hicolor/*/apps/photolayoutseditor.png
 
 #-----------------------------------------------------------------------
 
@@ -1009,9 +999,9 @@ A tool to create panorama.
 %{_kde_bindir}/panoramagui
 %{_kde_libdir}/kde4/kipiplugin_panorama.so
 %{_kde_appsdir}/kipiplugin_panorama/
-%{_kde_services}/kipiplugin_panorama.desktop 
+%{_kde_services}/kipiplugin_panorama.desktop
 %{_kde_applicationsdir}/panoramagui.desktop
-%{_kde_iconsdir}/hicolor/*/actions/panorama.*
+%{_kde_iconsdir}/hicolor/*/apps/kipi-panorama.*
 
 #-----------------------------------------------------------------------
 
@@ -1040,10 +1030,10 @@ A tool to support DLNA.
 
 %files -n kipi-plugins-dlna
 %{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
+%{_kde_appsdir}/kipiplugin_dlnaexport
 %{_kde_libdir}/kde4/kipiplugin_dlnaexport.so
 %{_kde_services}/kipiplugin_dlnaexport.desktop
-%{_kde_iconsdir}/hicolor/*/actions/dlna.*
-%{_kde_appsdir}/kipiplugin_dlnaexport
+%{_kde_iconsdir}/hicolor/*/apps/kipi-dlna.*
 
 #-----------------------------------------------------------------------
 
