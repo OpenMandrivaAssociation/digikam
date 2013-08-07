@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(libkexiv2)
 BuildRequires:	pkgconfig(libksane)
 BuildRequires:	pkgconfig(libkdcraw)
 BuildRequires:	pkgconfig(libkipi)
+BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
 BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(QJson)
