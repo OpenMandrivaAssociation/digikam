@@ -13,12 +13,13 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	2.1
+Release:	2.2
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 Patch1:		digikam-3.5.0-panorama-crash.patch
+Patch2:		digikam-3.5.0-videoslideshow-crash.patch
 
 BuildRequires:	bison
 BuildRequires:	doxygen
@@ -1168,6 +1169,7 @@ find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 # Remove wallpaper po files (kipiplugin-wallpaper is not build )
 pushd po

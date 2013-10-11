@@ -1,0 +1,23 @@
+diff -urN digikam-3.5.0/extra/kipi-plugins/videoslideshow/manager/actionthread.cpp digikam-3.5.0-patched/extra/kipi-plugins/videoslideshow/manager/actionthread.cpp
+--- digikam-3.5.0/extra/kipi-plugins/videoslideshow/manager/actionthread.cpp	2013-10-01 17:23:11.000000000 +1100
++++ digikam-3.5.0-patched/extra/kipi-plugins/videoslideshow/manager/actionthread.cpp	2013-10-12 01:27:05.000000000 +1100
+@@ -150,12 +150,13 @@
+     if(img)
+         d->api->freeImage(*img);
+ 
+-    d->encoder->encodeVideo(d->savePath, d->audioPath, d->videoFormat, d->videoType, d->path, d->aspectRatio);
+-
+-    connect(d->encoder, SIGNAL(finished()),
+-            this, SLOT(quit()));
+-
+-    exec();
++    if (!d->savePath.isNull())
++    {
++        d->encoder->encodeVideo(d->savePath, d->audioPath, d->videoFormat, d->videoType, d->path, d->aspectRatio);
++        connect(d->encoder, SIGNAL(finished()),
++                this, SLOT(quit()));
++        exec();
++    }
+     Q_EMIT finished();
+ }
+ 
