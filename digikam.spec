@@ -13,9 +13,14 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	2.2
+Release:	2.3
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
+# Should be removed in next after 3.5.0 version
+Source1:	digikam_ru.po
+Source2:	kipiplugin_expoblending_ru.po
+Source3:	kipiplugin_panorama_ru.po
+Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 Patch1:		digikam-3.5.0-panorama-crash.patch
@@ -994,7 +999,7 @@ Requires:	hugin
 %description -n kipi-plugins-panorama
 A tool to create panorama.
 
-%files -n kipi-plugins-panorama
+%files -n kipi-plugins-panorama -f kipiplugin_panorama.lang
 %{_kde_appsdir}/kipi/kipiplugin_panoramaui.rc
 %{_kde_bindir}/panoramagui
 %{_kde_libdir}/kde4/kipiplugin_panorama.so
@@ -1046,7 +1051,7 @@ Requires:	imagemagick
 %description -n kipi-plugins-videoslideshow
 A tool to export images as Video Slide Show.
 
-%files -n kipi-plugins-videoslideshow
+%files -n kipi-plugins-videoslideshow -f kipiplugin_videoslideshow.lang
 %{_kde_appsdir}/kipi/kipiplugin_videoslideshowui.rc
 %{_kde_libdir}/kde4/kipiplugin_videoslideshow.so
 %{_kde_services}/kipiplugin_videoslideshow.desktop
@@ -1154,6 +1159,7 @@ The library documentation is available on header files.
 %{_kde_libdir}/libdigikamdatabase.so
 %{_kde_libdir}/libkipiplugins.so
 %{_kde_libdir}/libPropertyBrowser.a
+
 #-----------------------------------------------------------------------
 
 %prep
@@ -1171,9 +1177,15 @@ find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 %patch1 -p1
 %patch2 -p1
 
-# Remove wallpaper po files (kipiplugin-wallpaper is not build )
 pushd po
+# Remove wallpaper po files (kipiplugin-wallpaper is not build )
 find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
+# Replace Russian localization with better one
+cp -f %{SOURCE1} ru/digikam.po
+cp -f %{SOURCE2} ru/kipiplugin_expoblending.po
+cp -f %{SOURCE3} ru/kipiplugin_panorama.po
+cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
+popd
 
 %build
 %cmake_kde4 -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF
@@ -1188,8 +1200,9 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang showfoto --with-html || touch showfoto.lang
 %find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html || touch kipi-plugins.lang
 
-%find_lang kipiplugin_rawconverter || touch kipiplugin_rawconverter.lang
-%find_lang kipiplugin_sendimages || touch kipiplugin_sendimages.lang
+%find_lang kipiplugin_acquireimages || touch kipiplugin_acquireimages.lang
+%find_lang kipiplugin_advancedslideshow || touch kipiplugin_advancedslideshow.lang
+%find_lang kipiplugin_batchprocessimages || touch kipiplugin_batchprocessimages.lang
 %find_lang kipiplugin_calendar || touch kipiplugin_calendar.lang
 %find_lang kipiplugin_dngconverter || touch kipiplugin_dngconverter.lang
 %find_lang kipiplugin_expoblending || touch kipiplugin_expoblending.lang
@@ -1204,6 +1217,7 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang kipiplugin_jpeglossless || touch kipiplugin_jpeglossless.lang
 %find_lang kipiplugin_kioexportimport || touch kipiplugin_kioexportimport.lang
 %find_lang kipiplugin_metadataedit || touch kipiplugin_metadataedit.lang
+%find_lang kipiplugin_panorama || touch kipiplugin_panorama.lang
 %find_lang kipiplugin_picasawebexport || touch kipiplugin_picasawebexport.lang
 %find_lang kipiplugin_piwigoexport || touch kipiplugin_piwigoexport.lang
 %find_lang kipiplugin_printimages || touch kipiplugin_printimages.lang
@@ -1211,10 +1225,8 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang kipiplugin_removeredeyes || touch kipiplugin_removeredeyes.lang
 %find_lang kipiplugin_sendimages || touch kipiplugin_sendimages.lang
 %find_lang kipiplugin_shwup || touch kipiplugin_shwup.lang
-%find_lang kipiplugin_timeadjust || touch kipiplugin_timeadjust.lang
-%find_lang kipiplugin_acquireimages || touch kipiplugin_acquireimages.lang
-%find_lang kipiplugin_advancedslideshow || touch kipiplugin_advancedslideshow.lang
-%find_lang kipiplugin_batchprocessimages || touch kipiplugin_batchprocessimages.lang
 %find_lang kipiplugin_smug || touch kipiplugin_smug.lang
+%find_lang kipiplugin_timeadjust || touch kipiplugin_timeadjust.lang
+%find_lang kipiplugin_videoslideshow || touch kipiplugin_videoslideshow.lang
 %find_lang libkgeomap || touch libkgeomap.lang
 

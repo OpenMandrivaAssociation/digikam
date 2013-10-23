@@ -1,2 +1,6 @@
 sources:
   digikam-3.5.0.tar.bz2: 9e44fcf219312cbcbbaee0cc9a7f460a01769224
+  digikam_ru.po: e1c459da3518316df4b24a3cfba93063aac1d6f0
+  kipiplugin_expoblending_ru.po: a7481812d678574b2313bb5f08092ad7b41b6d45
+  kipiplugin_panorama_ru.po: 2ecf3ddff535cf0058df492a41bf2dec8b643190
+  kipiplugin_videoslideshow_ru.po: bcb1406778fd4fefe2914dc97f908da38f0d9ef5
