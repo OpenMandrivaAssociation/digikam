@@ -31,7 +31,6 @@ BuildRequires:	doxygen
 BuildRequires:	flex
 BuildRequires:	imagemagick
 %if %{mdvver} >= 201400
-BuildRequires:	mariadb-devel
 BuildRequires:	mariadb-common
 %else
 BuildRequires:	mysql-core
@@ -65,7 +64,6 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	kvkontakte-devel
 %endif
 %if %{mdvver} >= 201400
-Requires:	mariadb-devel
 Requires:	mariadb-common
 %else
 Requires:	mysql-core
