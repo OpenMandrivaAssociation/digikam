@@ -13,7 +13,7 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	3.1
+Release:	3.2
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 # Should be removed in next after 3.5.0 version
@@ -30,8 +30,13 @@ BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	flex
 BuildRequires:	imagemagick
+%if %{mdvver} >= 201400
+BuildRequires:	mariadb-devel
+BuildRequires:	mariadb-common
+%else
 BuildRequires:	mysql-core
 BuildRequires:	mysql-common
+%endif
 BuildRequires:	gomp-devel
 BuildRequires:	hupnp-devel
 BuildRequires:	kdelibs4-devel >= 5:4.10.0
@@ -59,8 +64,13 @@ BuildRequires:	pkgconfig(sqlite3)
 %if %{with external_kvkontakte}
 BuildRequires:	kvkontakte-devel
 %endif
+%if %{mdvver} >= 201400
+Requires:	mariadb-devel
+Requires:	mariadb-common
+%else
 Requires:	mysql-core
 Requires:	mysql-common
+%endif
 Requires:	kdebase4-runtime
 Requires:	kipi-common
 Requires:	kipi-plugins
