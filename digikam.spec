@@ -63,7 +63,7 @@ BuildRequires:	pkgconfig(sqlite3)
 %if %{with external_kvkontakte}
 BuildRequires:	kvkontakte-devel
 %endif
-%if %{mdvver} >= 201400
+%if %{mdvver} >= 201410
 Requires:	mariadb-common
 %else
 Requires:	mysql-core
