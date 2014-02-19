@@ -30,7 +30,7 @@ BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	flex
 BuildRequires:	imagemagick
-%if %{mdvver} >= 201410
+%if %{mdvver} >= 201400
 BuildRequires:	mariadb-common
 %else
 BuildRequires:	mysql-core
