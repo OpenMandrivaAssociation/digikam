@@ -31,7 +31,7 @@ BuildRequires:	doxygen
 BuildRequires:	flex
 BuildRequires:	imagemagick
 %if %{mdvver} >= 201400
-BuildRequires:	mariadb-common
+BuildRequires:	mariadb-server
 %else
 BuildRequires:	mysql-core
 BuildRequires:	mysql-common
