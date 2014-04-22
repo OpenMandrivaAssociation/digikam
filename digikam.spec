@@ -13,7 +13,7 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	4
+Release:	5
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 # Should be removed in next after 3.5.0 version
@@ -76,6 +76,7 @@ Requires:	libkface-common
 Requires:	libkgeomap-common
 Requires:	libkdcraw-common
 Requires:	qt4-database-plugin-sqlite
+Requires:	libgphoto-common
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
