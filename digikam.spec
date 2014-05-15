@@ -5,7 +5,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	3.5.0
+Version:	4.0.0
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -13,7 +13,7 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	5
+Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 # Should be removed in next after 3.5.0 version
@@ -23,8 +23,7 @@ Source3:	kipiplugin_panorama_ru.po
 Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch
-Patch1:		digikam-3.5.0-panorama-crash.patch
-Patch2:		digikam-3.5.0-videoslideshow-crash.patch
+Patch1:		digikam-4.0.0-soversion.patch
 
 BuildRequires:	bison
 BuildRequires:	doxygen
@@ -38,7 +37,7 @@ BuildRequires:	mysql-common
 %endif
 BuildRequires:	gomp-devel
 BuildRequires:	hupnp-devel
-BuildRequires:	kdelibs4-devel >= 5:4.10.0
+BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
@@ -174,13 +173,14 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 3
+%define libdigikamdatabase_major 4
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
 Obsoletes:	%{_lib}digikamdatabase2 < 2:3.0.0
+Obsoletes:	%{_lib}digikamdatabase3 < 2:4.0.0
 
 %description -n %{libdigikamdatabase}
 Librairie File needed by %{name}
@@ -190,13 +190,14 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 3
+%define libdigikamcore_major 4
 %define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
 
 %package -n %{libdigikamcore}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
 Obsoletes:	%{_lib}digikamcore2 < 2:3.0.0
+Obsoletes:	%{_lib}digikamcore3 < 2:4.0.0
 
 %description -n %{libdigikamcore}
 Librairie File needed by %{name}
@@ -266,13 +267,14 @@ web service as wikipedia.org.
 
 #-----------------------------------------------------------------------
 
-%define libkipiplugins_major 3
+%define libkipiplugins_major 4
 %define libkipiplugins %mklibname kipiplugins %{libkipiplugins_major}
 
 %package -n %{libkipiplugins}
 Summary:	Runtime library for %{name}
 Group:		System/Libraries
 Obsoletes:	%{_lib}kipiplugins2 < 2:3.0.0
+Obsoletes:	%{_lib}kipiplugins3 < 2:4.0.0
 
 %description -n %{libkipiplugins}
 Librairie File needed by %{name}
@@ -294,11 +296,13 @@ Suggests:	kipi-plugins-calendar
 Suggests:	kipi-plugins-debianscreenshot
 Suggests:	kipi-plugins-dlna
 Suggests:	kipi-plugins-dngconverter
+Suggests:	kipi-plugins-dropbox
 Suggests:	kipi-plugins-expoblending
 Suggests:	kipi-plugins-facebook
 Suggests:	kipi-plugins-flashexport
 Suggests:	kipi-plugins-flickr
 Suggests:	kipi-plugins-galleryexport
+Suggests:	kipi-plugins-googledrive
 Suggests:	kipi-plugins-gpssync
 Suggests:	kipi-plugins-htmlexport
 Suggests:	kipi-plugins-imageshack
@@ -421,7 +425,7 @@ A tool to create calendars.
 #-----------------------------------------------------------------------
 
 %package -n kipi-plugins-debianscreenshot
-Summary:	Debian Screenshot kipi plugins
+Summary:	Debian Screenshot Kipi Plugin
 Group:		System/Libraries
 Conflicts:	kipi-plugins < 1:1.8.0-1
 Requires:	libkdcraw-common
@@ -476,6 +480,22 @@ A tool to convert Raw Image to Digital NeGative.
 
 #-----------------------------------------------------------------------
 
+%package -n kipi-plugins-dropbox
+Summary:	Dropbox export Kipi Plugin
+Group:		System/Libraries
+Requires:	kipi-common
+
+%description -n kipi-plugins-dropbox
+A tool to export images to a remote Dropbox web service.
+
+%files -n kipi-plugins-dropbox
+%{_kde_appsdir}/kipi/kipiplugin_dropboxui.rc
+%{_kde_libdir}/kde4/kipiplugin_dropbox.so
+%{_kde_services}/kipiplugin_dropbox.desktop
+%{_kde_iconsdir}/hicolor/*/apps/kipi-dropbox.*
+
+#-----------------------------------------------------------------------
+
 %package -n kipi-plugins-expoblending
 Summary:	Expoblending Kipi Plugin
 Group:		System/Libraries
@@ -500,7 +520,7 @@ A tool to blend bracketed images.
 #-----------------------------------------------------------------------
 
 %package -n kipi-plugins-facebook
-Summary:	Facebook kipi plugins
+Summary:	Facebook Kipi Plugin
 Group:		System/Libraries
 Conflicts:	kipi-plugins < 1:1.8.0-1
 Requires:	libkdcraw-common
@@ -518,7 +538,7 @@ A tool to import/export images to/from a remote Facebook web service.
 #-----------------------------------------------------------------------
 
 %package -n kipi-plugins-flashexport
-Summary:	Flash export kipi-plugins
+Summary:	Flash export Kipi Plugin
 Group:		System/Libraries
 Conflicts:	kipi-plugins < 1:1.8.0-1
 Requires:	libkdcraw-common
@@ -572,6 +592,22 @@ A tool to export images to a remote Gallery.
 %{_kde_appsdir}/kipiplugin_galleryexport
 %{_kde_services}/kipiplugin_galleryexport.desktop
 %{_kde_iconsdir}/hicolor/*/apps/kipi-gallery.*
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-googledrive
+Summary:	Google Drive export Kipi Plugin
+Group:		System/Libraries
+Requires:	kipi-common
+
+%description -n kipi-plugins-googledrive
+A tool to export images to a remote Google Drive web service.
+
+%files -n kipi-plugins-googledrive
+%{_kde_appsdir}/kipi/kipiplugin_googledriveui.rc
+%{_kde_libdir}/kde4/kipiplugin_googledrive.so
+%{_kde_services}/kipiplugin_googledrive.desktop
+%{_kde_iconsdir}/hicolor/*/apps/kipi-googledrive.*
 
 #-----------------------------------------------------------------------
 
@@ -1169,7 +1205,6 @@ The library documentation is available on header files.
 %{_kde_libdir}/libdigikamcore.so
 %{_kde_libdir}/libdigikamdatabase.so
 %{_kde_libdir}/libkipiplugins.so
-%{_kde_libdir}/libPropertyBrowser.a
 
 #-----------------------------------------------------------------------
 
@@ -1185,14 +1220,14 @@ find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 %if %{with external_kvkontakte}
 %patch0 -p1
 %endif
+
 %patch1 -p1
-%patch2 -p1
 
 pushd po
 # Remove wallpaper po files (kipiplugin-wallpaper is not build )
 find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
 # Replace Russian localization with better one
-cp -f %{SOURCE1} ru/digikam.po
+# cp -f %{SOURCE1} ru/digikam.po
 cp -f %{SOURCE2} ru/kipiplugin_expoblending.po
 cp -f %{SOURCE3} ru/kipiplugin_panorama.po
 cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
