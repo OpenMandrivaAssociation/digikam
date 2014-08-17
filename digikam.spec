@@ -1,5 +1,4 @@
 %bcond_without external_kvkontakte
-%define _unpackaged_subdirs_terminate_build 0
 %define beta %nil
 
 Summary:	A KDE photo management utility
