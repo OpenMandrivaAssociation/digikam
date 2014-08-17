@@ -5,7 +5,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	4.0.0
+Version:	4.2.0
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -13,11 +13,10 @@ Url:		http://www.digikam.org
 Release:	0.%{beta}.1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
 %else
-Release:	5
+Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 %endif
 # Should be removed in next after 3.5.0 version
-Source1:	digikam_ru.po
 Source2:	kipiplugin_expoblending_ru.po
 Source3:	kipiplugin_panorama_ru.po
 Source4:	kipiplugin_videoslideshow_ru.po
@@ -27,6 +26,7 @@ Patch1:		digikam-4.0.0-soversion.patch
 
 BuildRequires:	bison
 BuildRequires:	doxygen
+BuildRequires:	eigen3
 BuildRequires:	flex
 BuildRequires:	imagemagick
 %if %{mdvver} >= 201400
@@ -95,7 +95,7 @@ Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
 %files -f %{name}.lang
-%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO  core/README.FACE core/TODO.FACE core/TODO.MYSQLPORT
+%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO core/TODO.FACE core/TODO.MYSQLPORT
 %{_kde_bindir}/digikam
 %{_kde_bindir}/digitaglinktree
 %{_kde_bindir}/cleanup_digikamdb
@@ -1226,8 +1226,6 @@ find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 pushd po
 # Remove wallpaper po files (kipiplugin-wallpaper is not build )
 find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
-# Replace Russian localization with better one
-# cp -f %{SOURCE1} ru/digikam.po
 cp -f %{SOURCE2} ru/kipiplugin_expoblending.po
 cp -f %{SOURCE3} ru/kipiplugin_panorama.po
 cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
