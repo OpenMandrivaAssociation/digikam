@@ -1,4 +1,3 @@
-%define _disable_ld_no_undefined 1
 %bcond_without external_kvkontakte
 %define beta %nil
 
@@ -23,7 +22,8 @@ Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 Patch1:		digikam-4.0.0-soversion.patch
-
+# (tpg) fix for bug https://bugs.kde.org/show_bug.cgi?id=338037
+Patch2:		digikam-4.2.0-fix-OpenCV-components.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
@@ -1222,6 +1222,7 @@ find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 %endif
 
 %patch1 -p1
+%patch2 -p1
 
 pushd po
 # Remove wallpaper po files (kipiplugin-wallpaper is not build )
