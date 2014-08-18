@@ -1,3 +1,4 @@
+%define _disable_ld_no_undefined 1
 %bcond_without external_kvkontakte
 %define beta %nil
 
