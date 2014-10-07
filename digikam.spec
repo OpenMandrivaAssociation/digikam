@@ -1223,6 +1223,9 @@ cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
 popd
 
 %build
+# to find qca2
+export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
+
 %cmake_kde4 \
 	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
 	-DENABLE_BALOOSUPPORT=ON \
