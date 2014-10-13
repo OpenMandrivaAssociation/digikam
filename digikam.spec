@@ -3,7 +3,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	4.3.0
+Version:	4.4.0
 Release:	2
 License:	GPLv2+
 Group:		Graphics
@@ -14,7 +14,7 @@ Source3:	kipiplugin_panorama_ru.po
 Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch
-Patch1:		digikam-4.0.0-soversion.patch
+Patch1:		digikam-4.4.0-soversion.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
@@ -33,7 +33,9 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
+%if %{disttag} == "omv"
 BuildRequires:	qca2-devel-qt4
+%endif
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
@@ -1224,8 +1226,10 @@ cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
 popd
 
 %build
+%if %{disttag} == "omv"
 # to find qca2
 export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
+%endif
 
 %cmake_kde4 \
 	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \

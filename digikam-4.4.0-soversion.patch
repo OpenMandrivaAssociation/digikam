@@ -1,7 +1,7 @@
-diff -urN digikam-4.0.0/core/digikam/CMakeLists.txt digikam-4.0.0-patched/core/digikam/CMakeLists.txt
---- digikam-4.0.0/core/digikam/CMakeLists.txt	2014-05-12 22:48:44.000000000 +1100
-+++ digikam-4.0.0-patched/core/digikam/CMakeLists.txt	2014-05-16 00:32:42.474689629 +1100
-@@ -127,7 +127,7 @@
+diff -urN digikam-4.4.0/core/app/CMakeLists.txt digikam-4.4.0-patched/core/app/CMakeLists.txt
+--- digikam-4.4.0/core/app/CMakeLists.txt	2014-10-08 23:32:45.000000000 +1100
++++ digikam-4.4.0-patched/core/app/CMakeLists.txt	2014-10-13 20:23:13.986686928 +1100
+@@ -132,7 +132,7 @@
     TARGET_LINK_LIBRARIES(digikamcore ${liblqr_LIBS})
  ENDIF(LQR-1_FOUND)
  
@@ -10,7 +10,7 @@ diff -urN digikam-4.0.0/core/digikam/CMakeLists.txt digikam-4.0.0-patched/core/d
  
  IF(WIN32)
      SET_TARGET_PROPERTIES(digikamcore PROPERTIES COMPILE_FLAGS -DJPEG_STATIC)
-@@ -184,7 +184,7 @@
+@@ -197,7 +197,7 @@
      TARGET_LINK_LIBRARIES(digikamdatabase ${SQLITE2_LIBRARIES})
  ENDIF(SQLITE2_FOUND)
  
@@ -19,9 +19,9 @@ diff -urN digikam-4.0.0/core/digikam/CMakeLists.txt digikam-4.0.0-patched/core/d
  
  INSTALL(TARGETS digikamdatabase ${INSTALL_TARGETS_DEFAULT_ARGS} )
  
-diff -urN digikam-4.0.0/extra/kipi-plugins/CMakeLists.txt digikam-4.0.0-patched/extra/kipi-plugins/CMakeLists.txt
---- digikam-4.0.0/extra/kipi-plugins/CMakeLists.txt	2014-05-12 22:48:01.000000000 +1100
-+++ digikam-4.0.0-patched/extra/kipi-plugins/CMakeLists.txt	2014-05-16 00:34:24.150310071 +1100
+diff -urN digikam-4.4.0/extra/kipi-plugins/CMakeLists.txt digikam-4.4.0-patched/extra/kipi-plugins/CMakeLists.txt
+--- digikam-4.4.0/extra/kipi-plugins/CMakeLists.txt	2014-10-08 23:33:05.000000000 +1100
++++ digikam-4.4.0-patched/extra/kipi-plugins/CMakeLists.txt	2014-10-13 20:23:13.986686928 +1100
 @@ -32,7 +32,7 @@
     
  # NOTE: This string is used to set libkipiplugins SO version ID
