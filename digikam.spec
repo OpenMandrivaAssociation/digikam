@@ -33,7 +33,7 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
-%if %{disttag} == "omv"
+%if "%{disttag}" == "omv"
 BuildRequires:	qca2-devel-qt4
 %endif
 BuildRequires:	pkgconfig(gl)
@@ -1226,7 +1226,7 @@ cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
 popd
 
 %build
-%if %{disttag} == "omv"
+%if "%{disttag}" == "omv"
 # to find qca2
 export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 %endif
