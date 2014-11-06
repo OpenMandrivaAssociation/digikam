@@ -15,6 +15,7 @@ Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch
 Patch1:		digikam-4.4.0-soversion.patch
+Patch2:		digikam-4.4.0-exiv2.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
@@ -1216,6 +1217,7 @@ find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 %endif
 
 %patch1 -p1
+%patch2 -p1
 
 pushd po
 # Remove wallpaper po files (kipiplugin-wallpaper is not build )
