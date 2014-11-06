@@ -10,8 +10,8 @@ is 2.3.x)
 ---
 
 
---- a/libs/imageproperties/captionedit.cpp
-+++ b/libs/imageproperties/captionedit.cpp
+--- a/core/libs/imageproperties/captionedit.cpp
++++ b/core/libs/imageproperties/captionedit.cpp
 @@ -202,7 +202,7 @@
  
  MsgTextEdit* CaptionEdit::textEdit() const
@@ -22,8 +22,8 @@ is 2.3.x)
  #else
      return 0;
 
---- a/libs/imageproperties/imagedescedittab.cpp
-+++ b/libs/imageproperties/imagedescedittab.cpp
+--- a/core/libs/imageproperties/imagedescedittab.cpp
++++ b/core/libs/imageproperties/imagedescedittab.cpp
 @@ -429,7 +429,7 @@
  
      // Initialize ---------------------------------------------
