@@ -1,29 +1,21 @@
 %bcond_without external_kvkontakte
-%define beta %nil
 
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	4.2.0
+Version:	4.4.0
+Release:	3
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
-%if "%{beta}" != ""
-Release:	0.%{beta}.1
-Source0:	http://downloads.sourceforge.net/digikam/%{name}-software-compilation-%{version}-%{beta}.tar.bz2
-%else
-Release:	1
 Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
-%endif
-# Should be removed in next after 3.5.0 version
 Source2:	kipiplugin_expoblending_ru.po
 Source3:	kipiplugin_panorama_ru.po
 Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-2.4.1-use-external-libvkontake.patch
-Patch1:		digikam-4.0.0-soversion.patch
-# (tpg) fix for bug https://bugs.kde.org/show_bug.cgi?id=338037
-Patch2:		digikam-4.2.0-fix-OpenCV-components.patch
+Patch1:		digikam-4.4.0-soversion.patch
+Patch2:		digikam-4.4.0-exiv2.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
@@ -35,12 +27,16 @@ BuildRequires:	mariadb-server
 BuildRequires:	mysql-core
 BuildRequires:	mysql-common
 %endif
+BuildRequires:	baloo-devel
 BuildRequires:	gomp-devel
 BuildRequires:	hupnp-devel
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
+%if "%{disttag}" == "omv"
+BuildRequires:	qca2-devel-qt4
+%endif
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
@@ -57,7 +53,7 @@ BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
 BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(QJson)
-BuildRequires:	pkgconfig(QtGStreamer-0.10)
+BuildRequires:	pkgconfig(QtGStreamer-1.0)
 BuildRequires:	pkgconfig(sqlite3)
 %if %{with external_kvkontakte}
 BuildRequires:	kvkontakte-devel
@@ -105,6 +101,8 @@ its functionalities.
 %{_kde_appsdir}/kconf_update/adjustlevelstool.upd
 %{_kde_appsdir}/solid/actions/digikam*.desktop
 %{_kde_applicationsdir}/digikam.desktop
+%{_kde_datadir}/appdata/digikam.appdata.xml
+%{_kde_datadir}/appdata/digiKam-ImagePlugin_*.metainfo.xml
 %{_kde_services}/digikam*.desktop
 %{_kde_services}/digikam*.protocol
 %{_kde_servicetypes}/digikam*.desktop
@@ -167,8 +165,9 @@ You can use it to view your photographs and improve them.
 
 %files -n showfoto -f showfoto.lang
 %{_kde_bindir}/showfoto
-%{_kde_datadir}/applications/kde4/showfoto.desktop
+%{_kde_applicationsdir}/showfoto.desktop
 %{_kde_appsdir}/showfoto
+%{_kde_datadir}/appdata/showfoto.appdata.xml
 %{_kde_iconsdir}/*/*/apps/showfoto.*
 
 #-----------------------------------------------------------------------
@@ -358,7 +357,7 @@ A tool to acquire images using flat scanner.
 %{_kde_appsdir}/kipi/kipiplugin_acquireimagesui.rc
 %{_kde_bindir}/scangui
 %{_kde_libdir}/kde4/kipiplugin_acquireimages.so
-%{_kde_services}/kipiplugin_acquireimages.desktop 
+%{_kde_services}/kipiplugin_acquireimages.desktop
 %{_kde_applicationsdir}/scangui.desktop
 
 #-----------------------------------------------------------------------
@@ -402,8 +401,8 @@ KIPI Batch Processing Images Plugin.
 %{_kde_iconsdir}/hicolor/*/actions/borderimages.png
 %{_kde_iconsdir}/hicolor/*/actions/colorimages.png
 %{_kde_iconsdir}/hicolor/*/actions/convertimages.png
-%{_kde_iconsdir}/hicolor/*/actions/effectimages.png 
-%{_kde_iconsdir}/hicolor/*/actions/filterimages.png 
+%{_kde_iconsdir}/hicolor/*/actions/effectimages.png
+%{_kde_iconsdir}/hicolor/*/actions/filterimages.png
 
 #-----------------------------------------------------------------------
 
@@ -1133,7 +1132,7 @@ wikipedia.org.
 
 %define libkface_devel %mklibname -d kface
 
-%package -n  %{libkface_devel}
+%package -n %{libkface_devel}
 Summary:	Headers to build packages against libkface library
 Group:		Development/C
 Conflicts:	%{libnamedev} < 1:2.0.0-rc1.2
@@ -1209,11 +1208,7 @@ The library documentation is available on header files.
 #-----------------------------------------------------------------------
 
 %prep
-%if "%{beta}" == ""
 %setup -q
-%else
-%setup -q -n %{name}-software-compilation-%{version}-%{beta} -a 1
-%endif
 find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
 find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 
@@ -1233,7 +1228,15 @@ cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
 popd
 
 %build
-%cmake_kde4 -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF -DENABLE_LCMS2=ON
+%if "%{disttag}" == "omv"
+# to find qca2
+export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
+%endif
+
+%cmake_kde4 \
+	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
+	-DENABLE_BALOOSUPPORT=ON \
+	-DENABLE_LCMS2=ON
 %make
 
 %install
