@@ -34,6 +34,7 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
+BuildRequires:	kfilemetadata-devel
 %if "%{disttag}" == "omv"
 BuildRequires:	pkgconfig(qca2)
 %endif
