@@ -3,8 +3,8 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	4.4.0
-Release:	4
+Version:	4.9.0
+Release:	1
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -13,9 +13,7 @@ Source2:	kipiplugin_expoblending_ru.po
 Source3:	kipiplugin_panorama_ru.po
 Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
-Patch0:		digikam-2.4.1-use-external-libvkontake.patch
-Patch1:		digikam-4.4.0-soversion.patch
-Patch2:		digikam-4.4.0-exiv2.patch
+Patch1:		digikam-4.9.0-soversion.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
@@ -46,9 +44,11 @@ BuildRequires:	pkgconfig(lensfun)
 BuildRequires:	pkgconfig(libgphoto2)
 BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libkexiv2)
+BuildRequires:	pkgconfig(libkface)
 BuildRequires:	pkgconfig(libksane)
 BuildRequires:	pkgconfig(libkdcraw)
 BuildRequires:	pkgconfig(libkipi)
+BuildRequires:	pkgconfig(libpgf)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
 BuildRequires:	pkgconfig(opencv)
@@ -67,7 +67,6 @@ Requires:	mysql-common
 Requires:	kdebase4-runtime
 Requires:	kipi-common
 Requires:	kipi-plugins
-Requires:	libkface-common
 Requires:	libkgeomap-common
 Requires:	libkdcraw-common
 Requires:	qt4-database-plugin-sqlite
@@ -110,25 +109,6 @@ its functionalities.
 %{_kde_mandir}/man1/cleanup_digikamdb.1*
 %{_kde_iconsdir}/*/*/apps/digikam.*
 %{_kde_libdir}/kde4/libexec/digikamdatabaseserver
-
-#-----------------------------------------------------------------------
-
-%package -n libkface-common
-Summary:	Common files for libkface library
-Group:		Graphics
-Url:		https://projects.kde.org/projects/extragear/libs/libkface
-BuildArch:	noarch
-Conflicts:	%{name} < 1:2.0.0-0.rc1.2
-
-%description -n libkface-common
-Common files for libkface library.
-
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
-and detection over pictures.
-
-%files -n libkface-common
-%doc extra/libkface/README extra/libkface/AUTHORS extra/libkface/COPYING
-%{_kde_appsdir}/libkface
 
 #-----------------------------------------------------------------------
 
@@ -206,27 +186,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkface_major 2
-%define libkface %mklibname kface %{libkface_major}
-
-%package -n %{libkface}
-Summary:	Runtime library for %{name}
-Group:		System/Libraries
-Url:		https://projects.kde.org/projects/extragear/libs/libkface
-Obsoletes:	%{_lib}kface1 < 2:3.3.0
-
-%description -n %{libkface}
-Librairie File needed by %{name}
-
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
-and detection over pictures.
-
-%files -n %{libkface}
-%{_kde_libdir}/libkface.so.%{libkface_major}*
-
-#-----------------------------------------------------------------------
-
-%define libkgeomap_major 1
+%define libkgeomap_major 2
 %define libkgeomap %mklibname kgeomap %{libkgeomap_major}
 %define libkmap %mklibname kmap 1
 
@@ -1130,32 +1090,6 @@ wikipedia.org.
 
 #-----------------------------------------------------------------------
 
-%define libkface_devel %mklibname -d kface
-
-%package -n %{libkface_devel}
-Summary:	Headers to build packages against libkface library
-Group:		Development/C
-Conflicts:	%{libnamedev} < 1:2.0.0-rc1.2
-Requires:	%{libkface} = %{EVRD}
-Requires:	libkface-common
-Provides:	kface-devel = %{version}-%{release}
-Provides:	libkface-devel = %{version}-%{release}
-
-%description -n %{libkface_devel}
-This package contains the libraries and headers files needed to develop progams
-which make use of libkface library.
-
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
-and detection over pictures.
-
-%files -n %{libkface_devel}
-%{_includedir}/libkface
-%{_kde_libdir}/libkface.so
-%{_kde_libdir}/pkgconfig/libkface.pc
-%{_kde_appsdir}/cmake/modules/FindKface.cmake
-
-#-----------------------------------------------------------------------
-
 %define libkgeomap_devel %mklibname -d kgeomap
 
 %package -n %{libkgeomap_devel}
@@ -1192,7 +1126,6 @@ Requires:	%{libdigikamcore} = %{EVRD}
 Requires:	%{libdigikamdatabase} = %{EVRD}
 Requires:	%{libkgeomap_devel} = %{EVRD}
 Requires:	%{libmediawiki_devel} = %{EVRD}
-Requires:	%{libkface_devel} = %{EVRD}
 Requires:	%{libkipiplugins} = %{EVRD}
 
 %description -n %{libnamedev}
@@ -1212,12 +1145,7 @@ The library documentation is available on header files.
 find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
 find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 
-%if %{with external_kvkontakte}
-%patch0 -p1
-%endif
-
 %patch1 -p1
-%patch2 -p1
 
 pushd po
 # Remove wallpaper po files (kipiplugin-wallpaper is not build )
@@ -1236,7 +1164,15 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 %cmake_kde4 \
 	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
 	-DENABLE_BALOOSUPPORT=ON \
-	-DENABLE_LCMS2=ON
+	-DENABLE_LCMS2=ON \
+	-DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=OFF \
+	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
+	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
+	-DENABLE_MYSQLSUPPORT=ON \
+%if %{without external_kvkontakte}
+	-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON
+%endif
+
 %make
 
 %install
