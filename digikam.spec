@@ -1,4 +1,4 @@
-%bcond_without external_kvkontakte
+%bcond_with external_kvkontakte
 
 Summary:	A KDE photo management utility
 Name:		digikam
@@ -90,7 +90,7 @@ Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
 %files -f %{name}.lang
-%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO core/TODO.FACE core/TODO.MYSQLPORT
+%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO
 %{_kde_bindir}/digikam
 %{_kde_bindir}/digitaglinktree
 %{_kde_bindir}/cleanup_digikamdb
@@ -1162,10 +1162,8 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 %endif
 
 %cmake_kde4 \
-	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
-	-DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=OFF \
 	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
 	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
 	-DENABLE_MYSQLSUPPORT=ON \
