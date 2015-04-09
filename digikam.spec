@@ -1,3 +1,4 @@
+# standalone version is dead upstream
 %bcond_with external_kvkontakte
 
 Summary:	A KDE photo management utility
@@ -118,7 +119,6 @@ its functionalities.
 Summary:	Common files for libkgeomap library
 Group:		Graphics
 Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
-BuildArch:	noarch
 Conflicts:	%{name} < 1:2.0.0-0.rc1.2
 
 %description -n libkgeomap-common
@@ -130,6 +130,7 @@ photos on a map.
 
 %files -n libkgeomap-common -f libkgeomap.lang
 %doc extra/libkgeomap/README extra/libkgeomap/AUTHORS
+%{_kde_bindir}/libkgeomap_demo
 %{_kde_appsdir}/libkgeomap
 
 #-----------------------------------------------------------------------
@@ -242,6 +243,25 @@ Librairie File needed by %{name}
 
 %files -n %{libkipiplugins}
 %{_kde_libdir}/libkipiplugins.so.%{libkipiplugins_major}*
+
+#-----------------------------------------------------------------------
+
+%define libkvkontakte_major 1
+%define libkvkontakte %mklibname kvkontakte %libkvkontakte_major
+
+%package -n %libkvkontakte
+Summary: Runtime library for %{name}
+Group: System/Libraries
+URL: https://projects.kde.org/projects/extragear/libs/libkvkontakte
+
+%description -n %libkvkontakte
+Librairie File needed by %name
+
+Libkvkontakte is a library for accessing the features of social networking
+site vkontakte.ru.
+
+%files -n %libkvkontakte
+%_kde_libdir/libkvkontakte.so.%{libkvkontakte_major}*
 
 #-----------------------------------------------------------------------
 
@@ -1085,10 +1105,7 @@ libmediawiki is a KDE C++ interface for MediaWiki based web service as
 wikipedia.org.
 
 %files -n %{libmediawiki_devel}
-%{_includedir}/libmediawiki
 %{_kde_libdir}/libmediawiki.so
-%{_kde_libdir}/pkgconfig/libmediawiki.pc
-%{_kde_appsdir}/cmake/modules/FindMediawiki.cmake
 
 #-----------------------------------------------------------------------
 
@@ -1111,10 +1128,29 @@ Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
 and Google Maps,for browsing and arranging photos on a map.
 
 %files -n %{libkgeomap_devel}
-%{_includedir}/libkgeomap
 %{_kde_libdir}/libkgeomap.so
-%{_kde_libdir}/pkgconfig/libkgeomap.pc
-%{_kde_appsdir}/cmake/modules/FindKGeoMap.cmake
+
+#-----------------------------------------------------------------------
+
+%define libkvkontakte_devel %mklibname -d kvkontakte
+%package -n  %libkvkontakte_devel
+Summary:     Headers to build packages against libkvkontakte library
+Group:       Development/C
+Requires:    %libkvkontakte = %epoch:%version-%release
+Provides:    kvkontakte-devel = %version-%release
+Provides:    libkvkontakte-devel = %version-%release
+
+%description -n %libkvkontakte_devel
+This package contains the libraries and headers files needed to develop progams
+which make use of libkvkontakte library.
+
+Libkvkontakte is a library for accessing the features of social networking
+site vkontakte.ru.
+
+%files -n %libkvkontakte_devel
+#%_kde_includedir/libkvkontakte
+%_kde_libdir/libkvkontakte.so
+%_libdir/cmake/LibKVkontakte
 
 #-----------------------------------------------------------------------
 
