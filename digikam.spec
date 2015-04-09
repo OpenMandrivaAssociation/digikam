@@ -19,6 +19,7 @@ BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
 BuildRequires:	imagemagick
+BuildRequires:	qtsoap-devel
 %if %{mdvver} >= 201400
 BuildRequires:	mariadb-server
 %else
@@ -41,6 +42,7 @@ BuildRequires:	pkgconfig(ImageMagick)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(lensfun)
+BuildRequires:	pkgconfig(libusb)
 BuildRequires:	pkgconfig(libgphoto2)
 BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libkexiv2)
@@ -1164,9 +1166,10 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 %cmake_kde4 \
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
+	-DENABLE_KDEPIMLIBSSUPPORT=ON \
 	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
 	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
-	-DENABLE_MYSQLSUPPORT=ON \
+	-DENABLE_MYSQLSUPPORT=ON -DENABLE_INTERNALMYSQL=ON \
 %if %{without external_kvkontakte}
 	-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON
 %endif
