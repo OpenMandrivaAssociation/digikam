@@ -1183,6 +1183,9 @@ The library documentation is available on header files.
 find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
 find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 
+# fix qtsoap find
+sed -i s#/usr/include/qt4#%{_qt_includedir}# extra/kipi-plugins/cmake/modules/FindQtSoap.cmake
+
 %patch1 -p1
 
 pushd po
