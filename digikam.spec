@@ -1,4 +1,4 @@
-%bcond_without external_kvkontakte
+%bcond_with external_kvkontakte
 
 Summary:	A KDE photo management utility
 Name:		digikam
@@ -19,6 +19,7 @@ BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
 BuildRequires:	imagemagick
+BuildRequires:	qtsoap-devel
 %if %{mdvver} >= 201400
 BuildRequires:	mariadb-server
 %else
@@ -41,6 +42,7 @@ BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
+BuildRequires:	pkgconfig(libusb)
 BuildRequires:	pkgconfig(lensfun)
 BuildRequires:	pkgconfig(libgphoto2)
 BuildRequires:	pkgconfig(libgpod-1.0)
@@ -90,7 +92,7 @@ Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
 %files -f %{name}.lang
-%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO core/TODO.FACE core/TODO.MYSQLPORT
+%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO
 %{_kde_bindir}/digikam
 %{_kde_bindir}/digitaglinktree
 %{_kde_bindir}/cleanup_digikamdb
@@ -135,7 +137,6 @@ and detection over pictures.
 Summary:	Common files for libkgeomap library
 Group:		Graphics
 Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
-BuildArch:	noarch
 Conflicts:	%{name} < 1:2.0.0-0.rc1.2
 
 %description -n libkgeomap-common
@@ -147,6 +148,7 @@ photos on a map.
 
 %files -n libkgeomap-common -f libkgeomap.lang
 %doc extra/libkgeomap/README extra/libkgeomap/AUTHORS
+%{_bindir}/libkgeomap_demo
 %{_kde_appsdir}/libkgeomap
 
 #-----------------------------------------------------------------------
@@ -279,6 +281,25 @@ Librairie File needed by %{name}
 
 %files -n %{libkipiplugins}
 %{_kde_libdir}/libkipiplugins.so.%{libkipiplugins_major}*
+
+#-----------------------------------------------------------------------
+
+%define libkvkontakte_major 1
+%define libkvkontakte %mklibname kvkontakte %libkvkontakte_major
+
+%package -n %libkvkontakte
+Summary: Runtime library for %{name}
+Group: System/Libraries
+URL: https://projects.kde.org/projects/extragear/libs/libkvkontakte
+
+%description -n %libkvkontakte
+Librairie File needed by %name
+
+Libkvkontakte is a library for accessing the features of social networking
+site vkontakte.ru.
+
+%files -n %libkvkontakte
+%_kde_libdir/libkvkontakte.so.%{libkvkontakte_major}*
 
 #-----------------------------------------------------------------------
 
@@ -1122,10 +1143,7 @@ libmediawiki is a KDE C++ interface for MediaWiki based web service as
 wikipedia.org.
 
 %files -n %{libmediawiki_devel}
-%{_includedir}/libmediawiki
 %{_kde_libdir}/libmediawiki.so
-%{_kde_libdir}/pkgconfig/libmediawiki.pc
-%{_kde_appsdir}/cmake/modules/FindMediawiki.cmake
 
 #-----------------------------------------------------------------------
 
@@ -1148,10 +1166,8 @@ Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
 and detection over pictures.
 
 %files -n %{libkface_devel}
-%{_includedir}/libkface
 %{_kde_libdir}/libkface.so
-%{_kde_libdir}/pkgconfig/libkface.pc
-%{_kde_appsdir}/cmake/modules/FindKface.cmake
+%{_libdir}/cmake/Kface-3.5.0
 
 #-----------------------------------------------------------------------
 
@@ -1174,10 +1190,29 @@ Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
 and Google Maps,for browsing and arranging photos on a map.
 
 %files -n %{libkgeomap_devel}
-%{_includedir}/libkgeomap
 %{_kde_libdir}/libkgeomap.so
-%{_kde_libdir}/pkgconfig/libkgeomap.pc
-%{_kde_appsdir}/cmake/modules/FindKGeoMap.cmake
+
+#-----------------------------------------------------------------------
+
+%define libkvkontakte_devel %mklibname -d kvkontakte
+%package -n  %libkvkontakte_devel
+Summary:     Headers to build packages against libkvkontakte library
+Group:       Development/C
+Requires:    %libkvkontakte = %epoch:%version-%release
+Provides:    kvkontakte-devel = %version-%release
+Provides:    libkvkontakte-devel = %version-%release
+
+%description -n %libkvkontakte_devel
+This package contains the libraries and headers files needed to develop progams
+which make use of libkvkontakte library.
+
+Libkvkontakte is a library for accessing the features of social networking
+site vkontakte.ru.
+
+%files -n %libkvkontakte_devel
+#%_kde_includedir/libkvkontakte
+%_kde_libdir/libkvkontakte.so
+%_libdir/cmake/LibKVkontakte
 
 #-----------------------------------------------------------------------
 
@@ -1211,6 +1246,9 @@ The library documentation is available on header files.
 find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
 find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
 
+# fix qtsoap find
+sed -i s#/usr/include/qt4#%{_qt_includedir}# extra/kipi-plugins/cmake/modules/FindQtSoap.cmake
+
 %patch1 -p1
 
 pushd po
@@ -1231,11 +1269,12 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
+	-DENABLE_KDEPIMLIBSSUPPORT=ON \
 	-DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=OFF \
 	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
 	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
 	-DDIGIKAMSC_COMPILE_LIBKFACE=ON \
-	-DENABLE_MYSQLSUPPORT=ON \
+	-DENABLE_MYSQLSUPPORT=ON -DENABLE_INTERNALMYSQL=ON \
 %if %{without external_kvkontakte}
 	-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON
 %endif
