@@ -1,0 +1,325 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Julia Dronova <juliette.tux@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/peter17/kipi-plugins/issues\n"
+"POT-Creation-Date: 2013-08-30 11:20+0400\n"
+"PO-Revision-Date: 2013-08-30 14:05+0400\n"
+"Last-Translator: Julia Dronova <juliette.tux@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: dialogs/exportdialog.cpp:99
+msgid "Exit"
+msgstr "Выйти"
+
+#: dialogs/exportdialog.cpp:100 dialogs/exportdialog.cpp:129
+msgid "Video Slide Show"
+msgstr "Видео слайд-шоу"
+
+#: dialogs/exportdialog.cpp:132
+msgid "A Kipi plugin to export images as video slideshow"
+msgstr "Модуль Kipi для экспорта изображений в слайд-шоу"
+
+#: dialogs/exportdialog.cpp:133
+msgid "(c) 2012, A Janardhan Reddy\n"
+msgstr "©А Джанардхан Редди (A Janardhan Reddy), 2012\n"
+
+#: dialogs/exportdialog.cpp:135
+msgid "A Janardhan Reddy"
+msgstr "А Джанардхан Редди"
+
+#: dialogs/exportdialog.cpp:136
+msgid "Developer"
+msgstr "Разработчик"
+
+#: dialogs/exportdialog.cpp:297
+msgid "&Abort"
+msgstr "&Прервать"
+
+#: dialogs/exportdialog.cpp:298
+msgid "Abort the current conversion"
+msgstr "Прервать текущее преобразование"
+
+#: dialogs/exportdialog.cpp:303
+msgid "Con&vert"
+msgstr "Прео&бразовать"
+
+#: dialogs/exportdialog.cpp:304
+msgid "Start converting the images using current settings."
+msgstr ""
+"Начать преобразование изображений, используя "
+"текущие настройки"
+
+#: dialogs/exportdialog.cpp:320
+msgid "There are no images in the list to process."
+msgstr "В списке отсутствуют изображения для обработки"
+
+#: dialogs/exportdialog.cpp:333
+msgid "Video SlideShow"
+msgstr "Видео слайд-шоу"
+
+#: dialogs/myimagelist.cpp:42
+msgid "Image"
+msgstr "Изображение"
+
+#: dialogs/myimagelist.cpp:43 dialogs/slideshowsettingswidget.cpp:293
+msgid "Special Effect"
+msgstr "Спец-эффект"
+
+#: dialogs/myimagelist.cpp:44
+msgid "Time (seconds)"
+msgstr "Время (сек)"
+
+#: dialogs/myimagelist.cpp:45 dialogs/slideshowsettingswidget.cpp:294
+msgid "Transition"
+msgstr "Переход"
+
+#: dialogs/myimagelist.cpp:46 dialogs/slideshowsettingswidget.cpp:295
+msgid "Transition Speed"
+msgstr "Скорость перехода"
+
+#: dialogs/slideshowsettingswidget.cpp:292
+msgid "Image Display Time"
+msgstr "Время показа изображения"
+
+#: dialogs/slideshowsettingswidget.cpp:302
+#: dialogs/slideshowsettingswidget.cpp:307
+#: dialogs/slideshowsettingswidget.cpp:357
+msgid "None"
+msgstr "Нет"
+
+#: dialogs/slideshowsettingswidget.cpp:303
+msgid "Ken-Burn Effect"
+msgstr "Эффект Кена Бёрнса"
+
+#: dialogs/slideshowsettingswidget.cpp:308
+msgid "Random"
+msgstr "Случайно"
+
+#: dialogs/slideshowsettingswidget.cpp:309
+msgid "Fade"
+msgstr "Затухание"
+
+#: dialogs/slideshowsettingswidget.cpp:310
+msgid "Slide Left to Right"
+msgstr "Скользить слева направо"
+
+#: dialogs/slideshowsettingswidget.cpp:311
+msgid "Slide Right to Left"
+msgstr "Скользить справа налево"
+
+#: dialogs/slideshowsettingswidget.cpp:312
+msgid "Slide Top to Bottom"
+msgstr "Скользить сверху вниз"
+
+#: dialogs/slideshowsettingswidget.cpp:313
+msgid "Slide Bottom to Top"
+msgstr "Скользить снизу вверх"
+
+#: dialogs/slideshowsettingswidget.cpp:314
+msgid "Push Left to Right"
+msgstr "Толкать слева направо"
+
+#: dialogs/slideshowsettingswidget.cpp:315
+msgid "Push Right to Left"
+msgstr "Толкать справа налево"
+
+#: dialogs/slideshowsettingswidget.cpp:316
+msgid "Push Top to Bottom"
+msgstr "Толкать сверху вниз"
+
+#: dialogs/slideshowsettingswidget.cpp:317
+msgid "Push Bottom to Top"
+msgstr "Толкать снизу вверх"
+
+#: dialogs/slideshowsettingswidget.cpp:318
+msgid "Swap Left to Right"
+msgstr "Переносить слева направо"
+
+#: dialogs/slideshowsettingswidget.cpp:319
+msgid "Swap Right to Left"
+msgstr "Переносить справа налево"
+
+#: dialogs/slideshowsettingswidget.cpp:320
+msgid "Swap Top to Bottom"
+msgstr "Переносить сверху вниз"
+
+#: dialogs/slideshowsettingswidget.cpp:321
+msgid "Swap Bottom to Top"
+msgstr "Переносить снизу вверх"
+
+#: dialogs/slideshowsettingswidget.cpp:322
+msgid "Roll Left to Right"
+msgstr "Катить слева направо"
+
+#: dialogs/slideshowsettingswidget.cpp:323
+msgid "Roll Right to Left"
+msgstr "Катить справа налево"
+
+#: dialogs/slideshowsettingswidget.cpp:324
+msgid "Roll Top to Bottom"
+msgstr "Катить сверху вниз"
+
+#: dialogs/slideshowsettingswidget.cpp:325
+msgid "Roll Bottom to Top"
+msgstr "Катить снизу вверх"
+
+#: dialogs/slideshowsettingswidget.cpp:329
+msgid "Slow"
+msgstr "Медленно"
+
+#: dialogs/slideshowsettingswidget.cpp:330
+msgid "Medium"
+msgstr "Средне"
+
+#: dialogs/slideshowsettingswidget.cpp:331
+msgid "Fast"
+msgstr "Быстро"
+
+#: dialogs/slideshowsettingswidget.cpp:344
+msgid "Temporary Directory"
+msgstr "Временный каталог"
+
+#: dialogs/slideshowsettingswidget.cpp:345
+msgid "Aspect Ratio Correction"
+msgstr "Коррекция соотношения сторон"
+
+#: dialogs/slideshowsettingswidget.cpp:346
+msgid "Frame Height"
+msgstr "Высота рамки"
+
+#: dialogs/slideshowsettingswidget.cpp:347
+msgid "Frame Width"
+msgstr "Ширина рамки"
+
+#: dialogs/slideshowsettingswidget.cpp:348
+msgid "Aspect Ratio"
+msgstr "Соотношение сторон"
+
+#: dialogs/slideshowsettingswidget.cpp:349
+#: dialogs/slideshowsettingswidget.cpp:426
+#: dialogs/slideshowsettingswidget.cpp:431
+msgid "Browse"
+msgstr "Обзор"
+
+#: dialogs/slideshowsettingswidget.cpp:356
+msgid "Auto"
+msgstr "Автоматически"
+
+#: dialogs/slideshowsettingswidget.cpp:358
+msgid "Fill In"
+msgstr "По ширине"
+
+#: dialogs/slideshowsettingswidget.cpp:359
+msgid "Fit In"
+msgstr "По высоте"
+
+#: dialogs/slideshowsettingswidget.cpp:362
+msgid "default"
+msgstr "по умолчанию"
+
+#: dialogs/slideshowsettingswidget.cpp:363
+msgid "4:3"
+msgstr "4:3"
+
+#: dialogs/slideshowsettingswidget.cpp:364
+msgid "16:9"
+msgstr "16:9"
+
+#: dialogs/slideshowsettingswidget.cpp:401
+msgid "Video Type"
+msgstr "Тип видео"
+
+#: dialogs/slideshowsettingswidget.cpp:402
+msgid "Video Format"
+msgstr "Формат видео"
+
+#: dialogs/slideshowsettingswidget.cpp:406
+msgid "AVI"
+msgstr "AVI"
+
+#: dialogs/slideshowsettingswidget.cpp:407
+msgid "VCD"
+msgstr "VCD"
+
+#: dialogs/slideshowsettingswidget.cpp:408
+msgid "SVCD"
+msgstr "SVCD"
+
+#: dialogs/slideshowsettingswidget.cpp:409
+msgid "XVCD"
+msgstr "XVCD"
+
+#: dialogs/slideshowsettingswidget.cpp:410
+msgid "DVD"
+msgstr "DVD"
+
+#: dialogs/slideshowsettingswidget.cpp:411
+msgid "OGG"
+msgstr "OGG"
+
+#: dialogs/slideshowsettingswidget.cpp:415
+msgid "PAL"
+msgstr "PAL"
+
+#: dialogs/slideshowsettingswidget.cpp:416
+msgid "NTSC"
+msgstr "NTSC"
+
+#: dialogs/slideshowsettingswidget.cpp:417
+msgid "SECAM"
+msgstr "SECAM"
+
+#: dialogs/slideshowsettingswidget.cpp:425
+#: dialogs/slideshowsettingswidget.cpp:475
+msgid "Audio Disabled"
+msgstr "Аудио отключено"
+
+#: dialogs/slideshowsettingswidget.cpp:427
+msgid "Add Audio"
+msgstr "Добавить аудио"
+
+#: dialogs/slideshowsettingswidget.cpp:430
+msgid "Save video"
+msgstr "Сохранить видео"
+
+#: dialogs/slideshowsettingswidget.cpp:454
+msgid "Select temporary directory"
+msgstr "Выбрать временный каталог"
+
+#: plugin/plugin_videoslideshow.cpp:114
+msgid "Export to Video Slide Show..."
+msgstr "Экспорт в видео слайд-шоу..."
+
+#. i18n: file: plugin/kipiplugin_videoslideshowui.rc:6
+#. i18n: ectx: Menu (Tools)
+#: rc.cpp:3 rc.cpp:3
+msgid "&Tools"
+msgstr "&Инструменты"
+
+#. i18n: file: plugin/kipiplugin_videoslideshowui.rc:12
+#. i18n: ectx: ToolBar (mainToolBar)
+#: rc.cpp:6 rc.cpp:6
+msgid "Main Toolbar"
+msgstr "Основная панель"
+
+#: rc.cpp:7 rc.cpp:7
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Юлия Дронова"
+
+#: rc.cpp:8 rc.cpp:8
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "juliette.tux@gmail.com"
+

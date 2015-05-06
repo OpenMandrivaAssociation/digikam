@@ -1,0 +1,560 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Julia Dronova <juliette.tux@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/peter17/kipi-plugins/issues\n"
+"POT-Creation-Date: 2013-08-30 10:39+0400\n"
+"PO-Revision-Date: 2013-08-30 11:02+0400\n"
+"Last-Translator: Julia Dronova <juliette.tux@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: importwizard/importwizarddlg.cpp:86
+msgid "Panorama Creator Wizard"
+msgstr "Мастер создания Panorama"
+
+#: importwizard/intropage.cpp:81
+msgid "<b>Welcome to Panorama Tool</b>"
+msgstr "<b>Добро пожаловать в Panorama!</b>"
+
+#: importwizard/intropage.cpp:88
+msgid ""
+"<qt><p><h1><b>Welcome to Panorama tool</b></h1></p><p>This tool stitches "
+"several images together to create a panorama, making the seam between images "
+"not visible.</p><p>This assistant will help you to configure how to import "
+"images before stitching them into a panorama.</p><p>Images must be taken "
+"from the same point of view.</p><p>For more information, please take a look "
+"at <a href='http://hugin.sourceforge.net/tutorials/overview/en.shtml'>this "
+"page</a></p></qt>"
+msgstr ""
+"<qt><p><h1><b>Добро пожаловать в Panorama!</b></h1></p><p>Этот инструмент "
+"бесшовно сшивает несколько изображений в единую панораму.</p><p>Мастер "
+"поможет вам настроить импорт изображений перед тем, как создавать панораму.</"
+"p><p>Снимки должны быть сделаны из одной точки и иметь одинаковый угол "
+"обзора.</p><p>Более подробную информацию см. на <a href='http://hugin."
+"sourceforge.net/tutorials/overview/en.shtml'>этой странице</a>.</p></qt>"
+
+#: importwizard/intropage.cpp:102
+msgid "Panorama Binaries"
+msgstr "Исполняемые файлы Panorama"
+
+#: importwizard/intropage.cpp:120
+msgid "Panorama Settings"
+msgstr "Настройки панорамы"
+
+#: importwizard/intropage.cpp:123
+msgid "HDR output"
+msgstr "Вывод HDR"
+
+#: importwizard/intropage.cpp:124
+msgid ""
+"When checked, the panorama will be stitched into an High Dynamic Range (HDR) "
+"image, that can be processed further with a dedicated software."
+msgstr ""
+"Если включить эту опцию, панорама будет сшита в одно HDR-изображение "
+"(изображение с широким динамическим диапазоном), которое затем можно будет "
+"обрабатывать в специальных программах."
+
+#: importwizard/intropage.cpp:126
+msgid ""
+"<b>HDR output</b>: Output in High Dynamic Range, meaning that every piece of "
+"information contained in the original photos are preserved. Note that you "
+"need another software to process the resulting panorama, like <a href="
+"\"http://qtpfsgui.sourceforge.net/\">Luminance HDR</a>"
+msgstr ""
+"<b>Вывод HDR</b>: вывод с широким динамическим диапазоном, то есть с "
+"сохранением всей оригинальной информации изображений. Внимание: для "
+"обработки полученной таким образом панорамы понадобится другая программа, "
+"например <a href=\"http://qtpfsgui.sourceforge.net/\">Luminance HDR</a>"
+
+#: importwizard/intropage.cpp:133
+msgid "File Format"
+msgstr "Формат файла"
+
+#: importwizard/intropage.cpp:137
+msgid "JPEG output"
+msgstr "Вывод в JPEG"
+
+#: importwizard/intropage.cpp:139
+#, no-c-format
+msgid ""
+"Selects a JPEG output with 90% compression rate (lossy compression, smaller "
+"size)."
+msgstr ""
+"Вывод в формат JPEG с коэффициентом сжатия 90% (сжатие с потерями, маленький "
+"размер файла)."
+
+#: importwizard/intropage.cpp:141
+msgid ""
+"<b>JPEG output</b>: Using JPEG output, the panorama file will be smaller at "
+"the cost of information loss during compression. This is the easiest way to "
+"share the result, or print it online or in a shop."
+msgstr ""
+"<b>Вывод в JPEG</b>: с использованием формата JPEG файл панорамы будет "
+"небольшим за счёт потери информации в результате сжатия. Это самый простой "
+"способ, если вы хотите поделиться результатом в Интернете или распечать "
+"через он-лайн сервис."
+
+#: importwizard/intropage.cpp:146
+msgid "TIFF output"
+msgstr "Вывод в TIFF"
+
+#: importwizard/intropage.cpp:147
+msgid ""
+"Selects a TIFF output compressed using the LZW algorithm (lossless "
+"compression, bigger size)."
+msgstr ""
+"Вывод в формат TIFF, сжатый с помощью алгоритма LZW (сжатие без потерь, "
+"большой размер файла)"
+
+#: importwizard/intropage.cpp:149
+msgid ""
+"<b>TIFF output</b>: Using TIFF output, you get the same color depth than "
+"your original photos using RAW images at the cost of a bigger panorama file."
+msgstr ""
+"<b>Вывод в TIFF</b>: формат TIFF сохраняет глубину цвета, аналогичную "
+"оригиналам в формате RAW, за счёт большого размера файла панорамы."
+
+#: importwizard/itemspage.cpp:66
+msgid "<b>Set Panorama Images</b>"
+msgstr "<b>Указать изображения для Panorama</b>"
+
+#: importwizard/itemspage.cpp:72
+msgid ""
+"<qt><p>Set here the list of your images to blend into a panorama. Please "
+"follow these conditions:</p><ul><li>Images are taken from the same point of "
+"view.</li><li>Images are taken with the same camera (and lens).</li><li>Do "
+"not mix images with different color depth.</li></ul><p>Note that, in the "
+"case of a 360° panorama, the first image in the list will be the image that "
+"will be in the center of the panorama.</p></qt>"
+msgstr ""
+"<qt><p>Настройка списка изображений, которые нужно сшить в панораму. "
+"Изображения должны отвечать следующим условиям:</p><ul><li>изображения "
+"должны быть сняты из одной точки</li><li>изображения должны быть сняты одной "
+"и той же камерой (и объективом)</li><li>нельзя выбирать изображения с разной "
+"глубиной цвета</li></ul><p>Внимание: в панорамах на  360° первым "
+"изображением в списке стоит изображение, которое будет находиться в центре "
+"панорамы.</p></qt>"
+
+#: importwizard/lastpage.cpp:75
+msgid "<b>Panorama Stitched</b>"
+msgstr "<b>Сшитая панорама</b>"
+
+#: importwizard/lastpage.cpp:88
+msgid "Save Settings"
+msgstr "Сохранить настройки"
+
+#: importwizard/lastpage.cpp:92
+msgid "File name template:"
+msgstr "Шаблон имени файла:"
+
+#: importwizard/lastpage.cpp:96
+msgid "Name of the panorama file (without its extension)."
+msgstr "Имя файла панорамы (без расширения)"
+
+#: importwizard/lastpage.cpp:97
+msgid ""
+"<b>File name template</b>: Set here the base name of the files that will be "
+"saved. For example, if your template is <i>panorama</i> and if you chose a "
+"JPEG output, then your panorama will be saved with the name <i>panorama.jpg</"
+"i>. If you choose to save also the project file, it will have the name "
+"<i>panorama.pto</i>."
+msgstr ""
+"<b>Шаблон имени файла</b>: укажите здесь базовое имя сохраняемых файлов. "
+"Например, с шаблоном <i>panorama</i> и с выводом в формат JPEG, файл "
+"панорамы будет сохранён как <i>panorama.jpg</i>. Если выбрать также "
+"сохранение файла проекта, то у него будет имя <i>panorama.pto</i>."
+
+#: importwizard/lastpage.cpp:103
+msgid "Save project file"
+msgstr "Сохранить файл проекта"
+
+#: importwizard/lastpage.cpp:105
+msgid "Save the project file for further processing within Hugin GUI."
+msgstr "Сохранить файл проекта для дальнейшей  обработки в Hugin."
+
+#: importwizard/lastpage.cpp:106
+msgid ""
+"<b>Save project file</b>: You can keep the project file generated to stitch "
+"your panorama for further tweaking within <a href=\"http://hugin.sourceforge."
+"net/\">Hugin</a> by checking this. This is useful if you want a different "
+"projection, modify the horizon or the center of the panorama, or modify the "
+"control points to get better results."
+msgstr ""
+"<b>Сохранить файл проекта</b>: отметив эту опцию, можно сохранить файл "
+"созданного проекта для дальнейшего изменения в программе <a href=\"http://"
+"hugin.sourceforge.net/\">Hugin</a>. Это удобно, если необходима другая "
+"проекция, если нужно изменить горизонт или центр панорамы, или же изменить "
+"контрольные точки для получения лучшего результата."
+
+#: importwizard/lastpage.cpp:181
+msgid "<qt><p><font color=\"red\"><b>Error:</b> %1</font></p></qt>"
+msgstr "<qt><p><font color=\"red\"><b>Ошибка:</b> %1</font></p></qt>"
+
+#: importwizard/lastpage.cpp:216
+msgid ""
+"<qt><p><h1><b>Panorama Stitching is Done</b></h1></p><p>Congratulations. "
+"Your images are stitched into a panorama.</p><p>Your panorama will be "
+"created to the directory</p><p><b>%1</b></p><p>once you press the <i>Finish</"
+"i> button, with the name set below.</p><p>If you choose to save the project "
+"file, and if your images were raw images then the converted images used "
+"during the stitching process will be copied at the same time (those are TIFF "
+"files that can be big).</p></qt>"
+msgstr ""
+"<qt><p><h1><b>Панорама готова</b></h1></p><p>Поздравляем, ваши изображения "
+"теперь соединены в панораму. </p><p>Как только вы нажмёте кнопку "
+"<i>Завершить</i>, панорама будет создана в каталоге </p><p><b>%1</b></p><p>, "
+"с именем, указанным ниже.</p><p>Если вы выбрали сохранить файл проекта, и "
+"изображения были в формате RAW, то преобразованные изображения, "
+"использованные в процессе склейки, будут также одновременно скопированы туда "
+"(в формате TIFF, большой размер файлов).</p></qt>"
+
+#: importwizard/lastpage.cpp:269
+msgid ""
+"<qt><p><font color=\"red\"><b>Warning:</b> This file already exists.</font></"
+"p></qt>"
+msgstr ""
+"<qt><p><font color=\"red\"><b>Внимание!</b> Этот файл уже существует.</"
+"font></p></qt>"
+
+#: importwizard/optimizepage.cpp:97
+msgid "<b>Optimization</b>"
+msgstr "<b>Оптимизация</b>"
+
+#: importwizard/optimizepage.cpp:110
+msgid "Level horizon"
+msgstr "Выравнивание горизонта"
+
+#: importwizard/optimizepage.cpp:112
+msgid "Detect the horizon and adapt the project to make it horizontal."
+msgstr "Определение линии горизонта и горизонтальная подгонка проекта."
+
+#: importwizard/optimizepage.cpp:113
+msgid ""
+"<b>Level horizon</b>: Detect the horizon and adapt the projection so that "
+"the detected horizon is an horizontal line in the final panorama"
+msgstr ""
+"<b>Выравнивание горизонта</b>: нахождение линии горизонта и подгонка "
+"проекции так, чтобы установленная линия горизонта в панораме была ровной."
+
+#: importwizard/optimizepage.cpp:115
+msgid "Automatic projection"
+msgstr "Автоматическая проекция"
+
+#: importwizard/optimizepage.cpp:117
+msgid ""
+"Adapt the projection of the panorama and the area rendered on the resulting "
+"projection so that every photo fits in the resulting panorama."
+msgstr ""
+"Подгонка проекции панорамы и сформированной области к полученной проекции "
+"таким образом, чтобы каждое изображение умещалось в итоговой панораме."
+
+#: importwizard/optimizepage.cpp:119
+msgid ""
+"<b>Automatic projection</b>: Automatically adapt the projection and the area "
+"rendered of the panorama to get every photos into the panorama."
+msgstr ""
+"<b>Автоматическая проекция</b>: автоматическая настройка проекции и "
+"сформированной "
+"области панорамы так, чтобы каждое изображение поместилось в панораме."
+
+#: importwizard/optimizepage.cpp:129 importwizard/preprocessingpage.cpp:131
+#: importwizard/previewpage.cpp:100
+msgid "Details..."
+msgstr "Подробности..."
+
+#: importwizard/optimizepage.cpp:179
+msgid ""
+"<qt><p>Optimization is in progress, please wait.</p><p>This can take a "
+"while...</p></qt>"
+msgstr ""
+"<qt><p>Ждите, выполняется оптимизация.</p><p>Это может занять некоторое "
+"время...</p></qt>"
+
+#: importwizard/optimizepage.cpp:258
+msgid ""
+"<qt><p>Optimization has failed.</p><p>Press \"Details\" to show processing "
+"messages.</p></qt>"
+msgstr ""
+"<qt><p>Сбой оптимизации.</p><p>Нажмите кнопку «Подробности», чтобы увидеть "
+"журнал обработки.</p></qt>"
+
+#: importwizard/optimizepage.cpp:305 importwizard/preprocessingpage.cpp:249
+msgid "Pre-Processing Messages"
+msgstr "Журнал предварительной обработки"
+
+#: importwizard/optimizepage.cpp:314
+msgid ""
+"<qt><p><h1><b>Images Pre-Processing is Done</b></h1></p><p>The optimization "
+"step according to your settings is ready to be performed.</p><p>This step "
+"can include an automatic leveling of the horizon, and also an automatic "
+"projection selection and size</p><p>To perform this operation, the <b>%1</b> "
+"program from the <a href='%2'>%3</a> project will be used.</p><p>Press the "
+"\"Next\" button to run the optimization.</p></qt>"
+msgstr ""
+"<qt><p><h1><b>Предварительная обработка изображений завершена.</b></h1></"
+"p><p>Теперь можно запускать процесс оптимизации, согласно установленным "
+"настройкам.</p><p>Он может включать в себя автоматическое выравнивание "
+"горизонта, а также автоматический выбор проекции и размеров.</p><p>Чтобы "
+"выполнить этот шаг, будет использована программа <b>%1</b> из проекта<a "
+"href='%2'>%3</a>.</p><p>Чтобы запустить процесс оптимизации, нажмите кнопку "
+"«Далее».</p></qt>"
+
+#: importwizard/preprocessingpage.cpp:106
+msgid "<b>Pre-Processing Images</b>"
+msgstr "<b>Идёт предварительная обработка изображений</b>"
+
+#: importwizard/preprocessingpage.cpp:119
+msgid "Detect moving skies"
+msgstr "Обнаружение подвижных облаков"
+
+#: importwizard/preprocessingpage.cpp:121
+msgid ""
+"Automatic detection of clouds to prevent wrong keypoints matching between "
+"images due to moving clouds."
+msgstr ""
+"Автоматическое обнаружение облаков для предотвращения неправильного "
+"совмещения ключевых точек из-за движения облаков"
+
+#: importwizard/preprocessingpage.cpp:123
+msgid ""
+"<b>Detect moving skies</b>: During the control points selection and "
+"matching, this option discards any points that are associated to a possible "
+"cloud. This is useful to prevent moving clouds from altering the control "
+"points matching process."
+msgstr ""
+"<b>Обнаружение движения облаков</b>: во время выбора контрольных точек эта "
+"опция сбрасывает любые точки, которые могут быть привязаны к возможному "
+"облаку. Это предотвращает движущиеся облака от внесения изменений в процесс "
+"совмещения контрольных точек."
+
+#: importwizard/preprocessingpage.cpp:178
+msgid ""
+"<qt><p>Pre-processing is in progress, please wait.</p><p>This can take a "
+"while...</p></qt>"
+msgstr ""
+"<qt><p>Ждите, выполняется предварительная обработка.</p><p>Это может занять "
+"некоторое время...</p></qt>"
+
+#: importwizard/preprocessingpage.cpp:280
+msgid ""
+"<qt><p>Pre-processing has failed.</p><p>Press \"Details\" to show processing "
+"messages.</p></qt>"
+msgstr ""
+"<qt><p>Сбой предварительной обработки.</p><p>Нажмите кнопку «Подробности», "
+"чтобы увидеть журнал обработки.</p></qt>"
+
+#: importwizard/preprocessingpage.cpp:339
+msgid ""
+"<qt><p>Now, we will pre-process images before stitching them.</p><p>Pre-"
+"processing operations include Raw demosaicing. Raw images will be converted "
+"to 16-bit sRGB images with auto-gamma.</p><p>Pre-processing also include a "
+"calculation of some control points to match overlaps between images. For "
+"that purpose, the <b>%1</b> program from the <a href='%2'>%3</a> project "
+"will be used.</p><p>Press \"Next\" to start pre-processing.</p></qt>"
+msgstr ""
+"<qt><p>Теперь мы проведём предварительную обработку изображений перед тем, "
+"как их сшивать. </p><p>Предварительная обработка включает в себя демозаику "
+"RAW -изображений, которые будут преобразованы в 16-битовые изображения в "
+"формате sRGB с автоматической гамма-коррекцией.</p><p>Также производится "
+"рассчёт некоторых контрольных точек для совмещения перекрывающихся областей "
+"изображений. С этой целью будет использоваться программа <b>%1</b> из "
+"проекта <a href='%2'>%3</a>.</p><p>Для запуска предварительной обработки "
+"нажмите кнопку «Далее».</p></qt>"
+
+#: importwizard/previewpage.cpp:90
+msgid "<b>Preview and Post-Processing</b>"
+msgstr "<b>Предварительный просмотр и пост-обработка</b>"
+
+#: importwizard/previewpage.cpp:148
+msgid "Preview Processing Cancelled."
+msgstr "Отмена рассчёта предварительного просмотра"
+
+#: importwizard/previewpage.cpp:175
+msgid "Processing Panorama Preview..."
+msgstr "Идёт рассчёт предварительного просмотра панорамы..."
+
+#: importwizard/previewpage.cpp:234
+msgid "<qt><p><h1>Panorama Post-Processing</h1></p></qt>"
+msgstr "<qt><p><h1>Пост-обработка панорамы</h1></p></qt>"
+
+#: importwizard/previewpage.cpp:240
+msgid "Panorama Post-Processing"
+msgstr "Пост-обработка панорамы"
+
+#: importwizard/previewpage.cpp:299
+msgid "<qt><h2><b>Error</b></h2><p>%1</p></qt>"
+msgstr "<qt><h2><b>Ошибка</b></h2><p>%1</p></qt>"
+
+#: importwizard/previewpage.cpp:316
+msgid "Processing file %1 / %2: %3"
+msgstr "Обработка файла %1 / %2: %3"
+
+#: importwizard/previewpage.cpp:334
+msgid "Panorama compilation: %1"
+msgstr "Составление панорамы: %1"
+
+#: importwizard/previewpage.cpp:366
+msgid ""
+"<qt><p><h1>Panorama Preview</h1></p><p>Draw a rectangle if you want to crop "
+"the image.</p><p>Pressing the <i>Next</i> button will then launch the final "
+"stitching process.</p></qt>"
+msgstr ""
+"<qt><p><h1>Предварительный просмотр панорамы</h1></p><p>Нарисуйте "
+"прямоугольник, "
+"если нужно обрезать изображение. Нажатие на кнопку <i>Далее</i> запустит "
+"завершающий "
+"процесс сшивания.</p></qt>"
+
+#: importwizard/previewpage.cpp:382 importwizard/previewpage.cpp:427
+msgid "Processing file %1 / %2"
+msgstr "Обработка файла %1 / %2"
+
+#: importwizard/previewpage.cpp:397 importwizard/previewpage.cpp:433
+msgid "Panorama compilation"
+msgstr "Составление панорамы"
+
+#: plugin/aboutdata.h:41
+msgid "Panorama Stitching"
+msgstr "Сшивание панорамы"
+
+#: plugin/aboutdata.h:43
+msgid "A tool to automatically stitch images into panorama"
+msgstr "Инструмент для автоматического сшивания изображений в панораму"
+
+#: plugin/aboutdata.h:44
+msgid "(c) 2011-2013, Benjamin Girault"
+msgstr "©Бенжамин Жиро (Benjamin Girault), 2011-2013"
+
+#: plugin/aboutdata.h:46
+msgid "Benjamin Girault"
+msgstr "Бенжамин Жиро (Benjamin Girault)"
+
+#: plugin/aboutdata.h:47
+msgid "Author"
+msgstr "Автор"
+
+#: plugin/aboutdata.h:50
+msgid "Gilles Caulier"
+msgstr "Жиль Колье (Gilles Caulier)"
+
+#: plugin/aboutdata.h:51
+msgid "Developer"
+msgstr "Разработчик"
+
+#: plugin/panorama.cpp:56
+msgid "File(s) to open"
+msgstr "Открыть файл(ы)"
+
+#: plugin/plugin_panorama.cpp:104
+msgid "Stitch images into a panorama..."
+msgstr "Объединить изображения  в панораму..."
+
+#. i18n: file: plugin/kipiplugin_panoramaui.rc:6
+#. i18n: ectx: Menu (Tools)
+#: rc.cpp:3
+msgid "&Tools"
+msgstr "&Инструменты"
+
+#. i18n: file: plugin/kipiplugin_panoramaui.rc:12
+#. i18n: ectx: ToolBar (mainToolBar)
+#: rc.cpp:6
+msgid "Main Toolbar"
+msgstr "Основная панель инструментов"
+
+#: rc.cpp:7
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Юлия Дронова"
+
+#: rc.cpp:8
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "juliette.tux@gmail.com"
+
+#: tasks/copyfilestask.cpp:71
+msgid "Temporary panorama file does not exists."
+msgstr "Временный файл панорамы не существует"
+
+#: tasks/copyfilestask.cpp:78 tasks/copyfilestask.cpp:92
+msgid "A file named %1 already exists."
+msgstr "Файл с именем %1 уже существует."
+
+#: tasks/copyfilestask.cpp:85
+msgid "Temporary project file does not exist."
+msgstr "Временного файла проекта не существует"
+
+#: tasks/copyfilestask.cpp:101
+msgid "Cannot move panorama from %1 to %2."
+msgstr "Не удалось переместить панораму из %1 в %2."
+
+#: tasks/copyfilestask.cpp:114
+msgid "Cannot move project file from %1 to %2."
+msgstr "Не удалось переместить файл проекта из %1 в %2."
+
+#: tasks/copyfilestask.cpp:131
+msgid "Cannot copy converted image file from %1 to %2."
+msgstr "Не удалось скопировать файл преобразованного изображения из %1 в %2."
+
+#: tasks/createfinalptotask.cpp:62 tasks/createptotask.cpp:67
+msgid "PTO file already created in the temporary directory."
+msgstr "Файл PTO уже был создан во временном каталоге"
+
+#: tasks/createfinalptotask.cpp:68 tasks/createptotask.cpp:73
+msgid "PTO file cannot be created in the temporary directory."
+msgstr "Не удалось создать файл PTO во временном каталоге"
+
+#: tasks/createpreviewtask.cpp:65
+msgid "Missing project file."
+msgstr "Файл проекта отсутствует."
+
+#: tasks/createpreviewtask.cpp:74 tasks/createpreviewtask.cpp:83
+msgid "Project file parsing failed."
+msgstr "Сбой отрисовки файла проекта"
+
+#: tasks/createpreviewtask.cpp:107
+msgid "Unknown input file in the project file: %1"
+msgstr "Неизвестный входной файл в файле проекта: %1"
+
+#: tasks/preprocesstask.cpp:126
+msgid "Input image cannot be loaded for preview generation"
+msgstr ""
+"Не удалось загрузить исходное изображение для создания предварительного "
+"просмотра"
+
+#: tasks/preprocesstask.cpp:162
+msgid "Operation canceled."
+msgstr "Действие отменено."
+
+#: tasks/preprocesstask.cpp:192
+msgid "Tiff image creation failed."
+msgstr "Сбой создания изображения в формате TIFF."
+
+#: tasks/preprocesstask.cpp:202
+msgid "Raw file conversion failed."
+msgstr "Сбой преобразования файла RAW"
+
+#: tasks/task.cpp:62
+msgid ""
+"Cannot run %1:\n"
+"\n"
+" %2"
+msgstr ""
+"Не удалось запустить %1:\n"
+"\n"
+" %2"
+
+#~ msgid "Cannot read project file."
+#~ msgstr "Не удалось прочитать файл проекта."
+
+#~ msgid "Preview project file cannot be created."
+#~ msgstr "Не удалось создать файл предварительного просмотра проекта."
