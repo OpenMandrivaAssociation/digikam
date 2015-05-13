@@ -3,7 +3,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	4.9.0
+Version:	4.10.0
 Release:	0.1
 License:	GPLv2+
 Group:		Graphics
@@ -453,7 +453,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-debianscreenshot
 A tool to export images to the Debian Screenshots site.
 
-%files -n kipi-plugins-debianscreenshot
+%files -n kipi-plugins-debianscreenshot -f kipiplugin_debianscreenshots.lang
 %{_kde_appsdir}/kipi/kipiplugin_debianscreenshotsui.rc
 %{_kde_libdir}/kde4/kipiplugin_debianscreenshots.so
 %{_kde_services}/kipiplugin_debianscreenshots.desktop
@@ -469,7 +469,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-dlna
 A tool to support DLNA.
 
-%files -n kipi-plugins-dlna
+%files -n kipi-plugins-dlna -f kipiplugin_dlnaexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
 %{_kde_appsdir}/kipiplugin_dlnaexport
 %{_kde_libdir}/kde4/kipiplugin_dlnaexport.so
@@ -507,7 +507,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-dropbox
 A tool to export images to a remote Dropbox web service.
 
-%files -n kipi-plugins-dropbox
+%files -n kipi-plugins-dropbox -f kipiplugin_dropbox.lang
 %{_kde_appsdir}/kipi/kipiplugin_dropboxui.rc
 %{_kde_libdir}/kde4/kipiplugin_dropbox.so
 %{_kde_services}/kipiplugin_dropbox.desktop
@@ -622,7 +622,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-googledrive
 A tool to export images to a remote Google Drive web service.
 
-%files -n kipi-plugins-googledrive
+%files -n kipi-plugins-googledrive -f kipiplugin_googledrive.lang
 %{_kde_appsdir}/kipi/kipiplugin_googledriveui.rc
 %{_kde_libdir}/kde4/kipiplugin_googledrive.so
 %{_kde_services}/kipiplugin_googledrive.desktop
@@ -694,7 +694,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-imageshack
 A tool to export images to ImageShack.
 
-%files -n kipi-plugins-imageshack
+%files -n kipi-plugins-imageshack -f kipiplugin_imageshackexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_imageshackexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imageshackexport.so
 %{_kde_services}/kipiplugin_imageshackexport.desktop
@@ -711,7 +711,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-imgurexport
 A tool to export pictures to Imgur.
 
-%files -n kipi-plugins-imgurexport
+%files -n kipi-plugins-imgurexport -f kipiplugin_imgurexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_imgurexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imgurexport.so
 %{_kde_services}/kipiplugin_imgurexport.desktop
@@ -745,7 +745,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-jalbumexport
 A tool to export images to a remote JAlbum.
 
-%files -n kipi-plugins-jalbumexport
+%files -n kipi-plugins-jalbumexport -f kipiplugin_jalbumexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_jalbumexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_jalbumexport.so
 %{_kde_services}/kipiplugin_jalbumexport.desktop
@@ -797,7 +797,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-kmlexport
 A plugin to create KML files to present images with coordinates.
 
-%files -n kipi-plugins-kmlexport
+%files -n kipi-plugins-kmlexport -f kipiplugin_kmlexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_kmlexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_kmlexport.so
 %{_kde_services}/kipiplugin_kmlexport.desktop
@@ -813,7 +813,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-kopete
 A tool to export images to an instant messaging contact.
 
-%files -n kipi-plugins-kopete
+%files -n kipi-plugins-kopete -f kipiplugin_kopete.lang
 %{_kde_appsdir}/kipi/kipiplugin_kopeteui.rc
 %{_kde_libdir}/kde4/kipiplugin_kopete.so
 %{_kde_services}/kipiplugin_kopete.desktop
@@ -867,7 +867,7 @@ Requires:	kipi-common
 %description -n kipiplugin-photolayouts-editor
 Photo Layouts Editor.
 
-%files -n kipiplugin-photolayouts-editor
+%files -n kipiplugin-photolayouts-editor -f kipiplugin_photolayouteditor.lang
 %{_kde_appsdir}/kipi/kipiplugin_photolayoutseditorui.rc
 %{_kde_appsdir}/photolayoutseditor
 %{_kde_applicationsdir}/photolayoutseditor.desktop
@@ -946,7 +946,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-rajceexport
 A tool to export images to a remote rajce.net service.
 
-%files -n kipi-plugins-rajceexport
+%files -n kipi-plugins-rajceexport -f kipiplugin_rajceexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_rajceexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_rajceexport.so
 %{_kde_services}/kipiplugin_rajceexport.desktop
@@ -1085,7 +1085,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-vkontakte
 A tool to export on VKontakte.ru Web service
 
-%files -n kipi-plugins-vkontakte
+%files -n kipi-plugins-vkontakte -f kipiplugin_vkontakte.lang
 %{_kde_appsdir}/kipi/kipiplugin_vkontakteui.rc
 %{_kde_libdir}/kde4/kipiplugin_vkontakte.so
 %{_kde_services}/kipiplugin_vkontakte.desktop
@@ -1101,7 +1101,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-wikimedia
 A tool to export images to a remote MediaWiki site
 
-%files -n kipi-plugins-wikimedia
+%files -n kipi-plugins-wikimedia -f kipiplugin_wikimedia.lang
 %{_kde_appsdir}/kipi/kipiplugin_wikimediaui.rc
 %{_kde_libdir}/kde4/kipiplugin_wikimedia.so
 %{_kde_services}/kipiplugin_wikimedia.desktop
@@ -1118,7 +1118,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-yandexfotki
 A tool to export images to a remote Yandex.Fotki web service.
 
-%files -n kipi-plugins-yandexfotki
+%files -n kipi-plugins-yandexfotki -f kipiplugin_yandexfotki.lang
 %{_kde_appsdir}/kipi/kipiplugin_yandexfotkiui.rc
 %{_kde_libdir}/kde4/kipiplugin_yandexfotki.so
 %{_kde_services}/kipiplugin_yandexfotki.desktop
@@ -1286,6 +1286,9 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 
 rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 
+# photivo plugin not ready yet
+rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/*photivo*.mo
+
 %find_lang %{name} --with-html || touch %{name}.lang
 %find_lang showfoto --with-html || touch showfoto.lang
 %find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html || touch kipi-plugins.lang
@@ -1318,5 +1321,20 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang kipiplugin_smug || touch kipiplugin_smug.lang
 %find_lang kipiplugin_timeadjust || touch kipiplugin_timeadjust.lang
 %find_lang kipiplugin_videoslideshow || touch kipiplugin_videoslideshow.lang
+%find_lang kipiplugin_debianscreenshots || touch kipiplugin_debianscreenshots.lang
+%find_lang kipiplugin_dlnaexport || touch kipiplugin_dlnaexport.lang
+%find_lang kipiplugin_dropbox || touch kipiplugin_dropbox.lang
+%find_lang kipiplugin_googledrive || touch kipiplugin_googledrive.lang
+%find_lang kipiplugin_imageshackexport || touch kipiplugin_imageshackexport.lang
+%find_lang kipiplugin_imgurexport || touch kipiplugin_imgurexport.lang
+%find_lang kipiplugin_jalbumexport || touch kipiplugin_jalbumexport.lang
+%find_lang kipiplugin_kmlexport || touch kipiplugin_kmlexport.lang
+%find_lang kipiplugin_kopete || touch kipiplugin_kopete.lang
+#find_lang kipiplugin_photivointegration || touch kipiplugin_photivointegration.lang
+%find_lang kipiplugin_photolayouteditor || touch kipiplugin_photolayouteditor.lang
+%find_lang kipiplugin_rajceexport || touch kipiplugin_rajceexport.lang
+%find_lang kipiplugin_vkontakte || touch kipiplugin_vkontakte.lang
+%find_lang kipiplugin_wikimedia || touch kipiplugin_wikimedia.lang
+%find_lang kipiplugin_yandexfotki || touch kipiplugin_yandexfotki.lang
 %find_lang libkgeomap || touch libkgeomap.lang
 
