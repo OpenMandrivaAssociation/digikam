@@ -1,15 +1,18 @@
 # standalone version is dead upstream
 %bcond_with external_kvkontakte
 
+# Disable until libmediawiki gets individual tarball release
+%bcond_with wikimedia
+
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	4.9.0
+Version:	4.10.0
 Release:	1
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
-Source0:	http://downloads.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
+Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.bz2
 Source2:	kipiplugin_expoblending_ru.po
 Source3:	kipiplugin_panorama_ru.po
 Source4:	kipiplugin_videoslideshow_ru.po
@@ -29,9 +32,8 @@ BuildRequires:	mysql-common
 %endif
 BuildRequires:	baloo-devel
 BuildRequires:	gomp-devel
-BuildRequires:	hupnp-devel
-BuildRequires:	kdelibs4-devel
-BuildRequires:	kdepimlibs4-devel
+BuildRequires:	kdelibs-devel
+BuildRequires:	kdepimlibs-devel
 BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
 %if "%{disttag}" == "omv"
@@ -46,8 +48,10 @@ BuildRequires:	pkgconfig(lensfun)
 BuildRequires:	pkgconfig(libusb)
 BuildRequires:	pkgconfig(libgphoto2)
 BuildRequires:	pkgconfig(libgpod-1.0)
+BuildRequires:	pkgconfig(kqoauth)
 BuildRequires:	pkgconfig(libkexiv2)
 BuildRequires:	pkgconfig(libkface)
+BuildRequires:	pkgconfig(libkgeomap)
 BuildRequires:	pkgconfig(libksane)
 BuildRequires:	pkgconfig(libkdcraw)
 BuildRequires:	pkgconfig(libkipi)
@@ -67,10 +71,9 @@ Requires:	mariadb-common
 Requires:	mysql-core
 Requires:	mysql-common
 %endif
-Requires:	kdebase4-runtime
+Requires:	kdebase-runtime
 Requires:	kipi-common
 Requires:	kipi-plugins
-Requires:	libkgeomap-common
 Requires:	libkdcraw-common
 Requires:	qt4-database-plugin-sqlite
 Requires:	libgphoto-common
@@ -93,7 +96,7 @@ Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
 %files -f %{name}.lang
-%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README core/TODO
+%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README
 %{_kde_bindir}/digikam
 %{_kde_bindir}/digitaglinktree
 %{_kde_bindir}/cleanup_digikamdb
@@ -112,26 +115,6 @@ its functionalities.
 %{_kde_mandir}/man1/cleanup_digikamdb.1*
 %{_kde_iconsdir}/*/*/apps/digikam.*
 %{_kde_libdir}/kde4/libexec/digikamdatabaseserver
-
-#-----------------------------------------------------------------------
-
-%package -n libkgeomap-common
-Summary:	Common files for libkgeomap library
-Group:		Graphics
-Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
-Conflicts:	%{name} < 1:2.0.0-0.rc1.2
-
-%description -n libkgeomap-common
-Common files for libkgeomap library
-
-Libkgeomap is a wrapper around world map components as Marble,
-OpenstreetMap and Google Maps, for browsing and arranging
-photos on a map.
-
-%files -n libkgeomap-common -f libkgeomap.lang
-%doc extra/libkgeomap/README extra/libkgeomap/AUTHORS
-%{_kde_bindir}/libkgeomap_demo
-%{_kde_appsdir}/libkgeomap
 
 #-----------------------------------------------------------------------
 
@@ -186,46 +169,6 @@ Librairie File needed by %{name}
 
 %files -n %{libdigikamcore}
 %{_kde_libdir}/libdigikamcore.so.%{libdigikamcore_major}*
-
-#-----------------------------------------------------------------------
-
-%define libkgeomap_major 2
-%define libkgeomap %mklibname kgeomap %{libkgeomap_major}
-%define libkmap %mklibname kmap 1
-
-%package -n %{libkgeomap}
-Summary:	Runtime library for %{name}
-Group:		System/Libraries
-Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
-Obsoletes:	%{libkmap} < 1:2.0.0-0.rc1.2
-
-%description -n %{libkgeomap}
-Librairie File needed by %{name}
-
-Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
-and Google Maps,for browsing and arranging photos on a map.
-
-%files -n %{libkgeomap}
-%{_kde_libdir}/libkgeomap.so.%{libkgeomap_major}*
-
-#-----------------------------------------------------------------------
-
-%define libmediawiki_major 1
-%define libmediawiki %mklibname mediawiki %{libmediawiki_major}
-
-%package -n %{libmediawiki}
-Summary:	Runtime library for %{name}
-Group:		System/Libraries
-Url:		https://projects.kde.org/projects/extragear/libs/libmediawiki
-
-%description -n %{libmediawiki}
-Librairie File needed by %{name}
-
-libmediawiki is a KDE C++ interface for MediaWiki based
-web service as wikipedia.org.
-
-%files -n %{libmediawiki}
-%{_kde_libdir}/libmediawiki.so.%{libmediawiki_major}*
 
 #-----------------------------------------------------------------------
 
@@ -309,7 +252,11 @@ Suggests:	kipi-plugins-smug
 Suggests:	kipi-plugins-timeadjust
 Suggests:	kipi-plugins-videoslideshow
 Suggests:	kipi-plugins-vkontakte
+%if %{with wikimedia}
 Suggests:	kipi-plugins-wikimedia
+%else
+Obsoletes:	kipi-plugins-wikimedia < %{EVRD}
+%endif
 Suggests:	kipi-plugins-yandexfotki
 
 %description -n kipi-plugins
@@ -415,7 +362,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-debianscreenshot
 A tool to export images to the Debian Screenshots site.
 
-%files -n kipi-plugins-debianscreenshot
+%files -n kipi-plugins-debianscreenshot -f kipiplugin_debianscreenshots.lang
 %{_kde_appsdir}/kipi/kipiplugin_debianscreenshotsui.rc
 %{_kde_libdir}/kde4/kipiplugin_debianscreenshots.so
 %{_kde_services}/kipiplugin_debianscreenshots.desktop
@@ -431,7 +378,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-dlna
 A tool to support DLNA.
 
-%files -n kipi-plugins-dlna
+%files -n kipi-plugins-dlna -f kipiplugin_dlnaexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_dlnaexportui.rc
 %{_kde_appsdir}/kipiplugin_dlnaexport
 %{_kde_libdir}/kde4/kipiplugin_dlnaexport.so
@@ -469,7 +416,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-dropbox
 A tool to export images to a remote Dropbox web service.
 
-%files -n kipi-plugins-dropbox
+%files -n kipi-plugins-dropbox -f kipiplugin_dropbox.lang
 %{_kde_appsdir}/kipi/kipiplugin_dropboxui.rc
 %{_kde_libdir}/kde4/kipiplugin_dropbox.so
 %{_kde_services}/kipiplugin_dropbox.desktop
@@ -584,7 +531,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-googledrive
 A tool to export images to a remote Google Drive web service.
 
-%files -n kipi-plugins-googledrive
+%files -n kipi-plugins-googledrive -f kipiplugin_googledrive.lang
 %{_kde_appsdir}/kipi/kipiplugin_googledriveui.rc
 %{_kde_libdir}/kde4/kipiplugin_googledrive.so
 %{_kde_services}/kipiplugin_googledrive.desktop
@@ -656,7 +603,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-imageshack
 A tool to export images to ImageShack.
 
-%files -n kipi-plugins-imageshack
+%files -n kipi-plugins-imageshack -f kipiplugin_imageshackexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_imageshackexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imageshackexport.so
 %{_kde_services}/kipiplugin_imageshackexport.desktop
@@ -673,7 +620,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-imgurexport
 A tool to export pictures to Imgur.
 
-%files -n kipi-plugins-imgurexport
+%files -n kipi-plugins-imgurexport -f kipiplugin_imgurexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_imgurexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_imgurexport.so
 %{_kde_services}/kipiplugin_imgurexport.desktop
@@ -707,7 +654,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-jalbumexport
 A tool to export images to a remote JAlbum.
 
-%files -n kipi-plugins-jalbumexport
+%files -n kipi-plugins-jalbumexport -f kipiplugin_jalbumexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_jalbumexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_jalbumexport.so
 %{_kde_services}/kipiplugin_jalbumexport.desktop
@@ -759,7 +706,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-kmlexport
 A plugin to create KML files to present images with coordinates.
 
-%files -n kipi-plugins-kmlexport
+%files -n kipi-plugins-kmlexport -f kipiplugin_kmlexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_kmlexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_kmlexport.so
 %{_kde_services}/kipiplugin_kmlexport.desktop
@@ -829,7 +776,7 @@ Requires:	kipi-common
 %description -n kipiplugin-photolayouts-editor
 Photo Layouts Editor.
 
-%files -n kipiplugin-photolayouts-editor
+%files -n kipiplugin-photolayouts-editor -f kipiplugin_photolayouteditor.lang
 %{_kde_appsdir}/kipi/kipiplugin_photolayoutseditorui.rc
 %{_kde_appsdir}/photolayoutseditor
 %{_kde_applicationsdir}/photolayoutseditor.desktop
@@ -908,7 +855,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-rajceexport
 A tool to export images to a remote rajce.net service.
 
-%files -n kipi-plugins-rajceexport
+%files -n kipi-plugins-rajceexport -f kipiplugin_rajceexport.lang
 %{_kde_appsdir}/kipi/kipiplugin_rajceexportui.rc
 %{_kde_libdir}/kde4/kipiplugin_rajceexport.so
 %{_kde_services}/kipiplugin_rajceexport.desktop
@@ -1047,13 +994,14 @@ Requires:	kipi-common
 %description -n kipi-plugins-vkontakte
 A tool to export on VKontakte.ru Web service
 
-%files -n kipi-plugins-vkontakte
+%files -n kipi-plugins-vkontakte -f kipiplugin_vkontakte.lang
 %{_kde_appsdir}/kipi/kipiplugin_vkontakteui.rc
 %{_kde_libdir}/kde4/kipiplugin_vkontakte.so
 %{_kde_services}/kipiplugin_vkontakte.desktop
 
 #-----------------------------------------------------------------------
 
+%if %{with wikimedia}
 %package -n kipi-plugins-wikimedia
 Summary:	Wikimedia Export Kipi Plugin
 Group:		System/Libraries
@@ -1063,11 +1011,12 @@ Requires:	kipi-common
 %description -n kipi-plugins-wikimedia
 A tool to export images to a remote MediaWiki site
 
-%files -n kipi-plugins-wikimedia
+%files -n kipi-plugins-wikimedia -f kipiplugin_wikimedia.lang
 %{_kde_appsdir}/kipi/kipiplugin_wikimediaui.rc
 %{_kde_libdir}/kde4/kipiplugin_wikimedia.so
 %{_kde_services}/kipiplugin_wikimedia.desktop
 %{_kde_iconsdir}/hicolor/*/apps/kipi-wikimedia.*
+%endif
 
 #-----------------------------------------------------------------------
 
@@ -1080,55 +1029,10 @@ Requires:	kipi-common
 %description -n kipi-plugins-yandexfotki
 A tool to export images to a remote Yandex.Fotki web service.
 
-%files -n kipi-plugins-yandexfotki
+%files -n kipi-plugins-yandexfotki -f kipiplugin_yandexfotki.lang
 %{_kde_appsdir}/kipi/kipiplugin_yandexfotkiui.rc
 %{_kde_libdir}/kde4/kipiplugin_yandexfotki.so
 %{_kde_services}/kipiplugin_yandexfotki.desktop
-
-#-----------------------------------------------------------------------
-
-%define libnamedev %mklibname digikam -d
-%define libmediawiki_devel %mklibname -d mediawiki
-
-%package -n %{libmediawiki_devel}
-Summary:	Headers to build packages against libmediawiki library
-Group:		Development/C
-Conflicts:	%{libnamedev} < 1:2.0.0-rc1.2
-Requires:	%{libmediawiki} = %{EVRD}
-Provides:	libmediawiki-devel = %{EVRD}
-
-%description -n %{libmediawiki_devel}
-This package contains the libraries and headers files needed to develop progams
-which make use of libmediawiki library.
-
-libmediawiki is a KDE C++ interface for MediaWiki based web service as 
-wikipedia.org.
-
-%files -n %{libmediawiki_devel}
-%{_kde_libdir}/libmediawiki.so
-
-#-----------------------------------------------------------------------
-
-%define libkgeomap_devel %mklibname -d kgeomap
-
-%package -n %{libkgeomap_devel}
-Summary:	Headers to build packages against libkgeomap library
-Group:		Development/C
-Conflicts:	%{libnamedev} < 1:2.0.0-rc1.2
-Requires:	libkgeomap-common
-Requires:	%{libkgeomap} = %{EVRD}
-Provides:	kgeomap-devel = %{version}-%{release}
-Provides:	libkgeomap-devel = %{version}-%{release}
-
-%description -n %{libkgeomap_devel}
-This package contains the libraries and headers files needed to develop progams
-which make use of libkgeomap (old libkmap) library.
-
-Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
-and Google Maps,for browsing and arranging photos on a map.
-
-%files -n %{libkgeomap_devel}
-%{_kde_libdir}/libkgeomap.so
 
 #-----------------------------------------------------------------------
 
@@ -1151,30 +1055,6 @@ site vkontakte.ru.
 #%_kde_includedir/libkvkontakte
 %_kde_libdir/libkvkontakte.so
 %_libdir/cmake/LibKVkontakte
-
-#-----------------------------------------------------------------------
-
-%package -n %{libnamedev}
-Summary:	Static libraries and headers for %{name}
-Group:		Development/C
-Provides:	lib%{name}-devel = %{EVRD}
-Provides:	kipi-plugins-devel = %{EVRD}
-Obsoletes:	kipi-plugins-devel < 1:2.0.0
-Requires:	%{libdigikamcore} = %{EVRD}
-Requires:	%{libdigikamdatabase} = %{EVRD}
-Requires:	%{libkgeomap_devel} = %{EVRD}
-Requires:	%{libmediawiki_devel} = %{EVRD}
-Requires:	%{libkipiplugins} = %{EVRD}
-
-%description -n %{libnamedev}
-%{libnamedev} contains the libraries and header files needed to
-develop programs which make use of %{name}.
-The library documentation is available on header files.
-
-%files -n %{libnamedev}
-%{_kde_libdir}/libdigikamcore.so
-%{_kde_libdir}/libdigikamdatabase.so
-%{_kde_libdir}/libkipiplugins.so
 
 #-----------------------------------------------------------------------
 
@@ -1206,9 +1086,11 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
 	-DENABLE_KDEPIMLIBSSUPPORT=ON \
-	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
-	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
-	-DENABLE_MYSQLSUPPORT=ON -DENABLE_INTERNALMYSQL=ON \
+    -DDIGIKAMSC_COMPILE_LIBKFACE=OFF \
+	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF \
+	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF \
+	-DENABLE_MYSQLSUPPORT=ON \
+    -DENABLE_INTERNALMYSQL=ON \
 %if %{without external_kvkontakte}
 	-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON
 %endif
@@ -1220,6 +1102,18 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 
 rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 
+# Plugin not ready for production yet, disabled upstream
+rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/kipiplugin_photivointegration.mo
+
+%if %{without wikimedia}
+rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
+%endif
+
+# Seems to be useless
+rm -f %{buildroot}%{_kde_libdir}/libdigikamcore.so
+rm -f %{buildroot}%{_kde_libdir}/libdigikamdatabase.so
+rm -f %{buildroot}%{_kde_libdir}/libkipiplugins.so
+
 %find_lang %{name} --with-html || touch %{name}.lang
 %find_lang showfoto --with-html || touch showfoto.lang
 %find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html || touch kipi-plugins.lang
@@ -1228,23 +1122,34 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang kipiplugin_advancedslideshow || touch kipiplugin_advancedslideshow.lang
 %find_lang kipiplugin_batchprocessimages || touch kipiplugin_batchprocessimages.lang
 %find_lang kipiplugin_calendar || touch kipiplugin_calendar.lang
+%find_lang kipiplugin_debianscreenshots || touch kipiplugin_debianscreenshots.lang
+%find_lang kipiplugin_dlnaexport || touch kipiplugin_dlnaexport.lang
 %find_lang kipiplugin_dngconverter || touch kipiplugin_dngconverter.lang
+%find_lang kipiplugin_dropbox || touch kipiplugin_dropbox.lang
 %find_lang kipiplugin_expoblending || touch kipiplugin_expoblending.lang
 %find_lang kipiplugin_facebook || touch kipiplugin_facebook.lang
 %find_lang kipiplugin_flashexport || touch kipiplugin_flashexport.lang
 %find_lang kipiplugin_flickrexport || touch kipiplugin_flickrexport.lang
 %find_lang kipiplugin_galleryexport || touch kipiplugin_galleryexport.lang
+%find_lang kipiplugin_googledrive || touch kipiplugin_googledrive.lang
 %find_lang kipiplugin_gpssync || touch kipiplugin_gpssync.lang
 %find_lang kipiplugin_htmlexport || touch kipiplugin_htmlexport.lang
+%find_lang kipiplugin_imageshackexport || touch kipiplugin_imageshackexport.lang
 %find_lang kipiplugin_imageviewer || touch kipiplugin_imageviewer.lang
+%find_lang kipiplugin_imgurexport || touch kipiplugin_imgurexport.lang
 %find_lang kipiplugin_ipodexport || touch kipiplugin_ipodexport.lang
+%find_lang kipiplugin_jalbumexport || touch kipiplugin_jalbumexport.lang
 %find_lang kipiplugin_jpeglossless || touch kipiplugin_jpeglossless.lang
 %find_lang kipiplugin_kioexportimport || touch kipiplugin_kioexportimport.lang
+%find_lang kipiplugin_kmlexport || touch kipiplugin_kmlexport.lang
+%find_lang kipiplugin_kopete || touch kipiplugin_kopete.lang
 %find_lang kipiplugin_metadataedit || touch kipiplugin_metadataedit.lang
 %find_lang kipiplugin_panorama || touch kipiplugin_panorama.lang
+%find_lang kipiplugin_photolayouteditor || touch kipiplugin_photolayouteditor.lang
 %find_lang kipiplugin_picasawebexport || touch kipiplugin_picasawebexport.lang
 %find_lang kipiplugin_piwigoexport || touch kipiplugin_piwigoexport.lang
 %find_lang kipiplugin_printimages || touch kipiplugin_printimages.lang
+%find_lang kipiplugin_rajceexport || touch kipiplugin_rajceexport.lang
 %find_lang kipiplugin_rawconverter || touch kipiplugin_rawconverter.lang
 %find_lang kipiplugin_removeredeyes || touch kipiplugin_removeredeyes.lang
 %find_lang kipiplugin_sendimages || touch kipiplugin_sendimages.lang
@@ -1252,5 +1157,8 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 %find_lang kipiplugin_smug || touch kipiplugin_smug.lang
 %find_lang kipiplugin_timeadjust || touch kipiplugin_timeadjust.lang
 %find_lang kipiplugin_videoslideshow || touch kipiplugin_videoslideshow.lang
+%find_lang kipiplugin_vkontakte || touch kipiplugin_vkontakte.lang
+%find_lang kipiplugin_wikimedia || touch kipiplugin_wikimedia.lang
+%find_lang kipiplugin_yandexfotki || touch kipiplugin_yandexfotki.lang
 %find_lang libkgeomap || touch libkgeomap.lang
 
