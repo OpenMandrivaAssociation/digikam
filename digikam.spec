@@ -71,7 +71,7 @@ Requires:	mariadb-common
 Requires:	mysql-core
 Requires:	mysql-common
 %endif
-Requires:	kdebase-runtime
+Requires:	kde-runtime
 Requires:	kipi-common
 Requires:	kipi-plugins
 Requires:	libkdcraw-common
@@ -722,7 +722,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-kopete
 A tool to export images to an instant messaging contact.
 
-%files -n kipi-plugins-kopete
+%files -n kipi-plugins-kopete -f kipiplugin_kopete.lang
 %{_kde_appsdir}/kipi/kipiplugin_kopeteui.rc
 %{_kde_libdir}/kde4/kipiplugin_kopete.so
 %{_kde_services}/kipiplugin_kopete.desktop
