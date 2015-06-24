@@ -284,7 +284,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkvkontakte_major 1
+%define libkvkontakte_major 4
 %define libkvkontakte %mklibname kvkontakte %libkvkontakte_major
 
 %package -n %libkvkontakte
@@ -491,7 +491,6 @@ A tool to convert Raw Image to Digital NeGative.
 %files -n kipi-plugins-dngconverter -f kipiplugin_dngconverter.lang
 %{_kde_appsdir}/kipi/kipiplugin_dngconverterui.rc
 %{_kde_bindir}/dngconverter
-%{_kde_bindir}/dnginfo
 %{_kde_applicationsdir}/dngconverter.desktop
 %{_kde_libdir}/kde4/kipiplugin_dngconverter.so
 %{_kde_services}/kipiplugin_dngconverter.desktop
