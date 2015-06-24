@@ -284,7 +284,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkvkontakte_major 4
+%define libkvkontakte_major 1
 %define libkvkontakte %mklibname kvkontakte %libkvkontakte_major
 
 %package -n %libkvkontakte
@@ -300,6 +300,7 @@ site vkontakte.ru.
 
 %files -n %libkvkontakte
 %_kde_libdir/libkvkontakte.so.%{libkvkontakte_major}*
+%_kde_libdir/libkvkontakte.so.4*
 
 #-----------------------------------------------------------------------
 
