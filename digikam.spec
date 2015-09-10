@@ -227,7 +227,7 @@ Suggests:	kipi-plugins-facebook
 Suggests:	kipi-plugins-flashexport
 Suggests:	kipi-plugins-flickr
 Suggests:	kipi-plugins-galleryexport
-Suggests:	kipi-plugins-googledrive
+Suggests:	kipi-plugins-googleservices
 Suggests:	kipi-plugins-gpssync
 Suggests:	kipi-plugins-htmlexport
 Suggests:	kipi-plugins-imageshack
@@ -241,7 +241,6 @@ Suggests:	kipi-plugins-kmlexport
 Suggests:	kipi-plugins-kopete
 Suggests:	kipi-plugins-metadataedit
 Suggests:	kipi-plugins-panorama
-Suggests:	kipi-plugins-picasa
 Suggests:	kipi-plugins-piwigoexport
 Suggests:	kipi-plugins-printimages
 Suggests:	kipi-plugins-rajceexport
@@ -523,19 +522,22 @@ A tool to export images to a remote Gallery.
 
 #-----------------------------------------------------------------------
 
-%package -n kipi-plugins-googledrive
-Summary:	Google Drive export Kipi Plugin
+%package -n kipi-plugins-googleservices
+Summary:	Google services export Kipi Plugin
 Group:		System/Libraries
 Requires:	kipi-common
+%rename kipi-plugins-gooledrive
+%rename kipi-plugins-picasa
 
-%description -n kipi-plugins-googledrive
-A tool to export images to a remote Google Drive web service.
+%description -n kipi-plugins-googleservices
+A tool to export images to a remote services.
 
 %files -n kipi-plugins-googledrive -f kipiplugin_googledrive.lang
-%{_kde_appsdir}/kipi/kipiplugin_googledriveui.rc
-%{_kde_libdir}/kde4/kipiplugin_googledrive.so
-%{_kde_services}/kipiplugin_googledrive.desktop
+%{_kde_appsdir}/kipi/kipiplugin_googleservicesui.rc
+%{_kde_libdir}/kde4/kipiplugin_googleservices.so
+%{_kde_services}/kipiplugin_googleservices.desktop
 %{_kde_iconsdir}/hicolor/*/apps/kipi-googledrive.*
+%{_kde_iconsdir}/hicolor/*/apps/kipi-picasa.*
 
 #-----------------------------------------------------------------------
 
@@ -788,24 +790,6 @@ Photo Layouts Editor.
 %{_kde_datadir}/templates/kipiplugins_photolayoutseditor
 %{_kde_datadir}/config.kcfg/photolayoutseditor.kcfg
 %{_kde_iconsdir}/hicolor/*/apps/photolayoutseditor.png
-
-#-----------------------------------------------------------------------
-
-%package -n kipi-plugins-picasa
-Summary:	Picasa Kipi Plugins
-Group:		System/Libraries
-Conflicts:	kipi-plugins < 1:1.8.0-1
-Requires:	libkdcraw-common
-Requires:	kipi-common
-
-%description -n kipi-plugins-picasa
-A tool to export images to a remote Picase Web Service
-
-%files -n kipi-plugins-picasa -f kipiplugin_picasawebexport.lang
-%{_kde_appsdir}/kipi/kipiplugin_picasawebexportui.rc
-%{_kde_libdir}/kde4/kipiplugin_picasawebexport.so
-%{_kde_services}/kipiplugin_picasawebexport.desktop
-%{_kde_iconsdir}/hicolor/*/apps/kipi-picasa.*
 
 #-----------------------------------------------------------------------
 
@@ -1146,7 +1130,6 @@ rm -f %{buildroot}%{_kde_libdir}/libkipiplugins.so
 %find_lang kipiplugin_metadataedit || touch kipiplugin_metadataedit.lang
 %find_lang kipiplugin_panorama || touch kipiplugin_panorama.lang
 %find_lang kipiplugin_photolayouteditor || touch kipiplugin_photolayouteditor.lang
-%find_lang kipiplugin_picasawebexport || touch kipiplugin_picasawebexport.lang
 %find_lang kipiplugin_piwigoexport || touch kipiplugin_piwigoexport.lang
 %find_lang kipiplugin_printimages || touch kipiplugin_printimages.lang
 %find_lang kipiplugin_rajceexport || touch kipiplugin_rajceexport.lang
