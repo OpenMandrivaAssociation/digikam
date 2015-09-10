@@ -623,7 +623,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-googleservices
 A tool to export images to a remote services.
 
-%files -n kipi-plugins-googledrive -f kipiplugin_googledrive.lang
+%files -n kipi-plugins-googleservices -f kipiplugin_googledrive.lang
 %{_kde_appsdir}/kipi/kipiplugin_googleservicesui.rc
 %{_kde_libdir}/kde4/kipiplugin_googleservices.so
 %{_kde_services}/kipiplugin_googleservices.desktop
