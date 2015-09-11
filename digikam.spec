@@ -217,7 +217,7 @@ BuildArch:	noarch
 Suggests:	kipi-plugins-acquireimages
 Suggests:	kipi-plugins-advancedslideshow
 Suggests:	kipi-plugins-batchprocess
-#Suggests:	kipi-plugins-calendar
+Suggests:	kipi-plugins-calendar
 Suggests:	kipi-plugins-debianscreenshot
 Suggests:	kipi-plugins-dlna
 Suggests:	kipi-plugins-dngconverter
@@ -335,17 +335,17 @@ KIPI Batch Processing Images Plugin.
 
 #-----------------------------------------------------------------------
 
-#%package -n kipi-plugins-calendar
-#Summary:	Calendar Kipi Plugin
-#Group:		System/Libraries
-#Conflicts:	kipi-plugins < 1:1.8.0-1
-#Requires:	libkdcraw-common
-#Requires:	kipi-common
-#
-#%description -n kipi-plugins-calendar
-#A tool to create calendars.
-#
-#%files -n kipi-plugins-calendar -f kipiplugin_calendar.lang
+%package -n kipi-plugins-calendar
+Summary:	Calendar Kipi Plugin
+Group:		System/Libraries
+Conflicts:	kipi-plugins < 1:1.8.0-1
+Requires:	libkdcraw-common
+Requires:	kipi-common
+
+%description -n kipi-plugins-calendar
+A tool to create calendars.
+
+%files -n kipi-plugins-calendar -f kipiplugin_calendar.lang
 #%{_kde_appsdir}/kipi/kipiplugin_calendarui.rc
 #%{_kde_libdir}/kde4/kipiplugin_calendar.so
 #%{_kde_services}/kipiplugin_calendar.desktop
