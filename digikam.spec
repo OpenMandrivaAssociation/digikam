@@ -526,7 +526,7 @@ A tool to export images to a remote Gallery.
 Summary:	Google services export Kipi Plugin
 Group:		System/Libraries
 Requires:	kipi-common
-%rename kipi-plugins-gooledrive
+%rename kipi-plugins-googledrive
 %rename kipi-plugins-picasa
 
 %description -n kipi-plugins-googleservices
