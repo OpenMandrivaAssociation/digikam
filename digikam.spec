@@ -1,6 +1,3 @@
-# standalone version is dead upstream
-%bcond_with external_kvkontakte
-
 # Disable until libmediawiki gets individual tarball release
 %bcond_with wikimedia
 
@@ -62,9 +59,7 @@ BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(QJson)
 BuildRequires:	pkgconfig(QtGStreamer-1.0)
 BuildRequires:	pkgconfig(sqlite3)
-%if %{with external_kvkontakte}
 BuildRequires:	kvkontakte-devel
-%endif
 %if %{mdvver} >= 201400
 Requires:	mariadb-common
 %else
@@ -186,26 +181,6 @@ Librairie File needed by %{name}
 
 %files -n %{libkipiplugins}
 %{_kde_libdir}/libkipiplugins.so.%{libkipiplugins_major}*
-
-#-----------------------------------------------------------------------
-
-%define libkvkontakte_major 1
-%define libkvkontakte %mklibname kvkontakte %libkvkontakte_major
-
-%package -n %libkvkontakte
-Summary: Runtime library for %{name}
-Group: System/Libraries
-URL: https://projects.kde.org/projects/extragear/libs/libkvkontakte
-
-%description -n %libkvkontakte
-Librairie File needed by %name
-
-Libkvkontakte is a library for accessing the features of social networking
-site vkontakte.ru.
-
-%files -n %libkvkontakte
-%_kde_libdir/libkvkontakte.so.%{libkvkontakte_major}*
-%_kde_libdir/libkvkontakte.so.4*
 
 #-----------------------------------------------------------------------
 
@@ -1020,28 +995,6 @@ A tool to export images to a remote Yandex.Fotki web service.
 
 #-----------------------------------------------------------------------
 
-%define libkvkontakte_devel %mklibname -d kvkontakte
-%package -n  %libkvkontakte_devel
-Summary:     Headers to build packages against libkvkontakte library
-Group:       Development/C
-Requires:    %libkvkontakte = %epoch:%version-%release
-Provides:    kvkontakte-devel = %version-%release
-Provides:    libkvkontakte-devel = %version-%release
-
-%description -n %libkvkontakte_devel
-This package contains the libraries and headers files needed to develop progams
-which make use of libkvkontakte library.
-
-Libkvkontakte is a library for accessing the features of social networking
-site vkontakte.ru.
-
-%files -n %libkvkontakte_devel
-#%_kde_includedir/libkvkontakte
-%_kde_libdir/libkvkontakte.so
-%_libdir/cmake/LibKVkontakte
-
-#-----------------------------------------------------------------------
-
 %prep
 %setup -q
 find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
@@ -1070,14 +1023,8 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
 	-DENABLE_KDEPIMLIBSSUPPORT=ON \
-    -DDIGIKAMSC_COMPILE_LIBKFACE=OFF \
-	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF \
-	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF \
 	-DENABLE_MYSQLSUPPORT=ON \
-    -DENABLE_INTERNALMYSQL=ON \
-%if %{without external_kvkontakte}
-	-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON
-%endif
+    -DENABLE_INTERNALMYSQL=ON
 
 %make
 
