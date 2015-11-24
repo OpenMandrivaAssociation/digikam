@@ -1,4 +1,5 @@
-%bcond_with external_kvkontakte
+# Disable until libmediawiki gets individual tarball release
+%bcond_with wikimedia
 
 Summary:	A KDE photo management utility
 Name:		digikam
@@ -57,9 +58,9 @@ BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(QJson)
 BuildRequires:	pkgconfig(QtGStreamer-1.0)
 BuildRequires:	pkgconfig(sqlite3)
-%if %{with external_kvkontakte}
+BuildRequires:	pkgconfig(libkface)
+BuildRequires:	pkgconfig(libkgeomap)
 BuildRequires:	kvkontakte-devel
-%endif
 %if %{mdvver} >= 201400
 Requires:	mariadb-common
 %else
@@ -111,45 +112,6 @@ its functionalities.
 %{_kde_mandir}/man1/cleanup_digikamdb.1*
 %{_kde_iconsdir}/*/*/apps/digikam.*
 %{_kde_libdir}/kde4/libexec/digikamdatabaseserver
-
-#-----------------------------------------------------------------------
-
-%package -n libkface-common
-Summary:       Common files for libkface library
-Group:         Graphics
-Url:           https://projects.kde.org/projects/extragear/libs/libkface
-BuildArch:     noarch
-Conflicts:     %{name} < 1:2.0.0-0.rc1.2
-
-%description -n libkface-common
-Common files for libkface library.
-
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
-and detection over pictures.
-
-%files -n libkface-common
-%doc extra/libkface/README extra/libkface/AUTHORS extra/libkface/COPYING
-%{_kde_appsdir}/libkface
-
-#-----------------------------------------------------------------------
-
-%package -n libkgeomap-common
-Summary:	Common files for libkgeomap library
-Group:		Graphics
-Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
-Conflicts:	%{name} < 1:2.0.0-0.rc1.2
-
-%description -n libkgeomap-common
-Common files for libkgeomap library
-
-Libkgeomap is a wrapper around world map components as Marble,
-OpenstreetMap and Google Maps, for browsing and arranging
-photos on a map.
-
-%files -n libkgeomap-common -f libkgeomap.lang
-%doc extra/libkgeomap/README extra/libkgeomap/AUTHORS
-%{_bindir}/libkgeomap_demo
-%{_kde_appsdir}/libkgeomap
 
 #-----------------------------------------------------------------------
 
@@ -207,66 +169,6 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkface_major 3
-%define libkface %mklibname kface %{libkface_major}
-
-%package -n %{libkface}
-Summary:	Runtime library for %{name}
-Group:		System/Libraries
-Url:		https://projects.kde.org/projects/extragear/libs/libkface
-Obsoletes:	%{_lib}kface1 < 2:3.3.0
-
-%description -n %{libkface}
-Librairie File needed by %{name}
-
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
-and detection over pictures.
-
-%files -n %{libkface}
-%{_kde_libdir}/libkface.so.%{libkface_major}*
-
-#-----------------------------------------------------------------------
-
-%define libkgeomap_major 2
-%define libkgeomap %mklibname kgeomap %{libkgeomap_major}
-%define libkmap %mklibname kmap 1
-
-%package -n %{libkgeomap}
-Summary:	Runtime library for %{name}
-Group:		System/Libraries
-Url:		https://projects.kde.org/projects/extragear/libs/libkgeomap
-Obsoletes:	%{libkmap} < 1:2.0.0-0.rc1.2
-
-%description -n %{libkgeomap}
-Librairie File needed by %{name}
-
-Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
-and Google Maps,for browsing and arranging photos on a map.
-
-%files -n %{libkgeomap}
-%{_kde_libdir}/libkgeomap.so.%{libkgeomap_major}*
-
-#-----------------------------------------------------------------------
-
-%define libmediawiki_major 1
-%define libmediawiki %mklibname mediawiki %{libmediawiki_major}
-
-%package -n %{libmediawiki}
-Summary:	Runtime library for %{name}
-Group:		System/Libraries
-Url:		https://projects.kde.org/projects/extragear/libs/libmediawiki
-
-%description -n %{libmediawiki}
-Librairie File needed by %{name}
-
-libmediawiki is a KDE C++ interface for MediaWiki based
-web service as wikipedia.org.
-
-%files -n %{libmediawiki}
-%{_kde_libdir}/libmediawiki.so.%{libmediawiki_major}*
-
-#-----------------------------------------------------------------------
-
 %define libkipiplugins_major 4
 %define libkipiplugins %mklibname kipiplugins %{libkipiplugins_major}
 
@@ -281,26 +183,6 @@ Librairie File needed by %{name}
 
 %files -n %{libkipiplugins}
 %{_kde_libdir}/libkipiplugins.so.%{libkipiplugins_major}*
-
-#-----------------------------------------------------------------------
-
-%define libkvkontakte_major 1
-%define libkvkontakte %mklibname kvkontakte %libkvkontakte_major
-
-%package -n %libkvkontakte
-Summary: Runtime library for %{name}
-Group: System/Libraries
-URL: https://projects.kde.org/projects/extragear/libs/libkvkontakte
-
-%description -n %libkvkontakte
-Librairie File needed by %name
-
-Libkvkontakte is a library for accessing the features of social networking
-site vkontakte.ru.
-
-%files -n %libkvkontakte
-%_kde_libdir/libkvkontakte.so.%{libkvkontakte_major}*
-%_kde_libdir/libkvkontakte.so.4*
 
 #-----------------------------------------------------------------------
 
@@ -347,7 +229,11 @@ Suggests:	kipi-plugins-smug
 Suggests:	kipi-plugins-timeadjust
 Suggests:	kipi-plugins-videoslideshow
 Suggests:	kipi-plugins-vkontakte
-Suggests:	kipi-plugins-wikimedia
+%if %{with wikimedia}
+Suggests:      kipi-plugins-wikimedia
+%else
+Obsoletes:     kipi-plugins-wikimedia < %{EVRD}
+%endif
 Suggests:	kipi-plugins-yandexfotki
 
 %description -n kipi-plugins
@@ -1075,6 +961,7 @@ A tool to export on VKontakte.ru Web service
 %{_kde_services}/kipiplugin_vkontakte.desktop
 
 #-----------------------------------------------------------------------
+%if %{with wikimedia}
 
 %package -n kipi-plugins-wikimedia
 Summary:	Wikimedia Export Kipi Plugin
@@ -1090,6 +977,8 @@ A tool to export images to a remote MediaWiki site
 %{_kde_libdir}/kde4/kipiplugin_wikimedia.so
 %{_kde_services}/kipiplugin_wikimedia.desktop
 %{_kde_iconsdir}/hicolor/*/apps/kipi-wikimedia.*
+
+%endif
 
 #-----------------------------------------------------------------------
 
@@ -1110,95 +999,6 @@ A tool to export images to a remote Yandex.Fotki web service.
 #-----------------------------------------------------------------------
 
 %define libnamedev %mklibname digikam -d
-%define libmediawiki_devel %mklibname -d mediawiki
-
-%package -n %{libmediawiki_devel}
-Summary:	Headers to build packages against libmediawiki library
-Group:		Development/C
-Conflicts:	%{libnamedev} < 1:2.0.0-rc1.2
-Requires:	%{libmediawiki} = %{EVRD}
-Provides:	libmediawiki-devel = %{EVRD}
-
-%description -n %{libmediawiki_devel}
-This package contains the libraries and headers files needed to develop progams
-which make use of libmediawiki library.
-
-libmediawiki is a KDE C++ interface for MediaWiki based web service as 
-wikipedia.org.
-
-%files -n %{libmediawiki_devel}
-%{_kde_libdir}/libmediawiki.so
-
-#-----------------------------------------------------------------------
-
-%define libkface_devel %mklibname -d kface
-
-%package -n %{libkface_devel}
-Summary:	Headers to build packages against libkface library
-Group:		Development/C
-Conflicts:	%{libnamedev} < 1:2.0.0-rc1.2
-Requires:	%{libkface} = %{EVRD}
-Requires:	libkface-common
-Provides:	kface-devel = %{version}-%{release}
-Provides:	libkface-devel = %{version}-%{release}
-
-%description -n %{libkface_devel}
-This package contains the libraries and headers files needed to develop progams
-which make use of libkface library.
-
-Libkface is a Qt/C++ wrapper around LibFace library to perform face recognition
-and detection over pictures.
-
-%files -n %{libkface_devel}
-%{_kde_libdir}/libkface.so
-%{_libdir}/cmake/Kface-3.5.0
-
-#-----------------------------------------------------------------------
-
-%define libkgeomap_devel %mklibname -d kgeomap
-
-%package -n %{libkgeomap_devel}
-Summary:	Headers to build packages against libkgeomap library
-Group:		Development/C
-Conflicts:	%{libnamedev} < 1:2.0.0-rc1.2
-Requires:	libkgeomap-common
-Requires:	%{libkgeomap} = %{EVRD}
-Provides:	kgeomap-devel = %{version}-%{release}
-Provides:	libkgeomap-devel = %{version}-%{release}
-
-%description -n %{libkgeomap_devel}
-This package contains the libraries and headers files needed to develop progams
-which make use of libkgeomap (old libkmap) library.
-
-Libkgeomap is a wrapper around world map components as Marble, OpenstreetMap
-and Google Maps,for browsing and arranging photos on a map.
-
-%files -n %{libkgeomap_devel}
-%{_kde_libdir}/libkgeomap.so
-
-#-----------------------------------------------------------------------
-
-%define libkvkontakte_devel %mklibname -d kvkontakte
-%package -n  %libkvkontakte_devel
-Summary:     Headers to build packages against libkvkontakte library
-Group:       Development/C
-Requires:    %libkvkontakte = %epoch:%version-%release
-Provides:    kvkontakte-devel = %version-%release
-Provides:    libkvkontakte-devel = %version-%release
-
-%description -n %libkvkontakte_devel
-This package contains the libraries and headers files needed to develop progams
-which make use of libkvkontakte library.
-
-Libkvkontakte is a library for accessing the features of social networking
-site vkontakte.ru.
-
-%files -n %libkvkontakte_devel
-#%_kde_includedir/libkvkontakte
-%_kde_libdir/libkvkontakte.so
-%_libdir/cmake/LibKVkontakte
-
-#-----------------------------------------------------------------------
 
 %package -n %{libnamedev}
 Summary:	Static libraries and headers for %{name}
@@ -1208,9 +1008,6 @@ Provides:	kipi-plugins-devel = %{EVRD}
 Obsoletes:	kipi-plugins-devel < 1:2.0.0
 Requires:	%{libdigikamcore} = %{EVRD}
 Requires:	%{libdigikamdatabase} = %{EVRD}
-Requires:	%{libkgeomap_devel} = %{EVRD}
-Requires:	%{libmediawiki_devel} = %{EVRD}
-Requires:	%{libkface_devel} = %{EVRD}
 Requires:	%{libkipiplugins} = %{EVRD}
 
 %description -n %{libnamedev}
@@ -1250,18 +1047,11 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 %endif
 
 %cmake_kde4 \
-	-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=OFF \
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
 	-DENABLE_KDEPIMLIBSSUPPORT=ON \
-	-DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=OFF \
-	-DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
-	-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
-	-DDIGIKAMSC_COMPILE_LIBKFACE=ON \
-	-DENABLE_MYSQLSUPPORT=ON -DENABLE_INTERNALMYSQL=ON \
-%if %{without external_kvkontakte}
-	-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON
-%endif
+	-DENABLE_MYSQLSUPPORT=ON \
+        -DENABLE_INTERNALMYSQL=ON
 
 %make
 
@@ -1269,6 +1059,10 @@ export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
 %makeinstall_std -C build
 
 rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
+
+%if %{without wikimedia}
+rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
+%endif
 
 # photivo plugin not ready yet
 rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/*photivo*.mo
@@ -1320,5 +1114,4 @@ rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/*photivo*.mo
 %find_lang kipiplugin_vkontakte || touch kipiplugin_vkontakte.lang
 %find_lang kipiplugin_wikimedia || touch kipiplugin_wikimedia.lang
 %find_lang kipiplugin_yandexfotki || touch kipiplugin_yandexfotki.lang
-%find_lang libkgeomap || touch libkgeomap.lang
 
