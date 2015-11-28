@@ -1,9 +1,6 @@
-removed_sources:
-  digikam-4.10.0.tar.bz2: b79828048269adfa2d9c6062a808e958152f6fc5
-  digikam-4.11.0.tar.bz2: 8fa6e277b775b615f10403b30a1b6d45c957ff3c
-  digikam-4.13.0.tar.bz2: d696ac88dcb3bcbd3a5da83b0fbe5e7315a43f92
+---
 sources:
-  digikam-4.14.0.tar.bz2: 08bbded5433e442dce8ac00eb301606ef0924e8c
   kipiplugin_expoblending_ru.po: a7481812d678574b2313bb5f08092ad7b41b6d45
   kipiplugin_panorama_ru.po: 2ecf3ddff535cf0058df492a41bf2dec8b643190
   kipiplugin_videoslideshow_ru.po: bcb1406778fd4fefe2914dc97f908da38f0d9ef5
+  digikam-4.14.0.tar.bz2: 08bbded5433e442dce8ac00eb301606ef0924e8c

@@ -14,7 +14,7 @@ Source2:	kipiplugin_expoblending_ru.po
 Source3:	kipiplugin_panorama_ru.po
 Source4:	kipiplugin_videoslideshow_ru.po
 Source100:	%{name}.rpmlintrc
-Patch1:		digikam-4.9.0-soversion.patch
+Patch1:		digikam-4.13.0-soversion.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
