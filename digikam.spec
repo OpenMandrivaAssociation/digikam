@@ -1014,7 +1014,7 @@ A tool to export images to a remote Yandex.Fotki web service.
 %make
 
 %install
-%ninja_install -C build
+%makeinstall_std -C build
 
 rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 
