@@ -1,0 +1,119 @@
+diff -urw digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp
+--- digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp	2015-11-30 22:08:43.000000000 +0000
++++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp	2016-01-20 12:17:57.092200583 +0000
+@@ -620,7 +620,7 @@
+ 
+ /// Training where the train method takes one identity and one image
+ template <class Recognizer>
+-static void trainSingle(Recognizer* const r, const Identity& identity, TrainingDataProvider* const data,
++ void RecognitionDatabase::trainSingle(Recognizer* const r, const Identity& identity, TrainingDataProvider* const data,
+                         const QString& trainingContext, RecognitionDatabase::Private* const d)
+ {
+     ImageListProvider* const images = data->newImages(identity);
+@@ -647,7 +647,7 @@
+ /// Training where the train method takes a list of identities and images,
+ /// and updating per-identity is non-inferior to updating all at once.
+ template <class Recognizer>
+-static void trainIdentityBatch(Recognizer* const r, const QList<Identity>& identitiesToBeTrained,
++ void RecognitionDatabase::trainIdentityBatch(Recognizer* const r, const QList<Identity>& identitiesToBeTrained,
+                                TrainingDataProvider* const data, const QString& trainingContext,
+                                RecognitionDatabase::Private* const d)
+ {
+diff -urw digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h
+--- digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h	2015-11-30 22:08:43.000000000 +0000
++++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h	2016-01-20 12:18:11.906201060 +0000
+@@ -203,10 +203,22 @@
+      */
+     void deleteIdentity(const Identity& identityToBeDeleted);
+ 
++
+ private:
+ 
+     class Private;
+     Private* const d;
++
++   template <class Recognizer>
++   static void trainIdentityBatch(Recognizer* const r, const QList<Identity>& identitiesToBeTrained,
++                               TrainingDataProvider* const data, const QString& trainingContext,
++                               RecognitionDatabase::Private* const d);
++
++
++    template <class Recognizer>
++    static void trainSingle(Recognizer* const r, const Identity& identity, TrainingDataProvider* const data,
++                        const QString& trainingContext, RecognitionDatabase::Private* const d);
++
+ };
+ 
+ } // namespace FacesEngine
+diff -urw digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp
+--- digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp	2015-11-30 22:08:43.000000000 +0000
++++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp	2016-01-20 12:53:26.164773435 +0000
+@@ -1707,6 +1707,7 @@
+ 	  return LIBRAW_CANCELLED_BY_CALLBACK;
+   }
+ #endif
++  return 0;
+ }
+ 
+ void CLASS phase_one_load_raw()
+@@ -4513,22 +4514,22 @@
+     -2,+0,+0,-1,0,0x06, -2,+0,+0,+0,1,0x02, -2,+0,+0,+1,0,0x03,
+     -2,+1,-1,+0,0,0x04, -2,+1,+0,-1,1,0x04, -2,+1,+0,+0,0,0x06,
+     -2,+1,+0,+1,0,0x02, -2,+2,+0,+0,1,0x04, -2,+2,+0,+1,0,0x04,
+-    -1,-2,-1,+0,0,0x80, -1,-2,+0,-1,0,0x01, -1,-2,+1,-1,0,0x01,
+-    -1,-2,+1,+0,1,0x01, -1,-1,-1,+1,0,0x88, -1,-1,+1,-2,0,0x40,
++    -1,-2,-1,+0,0,-128, -1,-2,+0,-1,0,0x01, -1,-2,+1,-1,0,0x01,
++    -1,-2,+1,+0,1,0x01, -1,-1,-1,+1,0,-120, -1,-1,+1,-2,0,0x40,
+     -1,-1,+1,-1,0,0x22, -1,-1,+1,+0,0,0x33, -1,-1,+1,+1,1,0x11,
+     -1,+0,-1,+2,0,0x08, -1,+0,+0,-1,0,0x44, -1,+0,+0,+1,0,0x11,
+     -1,+0,+1,-2,1,0x40, -1,+0,+1,-1,0,0x66, -1,+0,+1,+0,1,0x22,
+     -1,+0,+1,+1,0,0x33, -1,+0,+1,+2,1,0x10, -1,+1,+1,-1,1,0x44,
+     -1,+1,+1,+0,0,0x66, -1,+1,+1,+1,0,0x22, -1,+1,+1,+2,0,0x10,
+     -1,+2,+0,+1,0,0x04, -1,+2,+1,+0,1,0x04, -1,+2,+1,+1,0,0x04,
+-    +0,-2,+0,+0,1,0x80, +0,-1,+0,+1,1,0x88, +0,-1,+1,-2,0,0x40,
++    +0,-2,+0,+0,1,-128, +0,-1,+0,+1,1,-120, +0,-1,+1,-2,0,0x40,
+     +0,-1,+1,+0,0,0x11, +0,-1,+2,-2,0,0x40, +0,-1,+2,-1,0,0x20,
+     +0,-1,+2,+0,0,0x30, +0,-1,+2,+1,1,0x10, +0,+0,+0,+2,1,0x08,
+     +0,+0,+2,-2,1,0x40, +0,+0,+2,-1,0,0x60, +0,+0,+2,+0,1,0x20,
+     +0,+0,+2,+1,0,0x30, +0,+0,+2,+2,1,0x10, +0,+1,+1,+0,0,0x44,
+     +0,+1,+1,+2,0,0x10, +0,+1,+2,-1,1,0x40, +0,+1,+2,+0,0,0x60,
+-    +0,+1,+2,+1,0,0x20, +0,+1,+2,+2,0,0x10, +1,-2,+1,+0,0,0x80,
+-    +1,-1,+1,+1,0,0x88, +1,+0,+1,+2,0,0x08, +1,+0,+2,-1,0,0x40,
++    +0,+1,+2,+1,0,0x20, +0,+1,+2,+2,0,0x10, +1,-2,+1,+0,0,-128,
++    +1,-1,+1,+1,0,-120, +1,+0,+1,+2,0,0x08, +1,+0,+2,-1,0,0x40,
+     +1,+0,+2,+1,0,0x10
+   }, chood[] = { -1,-1, -1,0, -1,+1, 0,+1, +1,+1, +1,0, +1,-1, 0,-1 };
+   ushort (*brow[5])[4], *pix;
+@@ -11439,7 +11440,7 @@
+       { 8035,435,-962,-6001,13872,2320,-1159,3065,5434 } },
+     { "Photron BC2-HD", 0, 0,		/* DJC */
+       { 14603,-4122,-528,-1810,9794,2017,-297,2763,5936 } },
+-    { "Red One", 704, 0xffff,		/* DJC */
++    { "Red One", 704, -1,		/* DJC */
+       { 21014,-7891,-2613,-3056,12201,856,-2203,5125,8042 } },
+     { "Samsung EK-GN120", 0, 0, /* Adobe; Galaxy NX */
+ 	    { 7557,-2522,-739,-4679,12949,1894,-840,1777,5311 } },
+diff -urw digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/libraw_x3f.cpp /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/libraw_x3f.cpp
+--- digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/libraw_x3f.cpp	2015-11-30 22:08:43.000000000 +0000
++++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/libraw_x3f.cpp	2016-01-20 12:58:09.928225347 +0000
+@@ -1246,7 +1246,7 @@
+   x3f_image_data_t *ID = &DEH->data_subsection.image_data;
+   x3f_huffman_t *HUF = ID->huffman;
+ 
+-  int16_t c[3] = {offset,offset,offset};
++  int16_t c[3] = {static_cast<int16_t>(offset),static_cast<int16_t>(offset),static_cast<int16_t>(offset)};
+   int col;
+   bit_state_t BS;
+   
+diff -urw digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp
+--- digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp	2015-11-30 22:08:43.000000000 +0000
++++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp	2016-01-20 13:11:19.738045471 +0000
+@@ -357,7 +357,7 @@
+ 
+ bool BatchTool::isRawFile(const QUrl& url) const
+ {
+-    QString   rawFilesExt(QLatin1String(DRawDecoder::rawFiles()));
++    QString   rawFilesExt( (QLatin1String(DRawDecoder::rawFiles())) );
+     QFileInfo fileInfo(url.toLocalFile());
+     return (rawFilesExt.toUpper().contains(fileInfo.suffix().toUpper()));
+ }
