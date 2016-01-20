@@ -1,41 +1,26 @@
 # Disable until libmediawiki gets individual tarball release
 %bcond_with wikimedia
 
+%define pre beta2
+
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	4.14.0
-Release:	2
+Version:	5.0.0
+Release:	0.1
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
-Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.bz2
-Source2:	kipiplugin_expoblending_ru.po
-Source3:	kipiplugin_panorama_ru.po
-Source4:	kipiplugin_videoslideshow_ru.po
+Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}-%pre.tar.bz2
 Source100:	%{name}.rpmlintrc
-Patch1:		digikam-4.13.0-soversion.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
 BuildRequires:	imagemagick
-BuildRequires:	qtsoap-devel
-%if %{mdvver} >= 201400
 BuildRequires:	mariadb-server
-%else
-BuildRequires:	mysql-core
-BuildRequires:	mysql-common
-%endif
-BuildRequires:	baloo-devel
 BuildRequires:	gomp-devel
-BuildRequires:	kdelibs-devel
-BuildRequires:	kdepimlibs-devel
-BuildRequires:	marble-devel
 BuildRequires:	tiff-devel
-%if "%{disttag}" == "omv"
-BuildRequires:	qca2-devel-qt4
-%endif
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
@@ -45,32 +30,48 @@ BuildRequires:	pkgconfig(lensfun)
 BuildRequires:	pkgconfig(libusb)
 BuildRequires:	pkgconfig(libgphoto2)
 BuildRequires:	pkgconfig(libgpod-1.0)
-BuildRequires:	pkgconfig(kqoauth)
-BuildRequires:	pkgconfig(libkexiv2)
-BuildRequires:	pkgconfig(libkface)
-BuildRequires:	pkgconfig(libkgeomap)
-BuildRequires:	pkgconfig(libksane)
-BuildRequires:	pkgconfig(libkdcraw)
-BuildRequires:	pkgconfig(libkipi)
 BuildRequires:	pkgconfig(libpgf)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
 BuildRequires:	pkgconfig(opencv)
-BuildRequires:	pkgconfig(QJson)
-BuildRequires:	pkgconfig(QtGStreamer-1.0)
 BuildRequires:	pkgconfig(sqlite3)
-BuildRequires:	kvkontakte-devel
-%if %{mdvver} >= 201400
+BuildRequires:	pkgconfig(exiv2)
+
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5Concurrent)
+BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(Qt5Gui)
+BuildRequires:	cmake(Qt5Sql)
+BuildRequires:	cmake(Qt5Xml)
+BuildRequires:	cmake(Qt5PrintSupport)
+BuildRequires:	cmake(Qt5WebKitWidgets)
+BuildRequires:	cmake(Qt5DBus)
+BuildRequires:	cmake(Qt5Multimedia)
+BuildRequires:	cmake(Qt5MultimediaWidgets)
+BuildRequires:	cmake(KF5XmlGui)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5NotifyConfig)
+BuildRequires:	cmake(KF5Notifications)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5Service)
+BuildRequires:	cmake(KF5WindowSystem)
+BuildRequires:	cmake(KF5Solid)
+BuildRequires:	cmake(KF5IconThemes)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5ItemModels)
+BuildRequires:	cmake(KF5Bookmarks)
+BuildRequires:	cmake(KF5AkonadiContact)
+BuildRequires:	cmake(KF5FileMetaData)
+BuildRequires:	cmake(KF5Kipi)
+BuildRequires:	cmake(KF5CalendarCore)
+BuildRequires:	cmake(KF5ThreadWeaver)
+
 Requires:	mariadb-common
-%else
-Requires:	mysql-core
-Requires:	mysql-common
-%endif
-Requires:	kde-runtime
 Requires:	kipi-common
 Requires:	kipi-plugins
-Requires:	libkdcraw-common
-Requires:	qt4-database-plugin-sqlite
 Requires:	libgphoto-common
 
 %description
@@ -996,40 +997,21 @@ A tool to export images to a remote Yandex.Fotki web service.
 #-----------------------------------------------------------------------
 
 %prep
-%setup -q
-find . -name ox*-app-showfoto.* -exec rm -rf '{}' \;
-find . -name ox*-app-digikam.* -exec rm -rf '{}' \;
-
-# fix qtsoap find
-sed -i s#/usr/include/qt4#%{_qt_includedir}# extra/kipi-plugins/cmake/modules/FindQtSoap.cmake
-
-%patch1 -p1
-
-pushd po
-# Remove wallpaper po files (kipiplugin-wallpaper is not build )
-find  . -name kipiplugin_wallpaper.po -exec rm -rf '{}' \;
-cp -f %{SOURCE2} ru/kipiplugin_expoblending.po
-cp -f %{SOURCE3} ru/kipiplugin_panorama.po
-cp -f %{SOURCE4} ru/kipiplugin_videoslideshow.po
-popd
+%setup -qn %{name}-%{version}-%{pre}
+%apply_patches
 
 %build
-%if "%{disttag}" == "omv"
-# to find qca2
-export PKG_CONFIG_PATH=%{_libdir}/qt4/pkgconfig
-%endif
-
-%cmake_kde4 \
+%cmake_kde5 \
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
 	-DENABLE_KDEPIMLIBSSUPPORT=ON \
 	-DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_INTERNALMYSQL=ON
 
-%make
+%ninja
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 rm -f %{buildroot}%{_kde_datadir}/locale/*/LC_MESSAGES/libkipi.mo
 
