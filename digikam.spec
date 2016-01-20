@@ -1004,15 +1004,14 @@ A tool to export images to a remote Yandex.Fotki web service.
 %apply_patches
 
 %build
-%cmake_kde5 \
+%cmake_kde5 -G"Unix Makefiles" \
 	-DENABLE_BALOOSUPPORT=ON \
 	-DENABLE_LCMS2=ON \
 	-DENABLE_KDEPIMLIBSSUPPORT=ON \
 	-DENABLE_MYSQLSUPPORT=ON \
 	-DENABLE_INTERNALMYSQL=ON \
-	-DBUILD_STATIC_LIBS=ON
 
-%ninja
+%make
 
 %install
 %ninja_install -C build
