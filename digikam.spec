@@ -38,6 +38,8 @@ BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
 BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(exiv2)
+BuildRequires:	pkgconfig(xrandr)
+BuildRequires:	pkgconfig(x11)
 
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
