@@ -724,11 +724,6 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_photivointegr
 rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %endif
 
-# Seems to be useless
-rm -f %{buildroot}%{_kde5_libdir}/libdigikamcore.so
-rm -f %{buildroot}%{_kde5_libdir}/libdigikamdatabase.so
-rm -f %{buildroot}%{_kde5_libdir}/libkipiplugins.so
-
 %find_lang %{name} --with-html || touch %{name}.lang
 %find_lang showfoto --with-html || touch showfoto.lang
 %find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html || touch kipi-plugins.lang
