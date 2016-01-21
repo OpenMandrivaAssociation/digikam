@@ -300,7 +300,7 @@ for additional functionality such as: RawConverter, SlideShow,
 ImagesGallery, HTMLExport, PrintAssistant...
 
 %files -n kipi-plugins -f kipi-plugins.lang
-%doc extra/kipi-plugins/AUTHORS extra/kipi-plugins/COPYING extra/kipi-plugins/COPYING-ADOBE extra/kipi-plugins/ChangeLog extra/kipi-plugins/README extra/kipi-plugins/TODO extra/kipi-plugins/NEWS
+%doc extra/kipi-plugins/AUTHORS extra/kipi-plugins/COPYING extra/kipi-plugins/ChangeLog extra/kipi-plugins/README extra/kipi-plugins/TODO extra/kipi-plugins/NEWS
 %{_kde5_applicationsdir}/kipiplugins.desktop
 %{_kde5_datadir}/kipiplugins/pics/process-working.png
 
