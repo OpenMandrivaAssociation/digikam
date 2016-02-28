@@ -2,13 +2,13 @@
 %bcond_with wikimedia
 %bcond_with vkontakte
 
-%define pre beta2
+%define pre beta4
 
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
 Version:	5.0.0
-Release:	0.1
+Release:	0.%{pre}.2
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
