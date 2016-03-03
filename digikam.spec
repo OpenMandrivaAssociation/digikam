@@ -15,6 +15,9 @@ Url:		http://www.digikam.org
 Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}-%pre.tar.bz2
 Source100:	%{name}.rpmlintrc
 Patch1:		digikam-5.0.0-beta2-clang.patch
+# (tpg) upstream bug, will be fixed in next release
+# https://quickgit.kde.org/?p=digikam.git&a=commit&h=0cdafd38a0759c5751cf7b5c81417e6c427be372
+Patch2:		digikam-5.0.0-beta4-Remove-unused-method.patch
 BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3

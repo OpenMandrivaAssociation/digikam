@@ -1,0 +1,27 @@
+diff -Naur digikam-5.0.0-beta4/core/utilities/kdesupport/kipi/kipiinterface.cpp digikam-5.0.0-beta4.tpg/core/utilities/kdesupport/kipi/kipiinterface.cpp
+--- digikam-5.0.0-beta4/core/utilities/kdesupport/kipi/kipiinterface.cpp	2016-02-19 09:22:59.000000000 +0000
++++ digikam-5.0.0-beta4.tpg/core/utilities/kdesupport/kipi/kipiinterface.cpp	2016-03-03 23:03:09.577062517 +0000
+@@ -581,23 +581,6 @@
+         return( decoder.loadRawPreview(image, url.toLocalFile()) );
+     }
+ 
+-    uint decodeRawImage(const QUrl& url, QByteArray& imageData, int& width, int& height, int& rgbmax)
+-    {
+-        DRawDecoderSettings settings;
+-        KSharedConfig::Ptr config = KSharedConfig::openConfig();
+-        KConfigGroup group        = config->group(QLatin1String("ImageViewer Settings"));
+-        DRawDecoderWidget::readSettings(settings, group);
+-
+-        if (decoder.decodeRAWImage(url.toLocalFile(), settings, imageData, width, height, rgbmax))
+-            return settings.sixteenBitsImage ? 16 : 8;
+-
+-        return 0;
+-    }
+-
+-    void cancel()
+-    {
+-    }
+-
+     bool isRawFile(const QUrl& url)
+     {
+         return (decoder.isRawFile(url));
