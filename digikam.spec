@@ -80,6 +80,7 @@ Requires:	mariadb-common
 Requires:	kipi-common
 Requires:	kipi-plugins
 Requires:	libgphoto-common
+Requires:	libkdcraw-common
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
@@ -116,7 +117,8 @@ its functionalities.
 %{_kde5_iconsdir}/*/*/apps/digikam.*
 %{_libdir}/libexec/digikamdatabaseserver
 %{_qt5_plugindir}/digikamimageplugin_*
-%_iconsdir/*/*/*/kipi-process-working.*
+%{_iconsdir}/*/*/*/kipi-process-working.*
+%{_iconsdir}/hicolor/*/apps/expoblending.png
 %{_kde5_datadir}/kconf_update/adjustlevelstool.upd
 %{_kde5_datadir}/knotifications5/digikam.notifyrc
 
@@ -242,7 +244,7 @@ BuildArch:	noarch
 Suggests:	kipi-plugins-advancedslideshow
 Suggests:	kipi-plugins-dlna
 Suggests:	kipi-plugins-dropbox
-Suggests:	kipi-plugins-expoblending
+
 Suggests:	kipi-plugins-facebook
 Suggests:	kipi-plugins-flashexport
 Suggests:	kipi-plugins-flickr
@@ -269,6 +271,7 @@ Obsoletes:	kipi-plugins-wikimedia < %{EVRD}
 %endif
 Suggests:	kipi-plugins-yandexfotki
 Obsoletes:	kipi-plugins-panorama < 5.0.0-0.beta4.2
+Obsoletes:	kipi-plugins-expoblending < 5.0.0-0.beta4.2
 
 %rename kipi-plugins-picasa
 %rename kipi-plugins-photivo
@@ -302,7 +305,6 @@ ImagesGallery, HTMLExport, PrintAssistant...
 %files -n kipi-plugins -f kipi-plugins.lang
 %doc extra/kipi-plugins/AUTHORS extra/kipi-plugins/COPYING extra/kipi-plugins/ChangeLog extra/kipi-plugins/README extra/kipi-plugins/TODO extra/kipi-plugins/NEWS
 %{_kde5_applicationsdir}/kipiplugins.desktop
-%{_kde5_datadir}/kipiplugins/pics/process-working.png
 
 #-----------------------------------------------------------------------
 
@@ -354,27 +356,6 @@ A tool to export images to a remote Dropbox web service.
 %{_qt5_plugindir}/kipiplugin_dropbox.so
 %{_kde5_services}/kipiplugin_dropbox.desktop
 %{_kde5_iconsdir}/hicolor/*/apps/kipi-dropbox.*
-
-#-----------------------------------------------------------------------
-
-%package -n kipi-plugins-expoblending
-Summary:	Expoblending Kipi Plugin
-Group:		System/Libraries
-# need align_image_stack from Hugin project and enfuse from Enblend project (runtime dependency)
-Requires:	hugin
-Requires:	libkdcraw-common
-Requires:	kipi-common
-Conflicts:	kipi-plugins < 1:1.8.0-1
-
-%description -n kipi-plugins-expoblending
-A tool to blend bracketed images.
-
-%files -n kipi-plugins-expoblending -f kipiplugin_expoblending.lang
-%{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_expoblendingui.rc
-%{_kde5_datadir}/kipiplugin_expoblending
-%{_qt5_plugindir}/kipiplugin_expoblending.so
-%{_kde5_services}/kipiplugin_expoblending.desktop
-%{_kde5_iconsdir}/hicolor/*/apps/kipi-expoblending.*
 
 #-----------------------------------------------------------------------
 
@@ -717,7 +698,6 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %find_lang kipiplugin_dlnaexport || touch kipiplugin_dlnaexport.lang
 %find_lang kipiplugin_dngconverter || touch kipiplugin_dngconverter.lang
 %find_lang kipiplugin_dropbox || touch kipiplugin_dropbox.lang
-%find_lang kipiplugin_expoblending || touch kipiplugin_expoblending.lang
 %find_lang kipiplugin_facebook || touch kipiplugin_facebook.lang
 %find_lang kipiplugin_flashexport || touch kipiplugin_flashexport.lang
 %find_lang kipiplugin_flickrexport || touch kipiplugin_flickrexport.lang
