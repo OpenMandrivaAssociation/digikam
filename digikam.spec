@@ -18,10 +18,8 @@ Patch1:		digikam-5.0.0-beta2-clang.patch
 # (tpg) upstream bug, will be fixed in next release
 # https://quickgit.kde.org/?p=digikam.git&a=commit&h=0cdafd38a0759c5751cf7b5c81417e6c427be372
 Patch2:		digikam-5.0.0-beta4-Remove-unused-method.patch
-BuildRequires:	bison
 BuildRequires:	doxygen
 BuildRequires:	eigen3
-BuildRequires:	flex
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
 BuildRequires:	gomp-devel
@@ -43,7 +41,6 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(x11)
-
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Concurrent)
@@ -254,7 +251,6 @@ Suggests:	kipi-plugins-imageshack
 Suggests:	kipi-plugins-imageviewer
 Suggests:	kipi-plugins-imgurexport
 Suggests:	kipi-plugins-kmlexport
-Suggests:	kipi-plugins-panorama
 Suggests:	kipi-plugins-piwigoexport
 Suggests:	kipi-plugins-printimages
 Suggests:	kipi-plugins-rajceexport
@@ -272,6 +268,7 @@ Suggests:	kipi-plugins-wikimedia
 Obsoletes:	kipi-plugins-wikimedia < %{EVRD}
 %endif
 Suggests:	kipi-plugins-yandexfotki
+Obsoletes:	kipi-plugins-panorama < 5.0.0-0.beta4.2
 
 %rename kipi-plugins-picasa
 %rename kipi-plugins-photivo
@@ -542,25 +539,6 @@ A plugin to create KML files to present images with coordinates.
 
 #-----------------------------------------------------------------------
 
-%package -n kipi-plugins-panorama
-Summary:	Panorama tools
-Group:		System/Libraries
-Requires:	libkdcraw-common
-Requires:	kipi-common
-Requires:	hugin
-
-%description -n kipi-plugins-panorama
-A tool to create panorama.
-
-%files -n kipi-plugins-panorama -f kipiplugin_panorama.lang
-%{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_panoramaui.rc
-%{_qt5_plugindir}/kipiplugin_panorama.so
-%{_kde5_datadir}/kipiplugin_panorama/
-%{_kde5_services}/kipiplugin_panorama.desktop
-%{_kde5_iconsdir}/hicolor/*/apps/kipi-panorama.*
-
-#-----------------------------------------------------------------------
-
 %package -n kipi-plugins-piwigoexport
 Summary:	Piwi Go Export
 Group:		System/Libraries
@@ -757,7 +735,6 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %find_lang kipiplugin_kmlexport || touch kipiplugin_kmlexport.lang
 %find_lang kipiplugin_kopete || touch kipiplugin_kopete.lang
 %find_lang kipiplugin_metadataedit || touch kipiplugin_metadataedit.lang
-%find_lang kipiplugin_panorama || touch kipiplugin_panorama.lang
 %find_lang kipiplugin_photolayouteditor || touch kipiplugin_photolayouteditor.lang
 %find_lang kipiplugin_piwigoexport || touch kipiplugin_piwigoexport.lang
 %find_lang kipiplugin_printimages || touch kipiplugin_printimages.lang
