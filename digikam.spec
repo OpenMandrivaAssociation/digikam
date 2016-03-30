@@ -8,7 +8,7 @@ Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
 Version:	5.0.0
-Release:	2.%{pre}.2
+Release:	2.%{pre}.3
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
