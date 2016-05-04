@@ -2,13 +2,13 @@
 %bcond_with wikimedia
 %bcond_with vkontakte
 
-%define pre beta4
+%define pre beta6
 
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
 Version:	5.0.0
-Release:	2.%{pre}.3
+Release:	2.%{pre}.1
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -17,7 +17,7 @@ Source100:	%{name}.rpmlintrc
 Patch1:		digikam-5.0.0-beta2-clang.patch
 # (tpg) upstream bug, will be fixed in next release
 # https://quickgit.kde.org/?p=digikam.git&a=commit&h=0cdafd38a0759c5751cf7b5c81417e6c427be372
-Patch2:		digikam-5.0.0-beta4-Remove-unused-method.patch
+#Patch2:		digikam-5.0.0-beta4-Remove-unused-method.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	imagemagick
@@ -119,6 +119,7 @@ its functionalities.
 %{_qt5_plugindir}/digikamimageplugin_*
 %{_iconsdir}/*/*/*/kipi-process-working.*
 %{_iconsdir}/hicolor/*/apps/expoblending.png
+%{_iconsdir}/hicolor/*/*/panorama.*
 %{_kde5_datadir}/kconf_update/adjustlevelstool.upd
 %{_kde5_datadir}/knotifications5/digikam.notifyrc
 
@@ -241,7 +242,6 @@ Summary:	KDE image Interface Plugins
 Group:		System/Libraries
 Url:		https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 BuildArch:	noarch
-Suggests:	kipi-plugins-advancedslideshow
 Suggests:	kipi-plugins-dlna
 Suggests:	kipi-plugins-dropbox
 
@@ -250,7 +250,6 @@ Suggests:	kipi-plugins-flashexport
 Suggests:	kipi-plugins-flickr
 Suggests:	kipi-plugins-googleservices
 Suggests:	kipi-plugins-imageshack
-Suggests:	kipi-plugins-imageviewer
 Suggests:	kipi-plugins-imgurexport
 Suggests:	kipi-plugins-kmlexport
 Suggests:	kipi-plugins-piwigoexport
@@ -273,6 +272,7 @@ Suggests:	kipi-plugins-yandexfotki
 Obsoletes:	kipi-plugins-panorama < 5.0.0-0.beta4.2
 Obsoletes:	kipi-plugins-expoblending < 5.0.0-0.beta4.2
 
+%rename kipi-plugins-advancedslideshow
 %rename kipi-plugins-picasa
 %rename kipi-plugins-photivo
 %rename kipi-plugins-gpssync
@@ -284,6 +284,7 @@ Obsoletes:	kipi-plugins-expoblending < 5.0.0-0.beta4.2
 %rename kipi-plugins-dngconverter
 %rename kipi-plugins-galleryexport
 %rename kipi-plugins-htmlexport
+%rename kipi-plugins-imageviewer
 %rename kipi-plugins-ipodexport
 %rename kipi-plugins-jpeglossless
 %rename kipi-plugins-kioexportimport
@@ -305,24 +306,6 @@ ImagesGallery, HTMLExport, PrintAssistant...
 %files -n kipi-plugins -f kipi-plugins.lang
 %doc extra/kipi-plugins/AUTHORS extra/kipi-plugins/COPYING extra/kipi-plugins/ChangeLog extra/kipi-plugins/README extra/kipi-plugins/TODO extra/kipi-plugins/NEWS
 %{_kde5_applicationsdir}/kipiplugins.desktop
-
-#-----------------------------------------------------------------------
-
-%package -n kipi-plugins-advancedslideshow
-Summary:	Advanced Slideshow Kipi Plugin
-Group:		System/Libraries
-Conflicts:	kipi-plugins < 1:1.8.0-1
-Requires:	libkdcraw-common
-Requires:	kipi-common
-
-%description -n kipi-plugins-advancedslideshow
-A tool to slide images with 2D and 3D effects using OpenGL.
-
-%files -n kipi-plugins-advancedslideshow -f kipiplugin_advancedslideshow.lang
-%{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_advancedslideshowui.rc
-%{_qt5_plugindir}/kipiplugin_advancedslideshow.so
-%{_kde5_services}/kipiplugin_advancedslideshow.desktop
-%{_kde5_iconsdir}/hicolor/*/apps/kipi-slideshow.*
 
 #-----------------------------------------------------------------------
 
@@ -451,25 +434,6 @@ directory that is accessible via KIO
 
 #-----------------------------------------------------------------------
 
-
-%package -n kipi-plugins-imageviewer
-Summary:	Image Viewer Kipi Plugin
-Group:		System/Libraries
-Conflicts:	kipi-plugins < 1:1.8.0-1
-Requires:	libkdcraw-common
-Requires:	kipi-common
-
-%description -n kipi-plugins-imageviewer
-A tool to preview images using OpenGl.
-
-%files -n kipi-plugins-imageviewer -f kipiplugin_imageviewer.lang
-%{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_imageviewerui.rc
-%{_qt5_plugindir}/kipiplugin_imageviewer.so
-%{_kde5_datadir}/kipiplugin_imageviewer
-%{_kde5_services}/kipiplugin_imageviewer.desktop
-%{_kde5_iconsdir}/hicolor/*/apps/kipi-ogl.*
-
-#-----------------------------------------------------------------------
 
 %package -n kipi-plugins-imageshack
 Summary:	Imageshack Export Kipi Plugin

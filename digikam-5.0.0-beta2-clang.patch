@@ -1,50 +1,3 @@
-diff -urw digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp
---- digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp	2015-11-30 22:08:43.000000000 +0000
-+++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.cpp	2016-01-20 12:17:57.092200583 +0000
-@@ -620,7 +620,7 @@
- 
- /// Training where the train method takes one identity and one image
- template <class Recognizer>
--static void trainSingle(Recognizer* const r, const Identity& identity, TrainingDataProvider* const data,
-+ void RecognitionDatabase::trainSingle(Recognizer* const r, const Identity& identity, TrainingDataProvider* const data,
-                         const QString& trainingContext, RecognitionDatabase::Private* const d)
- {
-     ImageListProvider* const images = data->newImages(identity);
-@@ -647,7 +647,7 @@
- /// Training where the train method takes a list of identities and images,
- /// and updating per-identity is non-inferior to updating all at once.
- template <class Recognizer>
--static void trainIdentityBatch(Recognizer* const r, const QList<Identity>& identitiesToBeTrained,
-+ void RecognitionDatabase::trainIdentityBatch(Recognizer* const r, const QList<Identity>& identitiesToBeTrained,
-                                TrainingDataProvider* const data, const QString& trainingContext,
-                                RecognitionDatabase::Private* const d)
- {
-diff -urw digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h
---- digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h	2015-11-30 22:08:43.000000000 +0000
-+++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/facesengine/recognitiondatabase.h	2016-01-20 12:18:11.906201060 +0000
-@@ -203,10 +203,22 @@
-      */
-     void deleteIdentity(const Identity& identityToBeDeleted);
- 
-+
- private:
- 
-     class Private;
-     Private* const d;
-+
-+   template <class Recognizer>
-+   static void trainIdentityBatch(Recognizer* const r, const QList<Identity>& identitiesToBeTrained,
-+                               TrainingDataProvider* const data, const QString& trainingContext,
-+                               RecognitionDatabase::Private* const d);
-+
-+
-+    template <class Recognizer>
-+    static void trainSingle(Recognizer* const r, const Identity& identity, TrainingDataProvider* const data,
-+                        const QString& trainingContext, RecognitionDatabase::Private* const d);
-+
- };
- 
- } // namespace FacesEngine
 diff -urw digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp
 --- digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp	2015-11-30 22:08:43.000000000 +0000
 +++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/dcraw_common.cpp	2016-01-20 12:53:26.164773435 +0000
@@ -105,15 +58,3 @@ diff -urw digikam-5.0.0-beta2/core/libs/rawengine/libraw/internal/libraw_x3f.cpp
    int col;
    bit_state_t BS;
    
-diff -urw digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp
---- digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp	2015-11-30 22:08:43.000000000 +0000
-+++ /root/rpmbuild/BUILD/digikam-5.0.0-beta2/core/utilities/queuemanager/manager/batchtool.cpp	2016-01-20 13:11:19.738045471 +0000
-@@ -357,7 +357,7 @@
- 
- bool BatchTool::isRawFile(const QUrl& url) const
- {
--    QString   rawFilesExt(QLatin1String(DRawDecoder::rawFiles()));
-+    QString   rawFilesExt( (QLatin1String(DRawDecoder::rawFiles())) );
-     QFileInfo fileInfo(url.toLocalFile());
-     return (rawFilesExt.toUpper().contains(fileInfo.suffix().toUpper()));
- }
