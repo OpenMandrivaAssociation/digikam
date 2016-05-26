@@ -8,7 +8,7 @@ Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
 Version:	5.0.0
-Release:	2.%{pre}.1
+Release:	2.%{pre}.2
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -100,7 +100,7 @@ Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
 %files -f %{name}.lang
-%doc core/AUTHORS core/ChangeLog core/COPYING core/COPYING.LIB core/NEWS core/README
+%doc core/AUTHORS core/COPYING core/COPYING.LIB core/NEWS core/README
 %{_kde5_bindir}/digikam
 %{_kde5_bindir}/digitaglinktree
 %{_kde5_bindir}/cleanup_digikamdb
@@ -304,7 +304,7 @@ for additional functionality such as: RawConverter, SlideShow,
 ImagesGallery, HTMLExport, PrintAssistant...
 
 %files -n kipi-plugins -f kipi-plugins.lang
-%doc extra/kipi-plugins/AUTHORS extra/kipi-plugins/COPYING extra/kipi-plugins/ChangeLog extra/kipi-plugins/README extra/kipi-plugins/TODO extra/kipi-plugins/NEWS
+%doc extra/kipi-plugins/AUTHORS extra/kipi-plugins/COPYING  extra/kipi-plugins/README extra/kipi-plugins/TODO extra/kipi-plugins/NEWS
 %{_kde5_applicationsdir}/kipiplugins.desktop
 
 #-----------------------------------------------------------------------
