@@ -12,7 +12,7 @@ Group:		Graphics
 Url:		http://www.digikam.org
 Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
-Patch1:		digikam-5.0.0-beta2-clang.patch
+#Patch1:		digikam-5.0.0-beta2-clang.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	imagemagick
