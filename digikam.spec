@@ -2,22 +2,17 @@
 %bcond_with wikimedia
 %bcond_with vkontakte
 
-%define pre beta6
-
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
 Version:	5.0.0
-Release:	2.%{pre}.2
+Release:	3
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
-Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}-%pre.tar.bz2
+Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
-Patch1:		digikam-5.0.0-beta2-clang.patch
-# (tpg) upstream bug, will be fixed in next release
-# https://quickgit.kde.org/?p=digikam.git&a=commit&h=0cdafd38a0759c5751cf7b5c81417e6c427be372
-#Patch2:		digikam-5.0.0-beta4-Remove-unused-method.patch
+#Patch1:		digikam-5.0.0-beta2-clang.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	imagemagick
@@ -625,7 +620,7 @@ A tool to export images to a remote Yandex.Fotki web service.
 #-----------------------------------------------------------------------
 
 %prep
-%setup -qn %{name}-%{version}-%{pre}
+%setup -q
 %apply_patches
 
 %build
