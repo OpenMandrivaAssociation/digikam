@@ -5,14 +5,14 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	5.0.0
-Release:	3
+Version:	5.1.0
+Release:	1
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
 Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
-#Patch1:		digikam-5.0.0-beta2-clang.patch
+Patch1:		digikam-5.0.0-beta2-clang.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	imagemagick
@@ -110,11 +110,13 @@ its functionalities.
 %{_kde5_mandir}/man1/digitaglinktree.1*
 %{_kde5_mandir}/man1/cleanup_digikamdb.1*
 %{_kde5_iconsdir}/*/*/apps/digikam.*
-%{_libdir}/libexec/digikamdatabaseserver
 %{_qt5_plugindir}/digikamimageplugin_*
-%{_iconsdir}/*/*/*/kipi-process-working.*
 %{_iconsdir}/hicolor/*/apps/expoblending.png
 %{_iconsdir}/hicolor/*/*/panorama.*
+%{_iconsdir}/*/*/*/albumfolder*.*
+%{_iconsdir}/*/*/*/overexposure.*
+%{_iconsdir}/*/*/*/tag*.*
+%{_iconsdir}/*/*/*/underexposure.*
 %{_kde5_datadir}/kconf_update/adjustlevelstool.upd
 %{_kde5_datadir}/knotifications5/digikam.notifyrc
 
@@ -141,7 +143,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.0.0
+%define libdigikamdatabase_major 5.1.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
@@ -158,7 +160,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 5.0.0
+%define libdigikamcore_major 5.1.0
 %define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
 
 %package -n %{libdigikamcore}
@@ -175,7 +177,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkipiplugins_major 5.0.0
+%define libkipiplugins_major 5.1.0
 %define libkipiplugins %mklibname KF5kipiplugins %{libkipiplugins_major}
 
 %package -n %{libkipiplugins}
@@ -193,7 +195,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major 5.0.0
+%define libdigikamgui_major 5.1.0
 %define libdigikamgui %mklibname digikamgui %libdigikamgui_major
 
 %package -n %libdigikamgui
@@ -384,7 +386,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-flickr
 A tool to export images to a remote Flickr, 23 and Zoomr web services.
 
-%files -n kipi-plugins-flickr -f kipiplugin_flickrexport.lang
+%files -n kipi-plugins-flickr -f kipiplugin_flickr.lang
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_flickrui.rc
 %{_qt5_plugindir}/kipiplugin_flickr.so
 %{_kde5_services}/kipiplugin_flickr.desktop
@@ -404,12 +406,11 @@ Requires:	kipi-common
 %description -n kipi-plugins-googleservices
 A tool to export images to a remote services.
 
-%files -n kipi-plugins-googleservices -f kipiplugin_googledrive.lang
+%files -n kipi-plugins-googleservices -f kipiplugin_googleservices.lang
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_googleservicesui.rc
 %{_qt5_plugindir}/kipiplugin_googleservices.so
 %{_kde5_services}/kipiplugin_googleservices.desktop
 %{_kde5_iconsdir}/hicolor/*/apps/kipi-googledrive.*
-%{_kde5_iconsdir}/hicolor/*/apps/kipi-picasa.*
 
 #-----------------------------------------------------------------------
 
@@ -439,7 +440,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-imageshack
 A tool to export images to ImageShack.
 
-%files -n kipi-plugins-imageshack -f kipiplugin_imageshackexport.lang
+%files -n kipi-plugins-imageshack -f kipiplugin_imageshack.lang
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_imageshackui.rc
 %{_qt5_plugindir}/kipiplugin_imageshack.so
 %{_kde5_services}/kipiplugin_imageshack.desktop
@@ -456,7 +457,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-imgurexport
 A tool to export pictures to Imgur.
 
-%files -n kipi-plugins-imgurexport -f kipiplugin_imgurexport.lang
+%files -n kipi-plugins-imgurexport -f kipiplugin_imgur.lang
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_imgurui.rc
 %{_qt5_plugindir}/kipiplugin_imgur.so
 %{_kde5_services}/kipiplugin_imgur.desktop
@@ -489,7 +490,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-piwigoexport
 A tool to export images to a remote Piwigo.
 
-%files -n kipi-plugins-piwigoexport -f kipiplugin_piwigoexport.lang
+%files -n kipi-plugins-piwigoexport -f kipiplugin_piwigo.lang
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_piwigoui.rc
 %{_qt5_plugindir}/kipiplugin_piwigo.so
 %{_kde5_datadir}/kipiplugin_piwigo
@@ -525,7 +526,7 @@ Requires:	kipi-common
 %description -n kipi-plugins-rajceexport
 A tool to export images to a remote rajce.net service.
 
-%files -n kipi-plugins-rajceexport -f kipiplugin_rajceexport.lang
+%files -n kipi-plugins-rajceexport -f kipiplugin_rajce.lang
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_rajceui.rc
 %{_qt5_plugindir}/kipiplugin_rajce.so
 %{_kde5_services}/kipiplugin_rajce.desktop
@@ -644,6 +645,9 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_photivointegr
 %if %{without wikimedia}
 rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %endif
+%if %{without vkontakte}
+rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/libkvkontakte.mo
+%endif
 
 %find_lang %{name} --with-html || touch %{name}.lang
 %find_lang showfoto --with-html || touch showfoto.lang
@@ -659,14 +663,14 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %find_lang kipiplugin_dropbox || touch kipiplugin_dropbox.lang
 %find_lang kipiplugin_facebook || touch kipiplugin_facebook.lang
 %find_lang kipiplugin_flashexport || touch kipiplugin_flashexport.lang
-%find_lang kipiplugin_flickrexport || touch kipiplugin_flickrexport.lang
+%find_lang kipiplugin_flickr || touch kipiplugin_flickr.lang
 %find_lang kipiplugin_galleryexport || touch kipiplugin_galleryexport.lang
-%find_lang kipiplugin_googledrive || touch kipiplugin_googledrive.lang
+%find_lang kipiplugin_googleservices || touch kipiplugin_googleservices.lang
 %find_lang kipiplugin_gpssync || touch kipiplugin_gpssync.lang
 %find_lang kipiplugin_htmlexport || touch kipiplugin_htmlexport.lang
-%find_lang kipiplugin_imageshackexport || touch kipiplugin_imageshackexport.lang
+%find_lang kipiplugin_imageshack || touch kipiplugin_imageshack.lang
 %find_lang kipiplugin_imageviewer || touch kipiplugin_imageviewer.lang
-%find_lang kipiplugin_imgurexport || touch kipiplugin_imgurexport.lang
+%find_lang kipiplugin_imgur || touch kipiplugin_imgur.lang
 %find_lang kipiplugin_ipodexport || touch kipiplugin_ipodexport.lang
 %find_lang kipiplugin_jalbumexport || touch kipiplugin_jalbumexport.lang
 %find_lang kipiplugin_jpeglossless || touch kipiplugin_jpeglossless.lang
@@ -675,11 +679,12 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %find_lang kipiplugin_kopete || touch kipiplugin_kopete.lang
 %find_lang kipiplugin_metadataedit || touch kipiplugin_metadataedit.lang
 %find_lang kipiplugin_photolayouteditor || touch kipiplugin_photolayouteditor.lang
-%find_lang kipiplugin_piwigoexport || touch kipiplugin_piwigoexport.lang
+%find_lang kipiplugin_piwigo || touch kipiplugin_piwigo.lang
 %find_lang kipiplugin_printimages || touch kipiplugin_printimages.lang
-%find_lang kipiplugin_rajceexport || touch kipiplugin_rajceexport.lang
+%find_lang kipiplugin_rajce || touch kipiplugin_rajce.lang
 %find_lang kipiplugin_rawconverter || touch kipiplugin_rawconverter.lang
 %find_lang kipiplugin_removeredeyes || touch kipiplugin_removeredeyes.lang
+%find_lang kipiplugin_remotestorage || touch kipiplugin_remotestorage.lang
 %find_lang kipiplugin_sendimages || touch kipiplugin_sendimages.lang
 %find_lang kipiplugin_shwup || touch kipiplugin_shwup.lang
 %find_lang kipiplugin_smug || touch kipiplugin_smug.lang
@@ -689,4 +694,4 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %find_lang kipiplugin_wikimedia || touch kipiplugin_wikimedia.lang
 %find_lang kipiplugin_yandexfotki || touch kipiplugin_yandexfotki.lang
 %find_lang libkgeomap || touch libkgeomap.lang
-
+%find_lang libkvkontakte || touch libkvkontakte.lang
