@@ -423,7 +423,7 @@ Requires:   kipi-common
 A tool to export pictures to or import from a remote
 directory that is accessible via KIO
 
-%files -n kipi-plugins-remotestorage
+%files -n kipi-plugins-remotestorage -f kipiplugin_remotestorage.lang
 %{_qt5_plugindir}/kipiplugin_remotestorage.so
 %{_kde5_datadir}/kservices5/kipiplugin_remotestorage.desktop
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_remotestorageui.rc
@@ -646,6 +646,7 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_photivointegr
 rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
 %endif
 %if %{without vkontakte}
+rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_vkontakte.mo
 rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/libkvkontakte.mo
 %endif
 
