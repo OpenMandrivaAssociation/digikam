@@ -117,6 +117,7 @@ its functionalities.
 %{_iconsdir}/*/*/*/overexposure.*
 %{_iconsdir}/*/*/*/tag*.*
 %{_iconsdir}/*/*/*/underexposure.*
+%{_iconsdir}/*/*/*/kipi-googlephoto.*
 %{_kde5_datadir}/kconf_update/adjustlevelstool.upd
 %{_kde5_datadir}/knotifications5/digikam.notifyrc
 
