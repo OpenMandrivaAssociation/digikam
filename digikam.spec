@@ -5,7 +5,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	5.1.0
+Version:	5.2.0
 Release:	1
 License:	GPLv2+
 Group:		Graphics
@@ -102,23 +102,17 @@ its functionalities.
 %{_kde5_datadir}/digikam
 %{_kde5_datadir}/solid/actions/digikam*.desktop
 %{_kde5_datadir}/kxmlgui5/digikam
-%{_kde5_applicationsdir}/digikam.desktop
-%{_kde5_datadir}/appdata/digikam.appdata.xml
-%{_kde5_datadir}/appdata/digiKam-ImagePlugin_*.metainfo.xml
-%{_kde5_services}/digikam*.desktop
-%{_kde5_servicetypes}/digikam*.desktop
+%{_kde5_applicationsdir}/org.kde.digikam.desktop
+%{_kde5_datadir}/metainfo/org.kde.digikam.appdata.xml
 %{_kde5_mandir}/man1/digitaglinktree.1*
 %{_kde5_mandir}/man1/cleanup_digikamdb.1*
 %{_kde5_iconsdir}/*/*/apps/digikam.*
-%{_qt5_plugindir}/digikamimageplugin_*
 %{_iconsdir}/hicolor/*/apps/expoblending.png
 %{_iconsdir}/hicolor/*/*/panorama.*
 %{_iconsdir}/*/*/*/albumfolder*.*
 %{_iconsdir}/*/*/*/overexposure.*
 %{_iconsdir}/*/*/*/tag*.*
 %{_iconsdir}/*/*/*/underexposure.*
-%{_iconsdir}/*/*/*/kipi-googlephoto.*
-%{_kde5_datadir}/kconf_update/adjustlevelstool.upd
 %{_kde5_datadir}/knotifications5/digikam.notifyrc
 
 #-----------------------------------------------------------------------
@@ -136,15 +130,15 @@ You can use it to view your photographs and improve them.
 
 %files -n showfoto -f showfoto.lang
 %{_kde5_bindir}/showfoto
-%{_kde5_datadir}/applications/showfoto.desktop
+%{_kde5_datadir}/applications/org.kde.showfoto.desktop
 %{_kde5_datadir}/kxmlgui5/showfoto
 %{_kde5_datadir}/showfoto
-%{_kde5_datadir}/appdata/showfoto.appdata.xml
+%{_kde5_datadir}/metainfo/org.kde.showfoto.appdata.xml
 %{_kde5_iconsdir}/*/*/apps/showfoto.*
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.1.0
+%define libdigikamdatabase_major 5.2.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
@@ -161,7 +155,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 5.1.0
+%define libdigikamcore_major 5.2.0
 %define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
 
 %package -n %{libdigikamcore}
@@ -178,7 +172,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkipiplugins_major 5.1.0
+%define libkipiplugins_major 5.2.0
 %define libkipiplugins %mklibname KF5kipiplugins %{libkipiplugins_major}
 
 %package -n %{libkipiplugins}
@@ -196,7 +190,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major 5.1.0
+%define libdigikamgui_major 5.2.0
 %define libdigikamgui %mklibname digikamgui %libdigikamgui_major
 
 %package -n %libdigikamgui
@@ -412,6 +406,7 @@ A tool to export images to a remote services.
 %{_qt5_plugindir}/kipiplugin_googleservices.so
 %{_kde5_services}/kipiplugin_googleservices.desktop
 %{_kde5_iconsdir}/hicolor/*/apps/kipi-googledrive.*
+%{_kde5_iconsdir}/hicolor/*/apps/kipi-googlephoto.*
 
 #-----------------------------------------------------------------------
 
