@@ -15,10 +15,13 @@ Source100:	%{name}.rpmlintrc
 Patch1:		digikam-5.0.0-beta2-clang.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
+BuildRequires:	flex
+BuildRequires:	bison
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
 BuildRequires:	gomp-devel
 BuildRequires:	tiff-devel
+BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
@@ -64,6 +67,7 @@ BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5ItemModels)
 BuildRequires:	cmake(KF5Bookmarks)
 BuildRequires:	cmake(KF5AkonadiContact)
+BuildRequires:	cmake(KF5Akonadi)
 BuildRequires:	cmake(KF5FileMetaData)
 BuildRequires:	cmake(KF5Kipi)
 BuildRequires:	cmake(KF5CalendarCore)
@@ -211,13 +215,13 @@ Librairie File needed by %name
 %package        -n     %libnamedev
 Summary:        Static libraries and headers for %name
 Group:          Development/C
-Provides:       %name-devel = %epoch:%version-%release
-Provides:       kipi-plugins-devel = %epoch:%version-%release
+Provides:       %name-devel = %{EVRD}
+Provides:       kipi-plugins-devel = %{EVRD}
 Obsoletes:      kipi-plugins-devel < 1:2.0.0
-Requires:       %libdigikamcore = %epoch:%version-%release
-Requires:       %libdigikamgui = %epoch:%version-%release
-Requires:       %libdigikamdatabase = %epoch:%version-%release
-Requires:       %libkipiplugins = %epoch:%version-%release
+Requires:       %libdigikamcore = %{EVRD}
+Requires:       %libdigikamgui = %{EVRD}
+Requires:       %libdigikamdatabase = %{EVRD}
+Requires:       %libkipiplugins = %{EVRD}
 
 %description  -n     %libnamedev
 %libnamedev contains the libraries and header files needed to
