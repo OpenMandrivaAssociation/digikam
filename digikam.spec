@@ -628,7 +628,7 @@ A tool to export images to a remote Yandex.Fotki web service.
 %build
 %cmake_kde5 -G"Unix Makefiles" \
 	-DENABLE_KFILEMETADATASUPPORT=ON \
-	-DENABLE_OPENCV3=ON \
+	-DENABLE_OPENCV3=OFF \
 	-DENABLE_KFILEMETADATASUPPORT=ON \
 	-DENABLE_MYSQLSUPPORT=ON \
 	-DENABLE_INTERNALMYSQL=OFF \
