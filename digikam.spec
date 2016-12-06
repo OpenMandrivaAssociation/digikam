@@ -19,6 +19,7 @@ BuildRequires:	bison
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
 BuildRequires:	mariadb-devel
+BuildRequires:	opencv-devel
 BuildRequires:	gomp-devel
 BuildRequires:	tiff-devel
 BuildRequires:	boost-devel
