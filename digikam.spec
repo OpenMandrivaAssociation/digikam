@@ -12,13 +12,13 @@ Group:		Graphics
 Url:		http://www.digikam.org
 Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
-Patch1:		digikam-5.0.0-beta2-clang.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
+BuildRequires:	mariadb-devel
 BuildRequires:	gomp-devel
 BuildRequires:	tiff-devel
 BuildRequires:	boost-devel
@@ -626,11 +626,11 @@ A tool to export images to a remote Yandex.Fotki web service.
 
 %build
 %cmake_kde5 -G"Unix Makefiles" \
-	-DENABLE_BALOOSUPPORT=ON \
-	-DENABLE_LCMS2=ON \
-	-DENABLE_KDEPIMLIBSSUPPORT=ON \
+	-DENABLE_KFILEMETADATASUPPORT=ON \
+	-DENABLE_OPENCV3=ON \
+	-DENABLE_KFILEMETADATASUPPORT=ON \
 	-DENABLE_MYSQLSUPPORT=ON \
-	-DENABLE_INTERNALMYSQL=ON \
+	-DENABLE_INTERNALMYSQL=OFF \
 
 %make
 
