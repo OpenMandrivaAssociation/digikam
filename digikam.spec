@@ -143,7 +143,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.2.0
+%define libdigikamdatabase_major 5.3.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
@@ -160,7 +160,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 5.2.0
+%define libdigikamcore_major 5.3.0
 %define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
 
 %package -n %{libdigikamcore}
@@ -177,7 +177,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkipiplugins_major 5.2.0
+%define libkipiplugins_major 5.3.0
 %define libkipiplugins %mklibname KF5kipiplugins %{libkipiplugins_major}
 
 %package -n %{libkipiplugins}
@@ -195,7 +195,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major 5.2.0
+%define libdigikamgui_major 5.3.0
 %define libdigikamgui %mklibname digikamgui %libdigikamgui_major
 
 %package -n %libdigikamgui
@@ -213,18 +213,18 @@ Librairie File needed by %name
 
 %define libnamedev %mklibname digikam -d
 
-%package        -n     %libnamedev
-Summary:        Static libraries and headers for %name
-Group:          Development/C
-Provides:       %name-devel = %{EVRD}
-Provides:       kipi-plugins-devel = %{EVRD}
-Obsoletes:      kipi-plugins-devel < 1:2.0.0
-Requires:       %libdigikamcore = %{EVRD}
-Requires:       %libdigikamgui = %{EVRD}
-Requires:       %libdigikamdatabase = %{EVRD}
-Requires:       %libkipiplugins = %{EVRD}
+%package -n %{libnamedev}
+Summary:	Static libraries and headers for %{name}
+Group:		Development/C
+Provides:	%{name}-devel = %{EVRD}
+Provides:	kipi-plugins-devel = %{EVRD}
+Obsoletes:	kipi-plugins-devel < 1:2.0.0
+Requires:	%libdigikamcore = %{EVRD}
+Requires:	%libdigikamgui = %{EVRD}
+Requires:	%libdigikamdatabase = %{EVRD}
+Requires:	%libkipiplugins = %{EVRD}
 
-%description  -n     %libnamedev
+%description -n %{libnamedev}
 %libnamedev contains the libraries and header files needed to
 develop programs which make use of %name.
 The library documentation is available on header files.
