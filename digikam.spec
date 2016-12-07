@@ -74,7 +74,7 @@ BuildRequires:	cmake(KF5Kipi)
 BuildRequires:	cmake(KF5CalendarCore)
 BuildRequires:	cmake(KF5ThreadWeaver)
 BuildRequires:	cmake(KF5Sane)
-BuildRequires:	cmake(MarbleQt5)
+BuildRequires:	cmake(Marble)
 
 Requires:	mariadb-common
 Requires:	kipi-common
