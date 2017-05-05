@@ -12,6 +12,9 @@ Group:		Graphics
 Url:		http://www.digikam.org
 Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
+## upstreamable patches
+# doc-translated FTBFS, https://bugs.kde.org/show_bug.cgi?id=377597
+Patch100:	digikam-5.5.0-doc_translated.patc
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
@@ -627,11 +630,13 @@ A tool to export images to a remote Yandex.Fotki web service.
 
 %build
 %cmake_kde5 -G"Unix Makefiles" \
-	-DENABLE_KFILEMETADATASUPPORT=ON \
-	-DENABLE_OPENCV3=OFF \
-	-DENABLE_KFILEMETADATASUPPORT=ON \
-	-DENABLE_MYSQLSUPPORT=ON \
-	-DENABLE_INTERNALMYSQL=OFF \
+	-DENABLE_OPENCV3:BOOL=ON \
+	-DENABLE_MYSQLSUPPORT:BOOL=ON \
+	-DENABLE_INTERNALMYSQL:BOOL=OFF \
+	-DENABLE_AKONADICONTACTSUPPORT:BOOL=ON \
+	-DENABLE_APPSTYLES:BOOL=ON \
+	-DENABLE_KFILEMETADATASUPPORT:BOOL=ON \
+	-DENABLE_MEDIAPLAYER:BOOL=ON
 
 %make
 
