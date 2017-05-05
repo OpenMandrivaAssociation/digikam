@@ -14,7 +14,7 @@ Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
 ## upstreamable patches
 # doc-translated FTBFS, https://bugs.kde.org/show_bug.cgi?id=377597
-Patch100:	digikam-5.5.0-doc_translated.patc
+Patch100:	digikam-5.5.0-doc_translated.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
