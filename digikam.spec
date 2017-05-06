@@ -2,6 +2,8 @@
 %bcond_with wikimedia
 %bcond_with vkontakte
 
+%define _disable_lto 1
+
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
