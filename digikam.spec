@@ -3,6 +3,7 @@
 %bcond_with vkontakte
 
 %define _disable_lto 1
+%define _disable_ld_no_undefined 1
 
 Summary:	A KDE photo management utility
 Name:		digikam
