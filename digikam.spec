@@ -25,7 +25,6 @@ BuildRequires:	bison
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
 BuildRequires:	mariadb-devel
-BuildRequires:	gomp-devel
 BuildRequires:	tiff-devel
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(gl)
@@ -355,7 +354,7 @@ A tool to export images to a remote jAlbum.
 
 %files -n kipi-plugins-jalbum
 %{_qt5_plugindir}/kipiplugin_jalbum.so
-%{_iconsdir}/hicolor/*/apps/*.png
+%{_iconsdir}/hicolor/*/apps/kipi-jalbum.png
 %{_kde5_services}/kipiplugin_jalbum.desktop
 %{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_jalbumui.rc
 
