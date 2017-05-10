@@ -25,7 +25,6 @@ BuildRequires:	bison
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
 BuildRequires:	mariadb-devel
-BuildRequires:	opencv-devel
 BuildRequires:	gomp-devel
 BuildRequires:	tiff-devel
 BuildRequires:	boost-devel
@@ -41,7 +40,9 @@ BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libpgf)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
+%if %mdvver > 300000
 BuildRequires:	pkgconfig(opencv)
+%endif
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	pkgconfig(xrandr)
