@@ -40,7 +40,7 @@ BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libpgf)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
-%if %mdvver > 300000
+%if %mdvver > 3000000
 BuildRequires:	pkgconfig(opencv)
 %endif
 BuildRequires:	pkgconfig(sqlite3)
@@ -634,7 +634,7 @@ A tool to export images to a remote Yandex.Fotki web service.
 
 %build
 %cmake_kde5 -G"Unix Makefiles" \
-%if %mdvver > 300000
+%if %mdvver > 3000000
 	-DENABLE_OPENCV3:BOOL=ON \
 %else
 	-DENABLE_OPENCV3:BOOL=OFF \
