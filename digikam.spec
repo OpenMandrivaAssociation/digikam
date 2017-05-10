@@ -149,7 +149,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.3.0
+%define libdigikamdatabase_major 5.5.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
@@ -166,7 +166,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 5.3.0
+%define libdigikamcore_major 5.5.0
 %define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
 
 %package -n %{libdigikamcore}
@@ -183,7 +183,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkipiplugins_major 5.3.0
+%define libkipiplugins_major 5.5.0
 %define libkipiplugins %mklibname KF5kipiplugins %{libkipiplugins_major}
 
 %package -n %{libkipiplugins}
@@ -201,7 +201,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major 5.3.0
+%define libdigikamgui_major 5.5.0
 %define libdigikamgui %mklibname digikamgui %libdigikamgui_major
 
 %package -n %libdigikamgui
@@ -247,7 +247,7 @@ Url:		https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 BuildArch:	noarch
 Suggests:	kipi-plugins-dlna
 Suggests:	kipi-plugins-dropbox
-
+Suggests:	kipi-plugins-jalbum
 Suggests:	kipi-plugins-facebook
 Suggests:	kipi-plugins-flashexport
 Suggests:	kipi-plugins-flickr
@@ -342,6 +342,22 @@ A tool to export images to a remote Dropbox web service.
 %{_qt5_plugindir}/kipiplugin_dropbox.so
 %{_kde5_services}/kipiplugin_dropbox.desktop
 %{_kde5_iconsdir}/hicolor/*/apps/kipi-dropbox.*
+
+#-----------------------------------------------------------------------
+
+%package -n kipi-plugins-jalbum
+Summary:	jAlbum export Kipi Plugin
+Group:		System/Libraries
+Requires:	kipi-common
+
+%description -n kipi-plugins-jalbum
+A tool to export images to a remote jAlbum.
+
+%files -n kipi-plugins-jalbum
+%{_qt5_plugindir}/kipiplugin_jalbum.so
+%{_iconsdir}/hicolor/*/apps/*.png
+%{_kde5_services}/kipiplugin_jalbum.desktop
+%{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_jalbumui.rc
 
 #-----------------------------------------------------------------------
 
