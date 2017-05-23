@@ -80,6 +80,7 @@ BuildRequires:	cmake(KF5CalendarCore)
 BuildRequires:	cmake(KF5ThreadWeaver)
 BuildRequires:	cmake(KF5Sane)
 BuildRequires:	cmake(Marble)
+BuildRequires:	cmake(KF5KDcraw)
 
 Requires:	mariadb-common
 Requires:	kipi-common
