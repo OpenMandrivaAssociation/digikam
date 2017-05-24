@@ -80,6 +80,8 @@ BuildRequires:	cmake(KF5CalendarCore)
 BuildRequires:	cmake(KF5ThreadWeaver)
 BuildRequires:	cmake(KF5Sane)
 BuildRequires:	cmake(Marble)
+# (tpg) needed if build with GCC
+BuildRequires:	gomp-devel
 
 Requires:	mariadb-common
 Requires:	kipi-common
@@ -647,6 +649,15 @@ A tool to export images to a remote Yandex.Fotki web service.
 %apply_patches
 
 %build
+# (tpg) upstream ships owb libraw library instead of using system-wide libraw
+# make[2]: Leaving directory '/builddir/build/BUILD/digikam-5.5.0/build'
+# /usr/bin/ld: warning: ../libs/rawengine/libraw/liblibraw.a(demosaic_packs.cpp.o): multiple common of '.gomp_critical_user_.var'
+# /usr/bin/ld: ../libs/rawengine/libraw/liblibraw.a(libraw_cxx.cpp.o): previous definition here
+# /builddir/build/BUILD/digikam-5.5.0/core/libs/rawengine/libraw/src/libraw_xtrans_compressed.cpp:130: error: undefined reference to '__kmpc_global_thread_num'
+# try to build with GCC because of above issue
+export CC=gcc
+export CXX=g++
+
 %cmake_kde5 -G"Unix Makefiles" \
 	-DENABLE_OPENCV3:BOOL=ON \
 	-DENABLE_MYSQLSUPPORT:BOOL=ON \
