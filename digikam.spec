@@ -8,8 +8,8 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	5.5.0
-Release:	2
+Version:	5.6.0
+Release:	1
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -649,7 +649,7 @@ A tool to export images to a remote Yandex.Fotki web service.
 %apply_patches
 
 %build
-# (tpg) upstream ships owb libraw library instead of using system-wide libraw
+# (tpg) upstream ships own libraw library instead of using system-wide libraw
 # make[2]: Leaving directory '/builddir/build/BUILD/digikam-5.5.0/build'
 # /usr/bin/ld: warning: ../libs/rawengine/libraw/liblibraw.a(demosaic_packs.cpp.o): multiple common of '.gomp_critical_user_.var'
 # /usr/bin/ld: ../libs/rawengine/libraw/liblibraw.a(libraw_cxx.cpp.o): previous definition here
