@@ -8,7 +8,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	5.6.0
+Version:	5.7.0
 Release:	1
 License:	GPLv2+
 Group:		Graphics
@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(QtAV) cmake(QtAVWidgets)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Concurrent)
 BuildRequires:	cmake(Qt5Widgets)
@@ -150,7 +151,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.6.0
+%define libdigikamdatabase_major 5.7.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
