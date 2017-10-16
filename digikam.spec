@@ -8,8 +8,8 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	5.5.0
-Release:	2
+Version:	5.7.0
+Release:	1
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(QtAV) cmake(QtAVWidgets)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Concurrent)
 BuildRequires:	cmake(Qt5Widgets)
@@ -150,7 +151,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.5.0
+%define libdigikamdatabase_major 5.7.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
@@ -167,7 +168,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 5.5.0
+%define libdigikamcore_major %{version}
 %define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
 
 %package -n %{libdigikamcore}
@@ -184,7 +185,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libkipiplugins_major 5.5.0
+%define libkipiplugins_major %{version}
 %define libkipiplugins %mklibname KF5kipiplugins %{libkipiplugins_major}
 
 %package -n %{libkipiplugins}
@@ -202,7 +203,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major 5.5.0
+%define libdigikamgui_major %{version}
 %define libdigikamgui %mklibname digikamgui %libdigikamgui_major
 
 %package -n %libdigikamgui
@@ -649,7 +650,7 @@ A tool to export images to a remote Yandex.Fotki web service.
 %apply_patches
 
 %build
-# (tpg) upstream ships owb libraw library instead of using system-wide libraw
+# (tpg) upstream ships own libraw library instead of using system-wide libraw
 # make[2]: Leaving directory '/builddir/build/BUILD/digikam-5.5.0/build'
 # /usr/bin/ld: warning: ../libs/rawengine/libraw/liblibraw.a(demosaic_packs.cpp.o): multiple common of '.gomp_critical_user_.var'
 # /usr/bin/ld: ../libs/rawengine/libraw/liblibraw.a(libraw_cxx.cpp.o): previous definition here
