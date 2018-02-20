@@ -18,6 +18,7 @@ Source100:	%{name}.rpmlintrc
 ## upstreamable patches
 # doc-translated FTBFS, https://bugs.kde.org/show_bug.cgi?id=377597
 Patch100:	digikam-5.5.0-doc_translated.patch
+Patch101:	digikam-5.7.0-glibc_powf64.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
@@ -108,7 +109,7 @@ Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
 its functionalities.
 
 %files -f %{name}.lang
-%doc core/AUTHORS core/COPYING core/COPYING.LIB core/NEWS core/README
+%doc core/AUTHORS core/COPYING core/COPYING.LIB core/NEWS core/README.md
 %{_kde5_bindir}/digikam
 %{_kde5_bindir}/digitaglinktree
 %{_kde5_bindir}/cleanup_digikamdb
@@ -151,7 +152,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.7.0
+%define libdigikamdatabase_major 5.8.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
@@ -416,7 +417,6 @@ A tool to export images to a remote Flickr, 23 and Zoomr web services.
 %{_kde5_services}/kipiplugin_flickr.desktop
 %{_kde5_iconsdir}/hicolor/*/apps/kipi-flickr.*
 %{_kde5_iconsdir}/hicolor/*/apps/kipi-hq.*
-%{_kde5_iconsdir}/hicolor/*/apps/kipi-zooomr.*
 
 #-----------------------------------------------------------------------
 
