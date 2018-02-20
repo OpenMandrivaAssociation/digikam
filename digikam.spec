@@ -81,6 +81,7 @@ BuildRequires:	cmake(KF5Kipi)
 BuildRequires:	cmake(KF5CalendarCore)
 BuildRequires:	cmake(KF5ThreadWeaver)
 BuildRequires:	cmake(KF5Sane)
+BuildRequires:	cmake(KF5DocTools)
 BuildRequires:	cmake(Marble)
 # (tpg) needed if build with GCC
 BuildRequires:	gomp-devel
