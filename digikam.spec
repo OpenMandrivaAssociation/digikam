@@ -8,7 +8,7 @@
 Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
-Version:	5.8.0
+Version:	5.9.0
 Release:	1
 License:	GPLv2+
 Group:		Graphics
@@ -18,7 +18,7 @@ Source100:	%{name}.rpmlintrc
 ## upstreamable patches
 # doc-translated FTBFS, https://bugs.kde.org/show_bug.cgi?id=377597
 Patch100:	digikam-5.5.0-doc_translated.patch
-Patch101:	digikam-5.7.0-glibc_powf64.patch
+#Patch101:	digikam-5.7.0-glibc_powf64.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
@@ -153,7 +153,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 5.8.0
+%define libdigikamdatabase_major 5.9.0
 %define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
 
 %package -n %{libdigikamdatabase}
