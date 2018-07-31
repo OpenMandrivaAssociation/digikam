@@ -47,7 +47,8 @@ BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(QtAV) cmake(QtAVWidgets)
+BuildRequires:	cmake(QtAV)
+BuildRequires:	cmake(QtAVWidgets)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Concurrent)
 BuildRequires:	cmake(Qt5Widgets)
@@ -137,7 +138,7 @@ its functionalities.
 %package -n showfoto
 Summary:	Fast Image Editor
 Group:		Graphics
-Requires:	libkdcraw-common
+Requires:	libkdcraw
 # Otherwise it doesn't work properly
 Requires:	%{name} = %{EVRD}
 
