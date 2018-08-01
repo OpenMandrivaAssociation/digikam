@@ -31,6 +31,7 @@ BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
+BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(lensfun)
