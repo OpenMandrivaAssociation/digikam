@@ -321,23 +321,6 @@ ImagesGallery, HTMLExport, PrintAssistant...
 
 #-----------------------------------------------------------------------
 
-%package -n kipi-plugins-calendar
-Summary:	Calendar Kipi Plugin
-Group:		System/Libraries
-Conflicts:	kipi-plugins < 1:1.8.0-1
-Requires:	libkdcraw-common
-Requires:	kipi-common
-
-%description -n kipi-plugins-calendar
-A tool to create calendars.
-
-%files -n kipi-plugins-calendar -f kipiplugin_calendar.lang
-#%{_kde5_datadir}/kxmlgui5/kipi/kipiplugin_calendarui.rc
-#%{_qt5_plugindir}/kipiplugin_calendar.so
-#%{_kde5_services}/kipiplugin_calendar.desktop
-
-#-----------------------------------------------------------------------
-
 %package -n kipi-plugins-dropbox
 Summary:	Dropbox export Kipi Plugin
 Group:		System/Libraries
@@ -699,7 +682,6 @@ rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/libkvkontakte.mo
 %find_lang kipiplugin_acquireimages || touch kipiplugin_acquireimages.lang
 %find_lang kipiplugin_advancedslideshow || touch kipiplugin_advancedslideshow.lang
 %find_lang kipiplugin_batchprocessimages || touch kipiplugin_batchprocessimages.lang
-%find_lang kipiplugin_calendar || touch kipiplugin_calendar.lang
 %find_lang kipiplugin_debianscreenshots || touch kipiplugin_debianscreenshots.lang
 %find_lang kipiplugin_dlnaexport || touch kipiplugin_dlnaexport.lang
 %find_lang kipiplugin_dngconverter || touch kipiplugin_dngconverter.lang
