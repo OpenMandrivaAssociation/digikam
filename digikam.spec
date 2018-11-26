@@ -9,12 +9,14 @@ Summary:	A KDE photo management utility
 Name:		digikam
 Epoch:		2
 Version:	5.9.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
 Source0:	http://download.kde.org/stable/digikam/%{name}-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
+# See https://issues.openmandriva.org/show_bug.cgi?id=2391
+Patch1:		digikam-5.9.0-link-sane-with-lld.patch
 ## upstreamable patches
 # doc-translated FTBFS, https://bugs.kde.org/show_bug.cgi?id=377597
 Patch100:	digikam-5.5.0-doc_translated.patch
@@ -22,6 +24,7 @@ Patch100:	digikam-5.5.0-doc_translated.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
+BuildRequires:	lld
 BuildRequires:	bison
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
