@@ -1,4 +1,3 @@
-removed_sources:
-  digikam-5.8.0.tar.xz: 707345f70f8e70df0b7f1de484d82223c4912f82
 sources:
-  digikam-5.9.0.tar.xz: f98f9311cc52173192db6ebba101231cf24af633
+  digikam-6.0.0-beta2.tar.xz: 4891e10ed8fa5aa26408f94604bf015103209571
+  digikam-6.0-l10n.tar.xz: 0504c25e0c3a9cc6a385e50bee9b24478477e0d3
