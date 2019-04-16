@@ -13,8 +13,7 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Epoch:		2
-Version:	6.0.0
+Version:	6.1.0
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -29,12 +28,7 @@ Source0:	http://download.kde.org/stable/digikam/%{version}/%{name}-%{version}.ta
 Release:	1
 %endif
 Source100:	%{name}.rpmlintrc
-# See https://issues.openmandriva.org/show_bug.cgi?id=2391
-Patch1:		digikam-5.9.0-link-sane-with-lld.patch
 ## upstreamable patches
-# doc-translated FTBFS, https://bugs.kde.org/show_bug.cgi?id=377597
-Patch100:	digikam-5.5.0-doc_translated.patch
-#Patch101:	digikam-5.7.0-glibc_powf64.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
@@ -114,6 +108,7 @@ Requires:	libgphoto-common
 Requires:	libkdcraw-common
 
 # FIXME why doesn't the dependency generator see this?
+# https://issues.openmandriva.org/show_bug.cgi?id=2391
 Requires:	%mklibname sane 1
 
 %description
@@ -153,6 +148,7 @@ its functionalities.
 %{_iconsdir}/*/*/*/tag*.*
 %{_iconsdir}/*/*/*/underexposure.*
 %{_kde5_datadir}/knotifications5/digikam.notifyrc
+%{_libdir}/qt5/plugins/digikam
 
 #-----------------------------------------------------------------------
 
@@ -246,7 +242,9 @@ develop programs which make use of %name.
 The library documentation is available on header files.
 
 %files -n     %libnamedev
+%{_includedir}/digikam
 %{_kde5_libdir}/*.so
+%{_libdir}/cmake/digikam
 
 #-----------------------------------------------------------------------
 
