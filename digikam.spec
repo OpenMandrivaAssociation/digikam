@@ -100,8 +100,6 @@ BuildRequires:	cmake(KF5ThreadWeaver)
 BuildRequires:	cmake(KF5Sane)
 BuildRequires:	cmake(KF5DocTools)
 BuildRequires:	cmake(Marble)
-# (tpg) needed if build with GCC
-BuildRequires:	gomp-devel
 
 Requires:	mariadb-common
 Requires:	libgphoto-common
@@ -212,15 +210,15 @@ Librairie File needed by %{name}
 %define libdigikamgui_major %{version}
 %define libdigikamgui %mklibname digikamgui %libdigikamgui_major
 
-%package -n %libdigikamgui
-Summary: Runtime library for %{name}
-Group: System/Libraries
-Obsoletes: %{_lib}digikamgui5.9.0 < %{EVRD}
+%package -n %{libdigikamgui}
+Summary:	Runtime library for %{name}
+Group:		System/Libraries
+Obsoletes:	%{_lib}digikamgui5.9.0 < %{EVRD}
 
-%description -n %libdigikamgui
-Librairie File needed by %name
+%description -n %{libdigikamgui}
+Librairie File needed by %name.
 
-%files -n %libdigikamgui
+%files -n %{libdigikamgui}
 %{_kde5_libdir}/libdigikamgui.so.%{libdigikamgui_major}*
 
 
@@ -241,7 +239,7 @@ Requires:	%libdigikamdatabase = %{EVRD}
 develop programs which make use of %name.
 The library documentation is available on header files.
 
-%files -n     %libnamedev
+%files -n %{libnamedev}
 %{_includedir}/digikam
 %{_kde5_libdir}/*.so
 %{_libdir}/cmake/digikam
@@ -269,7 +267,8 @@ tar xf %{S:1}
 	-DENABLE_AKONADICONTACTSUPPORT:BOOL=ON \
 	-DENABLE_APPSTYLES:BOOL=ON \
 	-DENABLE_KFILEMETADATASUPPORT:BOOL=ON \
-	-DENABLE_MEDIAPLAYER:BOOL=ON
+	-DENABLE_MEDIAPLAYER:BOOL=ON \
+	-Wno-dev
 
 %ninja_build
 
