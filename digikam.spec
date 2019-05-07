@@ -25,7 +25,7 @@ Source1:	digikam-6.0-l10n.tar.xz
 Release:	0.%{beta}.1
 %else
 Source0:	http://download.kde.org/stable/digikam/%{version}/%{name}-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 Source100:	%{name}.rpmlintrc
 ## upstreamable patches
@@ -40,6 +40,7 @@ BuildRequires:	mariadb-devel
 BuildRequires:	tiff-devel
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
+BuildRequires:	pkgconfig(libavcodec)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ImageMagick)
@@ -77,6 +78,7 @@ BuildRequires:	cmake(Qt5MultimediaWidgets)
 BuildRequires:	cmake(Qt5XmlPatterns)
 BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5Svg)
+BuildRequires:	cmake(Qt5WebView)
 BuildRequires:	cmake(KF5XmlGui)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5CoreAddons)
