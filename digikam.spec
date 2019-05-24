@@ -1,7 +1,3 @@
-# Disable until libmediawiki gets individual tarball release
-%bcond_with wikimedia
-%bcond_with vkontakte
-
 %define _disable_lto 1
 %define _disable_ld_no_undefined 1
 
@@ -124,8 +120,6 @@ Digikam also includes tools like Image Editor, to modify photos using plugins
 such as red eye correction or Gamma correction, exif management,...
 Light Table to make artistic photos and an external image editor such
 as Showfoto.
-Digikam also uses KIPI plugins (KDE Image Plugin Interface) to increase
-its functionalities.
 
 %files -f %{name}.lang
 %{_kde5_bindir}/digikam
@@ -277,61 +271,5 @@ tar xf %{S:1}
 %install
 %ninja_install -C build
 
-rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/libkipi.mo
-
-# Plugin not ready for production yet, disabled upstream
-
-rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_photivointegration.mo
-%if %{without wikimedia}
-rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_wikimedia.mo
-%endif
-%if %{without vkontakte}
-rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/kipiplugin_vkontakte.mo
-rm -f %{buildroot}%{_kde5_datadir}/locale/*/LC_MESSAGES/libkvkontakte.mo
-%endif
-
 %find_lang %{name} --with-html || echo '%%optional /not/yet/there' >%{name}.lang
 %find_lang showfoto --with-html || echo '%%optional /not/yet/there' >showfoto.lang
-%find_lang kipi-plugins kipiplugins kipi-plugins.lang --with-html || echo '%%optional /not/yet/there' >kipi-plugins.lang
-
-%find_lang kipiplugin_acquireimages || echo '%%optional /not/yet/there' >kipiplugin_acquireimages.lang
-%find_lang kipiplugin_advancedslideshow || echo '%%optional /not/yet/there' >kipiplugin_advancedslideshow.lang
-%find_lang kipiplugin_batchprocessimages || echo '%%optional /not/yet/there' >kipiplugin_batchprocessimages.lang
-%find_lang kipiplugin_debianscreenshots || echo '%%optional /not/yet/there' >kipiplugin_debianscreenshots.lang
-%find_lang kipiplugin_dlnaexport || echo '%%optional /not/yet/there' >kipiplugin_dlnaexport.lang
-%find_lang kipiplugin_dngconverter || echo '%%optional /not/yet/there' >kipiplugin_dngconverter.lang
-%find_lang kipiplugin_dropbox || echo '%%optional /not/yet/there' >kipiplugin_dropbox.lang
-%find_lang kipiplugin_facebook || echo '%%optional /not/yet/there' >kipiplugin_facebook.lang
-%find_lang kipiplugin_flashexport || echo '%%optional /not/yet/there' >kipiplugin_flashexport.lang
-%find_lang kipiplugin_flickr || echo '%%optional /not/yet/there' >kipiplugin_flickr.lang
-%find_lang kipiplugin_galleryexport || echo '%%optional /not/yet/there' >kipiplugin_galleryexport.lang
-%find_lang kipiplugin_googleservices || echo '%%optional /not/yet/there' >kipiplugin_googleservices.lang
-%find_lang kipiplugin_gpssync || echo '%%optional /not/yet/there' >kipiplugin_gpssync.lang
-%find_lang kipiplugin_htmlexport || echo '%%optional /not/yet/there' >kipiplugin_htmlexport.lang
-%find_lang kipiplugin_imageshack || echo '%%optional /not/yet/there' >kipiplugin_imageshack.lang
-%find_lang kipiplugin_imageviewer || echo '%%optional /not/yet/there' >kipiplugin_imageviewer.lang
-%find_lang kipiplugin_imgur || echo '%%optional /not/yet/there' >kipiplugin_imgur.lang
-%find_lang kipiplugin_ipodexport || echo '%%optional /not/yet/there' >kipiplugin_ipodexport.lang
-%find_lang kipiplugin_jalbumexport || echo '%%optional /not/yet/there' >kipiplugin_jalbumexport.lang
-%find_lang kipiplugin_jpeglossless || echo '%%optional /not/yet/there' >kipiplugin_jpeglossless.lang
-%find_lang kipiplugin_kioexportimport || echo '%%optional /not/yet/there' >kipiplugin_kioexportimport.lang
-%find_lang kipiplugin_kmlexport || echo '%%optional /not/yet/there' >kipiplugin_kmlexport.lang
-%find_lang kipiplugin_kopete || echo '%%optional /not/yet/there' >kipiplugin_kopete.lang
-%find_lang kipiplugin_metadataedit || echo '%%optional /not/yet/there' >kipiplugin_metadataedit.lang
-%find_lang kipiplugin_photolayouteditor || echo '%%optional /not/yet/there' >kipiplugin_photolayouteditor.lang
-%find_lang kipiplugin_piwigo || echo '%%optional /not/yet/there' >kipiplugin_piwigo.lang
-%find_lang kipiplugin_printimages || echo '%%optional /not/yet/there' >kipiplugin_printimages.lang
-%find_lang kipiplugin_rajce || echo '%%optional /not/yet/there' >kipiplugin_rajce.lang
-%find_lang kipiplugin_rawconverter || echo '%%optional /not/yet/there' >kipiplugin_rawconverter.lang
-%find_lang kipiplugin_removeredeyes || echo '%%optional /not/yet/there' >kipiplugin_removeredeyes.lang
-%find_lang kipiplugin_remotestorage || echo '%%optional /not/yet/there' >kipiplugin_remotestorage.lang
-%find_lang kipiplugin_sendimages || echo '%%optional /not/yet/there' >kipiplugin_sendimages.lang
-%find_lang kipiplugin_shwup || echo '%%optional /not/yet/there' >kipiplugin_shwup.lang
-%find_lang kipiplugin_smug || echo '%%optional /not/yet/there' >kipiplugin_smug.lang
-%find_lang kipiplugin_timeadjust || echo '%%optional /not/yet/there' >kipiplugin_timeadjust.lang
-%find_lang kipiplugin_videoslideshow || echo '%%optional /not/yet/there' >kipiplugin_videoslideshow.lang
-%find_lang kipiplugin_vkontakte || echo '%%optional /not/yet/there' >kipiplugin_vkontakte.lang
-%find_lang kipiplugin_wikimedia || echo '%%optional /not/yet/there' >kipiplugin_wikimedia.lang
-%find_lang kipiplugin_yandexfotki || echo '%%optional /not/yet/there' >kipiplugin_yandexfotki.lang
-%find_lang libkgeomap || echo '%%optional /not/yet/there' >libkgeomap.lang
-%find_lang libkvkontakte || echo '%%optional /not/yet/there' >libkvkontakte.lang
