@@ -13,6 +13,7 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
+Epoch:		2
 Version:	6.1.0
 License:	GPLv2+
 Group:		Graphics
@@ -32,7 +33,6 @@ Source100:	%{name}.rpmlintrc
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
-BuildRequires:	lld
 BuildRequires:	bison
 BuildRequires:	imagemagick
 BuildRequires:	mariadb-server
@@ -78,7 +78,6 @@ BuildRequires:	cmake(Qt5MultimediaWidgets)
 BuildRequires:	cmake(Qt5XmlPatterns)
 BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5Svg)
-BuildRequires:	cmake(Qt5WebView)
 BuildRequires:	cmake(KF5XmlGui)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5CoreAddons)
@@ -249,7 +248,8 @@ The library documentation is available on header files.
 #-----------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n %{name}-%{version} #%{?beta:-%{beta}}
+%setup -q -n %{name}-%{version} #%{?beta:-%{beta}}
+%apply_patches
 %if "%{beta}" != ""
 tar xf %{S:1}
 %endif
