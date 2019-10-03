@@ -238,7 +238,9 @@ The library documentation is available on header files.
 %files -n %{libnamedev}
 %{_includedir}/digikam
 %{_kde5_libdir}/*.so
-#{_libdir}/cmake/digikam
+%{_libdir}/cmake/DigikamCore*
+%{_libdir}/cmake/DigikamDatabase*
+%{_libdir}/cmake/DigikamGui*
 
 #-----------------------------------------------------------------------
 
