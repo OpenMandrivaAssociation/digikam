@@ -48,6 +48,7 @@ BuildRequires:	pkgconfig(libusb)
 BuildRequires:	pkgconfig(libgphoto2)
 BuildRequires:	pkgconfig(libgpod-1.0)
 BuildRequires:	pkgconfig(libpgf)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
 BuildRequires:	pkgconfig(opencv)
