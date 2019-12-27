@@ -21,7 +21,7 @@ Source1:	digikam-6.0-l10n.tar.xz
 Release:	0.%{beta}.1
 %else
 Source0:	http://download.kde.org/stable/digikam/%{version}/%{name}-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 Source100:	%{name}.rpmlintrc
 ## upstreamable patches
