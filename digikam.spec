@@ -1,6 +1,3 @@
-%define _disable_lto 1
-%define _disable_ld_no_undefined 1
-
 %define beta beta3
 
 # Workaround for
@@ -51,7 +48,7 @@ BuildRequires:	pkgconfig(libpgf)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
-BuildRequires:	pkgconfig(opencv)
+BuildRequires:	pkgconfig(opencv) >= 4.3.0
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	pkgconfig(xrandr)
