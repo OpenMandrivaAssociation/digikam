@@ -1,4 +1,4 @@
-%define beta beta3
+%define beta rc
 
 # Workaround for
 # Cannot handle 8-byte build ID
@@ -21,8 +21,6 @@ Source0:	http://download.kde.org/stable/digikam/%{version}/%{name}-%{version}.ta
 Release:	1
 %endif
 Source100:	%{name}.rpmlintrc
-## upstreamable patches
-Patch0:		digikam-7.0.0-qt-5.15.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
@@ -253,6 +251,7 @@ The library documentation is available on header files.
 %{_libdir}/cmake/DigikamCore*
 %{_libdir}/cmake/DigikamDatabase*
 %{_libdir}/cmake/DigikamGui*
+%{_libdir}/cmake/DigikamPlugin
 
 #-----------------------------------------------------------------------
 
