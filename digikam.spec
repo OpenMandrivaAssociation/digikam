@@ -41,7 +41,7 @@ BuildRequires:	pkgconfig(libpgf)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
-BuildRequires:	pkgconfig(opencv4) >= 4.3.0
+BuildRequires:	pkgconfig(opencv)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	pkgconfig(xrandr)
