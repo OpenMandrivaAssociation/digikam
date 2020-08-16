@@ -93,9 +93,9 @@ BuildRequires:	cmake(Marble)
 Requires:	mariadb-common
 Requires:	libgphoto-common
 Requires:	libkdcraw-common
-Requires:	%{libdigikamdatabase}
-Requires:	%{libdigikamcore}
-Requires:	%{libdigikamgui}
+Requires:	%libdigikamcore = %{EVRD}
+Requires:	%libdigikamgui = %{EVRD}
+Requires:	%libdigikamdatabase = %{EVRD}
 
 # FIXME why doesn't the dependency generator see this?
 # https://issues.openmandriva.org/show_bug.cgi?id=2391
