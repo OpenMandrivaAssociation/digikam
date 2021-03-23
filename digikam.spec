@@ -2,7 +2,7 @@
 # Cannot handle 8-byte build ID
 %define debug_package %{nil}
 
-%define beta %{nil}
+#define beta %{nil}
 
 Summary:	A KDE photo management utility
 Name:		digikam
