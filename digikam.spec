@@ -2,7 +2,7 @@
 # Cannot handle 8-byte build ID
 %define debug_package %{nil}
 
-%define beta beta2
+%define beta %{nil}
 
 Summary:	A KDE photo management utility
 Name:		digikam
@@ -16,7 +16,7 @@ Source0:	http://download.kde.org/%{?beta:un}stable/digikam/%{name}-%{version}%{?
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	%{?beta:0.%{beta}.}2
+Release:	%{?beta:0.%{beta}.}1
 Source100:	%{name}.rpmlintrc
 BuildRequires:	doxygen
 BuildRequires:	eigen3
