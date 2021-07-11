@@ -1,12 +1,13 @@
 # Workaround for
 # Cannot handle 8-byte build ID
-%define debug_package %{nil}
+#define debug_package %{nil}
+%define _empty_manifest_terminate_build 0
 
 #define beta %{nil}
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Version:	7.2.0
+Version:	7.3.0
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
