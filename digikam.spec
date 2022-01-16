@@ -1,8 +1,3 @@
-# Workaround for
-# Cannot handle 8-byte build ID
-#define debug_package %{nil}
-%define _empty_manifest_terminate_build 0
-
 #define beta %{nil}
 
 Summary:	A KDE photo management utility
@@ -17,8 +12,9 @@ Source0:	http://download.kde.org/%{?beta:un}stable/digikam/%{name}-%{version}%{?
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	2
+Release:	3
 Source100:	%{name}.rpmlintrc
+Patch0:		digikam-7.4.0-ffmpeg-5.0.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
@@ -180,6 +176,10 @@ Obsoletes:	%{_lib}digikamdatabase6.1.0 < 6.2.0
 Obsoletes:	%{_lib}digikamdatabase6.2.0 < 6.3.0
 Obsoletes:	%{_lib}digikamdatabase6.3.0 < 6.4.0
 Obsoletes:	%{_lib}digikamdatabase6.4.0 < 6.5.0
+Obsoletes:	%{_lib}digikamdatabase7.0.0 < 7.1.0
+Obsoletes:	%{_lib}digikamdatabase7.1.0 < 7.2.0
+Obsoletes:	%{_lib}digikamdatabase7.2.0 < 7.3.0
+Obsoletes:	%{_lib}digikamdatabase7.3.0 < 7.4.0
 
 %description -n %{libdigikamdatabase}
 Librairie File needed by %{name}
@@ -203,6 +203,10 @@ Obsoletes:	%{_lib}digikamcore6.1.0 < 6.2.0
 Obsoletes:	%{_lib}digikamcore6.2.0 < 6.3.0
 Obsoletes:	%{_lib}digikamcore6.3.0 < 6.4.0
 Obsoletes:	%{_lib}digikamcore6.4.0 < 6.5.0
+Obsoletes:	%{_lib}digikamcore7.0.0 < 7.1.0
+Obsoletes:	%{_lib}digikamcore7.1.0 < 7.2.0
+Obsoletes:	%{_lib}digikamcore7.2.0 < 7.3.0
+Obsoletes:	%{_lib}digikamcore7.3.0 < 7.4.0
 
 %description -n %{libdigikamcore}
 Librairie File needed by %{name}
@@ -224,6 +228,10 @@ Obsoletes:	%{_lib}digikamgui6.1.0 < 6.2.0
 Obsoletes:	%{_lib}digikamgui6.2.0 < 6.3.0
 Obsoletes:	%{_lib}digikamgui6.3.0 < 6.4.0
 Obsoletes:	%{_lib}digikamgui6.4.0 < 6.5.0
+Obsoletes:	%{_lib}digikamgui7.0.0 < 7.1.0
+Obsoletes:	%{_lib}digikamgui7.1.0 < 7.2.0
+Obsoletes:	%{_lib}digikamgui7.2.0 < 7.3.0
+Obsoletes:	%{_lib}digikamgui7.3.0 < 7.4.0
 
 %description -n %{libdigikamgui}
 Librairie File needed by %name.
