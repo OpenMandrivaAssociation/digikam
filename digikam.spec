@@ -12,7 +12,7 @@ Source0:	http://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%{
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	1
+Release:	2
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-7.4.0-ffmpeg-5.0.patch
 BuildRequires:	doxygen
