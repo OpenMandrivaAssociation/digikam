@@ -12,7 +12,7 @@ Source0:	http://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%{
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	2
+Release:	3
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-7.4.0-ffmpeg-5.0.patch
 BuildRequires:	doxygen
@@ -163,7 +163,7 @@ You can use it to view your photographs and improve them.
 #-----------------------------------------------------------------------
 
 %define libdigikamdatabase_major %{version}
-%define libdigikamdatabase %mklibname digikamdatabase %{libdigikamdatabase_major}
+%define libdigikamdatabase %mklibname digikamdatabase
 
 %package -n %{libdigikamdatabase}
 Summary:	Runtime library for %{name}
@@ -181,6 +181,11 @@ Obsoletes:	%{_lib}digikamdatabase7.1.0 < 7.2.0
 Obsoletes:	%{_lib}digikamdatabase7.2.0 < 7.3.0
 Obsoletes:	%{_lib}digikamdatabase7.3.0 < 7.4.0
 Obsoletes:	%{_lib}digikamdatabase7.4.0 < 7.5.0
+Obsoletes:	%{_lib}digikamdatabase7.5.0 < 7.6.0
+Obsoletes:	%{_lib}digikamdatabase7.6.0 < 7.7.0
+Obsoletes:	%{_lib}digikamdatabase7.7.0 < 7.8.0
+Obsoletes:	%{_lib}digikamdatabase7.8.0 < 7.9.0
+Obsoletes:	%{_lib}digikamdatabase7.9.0 < 7.10.0
 
 %description -n %{libdigikamdatabase}
 Librairie File needed by %{name}
@@ -191,7 +196,7 @@ Librairie File needed by %{name}
 #-----------------------------------------------------------------------
 
 %define libdigikamcore_major %{version}
-%define libdigikamcore %mklibname digikamcore %{libdigikamcore_major}
+%define libdigikamcore %mklibname digikamcore
 
 %package -n %{libdigikamcore}
 Summary:	Runtime library for %{name}
@@ -209,6 +214,11 @@ Obsoletes:	%{_lib}digikamcore7.1.0 < 7.2.0
 Obsoletes:	%{_lib}digikamcore7.2.0 < 7.3.0
 Obsoletes:	%{_lib}digikamcore7.3.0 < 7.4.0
 Obsoletes:	%{_lib}digikamcore7.4.0 < 7.5.0
+Obsoletes:	%{_lib}digikamcore7.5.0 < 7.6.0
+Obsoletes:	%{_lib}digikamcore7.6.0 < 7.7.0
+Obsoletes:	%{_lib}digikamcore7.7.0 < 7.8.0
+Obsoletes:	%{_lib}digikamcore7.8.0 < 7.9.0
+Obsoletes:	%{_lib}digikamcore7.9.0 < 7.10.0
 
 %description -n %{libdigikamcore}
 Librairie File needed by %{name}
@@ -219,7 +229,7 @@ Librairie File needed by %{name}
 #-----------------------------------------------------------------------
 
 %define libdigikamgui_major %{version}
-%define libdigikamgui %mklibname digikamgui %libdigikamgui_major
+%define libdigikamgui %mklibname digikamgui
 
 %package -n %{libdigikamgui}
 Summary:	Runtime library for %{name}
@@ -235,6 +245,11 @@ Obsoletes:	%{_lib}digikamgui7.1.0 < 7.2.0
 Obsoletes:	%{_lib}digikamgui7.2.0 < 7.3.0
 Obsoletes:	%{_lib}digikamgui7.3.0 < 7.4.0
 Obsoletes:	%{_lib}digikamgui7.4.0 < 7.5.0
+Obsoletes:	%{_lib}digikamgui7.5.0 < 7.6.0
+Obsoletes:	%{_lib}digikamgui7.6.0 < 7.7.0
+Obsoletes:	%{_lib}digikamgui7.7.0 < 7.8.0
+Obsoletes:	%{_lib}digikamgui7.8.0 < 7.9.0
+Obsoletes:	%{_lib}digikamgui7.9.0 < 7.10.0
 
 %description -n %{libdigikamgui}
 Librairie File needed by %name.
