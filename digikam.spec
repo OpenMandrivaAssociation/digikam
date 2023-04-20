@@ -16,6 +16,7 @@ Release:	1
 Source100:	%{name}.rpmlintrc
 Patch0:		digikam-8.0-kapps-23.04.patch
 BuildRequires:	doxygen
+BuildRequires:	graphviz
 BuildRequires:	eigen3
 BuildRequires:	flex
 BuildRequires:	lld
@@ -88,8 +89,11 @@ BuildRequires:	cmake(KF5CalendarCore)
 BuildRequires:	cmake(KF5ThreadWeaver)
 BuildRequires:	cmake(KF5Sane)
 BuildRequires:	cmake(KF5DocTools)
+BuildRequires:	cmake(KF5Sonnet)
 BuildRequires:	cmake(Marble)
 BuildRequires:	cmake(KPim5Akonadi)
+BuildRequires:	pkgconfig(libpulse)
+BuildRequires:	git-core
 
 Requires:	mariadb-common
 Requires:	libgphoto-common
