@@ -2,7 +2,7 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Version:	7.10.0
+Version:	8.0.0
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -12,9 +12,9 @@ Source0:	http://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%{
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	3
+Release:	1
 Source100:	%{name}.rpmlintrc
-Patch0:		digikam-7.4.0-ffmpeg-5.0.patch
+Patch0:		digikam-8.0-kapps-23.04.patch
 BuildRequires:	doxygen
 BuildRequires:	eigen3
 BuildRequires:	flex
@@ -88,6 +88,7 @@ BuildRequires:	cmake(KF5ThreadWeaver)
 BuildRequires:	cmake(KF5Sane)
 BuildRequires:	cmake(KF5DocTools)
 BuildRequires:	cmake(Marble)
+BuildRequires:	cmake(KPim5Akonadi)
 
 Requires:	mariadb-common
 Requires:	libgphoto-common
@@ -129,6 +130,7 @@ as Showfoto.
 %{_kde5_mandir}/man1/digitaglinktree.1*
 %{_kde5_mandir}/man1/cleanup_digikamdb.1*
 %{_kde5_iconsdir}/*/*/apps/digikam.*
+%{_iconsdir}/hicolor/*/*/avplayer.*
 %{_iconsdir}/hicolor/*/*/dk-*.*
 %{_iconsdir}/hicolor/*/apps/expoblending.png
 %{_iconsdir}/hicolor/*/*/panorama.*
@@ -289,15 +291,6 @@ The library documentation is available on header files.
 %if 0%{?beta:1}
 tar xf %{S:1}
 %endif
-
-%build
-# (tpg) upstream ships own libraw library instead of using system-wide libraw
-# make[2]: Leaving directory '/builddir/build/BUILD/digikam-5.5.0/build'
-# /usr/bin/ld: warning: ../libs/rawengine/libraw/liblibraw.a(demosaic_packs.cpp.o): multiple common of '.gomp_critical_user_.var'
-# /usr/bin/ld: ../libs/rawengine/libraw/liblibraw.a(libraw_cxx.cpp.o): previous definition here
-# /builddir/build/BUILD/digikam-5.5.0/core/libs/rawengine/libraw/src/libraw_xtrans_compressed.cpp:130: error: undefined reference to '__kmpc_global_thread_num'
-# try to build with GCC because of above issue
-
 %cmake_kde5 -G Ninja \
 	-DENABLE_OPENCV3:BOOL=ON \
 	-DENABLE_MYSQLSUPPORT:BOOL=ON \
@@ -308,9 +301,12 @@ tar xf %{S:1}
 	-DENABLE_MEDIAPLAYER:BOOL=ON \
 	-Wno-dev
 
-%ninja_build
+%build
+export LD_LIBRARY_PATH=$(pwd)/build/bin
+%ninja_build -C build
 
 %install
+export LD_LIBRARY_PATH=$(pwd)/build/bin
 %ninja_install -C build
 
 %find_lang %{name} --with-html || echo '%%optional /not/yet/there' >%{name}.lang

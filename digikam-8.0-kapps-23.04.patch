@@ -1,0 +1,12 @@
+diff -up digikam-8.0.0/core/utilities/extrasupport/addressbook/CMakeLists.txt.omv~ digikam-8.0.0/core/utilities/extrasupport/addressbook/CMakeLists.txt
+--- digikam-8.0.0/core/utilities/extrasupport/addressbook/CMakeLists.txt.omv~	2023-04-20 20:23:51.065694902 +0200
++++ digikam-8.0.0/core/utilities/extrasupport/addressbook/CMakeLists.txt	2023-04-20 20:23:59.452751078 +0200
+@@ -16,7 +16,7 @@ include_directories($<TARGET_PROPERTY:Qt
+ 
+ if(KF5AkonadiContact_FOUND)
+     include_directories(
+-        $<TARGET_PROPERTY:KF5::AkonadiCore,INTERFACE_INCLUDE_DIRECTORIES>
++        $<TARGET_PROPERTY:KPim5::AkonadiCore,INTERFACE_INCLUDE_DIRECTORIES>
+         $<TARGET_PROPERTY:KF5::Contacts,INTERFACE_INCLUDE_DIRECTORIES>
+ 
+         $<TARGET_PROPERTY:KF5::CoreAddons,INTERFACE_INCLUDE_DIRECTORIES>
