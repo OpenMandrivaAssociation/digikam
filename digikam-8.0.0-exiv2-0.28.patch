@@ -1,0 +1,11 @@
+diff -up digikam-8.0.0/core/libs/metadataengine/engine/metaengine_iptc.cpp.omv~ digikam-8.0.0/core/libs/metadataengine/engine/metaengine_iptc.cpp
+--- digikam-8.0.0/core/libs/metadataengine/engine/metaengine_iptc.cpp.omv~	2023-05-18 04:57:44.894822214 +0200
++++ digikam-8.0.0/core/libs/metadataengine/engine/metaengine_iptc.cpp	2023-05-18 04:58:19.348971290 +0200
+@@ -19,6 +19,7 @@
+ #include "metaengine_p.h"
+ #include "digikam_debug.h"
+ #include "digikam_config.h"
++#include <exiv2/photoshop.hpp>
+ 
+ #if defined(Q_CC_CLANG)
+ #   pragma clang diagnostic push
