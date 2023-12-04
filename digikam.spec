@@ -51,7 +51,7 @@ BuildRequires:	pkgconfig(expat)
 BuildRequires:	cmake(ECM)
 # FIXME - qtav is abandoned in upstream, and does not compile with ffmpeg6. Drop it for now, forever or fix it someday.
 #BuildRequires:	cmake(QtAV)
-BuildRequires:	cmake(QtAVWidgets)
+#BuildRequires:	cmake(QtAVWidgets)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Concurrent)
 BuildRequires:	cmake(Qt5Widgets)
