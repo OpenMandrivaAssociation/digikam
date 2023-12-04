@@ -2,7 +2,7 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Version:	8.1.0
+Version:	8.2.0
 License:	GPLv2+
 Group:		Graphics
 Url:		http://www.digikam.org
@@ -12,9 +12,9 @@ Source0:	http://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%{
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	2
+Release:	1
 Source100:	%{name}.rpmlintrc
-Patch0:		digikam-8.0-kapps-23.04.patch
+#Patch0:		digikam-8.0-kapps-23.04.patch
 Patch1:		digikam-8.0.0-exiv2-0.28.patch
 BuildRequires:	doxygen
 BuildRequires:	graphviz
@@ -82,7 +82,7 @@ BuildRequires:	cmake(KF5IconThemes)
 BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5ItemModels)
 BuildRequires:	cmake(KF5Bookmarks)
-BuildRequires:	cmake(KF5AkonadiContact)
+BuildRequires:	cmake(KPim5AkonadiContact)
 BuildRequires:	cmake(KF5Akonadi)
 BuildRequires:	cmake(KF5FileMetaData)
 BuildRequires:	cmake(KF5Kipi)
