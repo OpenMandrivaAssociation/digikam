@@ -17,6 +17,7 @@ Source100:	%{name}.rpmlintrc
 #Patch0:		digikam-8.0-kapps-23.04.patch
 Patch1:		digikam-8.0.0-exiv2-0.28.patch
 BuildRequires:	doxygen
+BuildRequires:  gettext
 BuildRequires:	graphviz
 BuildRequires:	eigen3
 BuildRequires:	flex
