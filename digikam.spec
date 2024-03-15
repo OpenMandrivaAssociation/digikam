@@ -12,7 +12,7 @@ Source0:	https://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	4
+Release:	1
 Source100:	%{name}.rpmlintrc
 #Patch0:		digikam-8.0-kapps-23.04.patch
 Patch1:		digikam-8.0.0-exiv2-0.28.patch
@@ -173,7 +173,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major %{version}
+%define libdigikamdatabase_major 8.4.0
 %define libdigikamdatabase %mklibname digikamdatabase
 
 %package -n %{libdigikamdatabase}
@@ -202,11 +202,11 @@ Obsoletes:	%{_lib}digikamdatabase7.9.0 < 7.10.0
 Librairie File needed by %{name}
 
 %files -n %{libdigikamdatabase}
-#{_kde5_libdir}/libdigikamdatabase.so.%{libdigikamdatabase_major}*
+%{_kde5_libdir}/libdigikamdatabase.so.%{libdigikamdatabase_major}*
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major %{version}
+%define libdigikamcore_major 8.4.0
 %define libdigikamcore %mklibname digikamcore
 
 %package -n %{libdigikamcore}
@@ -239,7 +239,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major %{version}
+%define libdigikamgui_major 8.4.0
 %define libdigikamgui %mklibname digikamgui
 
 %package -n %{libdigikamgui}
