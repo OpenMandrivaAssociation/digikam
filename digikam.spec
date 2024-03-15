@@ -202,7 +202,7 @@ Obsoletes:	%{_lib}digikamdatabase7.9.0 < 7.10.0
 Librairie File needed by %{name}
 
 %files -n %{libdigikamdatabase}
-%{_kde5_libdir}/libdigikamdatabase.so.%{libdigikamdatabase_major}*
+#{_kde5_libdir}/libdigikamdatabase.so.%{libdigikamdatabase_major}*
 
 #-----------------------------------------------------------------------
 
