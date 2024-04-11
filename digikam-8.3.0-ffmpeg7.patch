@@ -1,0 +1,11 @@
+--- digikam-8.3.0/core/libs/video/QtAVPlayer/qavvideocodec.cpp.orig	2024-04-11 13:37:45.744143407 +0100
++++ digikam-8.3.0/core/libs/video/QtAVPlayer/qavvideocodec.cpp	2024-04-11 13:39:01.196674583 +0100
+@@ -40,7 +40,7 @@
+ #endif
+     case AV_PIX_FMT_CUDA:
+     case AV_PIX_FMT_DXVA2_VLD:
+-#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(52, 58, 101)
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(52, 58, 101) && LIBAVUTIL_VERSION_MAJOR < 58
+     case AV_PIX_FMT_XVMC:
+ #endif
+ #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(58, 134, 0)
