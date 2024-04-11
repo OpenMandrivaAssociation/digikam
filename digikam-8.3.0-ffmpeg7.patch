@@ -16,7 +16,7 @@
      av_log_set_callback(log_callback);
  
 -    d->seekable = d->ctx->iformat->read_seek || d->ctx->iformat->read_seek2;
-+    d->seekable = !(d->ctx->iformat->flags & AFVMT_NOTIMESTAMPS);
++    d->seekable = !(d->ctx->iformat->flags & AVFMT_NOTIMESTAMPS);
      if (d->ctx->pb)
          d->seekable |= bool(d->ctx->pb->seekable);
  
