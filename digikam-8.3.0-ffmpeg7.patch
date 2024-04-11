@@ -9,3 +9,14 @@
      case AV_PIX_FMT_XVMC:
  #endif
  #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(58, 134, 0)
+--- digikam-8.3.0/core/libs/video/QtAVPlayer/qavdemuxer.cpp.orig	2024-04-11 15:33:37.745366088 +0100
++++ digikam-8.3.0/core/libs/video/QtAVPlayer/qavdemuxer.cpp	2024-04-11 15:33:43.407168678 +0100
+@@ -349,7 +349,7 @@
+     locker.relock();
+     av_log_set_callback(log_callback);
+ 
+-    d->seekable = d->ctx->iformat->read_seek || d->ctx->iformat->read_seek2;
++    d->seekable = !(d->ctx->iformat->flags & AFVMT_NOTIMESTAMPS);
+     if (d->ctx->pb)
+         d->seekable |= bool(d->ctx->pb->seekable);
+ 
