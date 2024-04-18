@@ -54,49 +54,46 @@ BuildRequires:	cmake(ECM)
 # FIXME - qtav is abandoned in upstream, and does not compile with ffmpeg6. Drop it for now, forever or fix it someday.
 #BuildRequires:	cmake(QtAV)
 #BuildRequires:	cmake(QtAVWidgets)
-BuildRequires:	cmake(Qt5Core)
-BuildRequires:	cmake(Qt5Concurrent)
-BuildRequires:	cmake(Qt5Widgets)
-BuildRequires:	cmake(Qt5Gui)
-BuildRequires:	cmake(Qt5Sql)
-BuildRequires:	cmake(Qt5Xml)
-BuildRequires:	cmake(Qt5Test)
-BuildRequires:	cmake(Qt5NetworkAuth)
-BuildRequires:	cmake(Qt5PrintSupport)
-BuildRequires:	cmake(Qt5WebKitWidgets)
-BuildRequires:	cmake(Qt5DBus)
-BuildRequires:	cmake(Qt5Multimedia)
-BuildRequires:	cmake(Qt5MultimediaWidgets)
-BuildRequires:	cmake(Qt5XmlPatterns)
-BuildRequires:	cmake(Qt5X11Extras)
-BuildRequires:	cmake(Qt5Svg)
-BuildRequires:	cmake(Qt5WebView)
-BuildRequires:	cmake(KF5XmlGui)
-BuildRequires:	cmake(KF5Archive)
-BuildRequires:	cmake(KF5CoreAddons)
-BuildRequires:	cmake(KF5Config)
-BuildRequires:	cmake(KF5NotifyConfig)
-BuildRequires:	cmake(KF5Notifications)
-BuildRequires:	cmake(KF5KIO)
-BuildRequires:	cmake(KF5Service)
-BuildRequires:	cmake(KF5WindowSystem)
-BuildRequires:	cmake(KF5Solid)
-BuildRequires:	cmake(KF5IconThemes)
-BuildRequires:	cmake(KF5I18n)
-BuildRequires:	cmake(KF5ItemModels)
-BuildRequires:	cmake(KF5Bookmarks)
-BuildRequires:	cmake(KPim5AkonadiContact)
-BuildRequires:	cmake(KF5Akonadi)
-BuildRequires:	cmake(KF5FileMetaData)
-BuildRequires:	cmake(KF5Kipi)
-BuildRequires:	cmake(KF5CalendarCore)
-BuildRequires:	cmake(KF5ThreadWeaver)
-BuildRequires:	cmake(KF5Sane)
-BuildRequires:	cmake(KF5DocTools)
-BuildRequires:	cmake(KF5Sonnet)
-BuildRequires:	cmake(KF5SonnetUi)
-BuildRequires:	cmake(Marble)
-BuildRequires:	cmake(KPim5Akonadi)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:	cmake(Qt6Concurrent)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6Gui)
+BuildRequires:	cmake(Qt6Sql)
+BuildRequires:	cmake(Qt6Xml)
+BuildRequires:	cmake(Qt6Test)
+BuildRequires:	cmake(Qt6NetworkAuth)
+BuildRequires:	cmake(Qt6PrintSupport)
+BuildRequires:	cmake(Qt6WebEngineCore)
+BuildRequires:	cmake(Qt6WebEngineWidgets)
+BuildRequires:	cmake(Qt6DBus)
+BuildRequires:	cmake(Qt6Multimedia)
+BuildRequires:	cmake(Qt6MultimediaWidgets)
+BuildRequires:	cmake(Qt6Svg)
+BuildRequires:	cmake(Qt6WebView)
+BuildRequires:	cmake(KF6XmlGui)
+BuildRequires:	cmake(KF6Archive)
+BuildRequires:	cmake(KF6CoreAddons)
+BuildRequires:	cmake(KF6Config)
+BuildRequires:	cmake(KF6NotifyConfig)
+BuildRequires:	cmake(KF6Notifications)
+BuildRequires:	cmake(KF6KIO)
+BuildRequires:	cmake(KF6Service)
+BuildRequires:	cmake(KF6WindowSystem)
+BuildRequires:	cmake(KF6Solid)
+BuildRequires:	cmake(KF6IconThemes)
+BuildRequires:	cmake(KF6I18n)
+BuildRequires:	cmake(KF6ItemModels)
+BuildRequires:	cmake(KF6Bookmarks)
+BuildRequires:	cmake(KPim6AkonadiContactCore)
+BuildRequires:	cmake(KPim6Akonadi)
+BuildRequires:	cmake(KF6FileMetaData)
+BuildRequires:	cmake(KF6CalendarCore)
+BuildRequires:	cmake(KF6ThreadWeaver)
+BuildRequires:	cmake(KSaneCore6)
+BuildRequires:	cmake(KF6DocTools)
+BuildRequires:	cmake(KF6Sonnet)
+BuildRequires:	plasma6-marble-devel
+BuildRequires:	cmake(KPim6Akonadi)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	git-core
 
@@ -129,17 +126,17 @@ Light Table to make artistic photos and an external image editor such
 as Showfoto.
 
 %files -f %{name}.lang
-%{_kde5_bindir}/digikam
-%{_kde5_bindir}/digitaglinktree
-%{_kde5_bindir}/cleanup_digikamdb
-%{_kde5_datadir}/digikam
-%{_kde5_datadir}/solid/actions/digikam*.desktop
-%{_kde5_datadir}/kxmlgui5/digikam
-%{_kde5_applicationsdir}/org.kde.digikam.desktop
-%{_kde5_datadir}/metainfo/org.kde.digikam.appdata.xml
-%{_kde5_mandir}/man1/digitaglinktree.1*
-%{_kde5_mandir}/man1/cleanup_digikamdb.1*
-%{_kde5_iconsdir}/*/*/apps/digikam.*
+%{_bindir}/digikam
+%{_bindir}/digitaglinktree
+%{_bindir}/cleanup_digikamdb
+%{_datadir}/digikam
+%{_datadir}/solid/actions/digikam*.desktop
+%{_datadir}/kxmlgui5/digikam
+%{_datadir}/applications/org.kde.digikam.desktop
+%{_datadir}/metainfo/org.kde.digikam.appdata.xml
+%{_mandir}/man1/digitaglinktree.1*
+%{_mandir}/man1/cleanup_digikamdb.1*
+%{_iconsdir}/*/*/apps/digikam.*
 %{_iconsdir}/hicolor/*/*/avplayer.*
 %{_iconsdir}/hicolor/*/*/dk-*.*
 %{_iconsdir}/hicolor/*/apps/expoblending.png
@@ -148,8 +145,8 @@ as Showfoto.
 %{_iconsdir}/*/*/*/overexposure.*
 %{_iconsdir}/*/*/*/tag*.*
 %{_iconsdir}/*/*/*/underexposure.*
-%{_kde5_datadir}/knotifications5/digikam.notifyrc
-%{_libdir}/qt5/plugins/digikam
+%{_datadir}/knotifications6/digikam.notifyrc
+%{_qtdir}/plugins/digikam
 
 #-----------------------------------------------------------------------
 
@@ -164,13 +161,13 @@ Requires:	%{name} = %{EVRD}
 Showfoto is a fast Image Editor with powerful image editing tools.
 You can use it to view your photographs and improve them.
 
-%files -n showfoto -f showfoto.lang
-%{_kde5_bindir}/showfoto
-%{_kde5_datadir}/applications/org.kde.showfoto.desktop
-%{_kde5_datadir}/kxmlgui5/showfoto
-%{_kde5_datadir}/showfoto
-%{_kde5_datadir}/metainfo/org.kde.showfoto.appdata.xml
-%{_kde5_iconsdir}/*/*/apps/showfoto.*
+%files -n showfoto
+%{_bindir}/showfoto
+%{_datadir}/applications/org.kde.showfoto.desktop
+%{_datadir}/kxmlgui5/showfoto
+%{_datadir}/showfoto
+%{_datadir}/metainfo/org.kde.showfoto.appdata.xml
+%{_iconsdir}/*/*/apps/showfoto.*
 
 #-----------------------------------------------------------------------
 
@@ -203,7 +200,7 @@ Obsoletes:	%{_lib}digikamdatabase7.9.0 < 7.10.0
 Librairie File needed by %{name}
 
 %files -n %{libdigikamdatabase}
-%{_kde5_libdir}/libdigikamdatabase.so.%{libdigikamdatabase_major}*
+%{_libdir}/libdigikamdatabase.so.%{libdigikamdatabase_major}*
 
 #-----------------------------------------------------------------------
 
@@ -233,10 +230,10 @@ Obsoletes:	%{_lib}digikamcore7.8.0 < 7.9.0
 Obsoletes:	%{_lib}digikamcore7.9.0 < 7.10.0
 
 %description -n %{libdigikamcore}
-Librairie File needed by %{name}
+Library File needed by %{name}
 
 %files -n %{libdigikamcore}
-%{_kde5_libdir}/libdigikamcore.so.%{libdigikamcore_major}*
+%{_libdir}/libdigikamcore.so.%{libdigikamcore_major}*
 
 #-----------------------------------------------------------------------
 
@@ -267,7 +264,7 @@ Obsoletes:	%{_lib}digikamgui7.9.0 < 7.10.0
 Librairie File needed by %name.
 
 %files -n %{libdigikamgui}
-%{_kde5_libdir}/libdigikamgui.so.%{libdigikamgui_major}*
+%{_libdir}/libdigikamgui.so.%{libdigikamgui_major}*
 
 #-----------------------------------------------------------------------
 
@@ -288,7 +285,7 @@ The library documentation is available on header files.
 
 %files -n %{libnamedev}
 %{_includedir}/digikam
-%{_kde5_libdir}/*.so
+%{_libdir}/*.so
 %{_libdir}/cmake/DigikamCore*
 %{_libdir}/cmake/DigikamDatabase*
 %{_libdir}/cmake/DigikamGui*
@@ -301,7 +298,8 @@ The library documentation is available on header files.
 %if 0%{?beta:1}
 tar xf %{S:1}
 %endif
-%cmake_kde5 -G Ninja \
+%cmake -G Ninja \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-DENABLE_OPENCV3:BOOL=ON \
 	-DENABLE_MYSQLSUPPORT:BOOL=ON \
 	-DENABLE_INTERNALMYSQL:BOOL=OFF \
@@ -310,6 +308,7 @@ tar xf %{S:1}
 	-DENABLE_KFILEMETADATASUPPORT:BOOL=ON \
 	-DENABLE_MEDIAPLAYER:BOOL=ON \
 	-DBUILD_TESTING:BOOL=OFF \
+	-DBUILD_WITH_QT6:BOOL=ON \
 	-Wno-dev
 
 %build
@@ -321,4 +320,3 @@ export LD_LIBRARY_PATH=$(pwd)/build/bin
 %ninja_install -C build
 
 %find_lang %{name} --with-html || echo '%%optional /not/yet/there' >%{name}.lang
-%find_lang showfoto --with-html || echo '%%optional /not/yet/there' >showfoto.lang
