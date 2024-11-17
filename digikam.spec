@@ -172,7 +172,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 8.4.0
+%define libdigikamdatabase_major 8.5.0
 %define libdigikamdatabase %mklibname digikamdatabase
 
 %package -n %{libdigikamdatabase}
@@ -205,7 +205,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 8.4.0
+%define libdigikamcore_major 8.5.0
 %define libdigikamcore %mklibname digikamcore
 
 %package -n %{libdigikamcore}
@@ -238,7 +238,7 @@ Library File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major 8.4.0
+%define libdigikamgui_major 8.5.0
 %define libdigikamgui %mklibname digikamgui
 
 %package -n %{libdigikamgui}
