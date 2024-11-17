@@ -139,7 +139,6 @@ as Showfoto.
 %{_mandir}/man1/digitaglinktree.1*
 %{_mandir}/man1/cleanup_digikamdb.1*
 %{_iconsdir}/*/*/apps/digikam.*
-%{_iconsdir}/hicolor/*/*/avplayer.*
 %{_iconsdir}/hicolor/*/*/dk-*.*
 %{_iconsdir}/hicolor/*/apps/expoblending.png
 %{_iconsdir}/hicolor/*/*/panorama.*
