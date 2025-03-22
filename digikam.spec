@@ -2,7 +2,7 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Version:	8.5.0
+Version:	8.6.0
 License:	GPLv2+
 Group:		Graphics
 Url:		https://www.digikam.org
@@ -12,13 +12,13 @@ Source0:	https://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	3
+Release:	1
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:	doxygen
 BuildRequires:  gettext
 BuildRequires:	graphviz
-BuildRequires:	eigen3
+BuildRequires:	eigen-devel
 BuildRequires:	flex
 BuildRequires:	lld
 BuildRequires:	bison
@@ -112,6 +112,9 @@ Suggests:	marble
 # https://issues.openmandriva.org/show_bug.cgi?id=2391
 Requires:	%mklibname sane 1
 
+%patchlist
+digikam-8.6.0-compile.patch
+
 %description
 DigiKam is an advanced digital photo management application for KDE.
 Photos can be collected into albums which can be sorted chronologically,
@@ -172,7 +175,7 @@ You can use it to view your photographs and improve them.
 
 #-----------------------------------------------------------------------
 
-%define libdigikamdatabase_major 8.5.0
+%define libdigikamdatabase_major %{version}
 %define libdigikamdatabase %mklibname digikamdatabase
 
 %package -n %{libdigikamdatabase}
@@ -205,7 +208,7 @@ Librairie File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamcore_major 8.5.0
+%define libdigikamcore_major %{version}
 %define libdigikamcore %mklibname digikamcore
 
 %package -n %{libdigikamcore}
@@ -238,7 +241,7 @@ Library File needed by %{name}
 
 #-----------------------------------------------------------------------
 
-%define libdigikamgui_major 8.5.0
+%define libdigikamgui_major %{version}
 %define libdigikamgui %mklibname digikamgui
 
 %package -n %{libdigikamgui}
