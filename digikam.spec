@@ -2,7 +2,7 @@
 
 Summary:	A KDE photo management utility
 Name:		digikam
-Version:	8.6.0
+Version:	8.7.0
 License:	GPLv2+
 Group:		Graphics
 Url:		https://www.digikam.org
@@ -12,7 +12,7 @@ Source0:	https://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	2
+Release:	1
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:	doxygen
@@ -113,7 +113,6 @@ Suggests:	marble
 Requires:	%mklibname sane 1
 
 %patchlist
-digikam-8.6.0-compile.patch
 
 %description
 DigiKam is an advanced digital photo management application for KDE.
