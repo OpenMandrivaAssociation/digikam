@@ -12,7 +12,7 @@ Source0:	https://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	4
+Release:	5
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:	doxygen
@@ -113,6 +113,7 @@ Suggests:	marble
 Requires:	%mklibname sane 1
 
 %patchlist
+digikam-qt-6.10.patch
 
 %description
 DigiKam is an advanced digital photo management application for KDE.

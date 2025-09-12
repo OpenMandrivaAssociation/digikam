@@ -1,0 +1,48 @@
+diff -up digikam-8.7.0/core/libs/autorotator/autorotator.cpp.omv~ digikam-8.7.0/core/libs/autorotator/autorotator.cpp
+--- digikam-8.7.0/core/libs/autorotator/autorotator.cpp.omv~	2025-09-11 19:27:17.039105796 +0200
++++ digikam-8.7.0/core/libs/autorotator/autorotator.cpp	2025-09-11 19:27:24.774116140 +0200
+@@ -17,6 +17,7 @@
+ // Qt includes
+ 
+ #include <QException>
++#include <QElapsedTimer>
+ 
+ // digiKam includes
+ 
+diff -up digikam-8.7.0/core/libs/dimg/CMakeLists.txt.omv~ digikam-8.7.0/core/libs/dimg/CMakeLists.txt
+--- digikam-8.7.0/core/libs/dimg/CMakeLists.txt.omv~	2025-09-10 22:09:48.756301464 +0200
++++ digikam-8.7.0/core/libs/dimg/CMakeLists.txt	2025-09-10 22:58:43.277581622 +0200
+@@ -10,6 +10,10 @@ APPLY_COMMON_POLICIES()
+ kde_enable_exceptions()
+ 
+ include_directories(${LCMS2_INCLUDE_DIR})
++include_directories(/usr/lib64/qt6/include/QtCore/6.10.0)
++include_directories(/usr/lib64/qt6/include/QtCore/6.10.0/QtCore)
++include_directories(/usr/lib64/qt6/include/QtGui/6.10.0)
++include_directories(/usr/lib64/qt6/include/QtGui/6.10.0/QtGui)
+ 
+ set(libdimg_SRCS
+     ${CMAKE_CURRENT_SOURCE_DIR}/dimg.cpp
+diff -up digikam-8.7.0/core/libs/dimg/filters/icc/iccsettings_p_desktop.cpp.omv~ digikam-8.7.0/core/libs/dimg/filters/icc/iccsettings_p_desktop.cpp
+diff -up digikam-8.7.0/core/libs/facesengine/recognition/faceclassifier.cpp.omv~ digikam-8.7.0/core/libs/facesengine/recognition/faceclassifier.cpp
+--- digikam-8.7.0/core/libs/facesengine/recognition/faceclassifier.cpp.omv~	2025-09-12 02:45:36.338868236 +0200
++++ digikam-8.7.0/core/libs/facesengine/recognition/faceclassifier.cpp	2025-09-12 02:45:47.889829770 +0200
+@@ -18,6 +18,7 @@
+ // Qt includes
+ 
+ #include <QException>
++#include <QElapsedTimer>
+ #include <QReadWriteLock>
+ #include <QtConcurrentRun>
+ #include <QFuture>
+diff -up digikam-8.7.0/core/libs/mlfoundation/mlpipelinefoundation.h.omv~ digikam-8.7.0/core/libs/mlfoundation/mlpipelinefoundation.h
+--- digikam-8.7.0/core/libs/mlfoundation/mlpipelinefoundation.h.omv~	2025-09-11 19:25:31.520943259 +0200
++++ digikam-8.7.0/core/libs/mlfoundation/mlpipelinefoundation.h	2025-09-11 19:25:38.866897847 +0200
+@@ -25,6 +25,7 @@
+ #include <QThreadPool>
+ #include <QFuture>
+ #include <QFutureWatcher>
++#include <QElapsedTimer>
+ 
+ // Local includes
+ 
