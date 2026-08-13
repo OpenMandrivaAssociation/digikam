@@ -1,2 +1,0 @@
-# Subpackages use %mklibname digikam{core,gui,database}; SpecCheck still flags them.
-addFilter("E: lib-package-without-%mklibname")
