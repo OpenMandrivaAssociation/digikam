@@ -12,7 +12,7 @@ Source0:	https://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	5
+Release:	6
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:	doxygen
@@ -113,6 +113,7 @@ Suggests:	marble
 Requires:	%mklibname sane 1
 
 %patchlist
+digikam-9.1.0-opencv5.patch
 #digikam-qt-6.10.patch
 
 %description
