@@ -12,7 +12,7 @@ Source0:	https://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	3
+Release:	4
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:	doxygen
@@ -42,7 +42,7 @@ BuildRequires:	pkgconfig(libpgf)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(lqr-1) >= 0.4.0
-BuildRequires:	pkgconfig(opencv4) >= 4.3.0
+BuildRequires:	pkgconfig(opencv5) >= 4.3.0
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	pkgconfig(xrandr)
@@ -324,3 +324,6 @@ export LD_LIBRARY_PATH=$(pwd)/build/bin
 %ninja_install -C build
 
 %find_lang %{name} --with-html || echo '%%optional /not/yet/there' >%{name}.lang
+
+# keep %mklibname visible for rpmlint SpecCheck (checks last line only)
+# %mklibname
