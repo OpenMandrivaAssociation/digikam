@@ -147,9 +147,7 @@ as Showfoto.
 %{_iconsdir}/hicolor/*/apps/expoblending.png
 %{_iconsdir}/hicolor/*/*/panorama.*
 %{_iconsdir}/*/*/*/albumfolder*.*
-%{_iconsdir}/*/*/*/overexposure.*
 %{_iconsdir}/*/*/*/tag*.*
-%{_iconsdir}/*/*/*/underexposure.*
 %{_datadir}/knotifications6/digikam.notifyrc
 %{_qtdir}/plugins/digikam
 
