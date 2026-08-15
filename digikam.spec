@@ -323,6 +323,3 @@ export LD_LIBRARY_PATH=$(pwd)/build/bin
 %ninja_install -C build
 
 %find_lang %{name} --with-html || echo '%%optional /not/yet/there' >%{name}.lang
-
-# keep %mklibname visible for rpmlint SpecCheck (checks last line only)
-# %mklibname
