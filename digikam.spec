@@ -114,6 +114,7 @@ Requires:	%mklibname sane 1
 
 %patchlist
 digikam-9.1.0-opencv5.patch
+digikam-9.1.0-opencv51-dnn.patch
 #digikam-qt-6.10.patch
 
 %description

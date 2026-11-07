@@ -1,0 +1,46 @@
+--- a/core/libs/imgqsort/detectors/aesthetic_detector.cpp
++++ b/core/libs/imgqsort/detectors/aesthetic_detector.cpp
+@@ -147,6 +147,17 @@
+         {
+             qCDebug(DIGIKAM_DETECTOR_LOG) << "Aesthetic detector model:" << model;
+ 
++#if !OPENCV_TEST_VERSION(5,1,0)
++
++            // OpenCV 5.1 removed cv::dnn::readNetFromTensorflow(). The NIMA
++            // weights are an optional TensorFlow .pb and are not shipped.
++            qCCritical(DIGIKAM_DETECTOR_LOG) << "TensorFlow models are unsupported with OpenCV" << CV_VERSION;
++            qCCritical(DIGIKAM_DETECTOR_LOG) << "Aesthetic detection feature cannot be used!";
++
++            return false;
++
++#else
++
+ #ifdef Q_OS_WIN
+ 
+             s_model = cv::dnn::readNetFromTensorflow(nnmodel.toLocal8Bit().constData());
+@@ -166,6 +177,9 @@
+ #endif
+ 
+             return true;
++
++#endif
++
+         }
+         else
+         {
+--- a/core/utilities/facemanagement/pipelines/facepipelinebase.cpp
++++ b/core/utilities/facemanagement/pipelines/facepipelinebase.cpp
+@@ -74,9 +74,10 @@
+ {
+     int H        = cvGrayImage.rows;
+     int W        = cvGrayImage.cols;
+-    cv::Mat M    = (cv::Mat_<double>(3, 3) <<  1, -2,  1,
+-                                              -2,  4, -2,
+-                                               1, -2,  1);
++    // OpenCV 5.1 removed the Mat_ comma initializer.
++    cv::Mat M    = cv::Mat_<double>({3, 3}, { 1.0, -2.0,  1.0,
++                                             -2.0,  4.0, -2.0,
++                                              1.0, -2.0,  1.0});
+ 
+     cv::Mat convolved;
+     cv::filter2D(cvGrayImage, convolved, CV_64F, M);
