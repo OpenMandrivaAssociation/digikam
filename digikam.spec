@@ -12,7 +12,7 @@ Source0:	https://download.kde.org/%{?beta:un}stable/digikam/%{version}/digiKam-%
 # cmake -DDIGIKAMSC_CHECKOUT_PO:BOOL=ON
 Source1:	digikam-7.2-l10n.tar.xz
 %endif
-Release:	6
+Release:	7
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:	doxygen
